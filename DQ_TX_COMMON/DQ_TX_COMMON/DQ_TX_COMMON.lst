@@ -1,0 +1,2857 @@
+
+                    Nyquest Technology Co., Ltd.
+
+NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/21 14:23:05
+
+    ADDR  OPCODE/VALUE              LINE   TAG  SOURCE                   STATEMENT    
+
+                                    0-0001      ;// =========================================================================      
+                                    0-0002      ;// Project:       DK068
+                                    0-0003      ;// File:          StartRun.asm 
+                                    0-0004      ;// Description:   program start run in here
+                                    0-0005      ;// RF Mode : duplex / simplex                 
+                                    0-0006      ;// Author:     	WangFangli   
+                                    0-0007      ;// Version:    	V1.0.0   
+                                    0-0008      ;// Date:         2021/7/14
+                                    0-0009      ;// =========================================================================
+                                    0-0010      ;//--------------- File Include ---------------------------------------------
+                                    0-0011      ;//--------------------------------------------------------------------------
+                                    0-0012      #include		NY8A053D.H					;//The Header File for AT8B62D 
+                                    1-0001      ;=======================================================================================================================
+                                    1-0002      ;=======================================================================================================================
+                                    1-0003      ;File:			NY8A053D.h
+                                    1-0004      ;Description:	The Header File for NY8A053D
+                                    1-0005      ;Author:		JasonLee
+                                    1-0006      ;Date:			2017/05/23
+                                    1-0007      ;=======================================================================================================================
+                                    1-0008      ;=======================================================================================================================
+                                    1-0009      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0010      ;MOVR and MOVAR instrutions for access R-page Register (General Purpose Register)
+                                    1-0011      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0012      ;R-page sregisters				;	bit7	|	bit6	|	bit5	|	bit4	|	bit3	|	bit2	|	bit1	|	bit0
+                                    1-0013      ;-----------------------------------------------------------------------------------------------------------------------	
+                                    1-0014      ; 00H --------- Indirect Addressing Register
+                  0                 1-  15      INDF				EQU		00H
+                  0                 1-  16      Pr_Indir_Addr		EQU		00H
+                                    1-0017      ; 01H --------- Timer0 Data Register	
+                  1                 1-  18      TMR0				EQU		01H
+                  1                 1-  19      Pr_TMR0_Data		EQU		01H
+                                    1-0020      ; 02H --------- Low Byte of Program Counter
+                  2                 1-  21      PCL					EQU		02H
+                  2                 1-  22      Pr_PCLow_Data		EQU		02H
+                                    1-0023      ; 03H --------- Status Register
+                  3                 1-  24      STATUS				EQU		03H
+                  3                 1-  25      Pr_Status			EQU		03H	;	-			-			-			/WDT_TO		/Sleep		Z			Half_C		C	
+                                    1-0026      ; 04H --------- File Selection Register (Include SRAM Bank Select)
+                  4                 1-  27      FSR					EQU		04H
+                  4                 1-  28      Pr_File_Sel			EQU		04H	;	BK[1]		BK[0]		FSR[5]		FSR[4]		FSR[3]		FSR[2]		FSR[1]		FSR[0]	         
+                                    1-0029      ; 05H --------- PortA Data Register
+                  5                 1-  30      PORTA				EQU		05H
+                  5                 1-  31      Pr_PA_Data			EQU		05H
+                                    1-0032      ; 06H --------- PortB Data Register
+                  6                 1-  33      PORTB				EQU		06H
+                  6                 1-  34      Pr_PB_Data			EQU		06H
+                                    1-0035      ; 07H --------- Reserved
+                                    1-0036      ; 08H --------- Power Control Register (WatchDog, ExtINT and LVR Control)
+                  8                 1-  37      PCON				EQU		08H
+                  8                 1-  38      Pr_PWR_Ctrl			EQU		08H	;	WDTEn		ExtINTEn	-			-			LVREn		-			-			-	
+                                    1-0039      ; 09H --------- PortB Wakeup Control Register
+                  9                 1-  40      BWUCON				EQU		09H
+                  9                 1-  41      Pr_PB_WakeUp_Ctrl	EQU		09H
+                                    1-0042      ; 0AH --------- High Byte of Program Counter (B'xxxxxxDD')
+                  A                 1-  43      PCHBUF				EQU		0AH
+                  A                 1-  44      Pr_PCHigh_Data		EQU		0AH	;	-			XSPD_STP	-			-			-			-			PCHBUF[1]	PCHBUF[0]
+                                    1-0045      ; 0BH --------- PortA/B Pull-Low Control Register
+                  B                 1-  46      ABPLCON				EQU		0BH
+                  B                 1-  47      Pr_PAB_PL_Ctrl		EQU		0BH	;	/PB[3]		/PB[2]		/PB[1]		/PB[0]		/PA[3]		/PA[2]		/PA[1]		/PA[0]		
+                                    1-0048      ; 0CH --------- PortB Pull-High Control Register
+                  C                 1-  49      BPHCON				EQU		0CH
+                  C                 1-  50      Pr_PB_PH_Ctrl		EQU		0CH	;	/PB[7]		/PB[6]		/PB[5]		/PB[4]		-		    /PB[2]		/PB[1]		/PB[0]	
+                                    1-0051      ; 0DH --------- Reserved
+                                    1-0052      ; 0EH --------- Interrupt Enable Register
+                  E                 1-  53      INTE				EQU		0EH
+                  E                 1-  54      Pr_INT_Ctrl			EQU		0EH	;	-			WDT			-			-			TMR1		ExtINT		PBKey		TMR0	
+                                    1-0055      ; 0FH --------- Interrupt Flag	(Write '0' to Clear Flag)
+                  F                 1-  56      INTF				EQU		0FH
+                  F                 1-  57      Pr_INT_Flag			EQU		0FH	;	-			WDT			-			-			TMR1		ExtINT		PBKey		TMR0	
+                                    1-0058      
+                                    1-0059      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0060      ;T0MD and T0MDR instrutions for access T0MD Register
+                                    1-0061      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0062      ; xxH --------- Timer0 Control Register (Only Accessed by Instruction T0MD)
+                                    1-0063      ;T0MD				EQU		xxH	;	LClkSrc		INTEdge		ClkSel		EdgeSel		PS0WDT		PS0Div[2]	PS0Div[1]	PS0Div[0]	
+                                    1-0064      ;P_TMR0_Ctrl
+                                    1-0065      
+                                    1-0066      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0067      ;IOST and IOSTR instrution for access F-page Register (IO Configuration Register)
+                                    1-0068      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0069      ;F-page registers				;	bit7	|	bit6	|	bit5	|	bit4	|	bit3	|	bit2	|	bit1	|	bit0
+                                    1-0070      ;-----------------------------------------------------------------------------------------------------------------------	
+                                    1-0071      ; 05H --------- PortA Direction(1:Input/0:Output) Control Register
+                  5                 1-  72      IOSTA				EQU		05H
+                  5                 1-  73      Pf_PA_Dir_Ctrl		EQU		05H
+                                    1-0074      ; 06H --------- PortB Direction(1:Input/0:Output) Control Register
+                  6                 1-  75      IOSTB				EQU		06H
+                  6                 1-  76      Pf_PB_Dir_Ctrl		EQU		06H
+                                    1-0077      ; 0AH --------- Prescaler0 Counter Value Register
+                  A                 1-  78      PS0CV				EQU		0AH
+                  A                 1-  79      Pf_PS0_Cnt			EQU		0AH
+                                    1-0080      ; 0CH --------- PortB Open-Drain Control Register
+                  C                 1-  81      BODCON				EQU		0CH
+                  C                 1-  82      Pf_PB_OD_Ctrl		EQU		0CH	;	PB[7]		PB[6]		PB[5]		PB[4]		-  			PB[2]		PB[1]		PB[0]		
+                                    1-0083      ; 0FH --------- Power Control Register 1
+                  F                 1-  84      PCON1				EQU		0FH
+                  F                 1-  85      Pf_PWR_Ctrl1		EQU		0FH	;	INTEn		-			-			-			-			-			-			TMR0En	
+                                    1-0086      
+                                    1-0087      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0088      ;SFUN and SFUNR instrution for access S-page Register (Special Function Register)
+                                    1-0089      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0090      ;S-page registers				;	bit7	|	bit6	|	bit5	|	bit4	|	bit3	|	bit2	|	bit1	|	bit0
+                                    1-0091      ;-----------------------------------------------------------------------------------------------------------------------											
+                                    1-0092      ; 00H --------- Timer1 Data Register	
+                  0                 1-  93      TMR1				EQU		00H
+                  0                 1-  94      Ps_TMR1_Data		EQU		00H
+                                    1-0095      ; 01H --------- Timer1 Control Register	1
+                  1                 1-  96      T1CR1				EQU		01H
+                  1                 1-  97      Ps_TMR1_Ctrl1		EQU		01H	;	PWM1En		PWM1ActB	-			-			-			OneShot		Reload		TMR1En	
+                                    1-0098      ; 02H --------- Timer1 Control Register	2
+                  2                 1-  99      T1CR2				EQU		02H
+                  2                 1- 100      Ps_TMR1_Ctrl2		EQU		02H	;	-			-			ClkSel		EdgeSel		/PS1En		PS1Div[2]	PS1Div[1]	PS1Div[0]	
+                                    1-0101      ; 03H --------- PWM1 Duty Register
+                  3                 1- 102      PWM1DUTY			EQU		03H
+                  3                 1- 103      Ps_PWM1_Duty		EQU		03H
+                                    1-0104      ; 04H --------- Prescaler1 Counter Value Register
+                  4                 1- 105      PS1CV				EQU		04H
+                  4                 1- 106      Ps_PS1_Cnt			EQU		04H
+                                    1-0107      ; 05H --------- Buzzer1 Control Register
+                  5                 1- 108      BZ1CR				EQU		05H
+                  5                 1- 109      Ps_BZ1_Ctrl			EQU		05H	;	BZ1En		-			-			-			FSel[3]		FSel[2]		FSel[1]		FSel[0]	
+                                    1-0110      ; 06H --------- IR Control Register
+                  6                 1- 111      IRCR				EQU		06H
+                  6                 1- 112      Ps_IR_Ctrl			EQU		06H	;	IROSC358M   -			-			-			-			PolSel  	IRF57K		IREn	
+                                    1-0113      ; 07H --------- Table Access High Byte Address Pointer Register
+                  7                 1- 114      TBHP				EQU		07H
+                  7                 1- 115      Ps_TbHigh_Addr		EQU		07H	;	-			-			-			-		    -		    HPoint[2]	HPoint[1]	HPoint[0]	
+                                    1-0116      ; 08H --------- Table Access High Byte Data Register
+                  8                 1- 117      TBHD				EQU		08H
+                  8                 1- 118      Ps_TbHigh_Data		EQU		08H	;	-			-			HData[5]	HData[4]	HData[3]	HData[2]	HData[1]	HData[0]	
+                                    1-0119      ; 0FH --------- Oscillation Control Register (Include Switch Working Mode)
+                  F                 1- 120      OSCCR				EQU		0FH
+                  F                 1- 121      Ps_SYS_Ctrl			EQU		0FH	;	-			-			-			-			Mode[1]		Mode[0]		HOSC_Stop	HOSC_Sel
+                                    1-0122      
+                                    1-0123      ;=======================================================================================================================
+                                    1-0124      ;=======================================================================================================================
+                                    1-0125      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0126      ; R-page Special Function Register (General Purpose Register)
+                                    1-0127      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0128      ;------------------------------------------------------------
+                                    1-0129      ; Pr_Indir_Addr (00H)	--------- Indirect Addressing Register
+                                    1-0130      ;------------------------------------------------------------
+                                    1-0131      ;Bit[7:0] : Indirect Address
+                 FF                 1- 132      	C_Indir_Addr		EQU		FFH
+                                    1-0133      
+                                    1-0134      ;------------------------------------------------------------
+                                    1-0135      ; Pr_TMR0_Data (01H)	--------- Timer0 Data Register	
+                                    1-0136      ;------------------------------------------------------------
+                                    1-0137      ;Bit[7:0] : Timer0 Data
+                 FF                 1- 138      	C_TMR0_Data			EQU		FFH
+                                    1-0139      
+                                    1-0140      ;------------------------------------------------------------
+                                    1-0141      ; Pr_PCLow_Data (02H)	--------- Low Byte of Program Counter
+                                    1-0142      ;------------------------------------------------------------
+                                    1-0143      ;Bit[7:0] : Low Byte of Program Counter
+                 FF                 1- 144      	C_PCLow_Data		EQU		FFH
+                                    1-0145      
+                                    1-0146      ;------------------------------------------------------------
+                                    1-0147      ; Pr_Status (03H)		--------- Status Register
+                                    1-0148      ;------------------------------------------------------------
+                                    1-0149      ;Bit[7:5] : Reserved
+                                    1-0150      ;Bit[4:0] : System Status
+                 10                 1- 151      	C_Status_WDT		EQU		10H			; WatchDog Overflow Flag
+                  8                 1- 152      	C_Status_Slp		EQU		08H			; Sleep (Power Down) Flag
+                  4                 1- 153      	C_Status_Z			EQU		04H			; Zero Flag
+                  2                 1- 154      	C_Status_HalfC		EQU		02H			; Half Carry/Half Borrow Flag
+                  1                 1- 155      	C_Status_C			EQU		01H			; Carry/Borrow Flag
+                                    1-0156      	
+                  4                 1- 157      	C_Status_WDT_Bit	EQU		4
+                  3                 1- 158      	C_Status_Slp_Bit	EQU		3
+                  2                 1- 159      	C_Status_Z_Bit		EQU		2
+                  1                 1- 160      	C_Status_HalfC_Bit	EQU		1
+                  0                 1- 161      	C_Status_C_Bit		EQU		0
+                                    1-0162      
+                                    1-0163      ;------------------------------------------------------------ 
+                                    1-0164      ; Pr_File_Sel (04H)		--------- File Selection Register (Include SRAM Bank Select)        
+                                    1-0165      ;------------------------------------------------------------
+                                    1-0166      ;Bit[7:6] : FSR Bit Define	
+                 C0                 1- 167      	C_SFR_Bank			EQU		C0H			; Select Ram Bank
+                  0                 1- 168      	C_SFR_Bank0			EQU		00H			; Select Ram Bank0
+                 40                 1- 169      	C_SFR_Bank1			EQU		40H			; Select Ram Bank1
+                 80                 1- 170      	C_SFR_Bank2			EQU		80H			; Select Ram Bank2
+                 C0                 1- 171      	C_SFR_Bank3			EQU		C0H			; Select Ram Bank3	
+                                    1-0172      ;Bit[5:0] : Select one Register out of 64 registers of specific Bank.
+                 3F                 1- 173      	C_SFR_RAM_Addr		EQU		3FH			; RAM Address Bit[5:0] 
+                                    1-0174      
+                                    1-0175      ;------------------------------------------------------------	 
+                                    1-0176      ; Pr_PA_Data (05H)		--------- PortA Data Register
+                                    1-0177      ;------------------------------------------------------------
+                                    1-0178      ;Bit[7:4] : Reserved
+                                    1-0179      ;Bit[3:0] : PORTA Data Bit Define	
+                  F                 1- 180      	C_PA_Data			EQU		0FH			; PA Data
+                  8                 1- 181      	C_PA3_Data			EQU		08H			; PA3 Data
+                  4                 1- 182      	C_PA2_Data			EQU		04H			; PA2 Data
+                  2                 1- 183      	C_PA1_Data			EQU		02H			; PA1 Data
+                  1                 1- 184      	C_PA0_Data			EQU		01H			; PA0 Data
+                                    1-0185      
+                                    1-0186      ;------------------------------------------------------------
+                                    1-0187      ; Pr_PB_Data (06H)		--------- PortB Data Register
+                                    1-0188      ;------------------------------------------------------------
+                                    1-0189      ;Bit[7:0] : PORTB Data Bit Define	
+                 FF                 1- 190      	C_PB_Data			EQU		FFH			; PB Data
+                 80                 1- 191      	C_PB7_Data			EQU		80H			; PB7 Data
+                 40                 1- 192      	C_PB6_Data			EQU		40H			; PB6 Data
+                 20                 1- 193      	C_PB5_Data			EQU		20H			; PB5 Data
+                 10                 1- 194      	C_PB4_Data			EQU		10H			; PB4 Data
+                  8                 1- 195      	C_PB3_Data			EQU		08H			; PB3 Data
+                  4                 1- 196      	C_PB2_Data			EQU		04H			; PB2 Data
+                  2                 1- 197      	C_PB1_Data			EQU		02H			; PB1 Data
+                  1                 1- 198      	C_PB0_Data			EQU		01H			; PB0 Data
+                                    1-0199      
+                                    1-0200      ;------------------------------------------------------------	
+                                    1-0201      ; Pr_PWR_Ctrl (08H)		--------- Power Control Register (WatchDog, ExtINT and LVR Control) 
+                                    1-0202      ;------------------------------------------------------------
+                                    1-0203      ;Bit[7] : WatchDog Eanble
+                 80                 1- 204      	C_WDT_En			EQU		80H			; WatchDog Enable
+                                    1-0205      ;Bit[6] : External INT Eanble
+                 40                 1- 206      	C_ExtINT_En			EQU		40H			; External INT Enable
+                                    1-0207      ;Bit[5:4] : Reserved
+                                    1-0208      ;Bit[3] : LVR Enable
+                  8                 1- 209      	C_LVR_En			EQU		08H			; LVR Enable
+                                    1-0210      ;Bit[2:0] : Reserved
+                                    1-0211      	
+                                    1-0212      ;------------------------------------------------------------	
+                                    1-0213      ; Pr_PB_WakeUp_Ctrl (09H)	--------- PortB Wakeup Control Register
+                                    1-0214      ;------------------------------------------------------------
+                                    1-0215      ;Bit[7:0] : BWUCON Bit Define
+                 FF                 1- 216      	C_PB_Wakeup			EQU		FFH			; PortB Wakeup Enable
+                 80                 1- 217      	C_PB7_Wakeup		EQU		80H			; PB7 Wakeup Enable
+                 40                 1- 218      	C_PB6_Wakeup		EQU		40H			; PB6 Wakeup Enable  
+                 20                 1- 219      	C_PB5_Wakeup		EQU		20H			; PB5 Wakeup Enable
+                 10                 1- 220      	C_PB4_Wakeup		EQU		10H			; PB4 Wakeup Enable
+                  8                 1- 221      	C_PB3_Wakeup		EQU		08H			; PB3 Wakeup Enable
+                  4                 1- 222      	C_PB2_Wakeup		EQU		04H			; PB2 Wakeup Enable 
+                  2                 1- 223      	C_PB1_Wakeup		EQU		02H			; PB1 Wakeup Enable
+                  1                 1- 224      	C_PB0_Wakeup		EQU		01H			; PB0 Wakeup Enable
+                                    1-0225      		
+                                    1-0226      ;------------------------------------------------------------	
+                                    1-0227      ; Pr_PCHigh_Data (0AH) --------- High Byte of Program Counter
+                                    1-0228      ;------------------------------------------------------------
+                                    1-0229      ;Bit[7] : Reserved
+                                    1-0230      ;Bit[6] : E_LXT Buckup Contorl Bit	(1:Disable, 0:Enable)
+                 40                 1- 231      	C_ELXT_Backup		EQU		40H	
+                                    1-0232      ;Bit[5:2] : Reserved
+                                    1-0233      ;Bit[1:0] : High Byte of Program Counter
+                  3                 1- 234      	C_PCHigh_Data		EQU		03H
+                                    1-0235      		
+                                    1-0236      ;------------------------------------------------------------		
+                                    1-0237      ; Pr_PAB_PL_Ctrl (0BH)	--------- PortA/B Pull-Low Control Register
+                                    1-0238      ;------------------------------------------------------------
+                                    1-0239      ;Bit[7:4] : PortB Pull-Low Control Register (1:Disable, 0:Pull-High)
+                 F0                 1- 240          C_PB_PLB			EQU		F0H			; PortB Pull-Low Control bit
+                 80                 1- 241          C_PB3_PLB			EQU		80H			; PB3 Pull-Low Control bit
+                 40                 1- 242          C_PB2_PLB			EQU		40H			; PB2 Pull-Low Control bit	
+                 20                 1- 243          C_PB1_PLB			EQU		20H			; PB1 Pull-Low Control bit 	
+                 10                 1- 244          C_PB0_PLB			EQU		10H			; PB0 Pull-Low Control bit
+                                    1-0245      ;Bit[3:0] : PortA Pull-Low Control Register
+                  F                 1- 246          C_PA_PLB			EQU		0FH			; PortA Pull-Low Control bit
+                  8                 1- 247          C_PA3_PLB			EQU		08H			; PA3 Pull-Low Control bit
+                  4                 1- 248          C_PA2_PLB			EQU		04H			; PA2 Pull-Low Control bit	
+                  2                 1- 249          C_PA1_PLB			EQU		02H			; PA1 Pull-Low Control bit	
+                  1                 1- 250          C_PA0_PLB			EQU		01H			; PA0 Pull-Low Control bit
+                                    1-0251      
+                                    1-0252      ;------------------------------------------------------------	
+                                    1-0253      ; Pr_PB_PH_Ctrl (0CH)	--------- PortB Pull-High Control Register
+                                    1-0254      ;------------------------------------------------------------
+                                    1-0255      ;Bit[7:4]&Bit[2:0] : PortB Pull-High Control Register (1:Disable, 0:Pull-High)
+                                    1-0256      ;Bit[3] : Reserved
+                 F7                 1- 257      	C_PB_PHB			EQU		F7H			; PortB Pull-Low Control bit 
+                 80                 1- 258      	C_PB7_PHB			EQU		80H			; PB7 Pull-Low Control bit 
+                 40                 1- 259      	C_PB6_PHB			EQU		40H			; PB6 Pull-Low Control bit   
+                 20                 1- 260      	C_PB5_PHB			EQU		20H			; PB5 Pull-Low Control bit
+                 10                 1- 261      	C_PB4_PHB			EQU		10H			; PB4 Pull-Low Control bit
+                  4                 1- 262      	C_PB2_PHB			EQU		04H			; PB2 Pull-Low Control bit
+                  2                 1- 263      	C_PB1_PHB			EQU		02H			; PB1 Pull-Low Control bit
+                  1                 1- 264      	C_PB0_PHB			EQU		01H			; PB0 Pull-Low Control bit
+                                    1-0265      
+                                    1-0266      ;------------------------------------------------------------	
+                                    1-0267      ; Pr_INT_Ctrl (0EH)		--------- Interrupt Enable Register
+                                    1-0268      ; Pr_INT_Flag (0FH)		--------- Interrupt Flag
+                                    1-0269      ;------------------------------------------------------------
+                                    1-0270      ;Bit[7] : Reserved
+                                    1-0271      ;Bit[6] : WatchDog Flag
+                 40                 1- 272      	C_INT_WDT			EQU		40H			; WDT timeout interrupt enable bit
+                  6                 1- 273      	C_INT_WDT_Bit		EQU		6
+                                    1-0274      
+                                    1-0275      ;Bit[5:4] : Reserved
+                                    1-0276      ;Bit[3:0] : Interrupt Source
+                  8                 1- 277      	C_INT_TMR1			EQU		08H			; Timer1 underflow interrupt enable bit
+                  4                 1- 278      	C_INT_EXT			EQU		04H			; External interrupt enable bit
+                  2                 1- 279      	C_INT_PBKey			EQU		02H			; PortB input change interrupt enable bit
+                  1                 1- 280      	C_INT_TMR0			EQU		01H			; Timer0 overflow interrupt enable bit 
+                                    1-0281      
+                  3                 1- 282      	C_INT_TMR1_Bit		EQU		3
+                  2                 1- 283      	C_INT_EXT_Bit		EQU		2
+                  1                 1- 284      	C_INT_PBKey_Bit		EQU		1
+                  0                 1- 285      	C_INT_TMR0_Bit		EQU		0
+                                    1-0286      
+                                    1-0287      ;------------------------------------------------------------	
+                                    1-0288      ; P_TMR0_Ctrl (xxH)		--------- T0MD Register
+                                    1-0289      ;------------------------------------------------------------
+                                    1-0290      ;		C_TMR0_Clk		C_TMR0_LowClk	|	Timer 0 Clock Source
+                                    1-0291      ;------------------------------------------------------------
+                                    1-0292      ;		0				x				|	From Instruction Clock
+                                    1-0293      ;		1				0				|	From External Pin
+                                    1-0294      ;		1				1				|	From Low Oscillator Frequency (I_LRC or E_LXT)
+                                    1-0295      ;------------------------------------------------------------
+                                    1-0296      ;Bit[7:4] : Timer0 Clock Source Selection
+                 80                 1- 297      	C_TMR0_LowClk		EQU		80H			; Same as LCKTM0
+                 40                 1- 298      	C_EXINT_Edge		EQU		40H			; External INT Edge Select --- 1:Rising Edge, 0:Falling Edge
+                 20                 1- 299      	C_TMR0_Clk			EQU		20H			; Same as T0CS
+                 10                 1- 300      	C_TMR0_ExtClk_Edge	EQU		10H			; Timer0 External Clock Edge Select --- 1:Falling Edge, 0:Rising Edge
+                                    1-0301      
+                                    1-0302      ;Bit[3] : Watchdog Interrupt Source Selection / Timer0 Prescaler0 Selection
+                  8                 1- 303      	C_PS0_WDT			EQU		08H			; Prescaler0 is assigned to WDT
+                  0                 1- 304      	C_PS0_TMR0			EQU		00H			; Prescaler0 is assigned to TMR0
+                                    1-0305      ;Bit[2:0] : Prescaler0 Dividing Rate Selection
+                  7                 1- 306      	C_PS0_Div			EQU		07H			; Prescaler0 Dividing Rate Selection
+                  0                 1- 307      	C_PS0_Div2			EQU		00H
+                  1                 1- 308      	C_PS0_Div4			EQU		01H
+                  2                 1- 309      	C_PS0_Div8			EQU		02H
+                  3                 1- 310      	C_PS0_Div16			EQU		03H
+                  4                 1- 311      	C_PS0_Div32			EQU		04H
+                  5                 1- 312      	C_PS0_Div64			EQU		05H
+                  6                 1- 313      	C_PS0_Div128		EQU		06H
+                  7                 1- 314      	C_PS0_Div256		EQU		07H
+                                    1-0315      
+                                    1-0316      ;=======================================================================================================================
+                                    1-0317      ;=======================================================================================================================
+                                    1-0318      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0319      ; F-page Special Function Register (IO Configuration Register)
+                                    1-0320      ;-----------------------------------------------------------------------------------------------------------------------	
+                                    1-0321      ;------------------------------------------------------------
+                                    1-0322      ; Pf_PA_Dir_Ctrl (05H)	--------- PortA Direction(Input/Output) Control Register
+                                    1-0323      ;------------------------------------------------------------
+                                    1-0324      ;Bit[7:4] : Reserved
+                                    1-0325      ;Bit[3:0] : Port A Input/Output Mode Selection (1:Input, 0:Output)
+                  F                 1- 326      	C_PA_Input			EQU		0FH			; Port A Input Mode Control
+                  0                 1- 327      	C_PA_Output			EQU		00H			; Port A Output Mode Control
+                                    1-0328      
+                  8                 1- 329      	C_PA3_Input			EQU		08H			; PA3 I/O mode Control bit
+                  4                 1- 330      	C_PA2_Input			EQU		04H			; PA2 I/O mode Control bit
+                  2                 1- 331      	C_PA1_Input			EQU		02H			; PA1 I/O mode Control bit
+                  1                 1- 332      	C_PA0_Input			EQU		01H			; PA0 I/O mode Control bit 
+                  0                 1- 333      	C_PA3_Output		EQU		00H			; PA3 I/O mode Control bit
+                  0                 1- 334      	C_PA2_Output		EQU		00H			; PA2 I/O mode Control bit
+                  0                 1- 335      	C_PA1_Output		EQU		00H			; PA1 I/O mode Control bit
+                  0                 1- 336      	C_PA0_Output		EQU		00H			; PA0 I/O mode Control bit 
+                                    1-0337      
+                                    1-0338      ;------------------------------------------------------------	
+                                    1-0339      ; Pf_PB_Dir_Ctrl (06H)	--------- PortB Direction(Input/Output) Control Register
+                                    1-0340      ;------------------------------------------------------------
+                                    1-0341      ;Bit[7:0] : Port B Input/Output Mode Selection (1:Input, 0:Output)
+                 FF                 1- 342      	C_PB_Input			EQU		FFH			; Port B Input Mode Control
+                  0                 1- 343      	C_PB_Output			EQU		00H			; Port B Output Mode Control
+                                    1-0344      
+                 80                 1- 345      	C_PB7_Input			EQU		80H			; PB7 I/O mode Control bit
+                 40                 1- 346      	C_PB6_Input			EQU		40H			; PB6 I/O mode Control bit
+                 20                 1- 347      	C_PB5_Input			EQU		20H			; PB5 I/O mode Control bit
+                 10                 1- 348      	C_PB4_Input			EQU		10H			; PB4 I/O mode Control bit
+                  8                 1- 349      	C_PB3_Input			EQU		08H			; PB3 I/O mode Control bit
+                  4                 1- 350      	C_PB2_Input			EQU		04H			; PB2 I/O mode Control bit
+                  2                 1- 351      	C_PB1_Input			EQU		02H			; PB1 I/O mode Control bit
+                  1                 1- 352      	C_PB0_Input			EQU		01H			; PB0 I/O mode Control bit
+                  0                 1- 353      	C_PB7_Output		EQU		00H			; PB7 I/O mode Control bit
+                  0                 1- 354      	C_PB6_Output		EQU		00H			; PB6 I/O mode Control bit
+                  0                 1- 355      	C_PB5_Output		EQU		00H			; PB5 I/O mode Control bit
+                  0                 1- 356      	C_PB4_Output		EQU		00H			; PB4 I/O mode Control bit
+                  0                 1- 357      	C_PB3_Output		EQU		00H			; PB3 I/O mode Control bit
+                  0                 1- 358      	C_PB2_Output		EQU		00H			; PB2 I/O mode Control bit
+                  0                 1- 359      	C_PB1_Output		EQU		00H			; PB1 I/O mode Control bit
+                  0                 1- 360      	C_PB0_Output		EQU		00H			; PB0 I/O mode Control bit
+                                    1-0361      
+                                    1-0362      ;------------------------------------------------------------	
+                                    1-0363      ; Pf_PS0_Cnt (0AH)		--------- Prescaler0 Counter Value Register
+                                    1-0364      ;------------------------------------------------------------
+                                    1-0365      ;Bit[7:0] : Prescaler0 Counter Value
+                                    1-0366      ;	C_PS0_Cnt			EQU		FFH			; 8-Bit register	
+                                    1-0367      	
+                                    1-0368      ;------------------------------------------------------------	
+                                    1-0369      ; Pf_PB_OD_Ctrl (0CH)	--------- PortB Open-Drain Control Register
+                                    1-0370      ;------------------------------------------------------------
+                                    1-0371      ;Bit[7:4]&Bit[2:0] : PortB Open-Drain Control (1:Open-Drain, 0:Disable)
+                                    1-0372      ;Bit[3] : Reserved
+                 F7                 1- 373      	C_PB_OD				EQU		F7H			; Port B Open-Drain Control
+                 80                 1- 374      	C_PB7_OD			EQU		80H			; PB7 Open-Drain Control bit
+                 40                 1- 375      	C_PB6_OD			EQU		40H			; PB6 Open-Drain Control bit 
+                 20                 1- 376      	C_PB5_OD			EQU		20H			; PB5 Open-Drain Control bit
+                 10                 1- 377      	C_PB4_OD			EQU		10H			; PB4 Open-Drain Control bit
+                  4                 1- 378      	C_PB2_OD			EQU		04H			; PB2 Open-Drain Control bit
+                  2                 1- 379      	C_PB1_OD			EQU		02H			; PB1 Open-Drain Control bit 
+                  1                 1- 380      	C_PB0_OD			EQU		01H			; PB0 Open-Drain Control bit
+                                    1-0381      
+                                    1-0382      ;------------------------------------------------------------	
+                                    1-0383      ; Pf_PWR_Ctrl1 (0FH)	--------- Power Control Register 1
+                                    1-0384      ;------------------------------------------------------------
+                                    1-0385      ;Bit[7] : All Interrupt Enable
+                 80                 1- 386      	C_All_INT_En		EQU		80H			; Enable all unmasked interrupts
+                                    1-0387      ;Bit[6:1] : Reserved
+                                    1-0388      ;Bit[0] : Timer0 Enable
+                  1                 1- 389      	C_TMR0_En			EQU		01H			; Enable Timer0
+                  0                 1- 390      	C_TMR0_Dis			EQU		00H			; Disable Timer0
+                                    1-0391      		
+                                    1-0392      ;=======================================================================================================================
+                                    1-0393      ;=======================================================================================================================
+                                    1-0394      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0395      ; S-page Special Function Register (Special Function Register)
+                                    1-0396      ;-----------------------------------------------------------------------------------------------------------------------		
+                                    1-0397      ;------------------------------------------------------------
+                                    1-0398      ; Ps_TMR1_Data (00H)	--------- Timer1 Data Register
+                                    1-0399      ;------------------------------------------------------------
+                                    1-0400      ;Bit[7:0] : Timer1 Data
+                 FF                 1- 401      	C_TMR1_Data			EQU		FFH	
+                                    1-0402      	
+                                    1-0403      ;------------------------------------------------------------	
+                                    1-0404      ; Ps_TMR1_Ctrl1 (01H)	--------- Timer1 Control Register 1
+                                    1-0405      ;------------------------------------------------------------
+                                    1-0406      ;Bit[7:6] : PWM1 Control
+                 80                 1- 407      	C_PWM1_En			EQU		80H 		; PWM1 output will be present on PB6
+                 40                 1- 408      	C_PWM1_Active		EQU		40H 		; PWM1 output is active
+                 40                 1- 409      	C_PWM1_Active_Lo	EQU		40H 		; PWM1 output is active low 
+                  0                 1- 410      	C_PWM1_Active_Hi	EQU		00H 		; PWM1 output is active high 
+                                    1-0411      ;Bit[5:3] : Reserved
+                                    1-0412      ;Bit[2:0] : Timer1 Control
+                  4                 1- 413      	C_TMR1_OneShot		EQU		04H 		; One-Shot mode. Timer1 will count once from the initial value to 0x00
+                  2                 1- 414      	C_TMR1_Reload		EQU		02H 		; Initial value is reloaded from reload register TMR1(T1OS=0)
+                                    1-0415      
+                  1                 1- 416      	C_TMR1_En			EQU		01H 		; Enable Timer1
+                  0                 1- 417      	C_TMR1_Dis			EQU		00H 		; Disable Timer1
+                                    1-0418      
+                                    1-0419      ;------------------------------------------------------------	
+                                    1-0420      ; Ps_TMR1_Ctrl2 (02H)	--------- Timer1 Control Register	2
+                                    1-0421      ;------------------------------------------------------------
+                                    1-0422      ;Bit[7:6] : Reserved
+                                    1-0423      ;Bit[5] : Timer1 Clock Source Select
+                 20                 1- 424      	C_TMR1_ClkSrc_Ext	EQU		20H			; Timer1 clock source from External Clock Input
+                  0                 1- 425      	C_TMR1_ClkSrc_Inst	EQU		00H			; Timer1 clock source from Internal Instruction Clock
+                                    1-0426      
+                                    1-0427      	
+                                    1-0428      ;Bit[4] : Timer1 external clock edge selection
+                 10                 1- 429          C_TMR1_ExtClk_Edge	EQU		10H			; Timer1 External Clock Edge Select --- 1:Falling Edge, 0:Rising Edge  
+                 10                 1- 430      	C_TMR1_ExtFalling	EQU		10H			; Timer1 will decrease one while EX_CKI Falling Edge.
+                  0                 1- 431      	C_TMR1_ExtRising	EQU		00H			; Timer1 will decrease one while EX_CKI Rising Edge.
+                                    1-0432      ;Bit[3] :  Disable/enable Prescaler1
+                  8                 1- 433          C_PS1_Dis           EQU		08H			; Enable Prescaler1
+                  0                 1- 434      	C_PS1_EN			EQU		00H			; Disable Prescaler1
+                                    1-0435      ;Bit[2:0] : Prescaler 1 Dividing Rate Selection
+                  7                 1- 436      	C_PS1_Div			EQU		07H			; Prescaler1 Dividing Rate Selection
+                  0                 1- 437      	C_PS1_Div2			EQU		00H
+                  1                 1- 438      	C_PS1_Div4			EQU		01H
+                  2                 1- 439      	C_PS1_Div8			EQU		02H
+                  3                 1- 440      	C_PS1_Div16			EQU		03H
+                  4                 1- 441      	C_PS1_Div32			EQU		04H
+                  5                 1- 442      	C_PS1_Div64			EQU		05H
+                  6                 1- 443      	C_PS1_Div128		EQU		06H
+                  7                 1- 444      	C_PS1_Div256		EQU		07H
+                                    1-0445      
+                                    1-0446      ;------------------------------------------------------------	
+                                    1-0447      ; Ps_PWM1_Duty (03H)	--------- PWM1 Duty Register
+                                    1-0448      ;------------------------------------------------------------
+                                    1-0449      ;Bit[7:0] : PWM1 Duty Value
+                 FF                 1- 450      	C_PWM1_Duty			EQU		FFH
+                                    1-0451      
+                                    1-0452      ;------------------------------------------------------------	
+                                    1-0453      ; Ps_PS1_Cnt (04H)		--------- Prescaler1 Counter Value Register
+                                    1-0454      ;------------------------------------------------------------
+                                    1-0455      ;Bit[7:0] : rescaler1 Counter Value
+                                    1-0456      ;	C_PS1_Cnt			EQU		FFH			; 8-Bit register	
+                                    1-0457      
+                                    1-0458      ;------------------------------------------------------------	
+                                    1-0459      ; Ps_BZ1_Ctrl (05H)		--------- Buzzer1 Control Register
+                                    1-0460      ;------------------------------------------------------------
+                                    1-0461      ;Bit[7] : BZ1 Enable
+                 80                 1- 462      	C_BZ1_En			EQU		80H			; Enable BZ1 output
+                                    1-0463      ;Bit[6:4] : Reserved
+                                    1-0464      ;Bit[3:0] : BZ1 Frequency Selection
+                  F                 1- 465      	C_BZ1_FSel			EQU		0FH			; BZ1 frequency selection
+                                    1-0466      
+                  0                 1- 467      	C_BZ1_PS1Div2		EQU		00H			; Clock Soruce from Prescaler 1
+                  1                 1- 468      	C_BZ1_PS1Div4		EQU		01H
+                  2                 1- 469      	C_BZ1_PS1Div8		EQU		02H
+                  3                 1- 470      	C_BZ1_PS1Div16		EQU		03H
+                  4                 1- 471      	C_BZ1_PS1Div32		EQU		04H
+                  5                 1- 472      	C_BZ1_PS1Div64		EQU		05H
+                  6                 1- 473      	C_BZ1_PS1Div128		EQU		06H
+                  7                 1- 474      	C_BZ1_PS1Div256		EQU		07H
+                                    1-0475      
+                  8                 1- 476      	C_BZ1_TMR1B0		EQU		08H			; Clock Source from Timer 1
+                  9                 1- 477      	C_BZ1_TMR1B1		EQU		09H
+                  A                 1- 478      	C_BZ1_TMR1B2		EQU		0AH
+                  B                 1- 479      	C_BZ1_TMR1B3		EQU		0BH
+                  C                 1- 480      	C_BZ1_TMR1B4		EQU		0CH
+                  D                 1- 481      	C_BZ1_TMR1B5		EQU		0DH
+                  E                 1- 482      	C_BZ1_TMR1B6		EQU		0EH
+                  F                 1- 483      	C_BZ1_TMR1B7		EQU		0FH
+                                    1-0484      
+                                    1-0485      ;------------------------------------------------------------	
+                                    1-0486      ; Ps_IR_Ctrl (06H)		--------- IR Control Register
+                                    1-0487      ;------------------------------------------------------------
+                                    1-0488      ;Bit[7] : IR Clock Source Selection (1:3.58M, 0:455KHz)
+                 80                 1- 489      	C_IR_ClkSrc_358M	EQU		80H			; IRCR[7]=1 , external crystal is 3.58MHz (This bit is ignored if internal high frequency oscillation is used)
+                  0                 1- 490      	C_IR_ClkSrc_455K	EQU		00H			; IRCR[7]=0 , external crystal is 455KHz
+                                    1-0491      ;Bit[6:3] : Reserved
+                                    1-0492      ;Bit[2] : IR Polarity Selection
+                  4                 1- 493      	C_IR_Pol_Sel		EQU		04H
+                                    1-0494      ;Bit[1] : IR Carrier Frequency Selection (1:5.7K, 0:38KHz)
+                  2                 1- 495      	C_IR_57K			EQU		02H			; IRCR[1]=1 , IR carrier frequency is 57KHz
+                  0                 1- 496      	C_IR_38K			EQU		00H			; IRCR[1]=0 , IR carrier frequency is 57KHz
+                                    1-0497      ;Bit[0] : IR Enable
+                  1                 1- 498      	C_IR_En				EQU		01H			; Enable IR carrier output
+                                    1-0499      
+                                    1-0500      ;------------------------------------------------------------	
+                                    1-0501      ; Ps_TbHigh_Addr (07H)	--------- Table Access High Byte Address Pointer Register
+                                    1-0502      ;------------------------------------------------------------
+                                    1-0503      ;Bit[7:2] : Reserved
+                                    1-0504      ;Bit[1:0] : Table Access High Byte Address Pointer
+                  3                 1- 505      	C_TbHigh_Addr		EQU		03H			; When instruction CALLA, GOTOA or TABLEA is executed TBHP[1:0] is PC[9:8]
+                                    1-0506      
+                                    1-0507      ;------------------------------------------------------------	
+                                    1-0508      ; Ps_TbHigh_Data (08H)	--------- Table Access High Byte Data Register
+                                    1-0509      ;------------------------------------------------------------
+                                    1-0510      ;Bit[7:6] : Reserved
+                                    1-0511      ;Bit[5:0] : Table Access High Byte Data
+                 3F                 1- 512      	C_TbHigh_Data		EQU		3FH
+                                    1-0513      
+                                    1-0514      ;------------------------------------------------------------   
+                                    1-0515      ; Ps_SYS_Ctrl (0FH)	--------- Table Access High Byte Data Register
+                                    1-0516      ;------------------------------------------------------------
+                                    1-0517      ;Bit[7:4] : Reserved
+                                    1-0518      ;Bit[3:2] : System Mode Select
+                  C                 1- 519      	C_Mode				EQU		0CH			; System Operating Mode Selection
+                  0                 1- 520      	C_Normal_Mode		EQU		00H			; Enter Normal mode
+                  4                 1- 521      	C_Halt_Mode			EQU		04H			; Enter Halt mode
+                  8                 1- 522      	C_Standby_Mode		EQU		08H			; Enter Standby mode
+                                    1-0523      ;Bit[1] : Stop FHOSC
+                  2                 1- 524      	C_FHOSC_Stop		EQU		02H			; Disable high-frequency oscillation (FHOSC)
+                                    1-0525      ;Bit[0] : FOSC Seletction
+                  1                 1- 526      	C_FHOSC_Sel			EQU		01H			; OSCCR[0]=1 , FOSC is high-frequency oscillation (FHOSC)
+                  0                 1- 527      	C_FLOSC_Sel			EQU		00H			; OSCCR[0]=0 , FOSC is Low-frequency oscillation (FLOSC)	
+                                    1-0528      
+                                    1-0529      
+                                    1-0530      
+                                    1-0531      ;=======================================================================================================================
+                                    1-0532      ;=======================================================================================================================
+                                    1-0533      ;-----------------------------------------------------------------------------------------------------------------------
+                                    1-0534      ;General Constant Define
+                                    1-0535      ;-----------------------------------------------------------------------------------------------------------------------
+                  0                 1- 536      	C_SaveToAcc			EQU		00H	
+                  1                 1- 537      	C_SaveToReg			EQU		01H	
+                                    1-0538      
+                  1                 1- 539      	C_Bit0				EQU		01H
+                  2                 1- 540      	C_Bit1				EQU		02H
+                  4                 1- 541      	C_Bit2				EQU		04H
+                  8                 1- 542      	C_Bit3				EQU		08H
+                 10                 1- 543      	C_Bit4				EQU		10H
+                 20                 1- 544      	C_Bit5				EQU		20H
+                 40                 1- 545      	C_Bit6				EQU		40H
+                 80                 1- 546      	C_Bit7				EQU		80H
+                                    1-0547      
+                  0                 1- 548      	C_Num0				EQU		0
+                  1                 1- 549      	C_Num1				EQU		1
+                  2                 1- 550      	C_Num2				EQU		2
+                  3                 1- 551      	C_Num3				EQU		3
+                  4                 1- 552      	C_Num4				EQU		4
+                  5                 1- 553      	C_Num5				EQU		5
+                  6                 1- 554      	C_Num6				EQU		6
+                  7                 1- 555      	C_Num7				EQU		7
+                                    1-0556      	
+                                    0-0013      #include   		USER_SET.asm
+                                    2-0001      ;//*******************************************
+                                    2-0002      ;//	2401	  ____________	
+                                    2-0003      ;//		ANTN-|1			16|-XTOUT
+                                    2-0004      ;//		ANTP-|2			15|-XTIN
+                                    2-0005      ;//		VSS	-|3			14|-VDD1
+                                    2-0006      ;//		PB6	-|4			13|-PA3
+                                    2-0007      ;//		VDD	-|5			12|-VSS
+                                    2-0008      ;//		PB5 -|6			11|-PB0
+                                    2-0009      ;//		PB4 -|7			10|-PB1
+                                    2-0010      ;//		PB3	-|8__________9|-PB2
+                                    2-0011      ;//
+                                    2-0012      ;//*******************************************
+                                    2-0013      
+                                    2-0014      ;//#define     C_DK068     1
+                                    2-0015      #define     C_MODE_RX_En    1   ;//TX 0/ RX 1
+                                    2-0016      #define     C_DK071         1   ;//MODE in TX  DK071TX = 1 DK068TX = 0
+                                    2-0017      #define     C_TestMode_En   1   ;//enable test mode
+                                    2-0018      ;#define 	C_RX_En			0
+                                    2-0019      
+                                    2-0020      ;//****************************************
+                                    2-0021      ;//RF define
+                                    2-0022      #define     FIFO_EN_CTM     0x64
+                                    2-0023      #define     RFStatus_CTM    0x61
+                                    2-0024      #define     C_CRC_adr       0x60
+                                    2-0025      
+                                    2-0026      #define TXData_Length_CTM   7
+                                    2-0027      #define RXData_Length_CTM   11
+                                    2-0028      #define C_ACK_Length    10
+                                    2-0029      
+                                    2-0030      #define	PRCH0_CTM		12	;//2414
+                                    2-0031      #define	PRCH1_CTM		38	;//2440	
+                                    2-0032      #define	PRCH2_CTM		69	;//2471
+                                    2-0033      
+                                    2-0034      #define	TESTCH0_CTM		8	;//2410
+                                    2-0035      #define	TESTCH1_CTM		41	;//2443	
+                                    2-0036      #define	TESTCH2_CTM		73	;//2475
+                                    2-0037      
+                                    2-0038      #define Scramble_CTM    0x1a
+                                    2-0039      #define ScrambleP_CTM   0x25
+                                    2-0040      
+                                    2-0041      
+                                    2-0042      #define     C_longPair      17
+                                    2-0043      #define     C_shortPair     2
+                                    2-0044      #define     C_5min          167
+                                    2-0045      #define 	C_5min_RX		112
+                                    2-0046      #define     C_2s            1
+                                    2-0047      ;//****************************************
+                                    2-0048      #define    PIN_CLK     porta,1
+                                    2-0049      #define    PIN_MOSI    porta,2
+                                    2-0050      #define    PIN_CSN     portb,7
+                                    2-0051      #define    PIN_CE      porta,0
+                                    2-0052      
+                  1                 2-  53      if C_MODE_RX_En
+                                    2-0054      #define PIN_MF      Portb,5
+                                    2-0055      #define PIN_MB      Portb,6
+                                    2-0056      #define PIN_ML      Portb,4
+                                    2-0057      #define PIN_MR      Portb,1
+                                    2-0058      #define PIN_LAMP    Portb,2
+                                    2-0068      endif 
+                                    2-0069      
+                  6                 2-  70      _L 	   	   	equ   	6
+                  5                 2-  71      _R 	   	   	equ   	5
+                  1                 2-  72      _F 	   	   	equ   	1
+                  0                 2-  73      _B 	   	   	equ   	0
+                  2                 2-  74      _T          equ     2
+                                    2-0075      
+                                    2-0076      #define     C_LRFB      0x63
+                                    2-0077      #define     C_LF        0x42
+                                    2-0078      #define     C_LB        0x41
+                                    2-0079      #define     C_FB        0x03
+                                    2-0080      #define     C_R         0x20
+                                    2-0081      ;/*********************************************************
+                                    0-0014      #include   		RAM_MAP.asm
+                                    3-0001      ;//*******************************
+                                    3-0002      ;//RAM map set
+                                    3-0003      ;//*******************************
+                                    3-0004      #define cf              STATUS,0       
+                                    3-0005      #define zf              STATUS,2        
+                                    3-0006      
+                                    3-0007      #define	HeadRAM_ADR	   	0x10
+                                    3-0008      #define DataRAM_ADR     0x10
+                                    3-0009      #define	EndRAM_ADR 	   	0x3f
+                                    3-0010      
+                                    3-0011      #define RX_addr			HeadRAM_ADR+32
+                                    3-0012      #define TX_addr 		HeadRAM_ADR+32
+                                    3-0013      
+                                    3-0014      #define Addr_TXCH       0x1a    ;//CH addr
+                                    3-0015      #define Addr_RXCH       0x1d    ;//CH addr
+                                    3-0016      
+                                    3-0017      cblock	HeadRAM_ADR	;//bacnk0 0x10-0x3f,bank1 0x10-0x1f(32+16=48)
+                                    3-0018      sendData0_VTM
+                                    3-0019      sendData1_VTM
+                                    3-0020      sendData2_VTM
+                                    3-0021      sendData3_VTM
+                                    3-0022      sendData4_VTM
+                                    3-0023      sendData5_VTM
+                                    3-0024      sendData6_VTM
+                                    3-0025      sendData7_VTM
+                                    3-0026      sendData8_VTM   ;//9?
+                                    3-0027      sendData9_VTM   ;//10?
+                                    3-0028      
+                                    3-0029      TXCH0_VTM
+                                    3-0030      TXCH1_VTM
+                                    3-0031      TXCH2_VTM
+                                    3-0032      
+                                    3-0033      RXCH0_VTM
+                                    3-0034      RXCH1_VTM
+                                    3-0035      RXCH2_VTM
+                                    3-0036      
+                                    3-0037      V_RXROLL0
+                                    3-0038      V_RXROLL1
+                                    3-0039      V_RXROLL2
+                                    3-0040      V_RXROLL3   ;//20?
+                                    3-0041      
+                                    3-0042      V_Workflag
+                                    3-0043      V_Workflag1
+                                    3-0044      TempData_VTM
+                                    3-0045      Temp_VTM
+                                    3-0046      Delay_VTM
+                                    3-0047      WriteData_VTM
+                                    3-0048      ReadData_VTM
+                                    3-0049      RFValue_VTM
+                                    3-0050      ChannelCount_VTM
+                                    3-0051      Test_VTM
+                                    3-0052      V_systemT
+                                    3-0053      V_system1T	;//12+20 = 32+0x10 = 0x30
+                                    3-0054      endc
+                                    3-0055      
+                  1                 3-  56      if C_MODE_RX_En
+                                    3-0057      cblock	RX_addr	
+                                    3-0058      V_system0T
+                                    3-0059      V_CountPWM
+                                    3-0060      V_MotorFB
+                                    3-0061      V_WorkST
+                                    3-0062      V_FBTime
+                                    3-0063      V_FBStartRun
+                                    3-0064      V_lostT
+                                    3-0065      V_lost1T
+                                    3-0066      V_PairTimeCT
+                                    3-0067      INTStatus_VTM
+                                    3-0068      INTW_VTM    ;//->15?
+                                    3-0069      endc
+                                    3-0070      
+                                    3-0078      endif
+                                    3-0079      
+                                    3-0080      
+                                    3-0081      #define _flag_Build		V_Workflag,0
+                                    3-0082      #define _flag_BuildLED  V_Workflag,1
+                                    3-0083      #define _flag_RF_Reset  V_Workflag,2
+                                    3-0084      #define _flag_test      V_Workflag,3
+                                    3-0085      #define _flag_Carrier   V_Workflag,4
+                                    3-0086      #define _flag_sleep     V_Workflag,5
+                                    3-0087      
+                  1                 3-  88      if C_MODE_RX_En
+                                    3-0089      #define _flag_ScanMode  V_Workflag,6
+                                    3-0092      endif
+                                    3-0093      
+                  1                 3-  94      if C_MODE_RX_En
+                                    3-0095      #define _flag_lostcode  V_Workflag,7
+                                    3-0098      endif
+                                    3-0099      
+                  1                 3- 100      if C_MODE_RX_En
+                                    3-0101      #define _flag_FB		V_Workflag1,0
+                                    3-0104      endif
+                                    3-0105      #define _flag_FB_Stop 	V_Workflag1,1
+                                    3-0106      #define _flag_FB_Brake 	V_Workflag1,2
+                                    3-0107      #define _flag_LRturnTrig	V_Workflag1,3
+                                    0-0015      #include   		IO_DEFINE_SET.asm
+                                    4-0001      ;//*******************************************
+                                    4-0002      ;//	2401	  ____________	
+                                    4-0003      ;//		ANTN-|1			16|-XTOUT
+                                    4-0004      ;//		ANTP-|2			15|-XTIN
+                                    4-0005      ;//		VSS	-|3			14|-VDD1
+                                    4-0006      ;//		PB6	-|4			13|-PA3
+                                    4-0007      ;//		VDD	-|5			12|-VSS
+                                    4-0008      ;//		PB5 -|6			11|-PB0
+                                    4-0009      ;//		PB4 -|7			10|-PB1
+                                    4-0010      ;//		PB3	-|8__________9|-PB2
+                                    4-0011      ;//
+                                    4-0012      ;//*******************************************
+                                    4-0013      ;//***********************************************************
+                                    4-0014      ;//IO define set
+                                    4-0015      ;//************************************************************
+                  1                 4-  16      	H  	equ 1
+                  0                 4-  17      	L  	equ 0
+                  1                 4-  18      	I  	equ 1  	;//input
+                  0                 4-  19      	O  	equ 0  	;//output
+                  0                 4-  20      	En  equ	0  	;//Enable
+                  1                 4-  21      	Dis  equ	1  	;//Disenable
+                  1                 4-  22          WEn equ     1
+                  0                 4-  23          WDis equ    0
+                                    4-0024      ;//********************************************
+                                    4-0025      ;//IO Driver set
+                                    4-0026      ;//*********************************************
+                  1                 4-  27       RFCSNDR_Pb7    equ	   	H   ;//CSN
+                  0                 4-  28       PRFSCKDR_Pa2   equ	   	L  	;//SCK
+                  0                 4-  29       PRFMOSIDR_Pa1  equ	    L   ;//MOSI  	 
+                  0                 4-  30       PRFCEDR_Pa0    equ	   	L  	;//CE
+                                    4-0031      ;//*********************************************
+                  1                 4-  32       if C_MODE_RX_En
+                  0                 4-  33       P13DR_Pa3      equ	    L
+                  0                 4-  34       P11DR_Pb0      equ	    L
+                  0                 4-  35       P10DR_Pb1      equ	    L
+                  0                 4-  36       P9DR_Pb2       equ	   	L
+                  0                 4-  37       P8DR_Pb3       equ	   	L
+                  0                 4-  38       P7DR_Pb4       equ	   	L
+                  0                 4-  39       P6DR_Pb5       equ	   	L
+                  0                 4-  40       P4DR_Pb6       equ	   	L
+                                    4-0050       endif
+                                    4-0051      
+                                    4-0052       #define PADR_SET       PRFCEDR_Pa0|(PRFMOSIDR_Pa1<<1)|(PRFSCKDR_Pa2<<2)|(P13DR_Pa3<<3)
+                                    4-0053       #define PBDR_SET       P11DR_Pb0|(P10DR_Pb1<<1)|(P9DR_Pb2<<2)|(P8DR_Pb3<<3)|(P7DR_Pb4<<4)|(P6DR_Pb5<<5)|(P4DR_Pb6<<6)|(RFCSNDR_Pb7<<7)
+                                    4-0054      ;//********************************************
+                                    4-0055      ;// IO input/ output set
+                                    4-0056      ;//*********************************************
+                  0                 4-  57       RFCSNIO_Pb7    equ	   	O   ;//CSN
+                  0                 4-  58       PRFSCKIO_Pa2   equ	   	O  	;//SCK
+                  0                 4-  59       PRFMOSIIO_Pa1  equ	    O   ;//MOSI  	 
+                  0                 4-  60       PRFCEIO_Pa0    equ	   	O  	;//CE
+                                    4-0061      ;//*********************************************
+                  1                 4-  62       if C_MODE_RX_En
+                  0                 4-  63       P13IO_Pa3      equ	    O
+                  0                 4-  64       P11IO_Pb0      equ	    O
+                  0                 4-  65       P10IO_Pb1      equ	    O
+                  0                 4-  66       P9IO_Pb2       equ	   	O
+                  0                 4-  67       P8IO_Pb3       equ	   	O
+                  0                 4-  68       P7IO_Pb4       equ	   	O
+                  0                 4-  69       P6IO_Pb5       equ	   	O
+                  0                 4-  70       P4IO_Pb6       equ	   	O
+                                    4-0080       endif
+                                    4-0081      
+                                    4-0082       #define PAIO_SET       PRFCEIO_Pa0|(PRFMOSIIO_Pa1<<1)|(PRFSCKIO_Pa2<<2)|(P13IO_Pa3<<3)
+                                    4-0083       #define PBIO_SET       P11IO_Pb0|(P10IO_Pb1<<1)|(P9IO_Pb2<<2)|(P8IO_Pb3<<3)|(P7IO_Pb4<<4)|(P6IO_Pb5<<5)|(P4IO_Pb6<<6)|(RFCSNIO_Pb7<<7)
+                                    4-0084      
+                                    4-0085      ;//********************************************
+                                    4-0086      ;//IO pull En/Dis set
+                                    4-0087      ;//*********************************************
+                  1                 4-  88       RFCSNPU_Pb7    equ	   	Dis     ;//CSN
+                  1                 4-  89       PRFSCKPU_Pa2   equ	   	Dis  	;//SCK
+                  1                 4-  90       PRFMOSIPU_Pa1  equ	    Dis     ;//MOSI  	 
+                  1                 4-  91       PRFCEPU_Pa0    equ	   	Dis  	;//CE
+                                    4-0092      ;//*********************************************
+                  1                 4-  93       if C_MODE_RX_En
+                  0                 4-  94       P13PU_Pa3      equ	    En
+                  0                 4-  95       P11PU_Pb0      equ	    En
+                  1                 4-  96       P10PU_Pb1      equ	    Dis
+                  1                 4-  97       P9PU_Pb2       equ	   	Dis
+                  0                 4-  98       P8PU_Pb3       equ	   	En
+                  1                 4-  99       P7PU_Pb4       equ	   	Dis
+                  1                 4- 100       P6PU_Pb5       equ	   	Dis
+                  1                 4- 101       P4PU_Pb6       equ	   	Dis
+                                    4-0111       endif
+                                    4-0112      
+                                    4-0113       #define PAPU_SET       PRFCEPU_Pa0|(PRFMOSIPU_Pa1<<1)|(PRFSCKPU_Pa2<<2)|(P13PU_Pa3<<3)
+                                    4-0114       #define PBPU_SET       P11PU_Pb0|(P10PU_Pb1<<1)|(P9PU_Pb2<<2)|(P8PU_Pb3<<3)|(P7PU_Pb4<<4)|(P6PU_Pb5<<5)|(P4PU_Pb6<<6)|(RFCSNPU_Pb7<<7)
+                                    4-0115      
+                                    4-0116      
+                                    4-0117      ;//********************************************
+                                    4-0118      ;//IO wake En/Dis set
+                                    4-0119      ;//*********************************************
+                  0                 4- 120       RFCSNWU_Pb7    equ	   	WDis     ;//CSN
+                                    4-0121      ;//*********************************************
+                  1                 4- 122       if C_MODE_RX_En
+                  0                 4- 123       P11WU_Pb0      equ	    WDis
+                  0                 4- 124       P10WU_Pb1      equ	    WDis
+                  0                 4- 125       P9WU_Pb2       equ	   	WDis
+                  0                 4- 126       P8WU_Pb3       equ	   	WDis
+                  0                 4- 127       P7WU_Pb4       equ	   	WDis
+                  0                 4- 128       P6WU_Pb5       equ	   	WDis
+                  0                 4- 129       P4WU_Pb6       equ	   	WDis
+                                    4-0138       endif
+                                    4-0139      
+                                    4-0140       #define PBWU_SET       P11WU_Pb0|(P10WU_Pb1<<1)|(P9WU_Pb2<<2)|(P8WU_Pb3<<3)|(P7WU_Pb4<<4)|(P6WU_Pb5<<5)|(P4WU_Pb6<<6)|(RFCSNWU_Pb7<<7)
+                                    4-0141      
+                                    4-0142      
+                 88                 4- 143       PCON_SET  equ     0x88
+                                    4-0144      ;//****************************************************
+                                    0-0016      ;#include		Func_Macro.asm
+                                    0-0017      
+                                    0-0018            
+                                    0-0019      ;//--------------- Vector Defination ----------------------------------------
+                                    0-0020      ;//--------------------------------------------------------------------------
+                  0                 0-  21      		ORG			0x000		
+        0 0000                      0-  22     		nop
+        1 0000                      0-  23     		nop
+        2 3844                      0-  24        		lgoto		MAIN
+                  3                 0-  25              ORG			0x003	
+                  3                 0-  26      ROLL0:
+        3 2000                      0-  27        		retia		0
+                  4                 0-  28              ORG			0x004
+                  4                 0-  29      ROLL1:
+        4 2000                      0-  30        		retia		0
+                  5                 0-  31              ORG			0x005
+                  5                 0-  32      ROLL2:
+        5 2000                      0-  33        		retia		0
+                  6                 0-  34              ORG			0x006
+                  6                 0-  35      ROLL3:
+        6 2000                      0-  36        		retia		0
+                                    0-0037      
+                  8                 0-  38         		ORG     	0x008
+        8 3B59                      0-  39        		lgoto   	INTERRUPT
+                                    0-0040      ;/**********************************************************
+                                    0-0041      ;Table
+                                    0-0042      ;**********************************************************/
+                  9                 0-  43      TABLE_RF_REG:
+        9 0129                      0-  44     	movr	WriteData_VTM,0
+        A 0382                      0-  45     	addar	PCL,1
+                                    0-0046      
+        B 205E                      0-  47     	retia   0x5e
+        C 2080                      0-  48     	retia   0x80
+                                    0-0049      
+        D 2046                      0-  50         retia   0x46
+        E 2003                      0-  51         retia   0x03
+                                    0-0052      
+        F 2001                      0-  53     	retia	1
+       10 3835                      0-  54     	lgoto   CARRIER_0
+                                    0-0055      
+       11 2004                      0-  56     	retia	4
+       12 20C2                      0-  57     	retia	0xc2
+                                    0-0058      
+                                    0-0059      ;	retia	8
+                                    0-0060      ;	retia	0x25
+                                    0-0061      
+       13 2011                      0-  62     	retia	17
+       14 203A                      0-  63     	retia	0x3a
+                                    0-0064      
+       15 2012                      0-  65     	retia	18
+       16 3832                      0-  66     	lgoto	RF_POWR
+                                    0-0067      
+       17 2016                      0-  68         retia   22
+       18 383E                      0-  69         lgoto   CARRIER_3
+                                    0-0070      
+       19 2022                      0-  71     	retia	34
+       1A 2008                      0-  72     	retia	0x08
+                                    0-0073      
+       1B 2023                      0-  74     	retia	35
+       1C 2008                      0-  75     	retia	0x08
+                                    0-0076      
+       1D 202D                      0-  77         retia   45
+       1E 2007                      0-  78         retia   0x07
+                                    0-0079      
+       1F 202E                      0-  80     	retia	46
+       20 2009                      0-  81     	retia	0x09
+                                    0-0082      
+       21 2034                      0-  83     	retia	52	;//control VCO?
+       22 2019                      0-  84     	retia	0x19
+                                    0-0085      
+       23 2035                      0-  86     	retia	53
+       24 2040                      0-  87     	retia	0x40
+                                    0-0088      
+       25 2040                      0-  89     	retia	64	
+       26 2078                      0-  90     	retia	0x78	;//1byte	preamble	4bit Trailer	64bit	syncword
+                                    0-0091      
+       27 2041                      0-  92     	retia	65
+       28 3838                      0-  93     	lgoto   CARRIER_1
+                                    0-0094      
+       29 2051                      0-  95         retia   81
+       2A 2042                      0-  96         retia   0x42
+                                    0-0097      
+       2B 2052                      0-  98     	retia	82
+       2C 20F0                      0-  99     	retia	0xf0
+                                    0-0100      
+       2D 2047                      0- 101     	retia	71
+       2E 3841                      0- 102     	lgoto	RF_SCR
+                                    0-0103      
+       2F 2044                      0- 104         retia   68
+       30 383B                      0- 105         lgoto   CARRIER_2   
+                                    0-0106      
+       31 20FF                      0- 107     	retia	0xff
+                                    0-0108      
+                 32                 0- 109      RF_POWR:
+       32 0824                      0- 110     	btrss	_flag_build
+       33 200C                      0- 111     	retia	0x0c	
+       34 2038                      0- 112     	retia	0x38
+                 35                 0- 113      CARRIER_0:
+       35 0A24                      0- 114         btrss   _flag_Carrier
+       36 20E9                      0- 115         retia   0xe9
+       37 20F8                      0- 116         retia   0xf8
+                 38                 0- 117      CARRIER_1:
+       38 0A24                      0- 118         btrss   _flag_Carrier
+       39 2000                      0- 119         retia   0x00
+       3A 2001                      0- 120         retia   0x01
+                 3B                 0- 121      CARRIER_2:
+       3B 0A24                      0- 122         btrss   _flag_Carrier
+       3C 2000                      0- 123         retia   0x00
+       3D 20B0                      0- 124         retia   0xb0
+                 3E                 0- 125      CARRIER_3:
+       3E 0A24                      0- 126         btrss   _flag_Carrier
+       3F 2003                      0- 127         retia   0x03
+       40 2083                      0- 128         retia   0x83
+                 41                 0- 129      RF_SCR:
+                  1                 0- 130      if C_MODE_RX_En
+       41 0B24                      0- 131     	btrss	_flag_ScanMode
+       42 209A                      0- 132     	retia	Scramble_CTM|0x80
+       43 20A5                      0- 133     	retia	ScrambleP_CTM|0x80	
+                                    0-0138      endif	
+                                    0-0139      
+                                    0-0140      ;#include		RF_config.asm
+                  1                 0- 141      if C_MODE_RX_En
+                                    0-0142      #include		main.asm
+                                    5-0001      ;//=========================================================================      
+                                    5-0002      ;//Project:       TX_COMMON
+                                    5-0003      ;//File:          Main.asm
+                                    5-0004      ;//Description:   ROM checksum calculation
+                                    5-0005      ;//                1. CheckSum Range : Compilier will Produce 2-Word CheckSum Value Automatically and Place in Tail of Program
+                                    5-0006      ;//                2. If Checksum is correct, PortB = 0x55
+                                    5-0007      ;//                3. If Chechsum is incorrect, PortB = 0xF0
+                                    5-0008      ;//Author:        WangFangli
+                                    5-0009      ;//Version:       V1.0
+                                    5-0010      ;//Date:          2021/7/14
+                                    5-0011      ;//=========================================================================
+                                    5-0012               
+                 44                 5-  13      MAIN:
+                                    5-0014      ;//Power ON initial - User program area
+       44 2B3C                      5-  15        	lcall    	INITIAL_ROUTINE
+       45 2B23                      5-  16        	lcall    	DELAY_45ms 
+       46 2B3C                      5-  17        	lcall    	INITIAL_ROUTINE
+       47 2B32                      5-  18        	lcall    	CLEAR_SRAM
+       48 2952                      5-  19     	lcall		UPDATA_TXCH
+       49 2964                      5-  20     	lcall		UPDATA_RXCH
+                                    5-0021      	
+       4A 2A0B                      5-  22        	lcall		INITIAL_RF
+       4B 1D24                      5-  23        	bcr			_flag_RF_Reset
+                  1                 5-  24      if C_MODE_RX_En
+       4C 180E                      5-  25     	bsr 		INTE,0
+       4D 0004                      5-  26     	eni
+                                    5-0034      endif
+                  0                 5-  35      if C_MODE_RX_En == 0
+                                    5-0040      endif
+                                    5-0041      
+       4E 1824                      5-  42     	bsr			_flag_Build
+       4F 18A4                      5-  43     	bsr			_flag_BuildLED	
+                                    5-0044      
+                 50                 5-  45      MAIN_LOOP:
+       50 0002                      5-  46     	clrwdt
+                                    5-0047      ;//	movia		0x01
+                                    5-0048      ;//	xorar		Portb,1
+                  0                 5-  49      if C_MODE_RX_En ==0
+                                    5-0066      endif
+                                    5-0067      ;// main loop is 10ms
+                 51                 5-  68      MAIN_LOOP_STEP0:
+                                    5-0069      ;//TX mode 7ms?
+                                    5-0070      ;//RX mode 1ms?
+                  1                 5-  71      if C_MODE_RX_En
+       51 05B0                      5-  72     	incr		V_system0T,1
+       52 2107                      5-  73     	movia		7
+       53 0430                      5-  74     	subar		V_system0T,0
+       54 0803                      5-  75     	btrss		cf
+       55 385B                      5-  76     	lgoto		MAIN_LOOP_STEP0_START
+       56 02B0                      5-  77     	clrr		V_system0T
+       57 299E                      5-  78     	lcall		MOTOR_CONTROL	;//7ms?
+                                    5-0079      endif
+       58 05AE                      5-  80     	incr		V_systemT,1	;//7ms? * 256 => 1024
+       59 0D03                      5-  81     	btrsc		zf
+       5A 05AF                      5-  82     	incr		V_system1T,1
+                  1                 5-  83      if C_MODE_RX_En
+                 5B                 5-  84      MAIN_LOOP_STEP0_START:
+       5B 2B27                      5-  85     	lcall		DELAY_1ms 
+       5C 2976                      5-  86     	lcall		SCAN_MODE
+       5D 2170                      5-  87     	movia		C_5min_RX
+       5E 042F                      5-  88     	subar		V_system1T,0
+       5F 0C03                      5-  89     	btrsc		cf
+       60 1AA4                      5-  90     	bsr			_flag_sleep
+                                    5-0140      endif
+       61 298C                      5- 141     	lcall		SCAN_SLEEP
+                 62                 5- 142      MAIN_LOOP_STEP5:
+                  0                 5- 143      if C_MODE_RX_En == 0 
+                                    5-0145      endif
+       62 29FB                      5- 146     	lcall		LAMP_CONTROL
+       63 2A0B                      5- 147     	lcall		INITIAL_RF
+                                    5-0148      
+                  1                 5- 149      if C_MODE_RX_En
+       64 388D                      5- 150     	lgoto		MAIN_RX
+                                    5-0151      endif
+                 65                 5- 152      MAIN_TX_MODE:
+                  1                 5- 153      if C_TestMode_En
+       65 0E24                      5- 154     	btrsc		_flag_Carrier
+       66 3944                      5- 155     	lgoto		TX_WAIT_DELAY
+       67 09A4                      5- 156     	btrss		_flag_test
+       68 386F                      5- 157     	lgoto		MAIN_TX_NOR
+       69 05AD                      5- 158     	incr		Test_VTM,1
+       6A 2103                      5- 159     	movia		3
+       6B 042D                      5- 160     	subar		Test_VTM,0
+       6C 0803                      5- 161     	btrss		cf
+       6D 3944                      5- 162     	lgoto		TX_WAIT_DELAY
+       6E 02AD                      5- 163     	clrr		Test_VTM
+                                    5-0164      endif 
+                 6F                 5- 165      MAIN_TX_NOR:
+                                    5-0166      ;//	btrsc		_flag_Build
+                                    5-0167      ;//	lgoto		MAIN_TX_NOR_SEND
+                                    5-0168      ;//MAIN_TX_NOR_SEND:
+       6F 2AF9                      5- 169     	lcall		RF_CHANNEL_CHOICE
+                  0                 5- 170      if C_MODE_RX_En == 0
+                                    5-0222      endif
+                 70                 5- 223      MAIN_TX_NOR_SEND:
+       70 2A4B                      5- 224     	lcall		RF_IDLE_MODE
+       71 2A33                      5- 225     	lcall		CLR_W_FIFO
+                                    5-0226      
+       72 2164                      5- 227     	movia		FIFO_EN_CTM
+       73 2A57                      5- 228     	lcall		SPI_RW
+                  1                 5- 229      if C_MODE_RX_En
+       74 210A                      5- 230     	movia    	C_ACK_Length
+                                    5-0237      endif
+       75 00AA                      5- 238     	movar		ReadData_VTM
+       76 00A8                      5- 239     	movar		Delay_VTM 
+       77 2A58                      5- 240     	lcall		SPI_W_DATA
+       78 06A8                      5- 241     	decr		Delay_VTM,1
+       79 2110                      5- 242     	movia		HeadRAM_ADR
+       7A 0084                      5- 243     	movar 		FSR 
+                 7B                 5- 244      TX_SEND_LOOP:
+       7B 0100                      5- 245     	movr 		INDF,0
+       7C 03AA                      5- 246     	addar 		ReadData_VTM,1
+       7D 2A58                      5- 247     	lcall		SPI_W_DATA
+       7E 0584                      5- 248     	incr		FSR,1
+       7F 17A8                      5- 249     	decrsz		Delay_VTM,1 
+       80 387B                      5- 250     	lgoto		TX_SEND_LOOP
+       81 012A                      5- 251     	movr 		ReadData_VTM,0
+       82 2A58                      5- 252     	lcall		SPI_W_DATA		
+       83 1B86                      5- 253     	bsr			PIN_CSN
+       84 2A43                      5- 254     	lcall		RF_TX_MODE
+       85 2B27                      5- 255     	lcall		DELAY_1ms 
+                                    5-0256      
+       86 2947                      5- 257     	lcall		SCAN_PEAK
+       87 0D03                      5- 258     	btrsc		zf 
+       88 388B                      5- 259     	lgoto		MAIN_TX_NOR_SEND_OK
+       89 1D24                      5- 260     	bcr 		_flag_RF_Reset
+       8A 3850                      5- 261     	lgoto		MAIN_LOOP
+                 8B                 5- 262      MAIN_TX_NOR_SEND_OK:
+                  1                 5- 263      if C_MODE_RX_En
+       8B 2A2C                      5- 264     	lcall		EN_RX_MODE
+       8C 3850                      5- 265     	lgoto		MAIN_LOOP
+                                    5-0275      endif
+                                    5-0276      
+                                    5-0277      ;//------- RX Mode ------------------------------------------
+                 8D                 5- 278      MAIN_RX:
+       8D 2947                      5- 279        	lcall   	SCAN_PEAK
+       8E 0903                      5- 280        	btrss  	   	zf
+       8F 3850                      5- 281        	lgoto   	MAIN_LOOP
+                 90                 5- 282      RX_WAIT_OK:
+       90 2160                      5- 283        	movia  	   	C_CRC_adr 
+       91 2A56                      5- 284        	lcall   	SPI_R
+       92 2A6C                      5- 285        	lcall   	SPI_R_DATA
+       93 1B86                      5- 286        	bsr   	   	PIN_CSN
+       94 0FA6                      5- 287        	btrsc  	   	TempData_VTM,7
+       95 3942                      5- 288     	lgoto		RX_WAIT_NEXT
+       96 2164                      5- 289     	movia		FIFO_EN_CTM
+       97 2A56                      5- 290     	lcall		SPI_R 
+       98 2A6C                      5- 291     	lcall		SPI_R_DATA 
+       99 00A9                      5- 292     	movar		WriteData_VTM
+       9A 00AA                      5- 293     	movar		ReadData_VTM
+       9B 00A8                      5- 294     	movar 		Delay_VTM
+                  1                 5- 295      if C_MODE_RX_En
+       9C 2407                      5- 296     	xoria 		TXData_Length_CTM
+       9D 0D03                      5- 297     	btrsc		zf 
+       9E 38A3                      5- 298     	lgoto		RX_DATA_DECODE
+       9F 012A                      5- 299     	movr		ReadData_VTM,0
+       A0 240B                      5- 300     	xoria		RXData_Length_CTM
+       A1 0903                      5- 301     	btrss		zf
+       A2 3942                      5- 302     	lgoto		RX_WAIT_NEXT
+                                    5-0307      endif
+                 A3                 5- 308      RX_DATA_DECODE:
+       A3 2110                      5- 309     	movia		DataRAM_ADR
+       A4 0084                      5- 310     	movar		FSR 
+       A5 06A8                      5- 311     	decr 		Delay_VTM,1
+                 A6                 5- 312      RX_DATA_LOOP:
+       A6 2A6C                      5- 313     	lcall		SPI_R_DATA
+       A7 0080                      5- 314     	movar		INDF 
+       A8 03AA                      5- 315     	addar		ReadData_VTM,1
+       A9 0584                      5- 316     	incr		FSR,1 
+       AA 17A8                      5- 317     	decrsz		Delay_VTM,1
+       AB 38A6                      5- 318     	lgoto		RX_DATA_LOOP
+       AC 2A6C                      5- 319     	lcall		SPI_R_DATA
+       AD 1B86                      5- 320     	bsr			PIN_CSN
+       AE 122A                      5- 321     	xorar 		ReadData_VTM,0
+       AF 0903                      5- 322     	btrss		zf 
+       B0 3342                      5- 323     	goto		RX_WAIT_NEXT
+                  1                 5- 324      if C_MODE_RX_En
+       B1 0824                      5- 325     	btrss		_flag_Build
+       B2 390F                      5- 326     	lgoto		RX_TXDATA_CK
+       B3 2188                      5- 327     	movia		0x88
+       B4 1211                      5- 328     	xorar 		sendData1_VTM,0
+       B5 0D03                      5- 329     	btrsc		zf
+       B6 38D9                      5- 330     	lgoto		RX_PAIR_TXROLL_NEXT
+       B7 213C                      5- 331     	movia		0x3c
+       B8 1211                      5- 332     	xorar		sendData1_VTM,0
+       B9 0903                      5- 333     	btrss		zf
+       BA 3942                      5- 334     	lgoto		RX_WAIT_NEXT
+       BB 210B                      5- 335     	movia		RXData_Length_CTM
+       BC 1229                      5- 336     	xorar		WriteData_VTM,0
+       BD 0903                      5- 337     	btrss		zf
+       BE 390F                      5- 338     	lgoto		RX_TXDATA_CK	
+                                    5-0339      
+       BF 2803                      5- 340     	lcall		ROLL0
+       C0 1216                      5- 341     	xorar		sendData6_VTM,0
+       C1 0903                      5- 342     	btrss		zf
+       C2 3942                      5- 343     	lgoto		RX_WAIT_NEXT
+       C3 2804                      5- 344     	lcall		ROLL1
+       C4 1217                      5- 345     	xorar		sendData7_VTM,0
+       C5 0903                      5- 346     	btrss		zf
+       C6 3942                      5- 347     	lgoto		RX_WAIT_NEXT
+       C7 2805                      5- 348     	lcall		ROLL2
+       C8 1218                      5- 349     	xorar		sendData8_VTM,0
+       C9 0903                      5- 350     	btrss		zf
+       CA 3942                      5- 351     	lgoto		RX_WAIT_NEXT
+       CB 2806                      5- 352     	lcall		ROLL3
+       CC 1219                      5- 353     	xorar		sendData9_VTM,0
+       CD 0903                      5- 354     	btrss		zf
+       CE 3942                      5- 355     	lgoto		RX_WAIT_NEXT
+                                    5-0356      
+                                    5-0357      ;//	bcr			_flag_Build
+                                    5-0358      ;//	bcr			_flag_RF_Reset
+       CF 0112                      5- 359     	movr 		sendData2_VTM,0
+       D0 00A0                      5- 360     	movar		V_RXROLL0
+       D1 0113                      5- 361     	movr 		sendData3_VTM,0
+       D2 00A1                      5- 362     	movar		V_RXROLL1
+       D3 0114                      5- 363     	movr 		sendData4_VTM,0
+       D4 00A2                      5- 364     	movar		V_RXROLL2
+       D5 0115                      5- 365     	movr 		sendData5_VTM,0
+       D6 00A3                      5- 366     	movar		V_RXROLL3
+       D7 2964                      5- 367     	lcall		UPDATA_RXCH
+       D8 3921                      5- 368     	lgoto		RX_PAIR_FIRST_JUAGE
+                                    5-0369      ;	bcr			_flag_Build
+                                    5-0370      ;	bcr			_flag_RF_Reset
+                                    5-0371      ;	bsr			_flag_LRturnTrig
+                                    5-0372      ;	clrr		Test_VTM
+                                    5-0373      ;	lgoto		RX_WAIT_NEXT
+                 D9                 5- 374      RX_PAIR_TXROLL_NEXT:
+       D9 0112                      5- 375     	movr		sendData2_VTM,0
+       DA 1220                      5- 376     	xorar		V_RXROLL0,0
+       DB 0903                      5- 377     	btrss		zf
+       DC 02B8                      5- 378     	clrr		V_PairTimeCT
+       DD 0113                      5- 379     	movr		sendData3_VTM,0
+       DE 1221                      5- 380     	xorar		V_RXROLL1,0
+       DF 0903                      5- 381     	btrss		zf
+       E0 02B8                      5- 382     	clrr		V_PairTimeCT
+       E1 0114                      5- 383     	movr		sendData4_VTM,0
+       E2 1222                      5- 384     	xorar		V_RXROLL2,0
+       E3 0903                      5- 385     	btrss		zf
+       E4 02B8                      5- 386     	clrr		V_PairTimeCT
+       E5 0115                      5- 387     	movr		sendData5_VTM,0
+       E6 1223                      5- 388     	xorar		V_RXROLL3,0
+       E7 0903                      5- 389     	btrss		zf
+       E8 02B8                      5- 390     	clrr		V_PairTimeCT
+                 E9                 5- 391      RX_PAIR_FIRST_UPROLL:	
+       E9 0112                      5- 392     	movr 		sendData2_VTM,0
+       EA 00A0                      5- 393     	movar		V_RXROLL0
+       EB 0113                      5- 394     	movr 		sendData3_VTM,0
+       EC 00A1                      5- 395     	movar		V_RXROLL1
+       ED 0114                      5- 396     	movr 		sendData4_VTM,0
+       EE 00A2                      5- 397     	movar		V_RXROLL2
+       EF 0115                      5- 398     	movr 		sendData5_VTM,0
+       F0 00A3                      5- 399     	movar		V_RXROLL3
+       F1 2964                      5- 400     	lcall		UPDATA_RXCH
+                                    5-0401      ;//ACK roll signal
+                                    5-0402      ;//
+       F2 05B8                      5- 403     	incr		V_PairTimeCT,1
+       F3 2108                      5- 404     	movia		8
+       F4 0438                      5- 405     	subar		V_PairTimeCT,0
+       F5 0803                      5- 406     	btrss		cf
+       F6 38FC                      5- 407     	lgoto		RX_PAIR_TXROLL_NEXT1
+                 F7                 5- 408      RX_PAIR_FIRST:	
+       F7 02B8                      5- 409     	clrr		V_PairTimeCT
+       F8 1C24                      5- 410     	bcr			_flag_Build
+       F9 1D24                      5- 411     	bcr			_flag_RF_Reset
+       FA 19A5                      5- 412     	bsr			_flag_LRturnTrig
+       FB 02AD                      5- 413     	clrr		Test_VTM
+                                    5-0414      ;//	lgoto		RX_WAIT_NEXT
+                 FC                 5- 415      RX_PAIR_TXROLL_NEXT1:	
+       FC 2179                      5- 416     	movia		0x79
+       FD 0090                      5- 417     	movar		sendData0_VTM
+       FE 0120                      5- 418     	movr 		V_RXROLL0,0
+       FF 0091                      5- 419     	movar		sendData1_VTM
+      100 0121                      5- 420     	movr		V_RXROLL1,0
+      101 0092                      5- 421     	movar		sendData2_VTM
+      102 0122                      5- 422     	movr		V_RXROLL2,0
+      103 0093                      5- 423     	movar		sendData3_VTM
+      104 0123                      5- 424     	movr		V_RXROLL3,0
+      105 0094                      5- 425     	movar		sendData4_VTM
+      106 2803                      5- 426     	lcall		ROLL0
+      107 0095                      5- 427     	movar		sendData5_VTM
+      108 2804                      5- 428     	lcall		ROLL1
+      109 0096                      5- 429     	movar		sendData6_VTM
+      10A 2805                      5- 430     	lcall		ROLL2
+      10B 0097                      5- 431     	movar		sendData7_VTM
+      10C 2806                      5- 432     	lcall		ROLL3
+      10D 0098                      5- 433     	movar		sendData8_VTM
+      10E 3870                      5- 434     	lgoto		MAIN_TX_NOR_SEND
+                10F                 5- 435      RX_TXDATA_CK:
+      10F 0120                      5- 436     	movr 		V_RXROLL0,0
+      110 1212                      5- 437     	xorar		sendData2_VTM,0
+      111 0903                      5- 438     	btrss		zf
+      112 3942                      5- 439     	lgoto		RX_WAIT_NEXT
+      113 0121                      5- 440     	movr 		V_RXROLL1,0
+      114 1213                      5- 441     	xorar		sendData3_VTM,0
+      115 0903                      5- 442     	btrss		zf
+      116 3942                      5- 443     	lgoto		RX_WAIT_NEXT
+      117 0122                      5- 444     	movr 		V_RXROLL2,0
+      118 1214                      5- 445     	xorar		sendData4_VTM,0
+      119 0903                      5- 446     	btrss		zf
+      11A 3942                      5- 447     	lgoto		RX_WAIT_NEXT
+      11B 0123                      5- 448     	movr 		V_RXROLL3,0
+      11C 1215                      5- 449     	xorar		sendData5_VTM,0
+      11D 0903                      5- 450     	btrss		zf
+      11E 3942                      5- 451     	lgoto		RX_WAIT_NEXT
+      11F 0824                      5- 452     	btrss		_flag_Build
+      120 3927                      5- 453     	lgoto		RX_TXDATA_CK_DECODE
+                121                 5- 454      RX_PAIR_FIRST_JUAGE:
+      121 0138                      5- 455     	movr		V_PairTimeCT,0
+      122 0903                      5- 456     	btrss		zf
+      123 38F7                      5- 457     	lgoto		RX_PAIR_FIRST
+      124 1C24                      5- 458     	bcr			_flag_Build
+      125 1D24                      5- 459     	bcr			_flag_RF_Reset
+      126 3942                      5- 460     	lgoto		RX_WAIT_NEXT
+                127                 5- 461      RX_TXDATA_CK_DECODE:
+      127 0111                      5- 462     	movr 		sendData1_VTM,0
+      128 243C                      5- 463     	xoria		0x3c
+      129 0903                      5- 464     	btrss		zf
+      12A 3942                      5- 465     	lgoto		RX_WAIT_NEXT
+      12B 02B6                      5- 466     	clrr		V_lostT
+      12C 02B7                      5- 467     	clrr		V_lost1T
+      12D 1BA4                      5- 468     	bsr			_flag_lostcode
+      12E 1F24                      5- 469     	bcr			_flag_ScanMode
+      12F 0110                      5- 470     	movr 		sendData0_VTM,0
+      130 1233                      5- 471     	xorar		V_WorkST,0
+      131 0D03                      5- 472     	btrsc		zf
+      132 3942                      5- 473     	lgoto		RX_WAIT_NEXT
+      133 0110                      5- 474     	movr		sendData0_VTM,0
+      134 00B3                      5- 475     	movar		V_WorkST	
+      135 02AF                      5- 476     	clrr		V_system1T
+      136 3942                      5- 477     	lgoto		RX_WAIT_NEXT
+                                    5-0500      endif
+                137                 5- 501      RX_PAIR_ROLL:
+      137 1C24                      5- 502     	bcr 		_flag_Build 
+      138 1D24                      5- 503     	bcr			_flag_RF_Reset
+                139                 5- 504      RX_PAIR_ROLL_NEXT:	
+      139 0115                      5- 505     	movr 		sendData5_VTM,0
+      13A 00A0                      5- 506     	movar		V_RXROLL0
+      13B 0116                      5- 507     	movr 		sendData6_VTM,0
+      13C 00A1                      5- 508     	movar		V_RXROLL1
+      13D 0117                      5- 509     	movr 		sendData7_VTM,0
+      13E 00A2                      5- 510     	movar		V_RXROLL2
+      13F 0118                      5- 511     	movr 		sendData8_VTM,0
+      140 00A3                      5- 512     	movar		V_RXROLL3
+      141 2964                      5- 513     	lcall		UPDATA_RXCH
+                142                 5- 514      RX_WAIT_NEXT:
+                  1                 5- 515      if C_MODE_RX_En
+      142 2A2C                      5- 516     	lcall		EN_RX_MODE
+                                    5-0521      endif
+      143 3850                      5- 522     	lgoto		MAIN_LOOP
+                                    5-0523      
+                144                 5- 524      TX_WAIT_DELAY:
+      144 2B25                      5- 525     	lcall		DELAY_4ms 
+      145 2B29                      5- 526     	lcall		DELAY_500us
+      146 3850                      5- 527     	lgoto		MAIN_LOOP
+                                    5-0528      ;//********************************************
+                                    5-0529      ;//scan peak
+                                    5-0530      ;//*********************************************
+                147                 5- 531      SCAN_PEAK:
+      147 2161                      5- 532     	movia		RFStatus_CTM
+      148 2A56                      5- 533     	lcall		SPI_R
+      149 2A6C                      5- 534     	lcall		SPI_R_DATA
+      14A 1B86                      5- 535     	bsr			PIN_CSN 
+      14B 215E                      5- 536     	movia		0x5e
+      14C 10A6                      5- 537     	andar		TempData_VTM,1
+      14D 142B                      5- 538     	rlr 		RFValue_VTM,0
+      14E 221E                      5- 539     	andia		0x1e
+      14F 2340                      5- 540     	ioria 		0x40
+      150 1226                      5- 541     	xorar 		TempData_VTM,0
+      151 0010                      5- 542     	ret		
+                                    5-0543      
+                                    5-0544      ;//*******************************************
+                                    5-0545      ;//ROLL 0-3 -> TXCH
+                152                 5- 546      UPDATA_TXCH:
+      152 2803                      5- 547     	lcall		ROLL0 
+      153 0090                      5- 548     	movar		sendData0_VTM
+      154 2804                      5- 549     	lcall		ROLL1 
+      155 0091                      5- 550     	movar		sendData1_VTM
+      156 2805                      5- 551     	lcall		ROLL2 
+      157 0092                      5- 552     	movar		sendData2_VTM
+      158 2806                      5- 553     	lcall		ROLL3 
+      159 0093                      5- 554     	movar		sendData3_VTM
+      15A 211A                      5- 555     	movia 		Addr_TXCH
+      15B 0096                      5- 556     	movar 		sendData6_VTM
+      15C 2A6F                      5- 557        	lcall		ROLL_CHANNEL
+      15D 0117                      5- 558     	movr 		sendData7_VTM,0
+      15E 009A                      5- 559     	movar		TXCH0_VTM
+      15F 0118                      5- 560     	movr 		sendData8_VTM,0
+      160 009B                      5- 561     	movar		TXCH1_VTM
+      161 0119                      5- 562     	movr 		sendData9_VTM,0
+      162 009C                      5- 563     	movar		TXCH2_VTM
+      163 0010                      5- 564     	ret
+                                    5-0565      ;//******************************************
+                                    5-0566      ;//ROLL 0-3 -> RXCH
+                164                 5- 567      UPDATA_RXCH:
+      164 0120                      5- 568     	movr 		V_RXROLL0,0
+      165 0090                      5- 569     	movar		sendData0_VTM
+      166 0121                      5- 570     	movr 		V_RXROLL1,0
+      167 0091                      5- 571     	movar		sendData1_VTM
+      168 0122                      5- 572     	movr		V_RXROLL2,0
+      169 0092                      5- 573     	movar		sendData2_VTM
+      16A 0123                      5- 574     	movr		V_RXROLL3,0
+      16B 0093                      5- 575     	movar		sendData3_VTM
+      16C 211D                      5- 576     	movia 		Addr_RXCH
+      16D 0096                      5- 577     	movar 		sendData6_VTM
+      16E 2A6F                      5- 578        	lcall		ROLL_CHANNEL
+      16F 0117                      5- 579     	movr 		sendData7_VTM,0
+      170 009D                      5- 580     	movar		RXCH0_VTM
+      171 0118                      5- 581     	movr 		sendData8_VTM,0
+      172 009E                      5- 582     	movar		RXCH1_VTM
+      173 0119                      5- 583     	movr 		sendData9_VTM,0
+      174 009F                      5- 584     	movar		RXCH2_VTM
+      175 0010                      5- 585     	ret
+                  1                 5- 586      if C_MODE_RX_En
+                176                 5- 587      SCAN_MODE:
+      176 05B6                      5- 588     	incr 		V_lostT,1
+      177 0136                      5- 589     	movr		V_lostT,0
+      178 2764                      5- 590     	subia		100	;//100ms
+      179 0C03                      5- 591     	btrsc		cf
+      17A 398B                      5- 592     	lgoto		SCAN_MODE_END
+      17B 02B6                      5- 593     	clrr		V_lostT
+      17C 0FA4                      5- 594     	btrsc		_flag_lostcode
+      17D 3980                      5- 595     	lgoto		SCAN_MODE_NEXT
+      17E 2140                      5- 596     	movia		0x40	;// _flag_ScanMode
+      17F 12A4                      5- 597     	xorar		V_Workflag,1
+                180                 5- 598      SCAN_MODE_NEXT:
+      180 2AF9                      5- 599     	lcall		RF_CHANNEL_CHOICE
+      181 2A4B                      5- 600     	lcall		RF_IDLE_MODE
+      182 2A3F                      5- 601     	lcall		RF_SCR_REG
+      183 2A2C                      5- 602     	lcall		EN_RX_MODE
+      184 05B7                      5- 603     	incr		V_lost1T,1
+      185 09B7                      5- 604     	btrss		V_lost1T,3
+      186 398B                      5- 605     	lgoto		SCAN_MODE_END
+      187 02B7                      5- 606     	clrr		V_lost1T
+      188 02B3                      5- 607     	clrr		V_WorkST
+      189 1FA4                      5- 608     	bcr			_flag_lostcode
+      18A 1D24                      5- 609     	bcr			_flag_RF_Reset
+                18B                 5- 610      SCAN_MODE_END:
+      18B 0010                      5- 611     	ret
+                                    5-0612      endif
+                                    0-0143      #include		SLEEP_MODE.asm
+                                    6-0001      ifndef __SLEEP_MODE
+                                    6-0002      #define __SLEEP_MODE
+                                    6-0003      ;// =========================================================================      
+                                    6-0004      ;// Project:       
+                                    6-0005      ;// File:           SLEEP_MODE.asm
+                                    6-0006      ;// Description:   
+                                    6-0007      ;//                 
+                                    6-0008      ;// Author:     	WangFangli   
+                                    6-0009      ;// Version:    	V1.0.0   
+                                    6-0010      ;// Date:           2021/7/19
+                                    6-0011      ;// ========================================================================= 
+                                    6-0012      
+                18C                 6-  13      SCAN_SLEEP:
+      18C 0AA4                      6-  14         btrss       _flag_sleep
+      18D 399D                      6-  15         lgoto       SCAN_SLEEP_END
+                  1                 6-  16      if C_MODE_RX_En
+      18E 1D06                      6-  17         bcr         PIN_LAMP
+      18F 02B2                      6-  18         clrr        V_MotorFB
+      190 1E86                      6-  19         bcr         PIN_MF
+      191 1F06                      6-  20         bcr         PIN_MB
+      192 1E06                      6-  21         bcr         PIN_ML
+      193 1C86                      6-  22         bcr         PIN_MR
+      194 2A4B                      6-  23         lcall       RF_IDLE_MODE
+      195 2A3B                      6-  24         lcall       RF_MIS_REG
+      196 0002                      6-  25         clrwdt
+      197 1F88                      6-  26         bcr         PCON,7
+                                    6-0027      ;//SLEEPING_RE:
+                                    6-0028      ;//    movr        V_Key,0
+                                    6-0029      ;//    movar       sendData9_VTM
+                                    6-0030      
+                                    6-0042      endif
+                198                 6-  43      SLEEPING:
+      198 2100                      6-  44         movia       0
+      199 008F                      6-  45         movar       INTF 
+      19A 0001                      6-  46         sleep
+      19B 0000                      6-  47         nop
+                19C                 6-  48      WAKE_CHECK:
+                  1                 6-  49      if C_MODE_RX_En
+      19C 3998                      6-  50         lgoto       SLEEPING
+                                    6-0083      endif
+                19D                 6-  84      SCAN_SLEEP_END:
+      19D 0010                      6-  85         ret
+                                    6-0086      
+                                    6-0087      endif __SLEEP_MODE
+                                    0-0144      #include		MOTOR.asm
+                                    7-0001      ifndef __MOTOR
+                                    7-0002      #define __MOTOR
+                                    7-0003      
+                                    7-0004      ;// =========================================================================      
+                                    7-0005      ;// Project:       
+                                    7-0006      ;// File:         MOTOR.asm
+                                    7-0007      ;// Description:   
+                                    7-0008      ;//                 
+                                    7-0009      ;// Author:     	WangFangli   
+                                    7-0010      ;// Version:    	V1.0.0   
+                                    7-0011      ;// Date:         2021/7/17
+                                    7-0012      ;// ========================================================================= 
+                  1                 7-  13      if C_DK071
+                                    7-0014      #define 	C_speed		0	;//DK071:V0-6; V1-5; DK068:V2-8?
+                                    7-0017      endif
+                                    7-0018      
+                                    7-0019      #define 	C_M_MAX		16
+                                    7-0020      
+                  0                 7-  21      switch C_speed
+                                    7-0022      case 0
+                                    7-0023      #define 	C_M_MIN		9	;//6 5 4	
+                  1                 7-  24      break
+                                    7-0031      endsw
+                                    7-0032      ;//********************************************************
+                19E                 7-  33      MOTOR_CONTROL:
+      19E 0D25                      7-  34         btrsc       _flag_FB_Brake
+      19F 39D1                      7-  35         lgoto       MOTOR_FB_BRAKE_ING
+      1A0 0133                      7-  36         movr        V_WorkST,0
+      1A1 2203                      7-  37         andia       C_FB
+      1A2 0D03                      7-  38         btrsc       zf
+      1A3 39D5                      7-  39         lgoto       MOTOR_FB_STOP      
+      1A4 0C33                      7-  40         btrsc       V_WorkST,_B 
+      1A5 39B0                      7-  41         lgoto       MOTOR_B        
+                1A6                 7-  42      MOTOR_F:
+      1A6 08A5                      7-  43         btrss       _flag_FB_Stop
+      1A7 39AA                      7-  44         lgoto       MOTOR_F_ING
+      1A8 0C25                      7-  45         btrsc       _flag_FB 
+      1A9 39CA                      7-  46         lgoto       MOTOR_FB_BRAKE
+                1AA                 7-  47      MOTOR_F_ING:   
+      1AA 2110                      7-  48         movia       C_M_MAX	;//15
+      1AB 0933                      7-  49         btrss       V_WorkST,_T 
+      1AC 2109                      7-  50         movia       C_M_MIN		;//9
+      1AD 00A6                      7-  51         movar       TempData_VTM
+      1AE 1C25                      7-  52         bcr         _flag_FB 
+      1AF 39B7                      7-  53         lgoto       MOTOR_FB_ING
+                1B0                 7-  54      MOTOR_B:
+      1B0 08A5                      7-  55         btrss       _flag_FB_Stop
+      1B1 39B4                      7-  56         lgoto       MOTOR_B_ING
+      1B2 0825                      7-  57         btrss       _flag_FB 
+      1B3 39CA                      7-  58         lgoto       MOTOR_FB_BRAKE
+                1B4                 7-  59      MOTOR_B_ING: 
+      1B4 2109                      7-  60         movia       C_M_MIN	;//C_M_MAX	;//15
+      1B5 00A6                      7-  61         movar       TempData_VTM
+      1B6 1825                      7-  62         bsr         _flag_FB 
+                1B7                 7-  63      MOTOR_FB_ING:
+      1B7 02B4                      7-  64         clrr        V_FBTime
+      1B8 18A5                      7-  65         bsr         _flag_FB_Stop
+      1B9 05B5                      7-  66         incr        V_FBStartRun,1
+      1BA 09B5                      7-  67         btrss       V_FBStartRun,3
+      1BB 39C3                      7-  68         lgoto       MOTOR_FB_ING1       
+      1BC 02B5                      7-  69         clrr        V_FBStartRun
+                                    7-0070          
+      1BD 0126                      7-  71         movr		TempData_VTM,0
+      1BE 0432                      7-  72         subar		V_MotorFB,0
+      1BF 0126                      7-  73         movr		TempData_VTM,0
+      1C0 0803                      7-  74         btrss       cf    
+      1C1 0532                      7-  75         incr        V_MotorFB,0
+      1C2 00B2                      7-  76         movar		V_MotorFB	
+                                    7-0077          
+                1C3                 7-  78      MOTOR_FB_ING1:    
+      1C3 0132                      7-  79         movr        V_MotorFB,0
+      1C4 2709                      7-  80         subia       C_M_MIN
+      1C5 0803                      7-  81         btrss       cf
+      1C6 39E1                      7-  82         lgoto       MOTOR_FB_END
+      1C7 2109                      7-  83         movia       C_M_MIN
+      1C8 00B2                      7-  84         movar       V_MotorFB
+      1C9 39E1                      7-  85         lgoto       MOTOR_FB_END
+                1CA                 7-  86      MOTOR_FB_BRAKE:
+      1CA 2110                      7-  87         movia       C_M_MAX	;//10
+      1CB 00B2                      7-  88         movar       V_MotorFB
+      1CC 02B4                      7-  89         clrr        V_FBTime
+      1CD 1925                      7-  90         bsr         _flag_FB_Brake
+      1CE 1A86                      7-  91         bsr         PIN_MF
+      1CF 1B06                      7-  92         bsr         PIN_MB 
+      1D0 39E1                      7-  93         lgoto       MOTOR_FB_END
+                1D1                 7-  94      MOTOR_FB_BRAKE_ING:
+      1D1 05B4                      7-  95         incr        V_FBTime,1
+      1D2 0A34                      7-  96         btrss       V_FBTime,4
+      1D3 39E1                      7-  97         lgoto       MOTOR_FB_END
+      1D4 39DA                      7-  98         lgoto       MOTOR_FB_STOP_ING
+                1D5                 7-  99      MOTOR_FB_STOP:
+      1D5 05B4                      7- 100         incr        V_FBTime,1
+      1D6 2150                      7- 101         movia       80
+      1D7 0434                      7- 102         subar       V_FBTime,0
+      1D8 0803                      7- 103         btrss       cf
+      1D9 39DE                      7- 104         lgoto       MOTOR_FB_STOP_ING1
+                1DA                 7- 105      MOTOR_FB_STOP_ING:
+      1DA 02B5                      7- 106         clrr        V_FBStartRun
+      1DB 1D25                      7- 107         bcr         _flag_FB_Brake
+      1DC 1CA5                      7- 108         bcr         _flag_FB_Stop
+      1DD 02B4                      7- 109         clrr        V_FBTime
+                1DE                 7- 110      MOTOR_FB_STOP_ING1:    
+      1DE 02B2                      7- 111         clrr        V_MotorFB
+      1DF 1E86                      7- 112         bcr         PIN_MF
+      1E0 1F06                      7- 113         bcr         PIN_MB 
+                                    7-0114          
+                1E1                 7- 115      MOTOR_FB_END:
+                1E1                 7- 116      MOTOR_LR:
+      1E1 09A5                      7- 117     	btrss		_flag_LRturnTrig
+      1E2 39EE                      7- 118     	lgoto		MOTOR_LR_NOR
+      1E3 05AD                      7- 119     	incr		Test_VTM,1	;//->7ms?
+      1E4 213C                      7- 120     	movia		60
+      1E5 042D                      7- 121     	subar		Test_VTM,0
+      1E6 0803                      7- 122     	btrss		cf
+      1E7 39F5                      7- 123     	lgoto		MOTOR_L
+      1E8 2178                      7- 124     	movia		120
+      1E9 042D                      7- 125     	subar		Test_VTM,0
+      1EA 0803                      7- 126     	btrss		cf
+      1EB 39F8                      7- 127     	lgoto		MOTOR_R
+      1EC 02AD                      7- 128     	clrr		Test_VTM
+      1ED 1DA5                      7- 129     	bcr			_flag_LRturnTrig
+                1EE                 7- 130      MOTOR_LR_NOR:	
+      1EE 0F33                      7- 131         btrsc       V_WorkST,_L 
+      1EF 39F5                      7- 132         lgoto       MOTOR_L
+      1F0 0EB3                      7- 133         btrsc       V_WorkST,_R 
+      1F1 39F8                      7- 134         lgoto       MOTOR_R 
+                1F2                 7- 135      MOTOR_LR_STOP:
+      1F2 1E06                      7- 136         bcr         PIN_ML 
+      1F3 1C86                      7- 137         bcr         PIN_MR 
+      1F4 0010                      7- 138         ret
+                1F5                 7- 139      MOTOR_L:
+      1F5 1C86                      7- 140         bcr         PIN_MR 
+      1F6 1A06                      7- 141         bsr         PIN_ML 
+      1F7 0010                      7- 142         ret
+                1F8                 7- 143      MOTOR_R:
+      1F8 1E06                      7- 144         bcr         PIN_ML 
+      1F9 1886                      7- 145         bsr         PIN_MR 
+      1FA 0010                      7- 146         ret
+                                    7-0147      endif __MOTOR
+                                    0-0145      #include 		Lamp_Control.asm
+                                    8-0001      ifndef __LAMP_CONTROL
+                                    8-0002      #define __LAMP_CONTROL
+                                    8-0003      
+                                    8-0004      ;//#include	F_RFSPI.h
+                                    8-0005      ;// =========================================================================      
+                                    8-0006      ;// Project:       
+                                    8-0007      ;// File:          Lamp_Control.asm
+                                    8-0008      ;// Description:   
+                                    8-0009      ;//                 
+                                    8-0010      ;// Author:     	WangFangli   
+                                    8-0011      ;// Version:    	V1.0.0   
+                                    8-0012      ;// Date:         2021/7/17
+                                    8-0013      ;// ========================================================================= 
+                                    8-0014      
+                1FB                 8-  15      LAMP_CONTROL:
+                  1                 8-  16      if C_MODE_RX_En
+      1FB 0C24                      8-  17     	btrsc		_flag_Build
+      1FC 3A09                      8-  18     	lgoto		LAMP_CONTROL_OFF	;LAMP_CONTROL_BUILD_BLINK
+      1FD 0BA4                      8-  19         btrss       _flag_lostcode 
+      1FE 3A09                      8-  20         lgoto       LAMP_CONTROL_OFF	;LAMP_CONTROL_LOST_BLINK
+      1FF 08B3                      8-  21         btrss       V_WorkST,_F
+      200 3A09                      8-  22         lgoto       LAMP_CONTROL_OFF
+      201 3A05                      8-  23         lgoto		LAMP_CONTROL_ON
+                202                 8-  24      LAMP_CONTROL_LOST_BLINK:
+      202 0F2E                      8-  25     	btrsc       V_systemT,6
+      203 3A05                      8-  26         lgoto       LAMP_CONTROL_ON
+      204 3A09                      8-  27         lgoto		LAMP_CONTROL_OFF
+                                    8-0068      endif
+                205                 8-  69      LAMP_CONTROL_ON:
+      205 1906                      8-  70         bsr         PIN_Lamp
+      206 3A0A                      8-  71         lgoto       LAMP_CONTROL_END
+                207                 8-  72      LAMP_CONTROL_BUILD_BLINK:
+      207 0EAE                      8-  73         btrsc       V_systemT,5	;//7*32 = 220ms?
+      208 3A05                      8-  74         lgoto       LAMP_CONTROL_ON
+                209                 8-  75      LAMP_CONTROL_OFF:
+      209 1D06                      8-  76         bcr         PIN_Lamp
+                20A                 8-  77      LAMP_CONTROL_END:
+      20A 0010                      8-  78         ret
+                                    8-0079      
+                                    8-0080      
+                                    8-0081      
+                                    8-0082      
+                                    8-0083      endif __LAMP_CONTROL
+                                    0-0146      #include		RF_config.asm
+                                    9-0001      ;//****************************************
+                                    9-0002      
+                                    9-0003      ifndef __RF_CONFIG
+                                    9-0004      #define __RF_CONFIG
+                                    9-0005      
+                                    9-0006      ;//#include	F_RFSPI.h
+                                    9-0007      ;// =========================================================================      
+                                    9-0008      ;// Project:       
+                                    9-0009      ;// File:          RF_config.asm
+                                    9-0010      ;// Description:   
+                                    9-0011      ;//                 
+                                    9-0012      ;// Author:     	WangFangli   
+                                    9-0013      ;// Version:    	V1.0.0   
+                                    9-0014      ;// Date:         2021/7/14
+                                    9-0015      ;// ========================================================================= 
+                                    9-0016      
+                                    9-0017      ;//0->70inst+25 +147 = 242 inst
+                20B                 9-  18      INITIAL_RF:
+      20B 0D24                      9-  19         btrsc   _flag_RF_Reset
+      20C 0010                      9-  20         ret
+      20D 2B27                      9-  21         lcall	DELAY_1ms
+      20E 1C05                      9-  22         bcr     PIN_CE
+      20F 2B21                      9-  23         lcall   DELAY_30ms
+      210 1805                      9-  24         bsr     PIN_CE
+      211 2B23                      9-  25         lcall   DELAY_45ms
+                212                 9-  26      INITIAL_RF_DEF_REG:
+      212 02A9                      9-  27         clrr   	WriteData_VTM
+                213                 9-  28      INITIAL_RF_DEF_REG_LOOP:
+      213 2809                      9-  29         lcall   TABLE_RF_REG
+      214 05A9                      9-  30         incr    WriteData_VTM,1
+      215 24FF                      9-  31         xoria   0xff
+      216 0D03                      9-  32         btrsc   zf
+      217 3A1F                      9-  33         lgoto   INITIAL_RF_DEF_REG_END
+      218 24FF                      9-  34         xoria   0xff
+      219 2A57                      9-  35         lcall   SPI_RW
+      21A 2809                      9-  36         lcall   TABLE_RF_REG
+      21B 05A9                      9-  37         incr    WriteData_VTM,1
+      21C 2A58                      9-  38         lcall   SPI_W_DATA
+      21D 1B86                      9-  39         bsr     PIN_CSN
+      21E 3A13                      9-  40         lgoto   INITIAL_RF_DEF_REG_LOOP
+                21F                 9-  41      INITIAL_RF_DEF_REG_END:
+      21F 2AF9                      9-  42         lcall	RF_CHANNEL_CHOICE
+      220 2A4B                      9-  43         lcall   RF_IDLE_MODE
+      221 2A33                      9-  44         lcall   CLR_W_FIFO
+      222 2A35                      9-  45         lcall   CLR_R_FIFO
+                                    9-0046      ;//    lcall   CHECK_2G4_REG
+      223 1924                      9-  47         bsr     _flag_RF_Reset
+                224                 9-  48      INITIAL_TEST_MODE:
+      224 0E24                      9-  49         btrsc   _flag_Carrier
+      225 3A28                      9-  50         lgoto   INITIAL_RF_CARRIER
+                  1                 9-  51      if C_MODE_RX_En
+      226 3A2C                      9-  52         lgoto   EN_RX_MODE
+                                    9-0053      endif
+      227 0010                      9-  54         ret
+                228                 9-  55      INITIAL_RF_CARRIER:    
+      228 214B                      9-  56         movia   0x4b
+      229 2A48                      9-  57         lcall   RF_RX_MODE1
+      22A 2113                      9-  58         movia   18 | 0x01
+      22B 3A44                      9-  59         lgoto   RF_TX_MODE1
+                                    9-0060      ;//**************************************************
+                22C                 9-  61      EN_RX_MODE:
+      22C 1B86                      9-  62         bsr     PIN_CSN
+      22D 2A4B                      9-  63         lcall   RF_IDLE_MODE
+      22E 2A33                      9-  64         lcall   CLR_W_FIFO
+      22F 2A35                      9-  65         lcall   CLR_R_FIFO
+      230 2A46                      9-  66         lcall   RF_RX_MODE
+      231 2B29                      9-  67         lcall	DELAY_500us
+      232 0010                      9-  68         ret     
+                                    9-0069      ;//**************************************************
+                233                 9-  70      CLR_W_FIFO:
+      233 2168                      9-  71         movia   0x68
+      234 3A36                      9-  72         lgoto   CLR_REG
+                235                 9-  73      CLR_R_FIFO:
+      235 2169                      9-  74         movia   0x69
+                236                 9-  75      CLR_REG:
+      236 2A57                      9-  76         lcall   SPI_RW
+      237 2180                      9-  77         movia   0x80
+      238 2A58                      9-  78         lcall   SPI_W_DATA
+      239 1B86                      9-  79         bsr     PIN_CSN
+      23A 0010                      9-  80         ret
+                                    9-0081      ;//**************************************************
+                                    9-0082      ;// sleep? LNA off Mode 3 - 0:Auto ACK
+                23B                 9-  83      RF_MIS_REG:
+      23B 2143                      9-  84        movia    0x43
+      23C 00A9                      9-  85        movar    WriteData_VTM
+      23D 2146                      9-  86        movia    0x46
+      23E 3A51                      9-  87        lgoto    SPI_SOLO_REG
+                                    9-0088      
+                23F                 9-  89      RF_SCR_REG:
+      23F 2841                      9-  90        lcall    RF_SCR    
+      240 00A9                      9-  91        movar    WriteData_VTM
+      241 2147                      9-  92        movia    71
+      242 3A51                      9-  93        lgoto    SPI_SOLO_REG
+                                    9-0094      ;//**************************************************
+                                    9-0095      ;//**************************************************
+                243                 9-  96      RF_TX_MODE:
+      243 2101                      9-  97         movia   0x01
+                244                 9-  98      RF_TX_MODE1:
+      244 00A9                      9-  99         movar   WriteData_VTM
+      245 3A50                      9- 100         lgoto   RF_WORK_MODE1
+                                    9-0101      ;//**************************************************
+                246                 9- 102      RF_RX_MODE:
+      246 012B                      9- 103         movr    RFValue_VTM,0
+      247 2380                      9- 104         ioria   0x80
+                248                 9- 105      RF_RX_MODE1:
+      248 00A9                      9- 106         movar   WriteData_VTM
+      249 210F                      9- 107         movia   0x0f
+      24A 3A51                      9- 108         lgoto   SPI_SOLO_REG
+                                    9-0109      ;//**************************************************
+                24B                 9- 110      RF_IDLE_MODE:
+      24B 012B                      9- 111         movr    RFValue_VTM,0
+                                    9-0112      ;//**************************************************
+                24C                 9- 113      RF_WORK_MODE:
+      24C 00A9                      9- 114         movar   WriteData_VTM
+      24D 210F                      9- 115         movia   0x0f
+      24E 2A51                      9- 116         lcall   SPI_SOLO_REG
+      24F 02A9                      9- 117         clrr    WriteData_VTM
+                250                 9- 118      RF_WORK_MODE1:
+      250 210E                      9- 119         movia   0x0e
+                251                 9- 120      SPI_SOLO_REG:
+      251 2A57                      9- 121         lcall   SPI_RW
+      252 0129                      9- 122         movr    WriteData_VTM,0
+                253                 9- 123      SPI_SOLO_REG1:
+      253 2A58                      9- 124         lcall   SPI_W_DATA
+      254 1B86                      9- 125         bsr     PIN_CSN
+      255 0010                      9- 126         ret
+                                    9-0127      ;//**************************************************
+                                    9-0128      ;//CHECK_2G4_REG:
+                                    9-0129      ;//    movia   71
+                                    9-0130      ;//    lcall   SPI_R
+                                    9-0131      ;//    lcall   SPI_R_DATA
+                                    9-0132      ;//    bsr     PIN_CSN
+                                    9-0133      ;//    movr    TempData_VTM,0
+                                    9-0134      ;//    xoria   0xf6
+                                    9-0135      ;//    btrsc   zf
+                                    9-0136      ;//    lgoto   CHECK_2G4_REG_OK
+                                    9-0137      ;//    movia   0x0f
+                                    9-0138      ;//    lcall   SPI_R
+                                    9-0139      ;//    lcall   SPI_R_DATA
+                                    9-0140      ;//    bsr     PIN_CSN
+                                    9-0141      ;//    movr    TempData_VTM,0
+                                    9-0142      ;//    andia   0x7f
+                                    9-0143      ;//    xorar   RFValue_VTM,0
+                                    9-0144      ;//    btrsc   zf
+                                    9-0145      ;//    lgoto   CHECK_2G4_REG_OK
+                                    9-0146      ;//    bsr     _flag_2G4Error
+                                    9-0147      ;//    lgoto   CHECK_2G4_REG_END
+                                    9-0148      ;//CHECK_2G4_REG_OK:
+                                    9-0149      ;//    bcr     _flag_2G4Error
+                                    9-0150      ;//CHECK_2G4_REG_END:
+                                    9-0151      ;//    ret
+                                    9-0152      ;//**************************************************
+                                    9-0153      ;//SPI need CSN H > 250ns
+                                    9-0154      ;//SPI byte byte > 450ns
+                                    9-0155      ;//SPI over -> CSN > 200ns
+                                    9-0156      ;//SPI CSN L->Data > 20ns
+                                    9-0157      ;//SPI cycle > 83ns
+                                    9-0158      ;//->25inst
+                                    9-0159      ;//**************************************************
+                256                 9- 160      SPI_R:
+      256 2380                      9- 161         ioria   0x80
+                257                 9- 162      SPI_RW:
+      257 1F86                      9- 163         bcr     PIN_CSN
+                258                 9- 164      SPI_W_DATA:
+      258 00A6                      9- 165         movar   TempData_VTM
+      259 0015                      9- 166         iostr   porta
+      25A 22FB                      9- 167         andia   0xfb
+                25B                 9- 168      SPI_RW_READY:    
+      25B 0005                      9- 169         iost    porta
+      25C 2108                      9- 170         movia   8
+      25D 00A7                      9- 171         movar   Temp_VTM
+                25E                 9- 172      SPI_RW_LOOP:
+      25E 1C03                      9- 173         bcr     cf
+      25F 14A6                      9- 174         rlr     TempData_VTM,1
+      260 0803                      9- 175         btrss   cf
+      261 1D05                      9- 176         bcr     PIN_MOSI
+      262 0C03                      9- 177         btrsc   cf
+      263 1905                      9- 178         bsr     PIN_MOSI    
+      264 1885                      9- 179         bsr     PIN_CLK
+      265 0D05                      9- 180         btrsc   PIN_MOSI
+      266 1826                      9- 181         bsr     TempData_VTM,0
+      267 1C85                      9- 182         bcr     PIN_CLK
+      268 17A7                      9- 183         decrsz  Temp_VTM,1
+      269 3A5E                      9- 184         lgoto   SPI_RW_LOOP
+      26A 0126                      9- 185         movr    TempData_VTM,0
+      26B 0010                      9- 186         ret
+                26C                 9- 187      SPI_R_DATA:
+      26C 0015                      9- 188         iostr   porta
+      26D 2304                      9- 189         ioria   0x04
+      26E 3A5B                      9- 190         lgoto   SPI_RW_READY
+                                    9-0191      ;//**********************************************************
+                                    9-0192      ;//ROLL Code -> Channel?
+                                    9-0193      ;//147 inst?
+                                    9-0194      ;//-> roll0 -> sendData0_VTM
+                                    9-0195      ;//-> roll1 -> sendData1_VTM
+                                    9-0196      ;//-> roll2 -> sendData2_VTM
+                                    9-0197      ;//-> roll3 -> sendData3_VTM
+                                    9-0198      ;//-> ch0 -> sendData7_VTM
+                                    9-0199      ;//-> ch1 -> sendData8_VTM
+                                    9-0200      ;//-> ch2 -> sendData9_VTM
+                                    9-0201      ;//-> Addr_CH -> sendData6_VTM
+                                    9-0202      ;//**********************************************************/	
+                                    9-0203      #define		StartLCH_CTM		10	;//基本通道
+                                    9-0204      #define		LengthCH_CTM		75	;//通道范围  
+                                    9-0205      
+                26F                 9- 206      ROLL_CHANNEL:
+      26F 215D                      9- 207         movia   0x5d 
+      270 1210                      9- 208         xorar   sendData0_VTM,0
+      271 0311                      9- 209         addar   sendData1_VTM,0
+      272 24D2                      9- 210         xoria   0xd2 
+      273 0312                      9- 211         addar   sendData2_VTM,0
+      274 0413                      9- 212         subar   sendData3_VTM,0
+      275 00A6                      9- 213         movar   TempData_VTM
+      276 2ACF                      9- 214         lcall   ROLL_STEP_0_78 ;//10 - 85
+                                    9-0215      
+                277                 9- 216      ROLL_STEP0:
+      277 0126                      9- 217     	movr	TempData_VTM,0
+      278 0097                      9- 218     	movar	sendData7_VTM		;//first channel
+                279                 9- 219      ROLL_CHANNEL1:
+      279 2133                      9- 220         movia   0x33 
+      27A 1211                      9- 221         xorar   sendData1_VTM,0
+      27B 0312                      9- 222         addar   sendData2_VTM,0
+      27C 2449                      9- 223         xoria   0x49 
+      27D 0313                      9- 224         addar   sendData3_VTM,0
+      27E 00A6                      9- 225         movar   TempData_VTM
+                27F                 9- 226      ROLL_STEP1:
+      27F 0117                      9- 227         movr    sendData7_VTM,0
+      280 03A6                      9- 228         addar   TempData_VTM,1
+      281 2ACF                      9- 229         lcall   ROLL_STEP_0_78  ;//10 - 85
+      282 0126                      9- 230         movr    TempData_VTM,0
+      283 0417                      9- 231         subar   sendData7_VTM,0
+      284 0803                      9- 232         btrss   cf
+      285 24FF                      9- 233         xoria   0xff
+      286 2706                      9- 234         subia   6
+      287 0803                      9- 235         btrss   cf
+      288 3A8C                      9- 236         lgoto   ROLL_STEP11
+      289 210C                      9- 237         movia   12
+      28A 0326                      9- 238         addar   TempData_VTM,0
+      28B 2ACF                      9- 239         lcall   ROLL_STEP_0_78
+                28C                 9- 240      ROLL_STEP11:
+      28C 0126                      9- 241         movr    TempData_VTM,0
+      28D 0098                      9- 242         movar   sendData8_VTM
+                28E                 9- 243      ROLL_CHANNEL2:	;//在 差距大的一段中截取一个数据
+      28E 0118                      9- 244     	movr	sendData8_VTM,0
+      28F 0417                      9- 245     	subar	sendData7_VTM,0
+      290 0803                      9- 246     	btrss	cf
+      291 24FF                      9- 247     	xoria	0xff
+      292 00A6                      9- 248     	movar	TempData_VTM
+      293 2720                      9- 249     	subia	(LengthCH_CTM-StartLCH_CTM)>>1 ;//0x20
+      294 0803                      9- 250     	btrss	cf
+      295 3AA6                      9- 251     	lgoto	ROLL_CHANNEL21
+                296                 9- 252      ROLL_CHANNEL22: ;//0-0x20
+      296 0126                      9- 253     	movr	TempData_VTM,0
+      297 2741                      9- 254     	subia	LengthCH_CTM-StartLCH_CTM ;//65 - (0-0x20)
+      298 00A6                      9- 255     	movar	TempData_VTM    ;//65 - 33?
+      299 2ADA                      9- 256     	lcall	ROLL_CHANNEL2_  ;//53 - 21
+      29A 0117                      9- 257         movr    sendData7_VTM,0
+      29B 0418                      9- 258         subar   sendData8_VTM,0
+      29C 0117                      9- 259         movr    sendData7_VTM,0
+      29D 0C03                      9- 260         btrsc   cf
+      29E 0118                      9- 261         movr    sendData8_VTM,0
+      29F 2506                      9- 262         addia   6
+      2A0 0329                      9- 263         addar   WriteData_VTM,0
+      2A1 00A6                      9- 264         movar   TempData_VTM
+      2A2 2ACF                      9- 265         lcall   ROLL_STEP_0_78
+      2A3 0126                      9- 266         movr    TempData_VTM,0
+      2A4 0099                      9- 267         movar   sendData9_VTM
+      2A5 3AAF                      9- 268         lgoto   ROLL_CHANNEL_LIMITED  
+                                    9-0269      
+                2A6                 9- 270      ROLL_CHANNEL21:
+      2A6 2ADA                      9- 271     	lcall	ROLL_CHANNEL2_  ;//53 - 21
+                                    9-0272      
+      2A7 0117                      9- 273     	movr	sendData7_VTM,0
+      2A8 0418                      9- 274     	subar	sendData8_VTM,0
+      2A9 0117                      9- 275     	movr	sendData7_VTM,0
+      2AA 0803                      9- 276     	btrss	cf
+      2AB 0118                      9- 277     	movr	sendData8_VTM,0
+      2AC 2506                      9- 278     	addia	6
+      2AD 0329                      9- 279     	addar	WriteData_VTM,0
+      2AE 0099                      9- 280     	movar	sendData9_VTM
+                                    9-0281         
+                2AF                 9- 282      ROLL_CHANNEL_LIMITED:
+      2AF 0116                      9- 283         movr    sendData6_VTM,0
+      2B0 0084                      9- 284         movar   FSR 
+      2B1 2AEA                      9- 285         lcall   CH_LIMITED 
+      2B2 0584                      9- 286         incr    FSR,1
+      2B3 2AEA                      9- 287         lcall   CH_LIMITED 
+      2B4 0584                      9- 288         incr    FSR,1
+      2B5 2AEA                      9- 289         lcall   CH_LIMITED 
+                                    9-0290      
+      2B6 0116                      9- 291         movr    sendData6_VTM,0
+      2B7 0084                      9- 292         movar   FSR     ;//->TXCH0_VTM
+      2B8 0118                      9- 293         movr    sendData8_VTM,0
+      2B9 2AEF                      9- 294         lcall   ROLL_CH_EQUAL
+                                    9-0295      
+      2BA 0584                      9- 296         incr    FSR,1
+      2BB 0584                      9- 297         incr    FSR,1   ;//->TXCH2_VTM
+      2BC 0117                      9- 298         movr    sendData7_VTM,0
+      2BD 2AEF                      9- 299         lcall   ROLL_CH_EQUAL
+                                    9-0300      
+      2BE 0118                      9- 301         movr    sendData8_VTM,0
+      2BF 2AEF                      9- 302         lcall   ROLL_CH_EQUAL   
+                                    9-0303      
+                2C0                 9- 304      ROLL_CHANNEL_END:
+      2C0 0010                      9- 305     	ret
+                                    9-0306      ;//87
+                                    9-0307      ;//*********************************************************
+                2C1                 9- 308      ROLL_STEP_0_75:
+      2C1 0126                      9- 309     	movr    TempData_VTM,0
+      2C2 2749                      9- 310     	subia	73
+      2C3 0C03                      9- 311     	btrsc	cf
+      2C4 3AC8                      9- 312     	lgoto	ROLL_STEP_0_75_END
+      2C5 2149                      9- 313     	movia	73
+      2C6 04A6                      9- 314     	subar	TempData_VTM,1
+      2C7 3AC1                      9- 315     	lgoto	ROLL_STEP_0_75
+                2C8                 9- 316      ROLL_STEP_0_75_END:
+      2C8 0126                      9- 317     	movr	TempData_VTM,0
+      2C9 270A                      9- 318         subia	10
+      2CA 0803                      9- 319         btrss	cf
+      2CB 3ACE                      9- 320         lgoto	ROLL_10_75_STEP_END
+      2CC 210A                      9- 321     	movia	StartLCH_CTM		;//3	;基本通道
+      2CD 03A6                      9- 322     	addar	TempData_VTM,1
+                2CE                 9- 323      ROLL_10_75_STEP_END:
+      2CE 0010                      9- 324     	ret
+                                    9-0325      ;//*********************************************************
+                2CF                 9- 326      ROLL_STEP_0_78:
+      2CF 0002                      9- 327     	clrwdt
+      2D0 0126                      9- 328     	movr	TempData_VTM,0
+      2D1 274B                      9- 329     	subia	LengthCH_CTM
+      2D2 0C03                      9- 330     	btrsc	cf
+      2D3 3AD7                      9- 331     	lgoto	ROLL_STEP_0_78_END
+      2D4 214B                      9- 332     	movia	LengthCH_CTM
+      2D5 04A6                      9- 333     	subar	TempData_VTM,1
+      2D6 3ACF                      9- 334     	lgoto	ROLL_STEP_0_78
+                2D7                 9- 335      ROLL_STEP_0_78_END:
+      2D7 210A                      9- 336     	movia	StartLCH_CTM		;//3	;基本通道
+      2D8 03A6                      9- 337     	addar	TempData_VTM,1  ;//10-85
+      2D9 0010                      9- 338     	ret	
+                                    9-0339      ;//*********************************************************
+                2DA                 9- 340      ROLL_CHANNEL2_:
+      2DA 210C                      9- 341         movia   12
+      2DB 0426                      9- 342         subar   TempData_VTM,0
+      2DC 21AE                      9- 343         movia   0xae 
+      2DD 1212                      9- 344         xorar   sendData2_VTM,0
+      2DE 0313                      9- 345         addar   sendData3_VTM,0
+      2DF 2463                      9- 346         xoria   0x63
+      2E0 0310                      9- 347         addar   sendData0_VTM,0
+      2E1 00A9                      9- 348         movar   WriteData_VTM
+                2E2                 9- 349      ROLL_CHANNEL2_LOOP:
+      2E2 0002                      9- 350     	clrwdt
+      2E3 0126                      9- 351     	movr	TempData_VTM,0
+      2E4 0429                      9- 352     	subar	WriteData_VTM,0 ;//->53 - 21 
+      2E5 0803                      9- 353     	btrss	cf
+      2E6 3AE9                      9- 354     	lgoto	ROLL_CHANNEL2_END
+      2E7 00A9                      9- 355     	movar	WriteData_VTM
+      2E8 3AE2                      9- 356     	lgoto	ROLL_CHANNEL2_LOOP
+                2E9                 9- 357      ROLL_CHANNEL2_END:
+      2E9 0010                      9- 358     	ret		
+                                    9-0359      ;//******************************************
+                2EA                 9- 360      CH_LIMITED:
+      2EA 2149                      9- 361         movia   73
+      2EB 0400                      9- 362         subar   INDF,0
+      2EC 0C03                      9- 363         btrsc   cf 
+      2ED 0080                      9- 364         movar   INDF
+      2EE 0010                      9- 365         ret
+                                    9-0366      ;//******************************************
+                2EF                 9- 367      ROLL_CH_EQUAL:
+      2EF 1200                      9- 368         xorar   INDF,0
+      2F0 0903                      9- 369         btrss   zf 
+      2F1 0010                      9- 370         ret
+      2F2 210C                      9- 371         movia   0x0c
+      2F3 0300                      9- 372         addar   INDF,0
+      2F4 00A6                      9- 373         movar   TempData_VTM
+      2F5 2AC1                      9- 374         lcall   ROLL_STEP_0_75
+      2F6 0126                      9- 375         movr    TempData_VTM,0
+      2F7 0080                      9- 376         movar   INDF 
+      2F8 0010                      9- 377         ret
+                                    9-0378      ;/**********************************************************
+                                    9-0379      ;RF_CHANNEL_CHOICE
+                                    9-0380      ;正常通道要避开对码通道，通道算法要尽量差异大，通道间的间隔
+                                    9-0381      ;最好保持6个通道或者以.
+                                    9-0382      ;**********************************************************/	
+                2F9                 9- 383      RF_CHANNEL_CHOICE:
+      2F9 09A4                      9- 384     	btrss	_flag_test
+                2FA                 9- 385      RF_CHANNEL_CHOICE0:
+      2FA 05AC                      9- 386     	incr	ChannelCount_VTM,1	
+      2FB 08AC                      9- 387     	btrss	ChannelCount_VTM,1
+      2FC 3B00                      9- 388     	lgoto	RF_CHANNEL_CHOICE01
+      2FD 082C                      9- 389     	btrss	ChannelCount_VTM,0
+      2FE 3B10                      9- 390     	lgoto	RF_CHANNEL_CHOICE2
+      2FF 3B08                      9- 391     	lgoto	RF_CHANNEL_CHOICE3
+                300                 9- 392      RF_CHANNEL_CHOICE01:
+      300 0C2C                      9- 393     	btrsc	ChannelCount_VTM,0
+      301 3B18                      9- 394     	lgoto	RF_CHANNEL_CHOICE1
+                302                 9- 395      RF_CHANNEL_CHOICE4:
+      302 09A4                      9- 396     	btrss	_flag_test
+      303 3AFA                      9- 397     	lgoto	RF_CHANNEL_CHOICE0
+      304 1DA4                      9- 398     	bcr		_flag_test
+      305 1D24                      9- 399     	bcr		_flag_RF_reset
+      306 1E24                      9- 400     	bcr		_flag_Carrier
+      307 3B20                      9- 401     	lgoto	RF_CHANNEL_CHOICE_END
+                308                 9- 402      RF_CHANNEL_CHOICE3:
+      308 011C                      9- 403         movr    TXCH2_VTM,0
+      309 0D2C                      9- 404         btrsc   ChannelCount_VTM,2
+      30A 011F                      9- 405         movr    RXCH2_VTM,0
+                  1                 9- 406      if C_MODE_RX_En
+      30B 0F24                      9- 407         btrsc   _flag_ScanMode
+                                    9-0410      endif
+      30C 2145                      9- 411         movia   PRCH2_CTM
+                                    9-0412      
+      30D 0DA4                      9- 413     	btrsc	_flag_test
+      30E 2149                      9- 414     	movia	TESTCH2_CTM
+      30F 3B1F                      9- 415     	lgoto	RF_CHANNEL_CHOICE_OUT
+                310                 9- 416      RF_CHANNEL_CHOICE2:
+      310 011B                      9- 417     	movr    TXCH1_VTM,0
+      311 0D2C                      9- 418         btrsc   ChannelCount_VTM,2
+      312 011E                      9- 419         movr    RXCH1_VTM,0
+                  1                 9- 420      if C_MODE_RX_En
+      313 0F24                      9- 421         btrsc   _flag_ScanMode
+                                    9-0424      endif
+      314 2126                      9- 425         movia   PRCH1_CTM
+                                    9-0426      
+      315 0DA4                      9- 427     	btrsc	_flag_test
+      316 2129                      9- 428     	movia	TESTCH1_CTM
+      317 3B1F                      9- 429     	lgoto	RF_CHANNEL_CHOICE_OUT
+                318                 9- 430      RF_CHANNEL_CHOICE1:
+      318 011A                      9- 431     	movr    TXCH0_VTM,0
+      319 0D2C                      9- 432         btrsc   ChannelCount_VTM,2
+      31A 011D                      9- 433         movr    RXCH0_VTM,0
+                  1                 9- 434      if C_MODE_RX_En
+      31B 0F24                      9- 435         btrsc   _flag_ScanMode
+                                    9-0438      endif
+      31C 210C                      9- 439         movia   PRCH0_CTM
+                                    9-0440      
+      31D 0DA4                      9- 441     	btrsc	_flag_test
+      31E 2108                      9- 442     	movia	TESTCH0_CTM
+                31F                 9- 443      RF_CHANNEL_CHOICE_OUT:
+      31F 00AB                      9- 444     	movar	RFValue_VTM	
+                320                 9- 445      RF_CHANNEL_CHOICE_END:
+      320 0010                      9- 446     	ret
+                                    9-0447      endif  
+                                    0-0147      #include        F_DELAY.asm
+                                    A-0001      ifndef __F_DELAY
+                                    A-0002      #define __F_DELAY
+                                    A-0003      
+                                    A-0004      ;//#include	F_RFSPI.h
+                                    A-0005      ;// =========================================================================      
+                                    A-0006      ;// Project:       
+                                    A-0007      ;// File:          F_DELAY.asm
+                                    A-0008      ;// Description:   
+                                    A-0009      ;//                 
+                                    A-0010      ;// Author:     	WangFangli   
+                                    A-0011      ;// Version:    	V1.0.0   
+                                    A-0012      ;// Date:         2021/7/17
+                                    A-0013      ;// ========================================================================= 
+                321                 A-  14      DELAY_30ms:
+      321 213C                      A-  15         movia       60
+      322 3B2A                      A-  16         lgoto       DELAY_MS
+                323                 A-  17      DELAY_45ms:
+      323 215A                      A-  18         movia       90
+      324 3B2A                      A-  19         lgoto       DELAY_MS
+                325                 A-  20      DELAY_4ms:
+      325 2108                      A-  21         movia       8
+      326 3B2A                      A-  22         lgoto       DELAY_MS
+                327                 A-  23      DELAY_1ms:
+      327 2102                      A-  24         movia       2
+      328 3B2A                      A-  25         lgoto       DELAY_MS
+                329                 A-  26      DELAY_500us:
+      329 2101                      A-  27         movia       1
+                32A                 A-  28      DELAY_MS:
+      32A 00AA                      A-  29         movar       ReadData_VTM
+      32B 02A9                      A-  30         clrr        WriteData_VTM
+                32C                 A-  31      DELAY_LOOP:
+      32C 0002                      A-  32         clrwdt
+      32D 17A9                      A-  33         decrsz      WriteData_VTM,1
+      32E 3B2C                      A-  34         lgoto       DELAY_LOOP
+      32F 17AA                      A-  35         decrsz      ReadData_VTM,1
+      330 3B2C                      A-  36         lgoto       DELAY_LOOP
+      331 0010                      A-  37         ret 
+                                    A-0038      
+                                    A-0039      endif __F_DELAY
+                                    0-0148      #include        INITIAL_REG.asm
+                                    B-0001      ifndef __INITIAL_REG
+                                    B-0002      #define __INITIAL_REG
+                                    B-0003      
+                                    B-0004      ;// =========================================================================      
+                                    B-0005      ;// Project:       
+                                    B-0006      ;// File:         INITIAL_REG.asm
+                                    B-0007      ;// Description:   
+                                    B-0008      ;//                 
+                                    B-0009      ;// Author:     	WangFangli   
+                                    B-0010      ;// Version:    	V1.0.0   
+                                    B-0011      ;// Date:         2021/7/17
+                                    B-0012      ;// ========================================================================= 
+                                    B-0013      
+                                    B-0014      ;//**********************************************************
+                                    B-0015      ;// clear SRAM
+                                    B-0016      ;//**********************************************************
+                332                 B-  17      CLEAR_SRAM:
+      332 2110                      B-  18        movia    HeadRAM_ADR
+      333 0084                      B-  19        movar    FSR 
+      334 0280                      B-  20        clrr     INDF
+      335 0104                      B-  21        movr     FSR,0
+      336 273F                      B-  22        subia    EndRAM_ADR 
+      337 0D03                      B-  23        btrsc    zf 
+      338 3B3B                      B-  24        lgoto	$+3 
+      339 0584                      B-  25        incr     FSR,1 
+      33A 3B34                      B-  26        lgoto    $-6 
+      33B 0010                      B-  27        ret
+                                    B-0028      
+                                    B-0029      ;//**********************************************************
+                                    B-0030      ;// IC initial
+                                    B-0031      ;//usb 12bit sample -> 8bit data ->output 8bit PWM
+                                    B-0032      ;//**********************************************************
+                33C                 B-  33      INITIAL_ROUTINE:
+      33C 0013                      B-  34        disi                            ;// Disable all interrupt
+      33D 2101                      B-  35        movia	   0x01
+      33E 002F                      B-  36        sfun	   osccr
+      33F 0000                      B-  36     NOP ;after sfun 0xF force NOP
+      340 2100                      B-  37        movia    0x00    	;//TMR2 INT enable 
+      341 008E                      B-  38        movar    INTE                 ;//TMR0 INT all off
+      342 2100                      B-  39        movia    0x00                 ;//10/256=39,062,5HZ = 25.6us 
+      343 0003                      B-  40        T0MD 
+      344 2100                      B-  41        movia	   0x00
+      345 0081                      B-  42        movar	   TMR0
+      346 2100                      B-  43        movia    0  
+      347 008F                      B-  44        movar    INTF			;//interrupt flag 
+      348 2101                      B-  45        movia	   0x01
+      349 000F                      B-  46        iost	   PCON1
+                                    B-0047      
+                                    B-0048      ;//IO set ****************************************
+      34A 2100                      B-  49        movia    PADR_SET
+      34B 0085                      B-  50        movar    Porta
+      34C 2180                      B-  51        movia    PBDR_SET
+      34D 0086                      B-  52        movar    Portb
+      34E 2100                      B-  53        movia    PAIO_SET
+      34F 0005                      B-  54        iost     Porta               ;//pa4,pa3,pa0 output
+      350 2100                      B-  55        movia    PBIO_SET
+      351 0006                      B-  56        iost     Portb
+                                    B-0057      
+      352 21F6                      B-  58        movia    PBPU_SET
+      353 008C                      B-  59        movar    BPHCON
+      354 2188                      B-  60        movia    PCON_SET
+      355 0088                      B-  61        movar    PCON
+                                    B-0062      
+      356 2100                      B-  63        movia    PBWU_SET
+      357 0089                      B-  64        movar	   BWUCON
+      358 0010                      B-  65        ret 
+                                    B-0066      
+                                    B-0067      endif ;//__INITIAL_REG
+                                    0-0149      #include        INTERRUPT.asm
+                                    C-0001      ifndef __INTERRUPT
+                                    C-0002      #define __INTERRUPT
+                                    C-0003      
+                                    C-0004      ;// =========================================================================      
+                                    C-0005      ;// Project:       
+                                    C-0006      ;// File:          INTERRUPT.asm
+                                    C-0007      ;// Description:   
+                                    C-0008      ;//                 
+                                    C-0009      ;// Author:     	WangFangli   
+                                    C-0010      ;// Version:    	V1.0.0   
+                                    C-0011      ;// Date:         2021/7/17
+                                    C-0012      ;// ========================================================================= 
+                                    C-0013      
+                                    C-0014      ;//--------------- Interrupt Service Routine --------------------------------
+                                    C-0015      ;//--------------------------------------------------------------------------
+                359                 C-  16      INTERRUPT:
+                  1                 C-  17      if C_MODE_RX_En
+      359 00BA                      C-  18     		movar  	   	INTW_VTM
+      35A 1503                      C-  19        	   	swapr 	   	STATUS,0
+      35B 00B9                      C-  20        	   	movar  	   	INTStatus_VTM
+                                    C-0021      
+      35C 0132                      C-  22     		movr 		V_MotorFB,0
+      35D 0431                      C-  23     		subar		V_CountPWM,0
+      35E 0C03                      C-  24     		btrsc		cf
+      35F 3B65                      C-  25     		lgoto		INT_MFB_STOP
+      360 0C25                      C-  26     		btrsc		_flag_FB
+      361 1B06                      C-  27     		bsr			PIN_MB 
+      362 0825                      C-  28     		btrss		_flag_FB 
+      363 1A86                      C-  29     		bsr			PIN_MF
+      364 3B67                      C-  30     		lgoto		INT_PWM_COUNT
+                365                 C-  31      INT_MFB_STOP:
+      365 1E86                      C-  32     		bcr			PIN_MF
+      366 1F06                      C-  33     		bcr			PIN_MB
+                367                 C-  34      INT_PWM_COUNT:
+      367 05B1                      C-  35     		incr		V_CountPWM,1
+      368 210F                      C-  36     		movia		0x0f
+      369 10B1                      C-  37     		andar		V_CountPWM,1
+                36A                 C-  38      INTERRUPT_END:
+      36A 028F                      C-  39     		clrr   	   	INTF
+      36B 1539                      C-  40        	   	swapr 	    INTStatus_VTM,0
+      36C 0083                      C-  41        	   	movar  	   	STATUS
+      36D 15BA                      C-  42        	   	swapr  	   	INTW_VTM,1
+      36E 153A                      C-  43        	   	swapr 	   	INTW_VTM,0
+                                    C-0044      endif 
+      36F 0011                      C-  45     		retie								;// Return from interrupt and enable interrupt globally
+                                    C-0046      
+                                    C-0047      
+                                    C-0048      endif __INTERRUPT
+                                    0-0162      endif
+                                    0-0163      
+                                    0-0164      end											;//End of Code
+
+NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/21 14:23:05
+
+SYMBOL TABLE            TYPE     VALUE
+
+__8A053D                Constant 00000001
+__CHECKSUM_ADDR__       Label    00000370
+__F_DELAY               Define   
+__INITIAL_REG           Define   
+__INTERRUPT             Define   
+__LAMP_CONTROL          Define   
+__MOTOR                 Define   
+__PIN_COUNT__           Constant 0000000C
+__PROCESSOR__           Constant 00800533
+__RF_CONFIG             Define   
+__SLEEP_MODE            Define   
+_B                      Constant 00000000
+_F                      Constant 00000001
+_FLAG_BUILD             Define   V_WORKFLAG,0
+_FLAG_BUILDLED          Define   V_WORKFLAG,1
+_FLAG_CARRIER           Define   V_WORKFLAG,4
+_FLAG_FB                Define   V_WORKFLAG1,0
+_FLAG_FB_BRAKE          Define   V_WORKFLAG1,2
+_FLAG_FB_STOP           Define   V_WORKFLAG1,1
+_FLAG_LOSTCODE          Define   V_WORKFLAG,7
+_FLAG_LRTURNTRIG        Define   V_WORKFLAG1,3
+_FLAG_RF_RESET          Define   V_WORKFLAG,2
+_FLAG_SCANMODE          Define   V_WORKFLAG,6
+_FLAG_SLEEP             Define   V_WORKFLAG,5
+_FLAG_TEST              Define   V_WORKFLAG,3
+_L                      Constant 00000006
+_R                      Constant 00000005
+_T                      Constant 00000002
+ABPLCON                 Constant 0000000B
+ADDR_RXCH               Define   0X1D
+ADDR_TXCH               Define   0X1A
+BODCON                  Constant 0000000C
+BPHCON                  Constant 0000000C
+BWUCON                  Constant 00000009
+BZ1CR                   Constant 00000005
+C_2S                    Define   1
+C_5MIN                  Define   167
+C_5MIN_RX               Define   112
+C_ACK_LENGTH            Define   10
+C_ALL_INT_EN            Constant 00000080
+C_BIT0                  Constant 00000001
+C_BIT1                  Constant 00000002
+C_BIT2                  Constant 00000004
+C_BIT3                  Constant 00000008
+C_BIT4                  Constant 00000010
+C_BIT5                  Constant 00000020
+C_BIT6                  Constant 00000040
+C_BIT7                  Constant 00000080
+C_BZ1_EN                Constant 00000080
+C_BZ1_FSEL              Constant 0000000F
+C_BZ1_PS1DIV128         Constant 00000006
+C_BZ1_PS1DIV16          Constant 00000003
+C_BZ1_PS1DIV2           Constant 00000000
+C_BZ1_PS1DIV256         Constant 00000007
+C_BZ1_PS1DIV32          Constant 00000004
+C_BZ1_PS1DIV4           Constant 00000001
+C_BZ1_PS1DIV64          Constant 00000005
+C_BZ1_PS1DIV8           Constant 00000002
+C_BZ1_TMR1B0            Constant 00000008
+C_BZ1_TMR1B1            Constant 00000009
+C_BZ1_TMR1B2            Constant 0000000A
+C_BZ1_TMR1B3            Constant 0000000B
+C_BZ1_TMR1B4            Constant 0000000C
+C_BZ1_TMR1B5            Constant 0000000D
+C_BZ1_TMR1B6            Constant 0000000E
+C_BZ1_TMR1B7            Constant 0000000F
+C_CRC_ADR               Define   0X60
+C_DK071                 Define   1
+C_ELXT_BACKUP           Constant 00000040
+C_EXINT_EDGE            Constant 00000040
+C_EXTINT_EN             Constant 00000040
+C_FB                    Define   0X03
+C_FHOSC_SEL             Constant 00000001
+C_FHOSC_STOP            Constant 00000002
+C_FLOSC_SEL             Constant 00000000
+C_HALT_MODE             Constant 00000004
+C_INDIR_ADDR            Constant 000000FF
+C_INT_EXT               Constant 00000004
+C_INT_EXT_BIT           Constant 00000002
+C_INT_PBKEY             Constant 00000002
+C_INT_PBKEY_BIT         Constant 00000001
+C_INT_TMR0              Constant 00000001
+C_INT_TMR0_BIT          Constant 00000000
+C_INT_TMR1              Constant 00000008
+C_INT_TMR1_BIT          Constant 00000003
+C_INT_WDT               Constant 00000040
+C_INT_WDT_BIT           Constant 00000006
+C_IR_38K                Constant 00000000
+C_IR_57K                Constant 00000002
+C_IR_CLKSRC_358M        Constant 00000080
+C_IR_CLKSRC_455K        Constant 00000000
+C_IR_EN                 Constant 00000001
+C_IR_POL_SEL            Constant 00000004
+C_LB                    Define   0X41
+C_LF                    Define   0X42
+C_LONGPAIR              Define   17
+C_LRFB                  Define   0X63
+C_LVR_EN                Constant 00000008
+C_M_MAX                 Define   16
+C_M_MIN                 Define   9
+C_MODE                  Constant 0000000C
+C_MODE_RX_EN            Define   1
+C_NORMAL_MODE           Constant 00000000
+C_NUM0                  Constant 00000000
+C_NUM1                  Constant 00000001
+C_NUM2                  Constant 00000002
+C_NUM3                  Constant 00000003
+C_NUM4                  Constant 00000004
+C_NUM5                  Constant 00000005
+C_NUM6                  Constant 00000006
+C_NUM7                  Constant 00000007
+C_PA_DATA               Constant 0000000F
+C_PA_INPUT              Constant 0000000F
+C_PA_OUTPUT             Constant 00000000
+C_PA_PLB                Constant 0000000F
+C_PA0_DATA              Constant 00000001
+C_PA0_INPUT             Constant 00000001
+C_PA0_OUTPUT            Constant 00000000
+C_PA0_PLB               Constant 00000001
+C_PA1_DATA              Constant 00000002
+C_PA1_INPUT             Constant 00000002
+C_PA1_OUTPUT            Constant 00000000
+C_PA1_PLB               Constant 00000002
+C_PA2_DATA              Constant 00000004
+C_PA2_INPUT             Constant 00000004
+C_PA2_OUTPUT            Constant 00000000
+C_PA2_PLB               Constant 00000004
+C_PA3_DATA              Constant 00000008
+C_PA3_INPUT             Constant 00000008
+C_PA3_OUTPUT            Constant 00000000
+C_PA3_PLB               Constant 00000008
+C_PB_DATA               Constant 000000FF
+C_PB_INPUT              Constant 000000FF
+C_PB_OD                 Constant 000000F7
+C_PB_OUTPUT             Constant 00000000
+C_PB_PHB                Constant 000000F7
+C_PB_PLB                Constant 000000F0
+C_PB_WAKEUP             Constant 000000FF
+C_PB0_DATA              Constant 00000001
+C_PB0_INPUT             Constant 00000001
+C_PB0_OD                Constant 00000001
+C_PB0_OUTPUT            Constant 00000000
+C_PB0_PHB               Constant 00000001
+C_PB0_PLB               Constant 00000010
+C_PB0_WAKEUP            Constant 00000001
+C_PB1_DATA              Constant 00000002
+C_PB1_INPUT             Constant 00000002
+C_PB1_OD                Constant 00000002
+C_PB1_OUTPUT            Constant 00000000
+C_PB1_PHB               Constant 00000002
+C_PB1_PLB               Constant 00000020
+C_PB1_WAKEUP            Constant 00000002
+C_PB2_DATA              Constant 00000004
+C_PB2_INPUT             Constant 00000004
+C_PB2_OD                Constant 00000004
+C_PB2_OUTPUT            Constant 00000000
+C_PB2_PHB               Constant 00000004
+C_PB2_PLB               Constant 00000040
+C_PB2_WAKEUP            Constant 00000004
+C_PB3_DATA              Constant 00000008
+C_PB3_INPUT             Constant 00000008
+C_PB3_OUTPUT            Constant 00000000
+C_PB3_PLB               Constant 00000080
+C_PB3_WAKEUP            Constant 00000008
+C_PB4_DATA              Constant 00000010
+C_PB4_INPUT             Constant 00000010
+C_PB4_OD                Constant 00000010
+C_PB4_OUTPUT            Constant 00000000
+C_PB4_PHB               Constant 00000010
+C_PB4_WAKEUP            Constant 00000010
+C_PB5_DATA              Constant 00000020
+C_PB5_INPUT             Constant 00000020
+C_PB5_OD                Constant 00000020
+C_PB5_OUTPUT            Constant 00000000
+C_PB5_PHB               Constant 00000020
+C_PB5_WAKEUP            Constant 00000020
+C_PB6_DATA              Constant 00000040
+C_PB6_INPUT             Constant 00000040
+C_PB6_OD                Constant 00000040
+C_PB6_OUTPUT            Constant 00000000
+C_PB6_PHB               Constant 00000040
+C_PB6_WAKEUP            Constant 00000040
+C_PB7_DATA              Constant 00000080
+C_PB7_INPUT             Constant 00000080
+C_PB7_OD                Constant 00000080
+C_PB7_OUTPUT            Constant 00000000
+C_PB7_PHB               Constant 00000080
+C_PB7_WAKEUP            Constant 00000080
+C_PCHIGH_DATA           Constant 00000003
+C_PCLOW_DATA            Constant 000000FF
+C_PS0_DIV               Constant 00000007
+C_PS0_DIV128            Constant 00000006
+C_PS0_DIV16             Constant 00000003
+C_PS0_DIV2              Constant 00000000
+C_PS0_DIV256            Constant 00000007
+C_PS0_DIV32             Constant 00000004
+C_PS0_DIV4              Constant 00000001
+C_PS0_DIV64             Constant 00000005
+C_PS0_DIV8              Constant 00000002
+C_PS0_TMR0              Constant 00000000
+C_PS0_WDT               Constant 00000008
+C_PS1_DIS               Constant 00000008
+C_PS1_DIV               Constant 00000007
+C_PS1_DIV128            Constant 00000006
+C_PS1_DIV16             Constant 00000003
+C_PS1_DIV2              Constant 00000000
+C_PS1_DIV256            Constant 00000007
+C_PS1_DIV32             Constant 00000004
+C_PS1_DIV4              Constant 00000001
+C_PS1_DIV64             Constant 00000005
+C_PS1_DIV8              Constant 00000002
+C_PS1_EN                Constant 00000000
+C_PWM1_ACTIVE           Constant 00000040
+C_PWM1_ACTIVE_HI        Constant 00000000
+C_PWM1_ACTIVE_LO        Constant 00000040
+C_PWM1_DUTY             Constant 000000FF
+C_PWM1_EN               Constant 00000080
+C_R                     Define   0X20
+C_SAVETOACC             Constant 00000000
+C_SAVETOREG             Constant 00000001
+C_SFR_BANK              Constant 000000C0
+C_SFR_BANK0             Constant 00000000
+C_SFR_BANK1             Constant 00000040
+C_SFR_BANK2             Constant 00000080
+C_SFR_BANK3             Constant 000000C0
+C_SFR_RAM_ADDR          Constant 0000003F
+C_SHORTPAIR             Define   2
+C_SPEED                 Define   0
+C_STANDBY_MODE          Constant 00000008
+C_STATUS_C              Constant 00000001
+C_STATUS_C_BIT          Constant 00000000
+C_STATUS_HALFC          Constant 00000002
+C_STATUS_HALFC_BIT      Constant 00000001
+C_STATUS_SLP            Constant 00000008
+C_STATUS_SLP_BIT        Constant 00000003
+C_STATUS_WDT            Constant 00000010
+C_STATUS_WDT_BIT        Constant 00000004
+C_STATUS_Z              Constant 00000004
+C_STATUS_Z_BIT          Constant 00000002
+C_TBHIGH_ADDR           Constant 00000003
+C_TBHIGH_DATA           Constant 0000003F
+C_TESTMODE_EN           Define   1
+C_TMR0_CLK              Constant 00000020
+C_TMR0_DATA             Constant 000000FF
+C_TMR0_DIS              Constant 00000000
+C_TMR0_EN               Constant 00000001
+C_TMR0_EXTCLK_EDGE      Constant 00000010
+C_TMR0_LOWCLK           Constant 00000080
+C_TMR1_CLKSRC_EXT       Constant 00000020
+C_TMR1_CLKSRC_INST      Constant 00000000
+C_TMR1_DATA             Constant 000000FF
+C_TMR1_DIS              Constant 00000000
+C_TMR1_EN               Constant 00000001
+C_TMR1_EXTCLK_EDGE      Constant 00000010
+C_TMR1_EXTFALLING       Constant 00000010
+C_TMR1_EXTRISING        Constant 00000000
+C_TMR1_ONESHOT          Constant 00000004
+C_TMR1_RELOAD           Constant 00000002
+C_WDT_EN                Constant 00000080
+CARRIER_0               Label    00000035
+CARRIER_1               Label    00000038
+CARRIER_2               Label    0000003B
+CARRIER_3               Label    0000003E
+CF                      Define   STATUS,0
+CH_LIMITED              Label    000002EA
+CHANNELCOUNT_VTM        Constant 0000002C
+CLEAR_SRAM              Label    00000332
+CLR_R_FIFO              Label    00000235
+CLR_REG                 Label    00000236
+CLR_W_FIFO              Label    00000233
+DATARAM_ADR             Define   0X10
+DELAY_1MS               Label    00000327
+DELAY_30MS              Label    00000321
+DELAY_45MS              Label    00000323
+DELAY_4MS               Label    00000325
+DELAY_500US             Label    00000329
+DELAY_LOOP              Label    0000032C
+DELAY_MS                Label    0000032A
+DELAY_VTM               Constant 00000028
+DIS                     Constant 00000001
+EN                      Constant 00000000
+EN_RX_MODE              Label    0000022C
+ENDRAM_ADR              Define   0X3F
+FIFO_EN_CTM             Define   0X64
+FSR                     Constant 00000004
+H                       Constant 00000001
+HEADRAM_ADR             Define   0X10
+I                       Constant 00000001
+INDF                    Constant 00000000
+INITIAL_RF              Label    0000020B
+INITIAL_RF_CARRIER      Label    00000228
+INITIAL_RF_DEF_REG      Label    00000212
+INITIAL_RF_DEF_REG_END  Label    0000021F
+INITIAL_RF_DEF_REG_LOOP Label    00000213
+INITIAL_ROUTINE         Label    0000033C
+INITIAL_TEST_MODE       Label    00000224
+INT_MFB_STOP            Label    00000365
+INT_PWM_COUNT           Label    00000367
+INTE                    Constant 0000000E
+INTERRUPT               Label    00000359
+INTERRUPT_END           Label    0000036A
+INTF                    Constant 0000000F
+INTSTATUS_VTM           Constant 00000039
+INTW_VTM                Constant 0000003A
+IOSTA                   Constant 00000005
+IOSTB                   Constant 00000006
+IRCR                    Constant 00000006
+L                       Constant 00000000
+LAMP_CONTROL            Label    000001FB
+LAMP_CONTROL_BUILD_BLINK Label    00000207
+LAMP_CONTROL_END        Label    0000020A
+LAMP_CONTROL_LOST_BLINK Label    00000202
+LAMP_CONTROL_OFF        Label    00000209
+LAMP_CONTROL_ON         Label    00000205
+LENGTHCH_CTM            Define   75
+MAIN                    Label    00000044
+MAIN_LOOP               Label    00000050
+MAIN_LOOP_STEP0         Label    00000051
+MAIN_LOOP_STEP0_START   Label    0000005B
+MAIN_LOOP_STEP5         Label    00000062
+MAIN_RX                 Label    0000008D
+MAIN_TX_MODE            Label    00000065
+MAIN_TX_NOR             Label    0000006F
+MAIN_TX_NOR_SEND        Label    00000070
+MAIN_TX_NOR_SEND_OK     Label    0000008B
+MOTOR_B                 Label    000001B0
+MOTOR_B_ING             Label    000001B4
+MOTOR_CONTROL           Label    0000019E
+MOTOR_F                 Label    000001A6
+MOTOR_F_ING             Label    000001AA
+MOTOR_FB_BRAKE          Label    000001CA
+MOTOR_FB_BRAKE_ING      Label    000001D1
+MOTOR_FB_END            Label    000001E1
+MOTOR_FB_ING            Label    000001B7
+MOTOR_FB_ING1           Label    000001C3
+MOTOR_FB_STOP           Label    000001D5
+MOTOR_FB_STOP_ING       Label    000001DA
+MOTOR_FB_STOP_ING1      Label    000001DE
+MOTOR_L                 Label    000001F5
+MOTOR_LR                Label    000001E1
+MOTOR_LR_NOR            Label    000001EE
+MOTOR_LR_STOP           Label    000001F2
+MOTOR_R                 Label    000001F8
+O                       Constant 00000000
+OSCCR                   Constant 0000000F
+P10DR_PB1               Constant 00000000
+P10IO_PB1               Constant 00000000
+P10PU_PB1               Constant 00000001
+P10WU_PB1               Constant 00000000
+P11DR_PB0               Constant 00000000
+P11IO_PB0               Constant 00000000
+P11PU_PB0               Constant 00000000
+P11WU_PB0               Constant 00000000
+P13DR_PA3               Constant 00000000
+P13IO_PA3               Constant 00000000
+P13PU_PA3               Constant 00000000
+P4DR_PB6                Constant 00000000
+P4IO_PB6                Constant 00000000
+P4PU_PB6                Constant 00000001
+P4WU_PB6                Constant 00000000
+P6DR_PB5                Constant 00000000
+P6IO_PB5                Constant 00000000
+P6PU_PB5                Constant 00000001
+P6WU_PB5                Constant 00000000
+P7DR_PB4                Constant 00000000
+P7IO_PB4                Constant 00000000
+P7PU_PB4                Constant 00000001
+P7WU_PB4                Constant 00000000
+P8DR_PB3                Constant 00000000
+P8IO_PB3                Constant 00000000
+P8PU_PB3                Constant 00000000
+P8WU_PB3                Constant 00000000
+P9DR_PB2                Constant 00000000
+P9IO_PB2                Constant 00000000
+P9PU_PB2                Constant 00000001
+P9WU_PB2                Constant 00000000
+PADR_SET                Define   PRFCEDR_PA0|(PRFMOSIDR_PA1<<1)|(PRFSCKDR_PA2<<2)|(P13DR_PA3<<3)
+PAIO_SET                Define   PRFCEIO_PA0|(PRFMOSIIO_PA1<<1)|(PRFSCKIO_PA2<<2)|(P13IO_PA3<<3)
+PAPU_SET                Define   PRFCEPU_PA0|(PRFMOSIPU_PA1<<1)|(PRFSCKPU_PA2<<2)|(P13PU_PA3<<3)
+PBDR_SET                Define   P11DR_PB0|(P10DR_PB1<<1)|(P9DR_PB2<<2)|(P8DR_PB3<<3)|(P7DR_PB4<<4)|(P6DR_PB5<<5)|(P4DR_PB6<<6)|(RFCSNDR_PB7<<7)
+PBIO_SET                Define   P11IO_PB0|(P10IO_PB1<<1)|(P9IO_PB2<<2)|(P8IO_PB3<<3)|(P7IO_PB4<<4)|(P6IO_PB5<<5)|(P4IO_PB6<<6)|(RFCSNIO_PB7<<7)
+PBPU_SET                Define   P11PU_PB0|(P10PU_PB1<<1)|(P9PU_PB2<<2)|(P8PU_PB3<<3)|(P7PU_PB4<<4)|(P6PU_PB5<<5)|(P4PU_PB6<<6)|(RFCSNPU_PB7<<7)
+PBWU_SET                Define   P11WU_PB0|(P10WU_PB1<<1)|(P9WU_PB2<<2)|(P8WU_PB3<<3)|(P7WU_PB4<<4)|(P6WU_PB5<<5)|(P4WU_PB6<<6)|(RFCSNWU_PB7<<7)
+PCHBUF                  Constant 0000000A
+PCL                     Constant 00000002
+PCON                    Constant 00000008
+PCON_SET                Constant 00000088
+PCON1                   Constant 0000000F
+PF_PA_DIR_CTRL          Constant 00000005
+PF_PB_DIR_CTRL          Constant 00000006
+PF_PB_OD_CTRL           Constant 0000000C
+PF_PS0_CNT              Constant 0000000A
+PF_PWR_CTRL1            Constant 0000000F
+PIN_CE                  Define   PORTA,0
+PIN_CLK                 Define   PORTA,1
+PIN_CSN                 Define   PORTB,7
+PIN_LAMP                Define   PORTB,2
+PIN_MB                  Define   PORTB,6
+PIN_MF                  Define   PORTB,5
+PIN_ML                  Define   PORTB,4
+PIN_MOSI                Define   PORTA,2
+PIN_MR                  Define   PORTB,1
+PORTA                   Constant 00000005
+PORTB                   Constant 00000006
+PR_FILE_SEL             Constant 00000004
+PR_INDIR_ADDR           Constant 00000000
+PR_INT_CTRL             Constant 0000000E
+PR_INT_FLAG             Constant 0000000F
+PR_PA_DATA              Constant 00000005
+PR_PAB_PL_CTRL          Constant 0000000B
+PR_PB_DATA              Constant 00000006
+PR_PB_PH_CTRL           Constant 0000000C
+PR_PB_WAKEUP_CTRL       Constant 00000009
+PR_PCHIGH_DATA          Constant 0000000A
+PR_PCLOW_DATA           Constant 00000002
+PR_PWR_CTRL             Constant 00000008
+PR_STATUS               Constant 00000003
+PR_TMR0_DATA            Constant 00000001
+PRCH0_CTM               Define   12
+PRCH1_CTM               Define   38
+PRCH2_CTM               Define   69
+PRFCEDR_PA0             Constant 00000000
+PRFCEIO_PA0             Constant 00000000
+PRFCEPU_PA0             Constant 00000001
+PRFMOSIDR_PA1           Constant 00000000
+PRFMOSIIO_PA1           Constant 00000000
+PRFMOSIPU_PA1           Constant 00000001
+PRFSCKDR_PA2            Constant 00000000
+PRFSCKIO_PA2            Constant 00000000
+PRFSCKPU_PA2            Constant 00000001
+PS_BZ1_CTRL             Constant 00000005
+PS_IR_CTRL              Constant 00000006
+PS_PS1_CNT              Constant 00000004
+PS_PWM1_DUTY            Constant 00000003
+PS_SYS_CTRL             Constant 0000000F
+PS_TBHIGH_ADDR          Constant 00000007
+PS_TBHIGH_DATA          Constant 00000008
+PS_TMR1_CTRL1           Constant 00000001
+PS_TMR1_CTRL2           Constant 00000002
+PS_TMR1_DATA            Constant 00000000
+PS0CV                   Constant 0000000A
+PS1CV                   Constant 00000004
+PWM1DUTY                Constant 00000003
+READDATA_VTM            Constant 0000002A
+RF_CHANNEL_CHOICE       Label    000002F9
+RF_CHANNEL_CHOICE_END   Label    00000320
+RF_CHANNEL_CHOICE_OUT   Label    0000031F
+RF_CHANNEL_CHOICE0      Label    000002FA
+RF_CHANNEL_CHOICE01     Label    00000300
+RF_CHANNEL_CHOICE1      Label    00000318
+RF_CHANNEL_CHOICE2      Label    00000310
+RF_CHANNEL_CHOICE3      Label    00000308
+RF_CHANNEL_CHOICE4      Label    00000302
+RF_IDLE_MODE            Label    0000024B
+RF_MIS_REG              Label    0000023B
+RF_POWR                 Label    00000032
+RF_RX_MODE              Label    00000246
+RF_RX_MODE1             Label    00000248
+RF_SCR                  Label    00000041
+RF_SCR_REG              Label    0000023F
+RF_TX_MODE              Label    00000243
+RF_TX_MODE1             Label    00000244
+RF_WORK_MODE            Label    0000024C
+RF_WORK_MODE1           Label    00000250
+RFCSNDR_PB7             Constant 00000001
+RFCSNIO_PB7             Constant 00000000
+RFCSNPU_PB7             Constant 00000001
+RFCSNWU_PB7             Constant 00000000
+RFSTATUS_CTM            Define   0X61
+RFVALUE_VTM             Constant 0000002B
+ROLL_10_75_STEP_END     Label    000002CE
+ROLL_CH_EQUAL           Label    000002EF
+ROLL_CHANNEL            Label    0000026F
+ROLL_CHANNEL_END        Label    000002C0
+ROLL_CHANNEL_LIMITED    Label    000002AF
+ROLL_CHANNEL1           Label    00000279
+ROLL_CHANNEL2           Label    0000028E
+ROLL_CHANNEL2_          Label    000002DA
+ROLL_CHANNEL2_END       Label    000002E9
+ROLL_CHANNEL2_LOOP      Label    000002E2
+ROLL_CHANNEL21          Label    000002A6
+ROLL_CHANNEL22          Label    00000296
+ROLL_STEP_0_75          Label    000002C1
+ROLL_STEP_0_75_END      Label    000002C8
+ROLL_STEP_0_78          Label    000002CF
+ROLL_STEP_0_78_END      Label    000002D7
+ROLL_STEP0              Label    00000277
+ROLL_STEP1              Label    0000027F
+ROLL_STEP11             Label    0000028C
+ROLL0                   Label    00000003
+ROLL1                   Label    00000004
+ROLL2                   Label    00000005
+ROLL3                   Label    00000006
+RX_ADDR                 Define   HEADRAM_ADR+32
+RX_DATA_DECODE          Label    000000A3
+RX_DATA_LOOP            Label    000000A6
+RX_PAIR_FIRST           Label    000000F7
+RX_PAIR_FIRST_JUAGE     Label    00000121
+RX_PAIR_FIRST_UPROLL    Label    000000E9
+RX_PAIR_ROLL            Label    00000137
+RX_PAIR_ROLL_NEXT       Label    00000139
+RX_PAIR_TXROLL_NEXT     Label    000000D9
+RX_PAIR_TXROLL_NEXT1    Label    000000FC
+RX_TXDATA_CK            Label    0000010F
+RX_TXDATA_CK_DECODE     Label    00000127
+RX_WAIT_NEXT            Label    00000142
+RX_WAIT_OK              Label    00000090
+RXCH0_VTM               Constant 0000001D
+RXCH1_VTM               Constant 0000001E
+RXCH2_VTM               Constant 0000001F
+RXDATA_LENGTH_CTM       Define   11
+SCAN_MODE               Label    00000176
+SCAN_MODE_END           Label    0000018B
+SCAN_MODE_NEXT          Label    00000180
+SCAN_PEAK               Label    00000147
+SCAN_SLEEP              Label    0000018C
+SCAN_SLEEP_END          Label    0000019D
+SCRAMBLE_CTM            Define   0X1A
+SCRAMBLEP_CTM           Define   0X25
+SENDDATA0_VTM           Constant 00000010
+SENDDATA1_VTM           Constant 00000011
+SENDDATA2_VTM           Constant 00000012
+SENDDATA3_VTM           Constant 00000013
+SENDDATA4_VTM           Constant 00000014
+SENDDATA5_VTM           Constant 00000015
+SENDDATA6_VTM           Constant 00000016
+SENDDATA7_VTM           Constant 00000017
+SENDDATA8_VTM           Constant 00000018
+SENDDATA9_VTM           Constant 00000019
+SLEEPING                Label    00000198
+SPI_R                   Label    00000256
+SPI_R_DATA              Label    0000026C
+SPI_RW                  Label    00000257
+SPI_RW_LOOP             Label    0000025E
+SPI_RW_READY            Label    0000025B
+SPI_SOLO_REG            Label    00000251
+SPI_SOLO_REG1           Label    00000253
+SPI_W_DATA              Label    00000258
+STARTLCH_CTM            Define   10
+STATUS                  Constant 00000003
+T1CR1                   Constant 00000001
+T1CR2                   Constant 00000002
+TABLE_RF_REG            Label    00000009
+TBHD                    Constant 00000008
+TBHP                    Constant 00000007
+TEMP_VTM                Constant 00000027
+TEMPDATA_VTM            Constant 00000026
+TEST_VTM                Constant 0000002D
+TESTCH0_CTM             Define   8
+TESTCH1_CTM             Define   41
+TESTCH2_CTM             Define   73
+TMR0                    Constant 00000001
+TMR1                    Constant 00000000
+TX_ADDR                 Define   HEADRAM_ADR+32
+TX_SEND_LOOP            Label    0000007B
+TX_WAIT_DELAY           Label    00000144
+TXCH0_VTM               Constant 0000001A
+TXCH1_VTM               Constant 0000001B
+TXCH2_VTM               Constant 0000001C
+TXDATA_LENGTH_CTM       Define   7
+UPDATA_RXCH             Label    00000164
+UPDATA_TXCH             Label    00000152
+V_COUNTPWM              Constant 00000031
+V_FBSTARTRUN            Constant 00000035
+V_FBTIME                Constant 00000034
+V_LOST1T                Constant 00000037
+V_LOSTT                 Constant 00000036
+V_MOTORFB               Constant 00000032
+V_PAIRTIMECT            Constant 00000038
+V_RXROLL0               Constant 00000020
+V_RXROLL1               Constant 00000021
+V_RXROLL2               Constant 00000022
+V_RXROLL3               Constant 00000023
+V_SYSTEM0T              Constant 00000030
+V_SYSTEM1T              Constant 0000002F
+V_SYSTEMT               Constant 0000002E
+V_WORKFLAG              Constant 00000024
+V_WORKFLAG1             Constant 00000025
+V_WORKST                Constant 00000033
+WAKE_CHECK              Label    0000019C
+WDIS                    Constant 00000000
+WEN                     Constant 00000001
+WRITEDATA_VTM           Constant 00000029
+ZF                      Define   STATUS,2
+
+
+SOURCE FILE TABLE
+000 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm
+001 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\NY8A053D.H
+002 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\USER_SET.asm
+003 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\RAM_MAP.asm
+004 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\IO_DEFINE_SET.asm
+005 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\main.asm
+006 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\SLEEP_MODE.asm
+007 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MOTOR.asm
+008 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\Lamp_Control.asm
+009 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\RF_config.asm
+00a E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\F_DELAY.asm
+00b E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\INITIAL_REG.asm
+00c E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\INTERRUPT.asm
+
+PROCESSOR    = NY8A053D (8 bits) 
+PROGRAM ROM  = 0x00000000 - 0x000003FF
+DATA ROM     = 0x00000000 - 0x000003FF
+SRAM / SFR   = 0x00000000 - 0x00000000

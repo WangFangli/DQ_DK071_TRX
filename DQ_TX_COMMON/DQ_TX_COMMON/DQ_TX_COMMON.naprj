@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup Condition="">
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Checksum</AssemblyName>
+    <Bank0Only>False</Bank0Only>
+    <BuildNYASMVersion>NYASM 2.30 [Build: 210514.00]</BuildNYASMVersion>
+    <BuildNYIDEVersion>NYIDE 4.40 [Build: 210930.00]</BuildNYIDEVersion>
+    <ChipId>NY8A053D</ChipId>
+    <ClientName>DQ</ClientName>
+    <Configuration>Debug</Configuration>
+    <GenAsmListFile>True</GenAsmListFile>
+    <GenListFile>True</GenListFile>
+    <GenMapFile>True</GenMapFile>
+    <InitializeBss>False</InitializeBss>
+    <IsBankselOpt>True</IsBankselOpt>
+    <NYASMInstallDir>E:\TOOL\NY九齐\IDE\NYASM\</NYASMInstallDir>
+    <NYIDEInstallDir>E:\TOOL\NY九齐\IDE\NYIDE\</NYIDEInstallDir>
+    <OutputType>bin</OutputType>
+    <Platform>AsmNy8</Platform>
+    <ProgramChecksum>On</ProgramChecksum>
+    <ProjectGuid>{F29C2C2D-1497-4F76-9E02-5CD332E63174}</ProjectGuid>
+    <ProjectOptionChanged>False</ProjectOptionChanged>
+    <ReservedInterruptRam>2</ReservedInterruptRam>
+    <ReservedRam>8</ReservedRam>
+    <RootNamespace>Checksum</RootNamespace>
+    <TrimSetting>+ 0%</TrimSetting>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="DQ_TX_COMMON.cb" EntryPoint="false" MetaData="" />
+    <Compile Include="F_DELAY.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="INITIAL_REG.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="INTERRUPT.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="IO_define_set.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="Lamp_Control.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="main.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="MOTOR.asm" EntryPoint="false" MetaData="" />
+    <None Include="NY8A053D.H" EntryPoint="false" MetaData="" />
+    <Compile Include="RAM_MAP.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="RF_config.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="ScanButton.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="SLEEP_MODE.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="StartRun.asm" EntryPoint="true" MetaData="" />
+    <Compile Include="TEST_MODE_ENTER.asm" EntryPoint="false" MetaData="" />
+    <Compile Include="USER_SET.asm" EntryPoint="false" MetaData="" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Client: DQ" EntryPoint="false" MetaData="" />
+    <Reference Include="Config Block: DQ_TX_COMMON.cb" EntryPoint="false" MetaData="" />
+    <Reference Include="IC Body: NY8A053D" EntryPoint="false" MetaData="" />
+  </ItemGroup>
+  <Properties>
+    <Array name="ActionFiles" />
+    <Array name="bookmarks">
+      <Element value="Breakpoint|E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\main.asm|457|1|True|Break||||||||" />
+      <Element value="Breakpoint|E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\main.asm|501|1|True|Break||||||||" />
+      <Element value="Breakpoint|E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\SLEEP_MODE.asm|16|4|True|Break||||||||" />
+      <Element value="Breakpoint|E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\main.asm|88|1|True|Break||||||||" />
+    </Array>
+    <Array name="DisassemblyPadColumnWidthInfo">
+      <Element value="AddrWidth|60" />
+      <Element value="CodeWidth|140" />
+      <Element value="ArrowWidth|20" />
+    </Array>
+    <Array name="EEPROMOverwriteData" />
+    <Array name="ExternalResource" />
+    <Array name="files">
+      <Element value="main.asm|False" />
+      <Element value="StartRun.asm|False" />
+      <Element value="INTERRUPT.asm|False" />
+      <Element value="Lamp_Control.asm|False" />
+      <Element value="ScanButton.asm|False" />
+      <Element value="RF_config.asm|False" />
+      <Element value="USER_SET.asm|True" />
+      <Element value="MOTOR.asm|False" />
+      <Element value="IO_define_set.asm|False" />
+      <Element value="SLEEP_MODE.asm|False" />
+      <Element value="TEST_MODE_ENTER.asm|False" />
+      <Element value="F_DELAY.asm|False" />
+      <Element value="INITIAL_REG.asm|False" />
+    </Array>
+    <Array name="InstrumentFiles" />
+    <Array name="MelodyDatabaseFiles" />
+    <Array name="MusicFiles" />
+    <Array name="RegisterPadExpandInfo">
+      <Element value="0|True" />
+      <Element value="100|False" />
+      <Element value="101|False" />
+      <Element value="102|False" />
+      <Element value="103|False" />
+      <Element value="104|False" />
+      <Element value="105|False" />
+      <Element value="106|False" />
+      <Element value="107|False" />
+      <Element value="108|False" />
+      <Element value="109|False" />
+      <Element value="110|False" />
+      <Element value="111|False" />
+      <Element value="112|False" />
+      <Element value="113|False" />
+      <Element value="1|True" />
+      <Element value="200|False" />
+      <Element value="201|False" />
+      <Element value="202|False" />
+      <Element value="203|False" />
+      <Element value="204|False" />
+      <Element value="2|True" />
+      <Element value="300|False" />
+      <Element value="301|False" />
+      <Element value="302|False" />
+      <Element value="303|False" />
+      <Element value="304|False" />
+      <Element value="305|False" />
+      <Element value="306|False" />
+      <Element value="307|False" />
+      <Element value="308|False" />
+      <Element value="309|False" />
+    </Array>
+    <Array name="VoiceFiles" />
+    <Array name="WatchItemInfo">
+      <Element value="V_WorkFlag|" />
+      <Element value="TXCH0_VTM|" />
+      <Element value="TXCH1_VTM|" />
+      <Element value="TXCH2_VTM|" />
+      <Element value="RXCH0_VTM|" />
+      <Element value="RXCH1_VTM|" />
+      <Element value="RXCH2_VTM|" />
+      <Element value="RFValue_VTM|" />
+      <Element value="ReadData_VTM|" />
+      <Element value="Delay_VTM|" />
+      <Element value="TempData_VTM|" />
+      <Element value="sendData0_VTM|" />
+      <Element value="sendData1_VTM|" />
+      <Element value="V_RXROLL0|" />
+      <Element value="V_RXROLL1|" />
+      <Element value="V_RXROLL2|" />
+      <Element value="V_RXROLL3|" />
+      <Element value="sendData2_VTM|" />
+      <Element value="sendData3_VTM|" />
+      <Element value="sendData4_VTM|" />
+      <Element value="sendData5_VTM|" />
+      <Element value="sendData6_VTM|" />
+      <Element value="sendData7_VTM|" />
+      <Element value="WriteData_VTM|" />
+      <Element value="V_WorkST|" />
+      <Element value="V_MotorFB|" />
+      <Element value="V_System1T|" />
+    </Array>
+    <Array name="WatchPadColumnWidthInfo">
+      <Element value="NameWidth|242" />
+      <Element value="AddrWidth|112" />
+      <Element value="ValWidth|100" />
+      <Element value="PageWidth|115" />
+    </Array>
+  </Properties>
+</Project>

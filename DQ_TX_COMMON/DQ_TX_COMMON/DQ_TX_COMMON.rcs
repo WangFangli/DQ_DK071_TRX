@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RcsFileInfo Version="1">
+  <BinFile FileName="DQ_TX_COMMON.bin" Chip="NY8A053D" CodeChecksum="06B63F" FileChecksum="04926E" Client="DQ" />
+  <RollingCodeSetting Mode="Custom" InstructionType="MOVIA_RETIA" Repeat="true">
+    <Custom Address="3" />
+    <Custom Address="4" />
+    <Custom Address="5" />
+    <Custom Address="6" />
+  </RollingCodeSetting>
+  <InsertValue>
+    <StartValue>607404851</StartValue>
+    <EndValue>4294967295</EndValue>
+    <CurrentValue>591751049</CurrentValue>
+    <StepValue>1</StepValue>
+  </InsertValue>
+</RcsFileInfo>

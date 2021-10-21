@@ -1,0 +1,349 @@
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (15) E001B:    invalid decimal number 'initial_routine'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (15) E0027:    'INITIAL_ROUTINE' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (16) E001B:    invalid decimal number 'delay_50ms'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (16) E0027:    'DELAY_50ms' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (17) E001B:    invalid decimal number 'initial_routine'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (17) E0027:    'INITIAL_ROUTINE' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (18) E001B:    invalid decimal number 'clear_sram'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (18) E0027:    'CLEAR_SRAM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (22) E001B:    invalid decimal number 'initial_rf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (22) E0027:    'INITIAL_RF' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (23) E001B:    invalid decimal number '_flag_rf_reset'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (23) E0027:    '_flag_RF_Reset' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (23) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (25) E001B:    invalid decimal number 'c_testmode_en'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (25) E0027:    'C_TestMode_En' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (28) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (28) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (28) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (29) E001B:    invalid decimal number '_flag_buildled'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (29) E0027:    '_flag_BuildLED' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (29) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (32) E001B:    invalid decimal number '_flag_buildled'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (32) E0027:    '_flag_BuildLED' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (32) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (34) E001B:    invalid decimal number '_flag_start'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (34) E0027:    '_flag_Start' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (34) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (36) E001B:    invalid decimal number 'v_system1t'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (36) E0027:    'V_system1T' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (38) E001B:    invalid decimal number 'cf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (38) E0027:    'cf' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (38) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (40) E001B:    invalid decimal number '_flag_start'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (40) E0027:    '_flag_Start' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (40) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (42) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (42) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (42) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (44) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (44) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (44) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (45) E001B:    invalid decimal number 'v_systemt'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (45) E0027:    'V_systemT' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (46) E001B:    invalid decimal number 'v_system1t'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (46) E0027:    'V_system1T' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (49) E001B:    invalid decimal number 'v_systemt'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (49) E0027:    'V_systemT' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (50) E001B:    invalid decimal number 'zf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (50) E0027:    'zf' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (50) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (51) E001B:    invalid decimal number 'v_system1t'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (51) E0027:    'V_system1T' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (53) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (53) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (53) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (55) E001B:    invalid decimal number 'c_longpair'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (55) E0027:    'C_longPair' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (56) E001B:    invalid decimal number '_flag_start'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (56) E0027:    '_flag_Start' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (56) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (57) E001B:    invalid decimal number 'c_shortpair'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (57) E0027:    'C_shortPair' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (58) E001B:    invalid decimal number 'v_system1t'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (58) E0027:    'V_system1T' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (59) E001B:    invalid decimal number 'cf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (59) E0027:    'cf' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (59) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (61) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (61) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (61) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (62) E001B:    invalid decimal number '_flag_buildled'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (62) E0027:    '_flag_BuildLED' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (62) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (65) E001B:    invalid decimal number '_flag'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (65) E0027:    '_flag' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (65) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (66) E001B:    invalid decimal number 'v_key'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (66) E0027:    'V_key' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (67) E001B:    invalid decimal number 'zf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (67) E0027:    'zf' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (67) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (69) E001B:    invalid decimal number 'c_5min'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (69) E0027:    'C_5min' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (72) E001B:    invalid decimal number 'c_2s'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (72) E0027:    'C_2s' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (74) E001B:    invalid decimal number 'v_system1t'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (74) E0027:    'V_system1T' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (75) E001B:    invalid decimal number 'cf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (75) E0027:    'cf' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (75) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (77) E001B:    invalid decimal number '_flag_sleep'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (77) E0027:    '_flag_sleep' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (77) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (79) E001B:    invalid decimal number 'scan_sleep'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (79) E0027:    'SCAN_SLEEP' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (80) E001B:    invalid decimal number 'scan_button'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (80) E0027:    'SCAN_BUTTON' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (81) E001B:    invalid decimal number 'lamp_control'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (81) E0027:    'LAMP_CONTROL' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (82) E001B:    invalid decimal number 'initial_rf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (82) E0027:    'INITIAL_RF' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (84) E001B:    invalid decimal number 'c_testmode_en'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (84) E0027:    'C_TestMode_En' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (97) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (97) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (97) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (100) E001B:    invalid decimal number 'v_key'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (100) E0027:    'V_key' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (101) E001B:    invalid decimal number 'senddata0_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (101) E0027:    'sendData0_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (104) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (104) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (104) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (106) E001B:    invalid decimal number 'senddata1_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (106) E0027:    'sendData1_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (108) E001B:    invalid decimal number 'v_rxroll0'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (108) E0027:    'V_RXROLL0' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (109) E001B:    invalid decimal number 'senddata2_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (109) E0027:    'sendData2_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (110) E001B:    invalid decimal number 'v_rxroll1'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (110) E0027:    'V_RXROLL1' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (111) E001B:    invalid decimal number 'senddata3_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (111) E0027:    'sendData3_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (112) E001B:    invalid decimal number 'v_rxroll2'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (112) E0027:    'V_RXROLL2' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (113) E001B:    invalid decimal number 'senddata4_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (113) E0027:    'sendData4_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (114) E001B:    invalid decimal number 'v_rxroll3'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (114) E0027:    'V_RXROLL3' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (115) E001B:    invalid decimal number 'senddata5_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (115) E0027:    'sendData5_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (116) E001B:    invalid decimal number 'rf_channel_choice'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (116) E0027:    'RF_CHANNEL_CHOICE' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (117) E001B:    invalid decimal number 'rf_idle_mode'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (117) E0027:    'RF_IDLE_MODE' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (118) E001B:    invalid decimal number 'clr_w_fifo'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (118) E0027:    'CLR_W_FIFO' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (120) E001B:    invalid decimal number 'fifo_en_ctm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (120) E0027:    'FIFO_EN_CTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (121) E001B:    invalid decimal number 'spi_rw'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (121) E0027:    'SPI_RW' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (122) E0019:    invalid hexadecimal number 'txdata_length_ctm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (122) E0027:    'TXData_Length_CTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (123) E001B:    invalid decimal number 'senddata6_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (123) E0027:    'sendData6_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (124) E001B:    invalid decimal number 'delay_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (124) E0027:    'Delay_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (125) E001B:    invalid decimal number 'spi_w_data'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (125) E0027:    'SPI_W_DATA' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (126) E001B:    invalid decimal number 'headram_adr'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (126) E0027:    'HeadRAM_ADR' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (127) E001B:    invalid decimal number 'fsr'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (127) E0027:    'FSR' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (129) E001B:    invalid decimal number 'indf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (129) E0027:    'INDF' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (130) E001B:    invalid decimal number 'senddata6_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (130) E0027:    'sendData6_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (131) E001B:    invalid decimal number 'spi_w_data'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (131) E0027:    'SPI_W_DATA' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (132) E001B:    invalid decimal number 'delay_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (132) E0027:    'Delay_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (134) E001B:    invalid decimal number 'pin_csn'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (134) E0027:    'PIN_CSN' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (134) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (135) E001B:    invalid decimal number 'rf_tx_mode'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (135) E0027:    'RF_TX_MODE' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (136) E001B:    invalid decimal number 'delay_1ms'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (136) E0027:    'DELAY_1ms' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (139) E001B:    invalid decimal number 'zf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (139) E0027:    'zf' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (139) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (141) E001B:    invalid decimal number '_flag_rf_reset'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (141) E0027:    '_flag_RF_Reset' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (141) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (144) E001B:    invalid decimal number 'c_testmode_en'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (144) E0027:    'C_TestMode_En' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (148) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (148) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (148) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (150) E001B:    invalid decimal number 'en_rx_mode'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (150) E0027:    'EN_RX_MODE' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (151) E001B:    invalid decimal number 'delay_4ms'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (151) E0027:    'DELAY_4ms' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (156) E001B:    invalid decimal number 'zf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (156) E0027:    'zf' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (156) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (159) E0097:    unrecognized statement 
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (160) E001B:    invalid decimal number 'spi_r'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (160) E0027:    'SPI_R' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (161) E001B:    invalid decimal number 'spi_r_data'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (161) E0027:    'SPI_R_DATA' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (162) E001B:    invalid decimal number 'pin_csn'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (162) E0027:    'PIN_CSN' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (162) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (163) E001B:    invalid decimal number 'tempdata_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (163) E0027:    'TempData_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (165) E001B:    invalid decimal number 'fifo_en_ctm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (165) E0027:    'FIFO_EN_CTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (166) E001B:    invalid decimal number 'spi_r'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (166) E0027:    'SPI_R' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (167) E001B:    invalid decimal number 'spi_r_data'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (167) E0027:    'SPI_R_DATA' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (168) E001B:    invalid decimal number 'readdata_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (168) E0027:    'ReadData_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (169) E001B:    invalid decimal number 'delay_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (169) E0027:    'Delay_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (171) E0097:    unrecognized statement 
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (173) E001B:    invalid decimal number 'dataram_adr'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (173) E0027:    'DataRAM_ADR' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (174) E001B:    invalid decimal number 'fsr'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (174) E0027:    'FSR' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (177) E001B:    invalid decimal number 'readdata_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (177) E0027:    'ReadData_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (177) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (178) E001B:    invalid decimal number 'spi_r_data'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (178) E0027:    'SPI_R_DATA' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (179) E0097:    unrecognized statement 
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (180) E001B:    invalid decimal number 'fsr'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (180) E0027:    'FSR' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (181) E001B:    invalid decimal number 'delay_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (181) E0027:    'Delay_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (183) E001B:    invalid decimal number 'pin_csn'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (183) E0027:    'PIN_CSN' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (183) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (184) E001B:    invalid decimal number 'readdata_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (184) E0027:    'ReadData_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (185) E001B:    invalid decimal number 'senddata9_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (185) E0027:    'sendData9_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (186) E001B:    invalid decimal number 'zf'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (186) E0027:    'zf' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (186) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (189) E001B:    invalid decimal number 'senddata0_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (189) E0027:    'sendData0_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (190) E0097:    unrecognized statement 
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (192) E001B:    invalid decimal number 'check_roll_tx'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (192) E0027:    'CHECK_ROLL_TX' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (193) E001B:    invalid decimal number '_flag_temp'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (193) E0027:    '_flag_Temp' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (193) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (196) E001B:    invalid decimal number 'senddata5_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (196) E0027:    'sendData5_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (197) E0019:    invalid hexadecimal number 'rxroll0_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (197) E0027:    'RXROLL0_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (198) E001B:    invalid decimal number 'senddata6_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (198) E0027:    'sendData6_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (199) E0019:    invalid hexadecimal number 'rxroll1_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (199) E0027:    'RXROLL1_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (200) E001B:    invalid decimal number 'senddata7_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (200) E0027:    'sendData7_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (201) E0019:    invalid hexadecimal number 'rxroll2_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (201) E0027:    'RXROLL2_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (202) E001B:    invalid decimal number 'senddata8_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (202) E0027:    'sendData8_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (203) E0019:    invalid hexadecimal number 'rxroll3_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (203) E0027:    'RXROLL3_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (205) E001B:    invalid decimal number '_flag_build'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (205) E0027:    '_flag_Build' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (205) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (207) E001B:    invalid decimal number 'rf_idle_mode'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (207) E0027:    'RF_IDLE_MODE' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (208) E001B:    invalid decimal number 'clr_w_fifo'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (208) E0027:    'CLR_W_FIFO' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (209) E001B:    invalid decimal number 'clr_r_fifo'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (209) E0027:    'CLR_R_FIFO' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (213) E001B:    invalid decimal number 'delay_4ms'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (213) E0027:    'DELAY_4ms' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (219) E001B:    invalid decimal number 'rfstatus_ctm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (219) E0027:    'RFStatus_CTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (220) E001B:    invalid decimal number 'spi_r'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (220) E0027:    'SPI_R' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (221) E001B:    invalid decimal number 'spi_r_data'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (221) E0027:    'SPI_R_DATA' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (222) E001B:    invalid decimal number 'pin_csn'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (222) E0027:    'PIN_CSN' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (222) E00AF:    missing the operand !
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (224) E0097:    unrecognized statement 
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (225) E001B:    invalid decimal number 'rfchannel_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (225) E0027:    'RFChannel_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (228) E001B:    invalid decimal number 'tempdata_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (228) E0027:    'TempData_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (234) E001B:    invalid decimal number 'roll0'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (234) E0027:    'ROLL0' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (235) E001B:    invalid decimal number 'senddata0_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (235) E0027:    'sendData0_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (236) E001B:    invalid decimal number 'roll1'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (236) E0027:    'ROLL1' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (237) E001B:    invalid decimal number 'senddata1_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (237) E0027:    'sendData1_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (238) E001B:    invalid decimal number 'roll2'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (238) E0027:    'ROLL2' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (239) E001B:    invalid decimal number 'senddata2_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (239) E0027:    'sendData2_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (240) E001B:    invalid decimal number 'roll3'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (240) E0027:    'ROLL3' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (241) E001B:    invalid decimal number 'senddata3_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (241) E0027:    'sendData3_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (242) E0019:    invalid hexadecimal number 'addr_c'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (242) E0027:    'Addr_CH' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (243) E001B:    invalid decimal number 'senddata6_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (243) E0027:    'sendData6_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (244) E001B:    invalid decimal number 'roll_channel'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (244) E0027:    'ROLL_CHANNEL' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (245) E001B:    invalid decimal number 'senddata7_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (245) E0027:    'sendData7_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (246) E0019:    invalid hexadecimal number 'txch0_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (246) E0027:    'TXCH0_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (247) E001B:    invalid decimal number 'senddata8_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (247) E0027:    'sendData8_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (248) E0019:    invalid hexadecimal number 'txch1_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (248) E0027:    'TXCH1_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (249) E001B:    invalid decimal number 'senddata9_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (249) E0027:    'sendData9_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (250) E0019:    invalid hexadecimal number 'txch2_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (250) E0027:    'TXCH2_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (255) E0019:    invalid hexadecimal number 'rxroll0_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (255) E0027:    'RXROLL0_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (256) E001B:    invalid decimal number 'senddata0_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (256) E0027:    'sendData0_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (257) E0019:    invalid hexadecimal number 'rxroll1_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (257) E0027:    'RXROLL1_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (258) E001B:    invalid decimal number 'senddata1_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (258) E0027:    'sendData1_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (259) E0019:    invalid hexadecimal number 'rxroll2_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (259) E0027:    'RXROLL2_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (260) E001B:    invalid decimal number 'senddata2_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (260) E0027:    'sendData2_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (261) E0019:    invalid hexadecimal number 'rxroll3_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (261) E0027:    'RXROLL3_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (262) E001B:    invalid decimal number 'senddata3_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (262) E0027:    'sendData3_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (263) E0019:    invalid hexadecimal number 'addr_c'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (263) E0027:    'Addr_CH' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (264) E001B:    invalid decimal number 'senddata6_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (264) E0027:    'sendData6_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (265) E001B:    invalid decimal number 'roll_channel'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (265) E0027:    'ROLL_CHANNEL' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (266) E001B:    invalid decimal number 'senddata7_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (266) E0027:    'sendData7_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (267) E0019:    invalid hexadecimal number 'txch0_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (267) E0027:    'TXCH0_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (268) E001B:    invalid decimal number 'senddata8_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (268) E0027:    'sendData8_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (269) E0019:    invalid hexadecimal number 'txch1_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (269) E0027:    'TXCH1_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (270) E001B:    invalid decimal number 'senddata9_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (270) E0027:    'sendData9_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (271) E0019:    invalid hexadecimal number 'txch2_vtm'
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (271) E0027:    'TXCH2_VTM' unknown identifier
+[ Error ] E:\MYPROJECT\2021PROJECT\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MAIN.ASM (272) E00A1:    program is terminated without 'end'

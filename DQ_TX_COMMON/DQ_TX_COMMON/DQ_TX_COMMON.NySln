@@ -1,0 +1,19 @@
+﻿
+Nyquest IDE Solution File, Format Version 1.00
+# NYIDE 4.31.0.2252
+Project("{B1647980-B642-454F-99B0-4BB03538C058}") = "DQ_TX_COMMON", "DQ_TX_COMMON.naprj", "{F29C2C2D-1497-4F76-9E02-5CD332E63174}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AsmNy8 = Debug|AsmNy8
+		Release|AsmNy8 = Release|AsmNy8
+		Debug|AsmNy8 = Debug|AsmNy8
+		Release|AsmNy8 = Release|AsmNy8
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F29C2C2D-1497-4F76-9E02-5CD332E63174}.Debug|AsmNy8.Build.0 = Debug|AsmNy8
+		{F29C2C2D-1497-4F76-9E02-5CD332E63174}.Debug|AsmNy8.ActiveCfg = Debug|AsmNy8
+		{F29C2C2D-1497-4F76-9E02-5CD332E63174}.Release|AsmNy8.Build.0 = Release|AsmNy8
+		{F29C2C2D-1497-4F76-9E02-5CD332E63174}.Release|AsmNy8.ActiveCfg = Release|AsmNy8
+	EndGlobalSection
+EndGlobal
