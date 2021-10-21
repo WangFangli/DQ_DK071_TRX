@@ -1,7 +1,7 @@
 
                     Nyquest Technology Co., Ltd.
 
-NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/21 14:23:05
+NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/21 17:59:55
 
     ADDR  OPCODE/VALUE              LINE   TAG  SOURCE                   STATEMENT    
 
@@ -714,33 +714,41 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ发射共用(�
                                     3-0065      V_lost1T
                                     3-0066      V_PairTimeCT
                                     3-0067      INTStatus_VTM
-                                    3-0068      INTW_VTM    ;//->15?
-                                    3-0069      endc
-                                    3-0070      
-                                    3-0078      endif
-                                    3-0079      
-                                    3-0080      
-                                    3-0081      #define _flag_Build		V_Workflag,0
-                                    3-0082      #define _flag_BuildLED  V_Workflag,1
-                                    3-0083      #define _flag_RF_Reset  V_Workflag,2
-                                    3-0084      #define _flag_test      V_Workflag,3
-                                    3-0085      #define _flag_Carrier   V_Workflag,4
-                                    3-0086      #define _flag_sleep     V_Workflag,5
-                                    3-0087      
-                  1                 3-  88      if C_MODE_RX_En
-                                    3-0089      #define _flag_ScanMode  V_Workflag,6
-                                    3-0092      endif
-                                    3-0093      
-                  1                 3-  94      if C_MODE_RX_En
-                                    3-0095      #define _flag_lostcode  V_Workflag,7
-                                    3-0098      endif
-                                    3-0099      
-                  1                 3- 100      if C_MODE_RX_En
-                                    3-0101      #define _flag_FB		V_Workflag1,0
-                                    3-0104      endif
-                                    3-0105      #define _flag_FB_Stop 	V_Workflag1,1
-                                    3-0106      #define _flag_FB_Brake 	V_Workflag1,2
-                                    3-0107      #define _flag_LRturnTrig	V_Workflag1,3
+                                    3-0068      INTW_VTM    ;//->11?
+                                    3-0069      
+                                    3-0070      V_time0
+                                    3-0071      V_time1
+                                    3-0072      V_time2
+                                    3-0073      endc
+                                    3-0074      
+                                    3-0082      endif
+                                    3-0083      
+                                    3-0084      
+                                    3-0085      #define _flag_Build		V_Workflag,0
+                                    3-0086      #define _flag_BuildLED  V_Workflag,1
+                                    3-0087      #define _flag_RF_Reset  V_Workflag,2
+                                    3-0088      #define _flag_test      V_Workflag,3
+                                    3-0089      #define _flag_Carrier   V_Workflag,4
+                                    3-0090      #define _flag_sleep     V_Workflag,5
+                                    3-0091      
+                  1                 3-  92      if C_MODE_RX_En
+                                    3-0093      #define _flag_ScanMode  V_Workflag,6
+                                    3-0096      endif
+                                    3-0097      
+                  1                 3-  98      if C_MODE_RX_En
+                                    3-0099      #define _flag_lostcode  V_Workflag,7
+                                    3-0102      endif
+                                    3-0103      
+                  1                 3- 104      if C_MODE_RX_En
+                                    3-0105      #define _flag_FB		V_Workflag1,0
+                                    3-0108      endif
+                                    3-0109      #define _flag_FB_Stop 	V_Workflag1,1
+                                    3-0110      #define _flag_FB_Brake 	V_Workflag1,2
+                                    3-0111      #define _flag_LRturnTrig	V_Workflag1,3
+                  1                 3- 112      if C_MODE_RX_En
+                                    3-0113      #define  _flag_FB_RUN       V_Workflag1,4   
+                                    3-0114      #define _flag_FB_SLOW       V_Workflag1,5   ;//FB over time slow speed     
+                                    3-0115      endif
                                     0-0015      #include   		IO_DEFINE_SET.asm
                                     4-0001      ;//*******************************************
                                     4-0002      ;//	2401	  ____________	
@@ -1482,122 +1490,135 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ发射共用(�
                                     7-0023      #define 	C_M_MIN		9	;//6 5 4	
                   1                 7-  24      break
                                     7-0031      endsw
-                                    7-0032      ;//********************************************************
-                19E                 7-  33      MOTOR_CONTROL:
-      19E 0D25                      7-  34         btrsc       _flag_FB_Brake
-      19F 39D1                      7-  35         lgoto       MOTOR_FB_BRAKE_ING
-      1A0 0133                      7-  36         movr        V_WorkST,0
-      1A1 2203                      7-  37         andia       C_FB
-      1A2 0D03                      7-  38         btrsc       zf
-      1A3 39D5                      7-  39         lgoto       MOTOR_FB_STOP      
-      1A4 0C33                      7-  40         btrsc       V_WorkST,_B 
-      1A5 39B0                      7-  41         lgoto       MOTOR_B        
-                1A6                 7-  42      MOTOR_F:
-      1A6 08A5                      7-  43         btrss       _flag_FB_Stop
-      1A7 39AA                      7-  44         lgoto       MOTOR_F_ING
-      1A8 0C25                      7-  45         btrsc       _flag_FB 
-      1A9 39CA                      7-  46         lgoto       MOTOR_FB_BRAKE
-                1AA                 7-  47      MOTOR_F_ING:   
-      1AA 2110                      7-  48         movia       C_M_MAX	;//15
-      1AB 0933                      7-  49         btrss       V_WorkST,_T 
-      1AC 2109                      7-  50         movia       C_M_MIN		;//9
-      1AD 00A6                      7-  51         movar       TempData_VTM
-      1AE 1C25                      7-  52         bcr         _flag_FB 
-      1AF 39B7                      7-  53         lgoto       MOTOR_FB_ING
-                1B0                 7-  54      MOTOR_B:
-      1B0 08A5                      7-  55         btrss       _flag_FB_Stop
-      1B1 39B4                      7-  56         lgoto       MOTOR_B_ING
-      1B2 0825                      7-  57         btrss       _flag_FB 
-      1B3 39CA                      7-  58         lgoto       MOTOR_FB_BRAKE
-                1B4                 7-  59      MOTOR_B_ING: 
-      1B4 2109                      7-  60         movia       C_M_MIN	;//C_M_MAX	;//15
-      1B5 00A6                      7-  61         movar       TempData_VTM
-      1B6 1825                      7-  62         bsr         _flag_FB 
-                1B7                 7-  63      MOTOR_FB_ING:
-      1B7 02B4                      7-  64         clrr        V_FBTime
-      1B8 18A5                      7-  65         bsr         _flag_FB_Stop
-      1B9 05B5                      7-  66         incr        V_FBStartRun,1
-      1BA 09B5                      7-  67         btrss       V_FBStartRun,3
-      1BB 39C3                      7-  68         lgoto       MOTOR_FB_ING1       
-      1BC 02B5                      7-  69         clrr        V_FBStartRun
-                                    7-0070          
-      1BD 0126                      7-  71         movr		TempData_VTM,0
-      1BE 0432                      7-  72         subar		V_MotorFB,0
-      1BF 0126                      7-  73         movr		TempData_VTM,0
-      1C0 0803                      7-  74         btrss       cf    
-      1C1 0532                      7-  75         incr        V_MotorFB,0
-      1C2 00B2                      7-  76         movar		V_MotorFB	
-                                    7-0077          
-                1C3                 7-  78      MOTOR_FB_ING1:    
-      1C3 0132                      7-  79         movr        V_MotorFB,0
-      1C4 2709                      7-  80         subia       C_M_MIN
-      1C5 0803                      7-  81         btrss       cf
-      1C6 39E1                      7-  82         lgoto       MOTOR_FB_END
-      1C7 2109                      7-  83         movia       C_M_MIN
-      1C8 00B2                      7-  84         movar       V_MotorFB
-      1C9 39E1                      7-  85         lgoto       MOTOR_FB_END
-                1CA                 7-  86      MOTOR_FB_BRAKE:
-      1CA 2110                      7-  87         movia       C_M_MAX	;//10
-      1CB 00B2                      7-  88         movar       V_MotorFB
-      1CC 02B4                      7-  89         clrr        V_FBTime
-      1CD 1925                      7-  90         bsr         _flag_FB_Brake
-      1CE 1A86                      7-  91         bsr         PIN_MF
-      1CF 1B06                      7-  92         bsr         PIN_MB 
-      1D0 39E1                      7-  93         lgoto       MOTOR_FB_END
-                1D1                 7-  94      MOTOR_FB_BRAKE_ING:
-      1D1 05B4                      7-  95         incr        V_FBTime,1
-      1D2 0A34                      7-  96         btrss       V_FBTime,4
-      1D3 39E1                      7-  97         lgoto       MOTOR_FB_END
-      1D4 39DA                      7-  98         lgoto       MOTOR_FB_STOP_ING
-                1D5                 7-  99      MOTOR_FB_STOP:
-      1D5 05B4                      7- 100         incr        V_FBTime,1
-      1D6 2150                      7- 101         movia       80
-      1D7 0434                      7- 102         subar       V_FBTime,0
-      1D8 0803                      7- 103         btrss       cf
-      1D9 39DE                      7- 104         lgoto       MOTOR_FB_STOP_ING1
-                1DA                 7- 105      MOTOR_FB_STOP_ING:
-      1DA 02B5                      7- 106         clrr        V_FBStartRun
-      1DB 1D25                      7- 107         bcr         _flag_FB_Brake
-      1DC 1CA5                      7- 108         bcr         _flag_FB_Stop
-      1DD 02B4                      7- 109         clrr        V_FBTime
-                1DE                 7- 110      MOTOR_FB_STOP_ING1:    
-      1DE 02B2                      7- 111         clrr        V_MotorFB
-      1DF 1E86                      7- 112         bcr         PIN_MF
-      1E0 1F06                      7- 113         bcr         PIN_MB 
-                                    7-0114          
-                1E1                 7- 115      MOTOR_FB_END:
-                1E1                 7- 116      MOTOR_LR:
-      1E1 09A5                      7- 117     	btrss		_flag_LRturnTrig
-      1E2 39EE                      7- 118     	lgoto		MOTOR_LR_NOR
-      1E3 05AD                      7- 119     	incr		Test_VTM,1	;//->7ms?
-      1E4 213C                      7- 120     	movia		60
-      1E5 042D                      7- 121     	subar		Test_VTM,0
-      1E6 0803                      7- 122     	btrss		cf
-      1E7 39F5                      7- 123     	lgoto		MOTOR_L
-      1E8 2178                      7- 124     	movia		120
-      1E9 042D                      7- 125     	subar		Test_VTM,0
-      1EA 0803                      7- 126     	btrss		cf
-      1EB 39F8                      7- 127     	lgoto		MOTOR_R
-      1EC 02AD                      7- 128     	clrr		Test_VTM
-      1ED 1DA5                      7- 129     	bcr			_flag_LRturnTrig
-                1EE                 7- 130      MOTOR_LR_NOR:	
-      1EE 0F33                      7- 131         btrsc       V_WorkST,_L 
-      1EF 39F5                      7- 132         lgoto       MOTOR_L
-      1F0 0EB3                      7- 133         btrsc       V_WorkST,_R 
-      1F1 39F8                      7- 134         lgoto       MOTOR_R 
-                1F2                 7- 135      MOTOR_LR_STOP:
-      1F2 1E06                      7- 136         bcr         PIN_ML 
-      1F3 1C86                      7- 137         bcr         PIN_MR 
-      1F4 0010                      7- 138         ret
-                1F5                 7- 139      MOTOR_L:
-      1F5 1C86                      7- 140         bcr         PIN_MR 
-      1F6 1A06                      7- 141         bsr         PIN_ML 
-      1F7 0010                      7- 142         ret
-                1F8                 7- 143      MOTOR_R:
-      1F8 1E06                      7- 144         bcr         PIN_ML 
-      1F9 1886                      7- 145         bsr         PIN_MR 
-      1FA 0010                      7- 146         ret
-                                    7-0147      endif __MOTOR
+                                    7-0032      
+                                    7-0033      #define     C_M_SLOWMIN     2   ;//12.5%
+                                    7-0034      
+                                    7-0035      
+                                    7-0036      #define     C_SLOW_Time     22  ;//25min?
+                                    7-0037      ;//********************************************************
+                19E                 7-  38      MOTOR_CONTROL:
+      19E 0D25                      7-  39         btrsc       _flag_FB_Brake
+      19F 39D1                      7-  40         lgoto       MOTOR_FB_BRAKE_ING
+      1A0 0133                      7-  41         movr        V_WorkST,0
+      1A1 2203                      7-  42         andia       C_FB
+      1A2 0D03                      7-  43         btrsc       zf
+      1A3 39D5                      7-  44         lgoto       MOTOR_FB_STOP      
+      1A4 0C33                      7-  45         btrsc       V_WorkST,_B 
+      1A5 39B0                      7-  46         lgoto       MOTOR_B        
+                1A6                 7-  47      MOTOR_F:
+      1A6 08A5                      7-  48         btrss       _flag_FB_Stop
+      1A7 39AA                      7-  49         lgoto       MOTOR_F_ING
+      1A8 0C25                      7-  50         btrsc       _flag_FB 
+      1A9 39CA                      7-  51         lgoto       MOTOR_FB_BRAKE
+                1AA                 7-  52      MOTOR_F_ING:   
+      1AA 2110                      7-  53         movia       C_M_MAX	;//15
+      1AB 0933                      7-  54         btrss       V_WorkST,_T 
+      1AC 2109                      7-  55         movia       C_M_MIN		;//9
+      1AD 00A6                      7-  56         movar       TempData_VTM
+      1AE 1C25                      7-  57         bcr         _flag_FB 
+      1AF 39B7                      7-  58         lgoto       MOTOR_FB_ING
+                1B0                 7-  59      MOTOR_B:
+      1B0 08A5                      7-  60         btrss       _flag_FB_Stop
+      1B1 39B4                      7-  61         lgoto       MOTOR_B_ING
+      1B2 0825                      7-  62         btrss       _flag_FB 
+      1B3 39CA                      7-  63         lgoto       MOTOR_FB_BRAKE
+                1B4                 7-  64      MOTOR_B_ING: 
+      1B4 2109                      7-  65         movia       C_M_MIN	;//C_M_MAX	;//15
+      1B5 00A6                      7-  66         movar       TempData_VTM
+      1B6 1825                      7-  67         bsr         _flag_FB 
+                1B7                 7-  68      MOTOR_FB_ING:
+                  0                 7-  69      if C_DK071==0
+                                    7-0078      endif
+                                    7-0079      
+      1B7 02B4                      7-  80         clrr        V_FBTime
+      1B8 18A5                      7-  81         bsr         _flag_FB_Stop
+                  0                 7-  82      if C_DK071==0    
+                                    7-0115      endif
+                1B9                 7- 116      MOTOR_FB_OUT_NOR:
+      1B9 05B5                      7- 117         incr        V_FBStartRun,1
+      1BA 09B5                      7- 118         btrss       V_FBStartRun,3
+      1BB 39C3                      7- 119         lgoto       MOTOR_FB_ING1       
+      1BC 02B5                      7- 120         clrr        V_FBStartRun
+                1BD                 7- 121      MOTOR_FB_OUT_NOR1:    
+      1BD 0126                      7- 122         movr		TempData_VTM,0
+      1BE 0432                      7- 123         subar		V_MotorFB,0
+      1BF 0126                      7- 124         movr		TempData_VTM,0
+      1C0 0803                      7- 125         btrss       cf    
+      1C1 0532                      7- 126         incr        V_MotorFB,0
+      1C2 00B2                      7- 127         movar		V_MotorFB	
+                                    7-0128          
+                1C3                 7- 129      MOTOR_FB_ING1:    
+      1C3 0132                      7- 130         movr        V_MotorFB,0
+      1C4 2709                      7- 131         subia       C_M_MIN
+      1C5 0803                      7- 132         btrss       cf
+      1C6 39E1                      7- 133         lgoto       MOTOR_FB_END
+      1C7 2109                      7- 134         movia       C_M_MIN
+      1C8 00B2                      7- 135         movar       V_MotorFB
+      1C9 39E1                      7- 136         lgoto       MOTOR_FB_END
+                1CA                 7- 137      MOTOR_FB_BRAKE:
+      1CA 2110                      7- 138         movia       C_M_MAX	;//10
+      1CB 00B2                      7- 139         movar       V_MotorFB
+      1CC 02B4                      7- 140         clrr        V_FBTime
+      1CD 1925                      7- 141         bsr         _flag_FB_Brake
+      1CE 1A86                      7- 142         bsr         PIN_MF
+      1CF 1B06                      7- 143         bsr         PIN_MB 
+      1D0 39E1                      7- 144         lgoto       MOTOR_FB_END
+                1D1                 7- 145      MOTOR_FB_BRAKE_ING:
+      1D1 05B4                      7- 146         incr        V_FBTime,1
+      1D2 0A34                      7- 147         btrss       V_FBTime,4
+      1D3 39E1                      7- 148         lgoto       MOTOR_FB_END
+      1D4 39DA                      7- 149         lgoto       MOTOR_FB_STOP_ING
+                1D5                 7- 150      MOTOR_FB_STOP:
+                  0                 7- 151      if C_DK071==0
+                                    7-0155      endif
+      1D5 05B4                      7- 156         incr        V_FBTime,1
+      1D6 2150                      7- 157         movia       80
+      1D7 0434                      7- 158         subar       V_FBTime,0
+      1D8 0803                      7- 159         btrss       cf
+      1D9 39DE                      7- 160         lgoto       MOTOR_FB_STOP_ING1
+                1DA                 7- 161      MOTOR_FB_STOP_ING:
+      1DA 02B5                      7- 162         clrr        V_FBStartRun
+      1DB 1D25                      7- 163         bcr         _flag_FB_Brake
+      1DC 1CA5                      7- 164         bcr         _flag_FB_Stop
+      1DD 02B4                      7- 165         clrr        V_FBTime
+                1DE                 7- 166      MOTOR_FB_STOP_ING1:    
+      1DE 02B2                      7- 167         clrr        V_MotorFB
+      1DF 1E86                      7- 168         bcr         PIN_MF
+      1E0 1F06                      7- 169         bcr         PIN_MB 
+                                    7-0170          
+                1E1                 7- 171      MOTOR_FB_END:
+                1E1                 7- 172      MOTOR_LR:
+      1E1 09A5                      7- 173     	btrss		_flag_LRturnTrig
+      1E2 39EE                      7- 174     	lgoto		MOTOR_LR_NOR
+      1E3 05AD                      7- 175     	incr		Test_VTM,1	;//->7ms?
+      1E4 213C                      7- 176     	movia		60
+      1E5 042D                      7- 177     	subar		Test_VTM,0
+      1E6 0803                      7- 178     	btrss		cf
+      1E7 39F5                      7- 179     	lgoto		MOTOR_L
+      1E8 2178                      7- 180     	movia		120
+      1E9 042D                      7- 181     	subar		Test_VTM,0
+      1EA 0803                      7- 182     	btrss		cf
+      1EB 39F8                      7- 183     	lgoto		MOTOR_R
+      1EC 02AD                      7- 184     	clrr		Test_VTM
+      1ED 1DA5                      7- 185     	bcr			_flag_LRturnTrig
+                1EE                 7- 186      MOTOR_LR_NOR:	
+      1EE 0F33                      7- 187         btrsc       V_WorkST,_L 
+      1EF 39F5                      7- 188         lgoto       MOTOR_L
+      1F0 0EB3                      7- 189         btrsc       V_WorkST,_R 
+      1F1 39F8                      7- 190         lgoto       MOTOR_R 
+                1F2                 7- 191      MOTOR_LR_STOP:
+      1F2 1E06                      7- 192         bcr         PIN_ML 
+      1F3 1C86                      7- 193         bcr         PIN_MR 
+      1F4 0010                      7- 194         ret
+                1F5                 7- 195      MOTOR_L:
+      1F5 1C86                      7- 196         bcr         PIN_MR 
+      1F6 1A06                      7- 197         bsr         PIN_ML 
+      1F7 0010                      7- 198         ret
+                1F8                 7- 199      MOTOR_R:
+      1F8 1E06                      7- 200         bcr         PIN_ML 
+      1F9 1886                      7- 201         bsr         PIN_MR 
+      1FA 0010                      7- 202         ret
+                                    7-0203      endif __MOTOR
                                     0-0145      #include 		Lamp_Control.asm
                                     8-0001      ifndef __LAMP_CONTROL
                                     8-0002      #define __LAMP_CONTROL
@@ -2231,27 +2252,34 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ发射共用(�
       367 05B1                      C-  35     		incr		V_CountPWM,1
       368 210F                      C-  36     		movia		0x0f
       369 10B1                      C-  37     		andar		V_CountPWM,1
-                36A                 C-  38      INTERRUPT_END:
-      36A 028F                      C-  39     		clrr   	   	INTF
-      36B 1539                      C-  40        	   	swapr 	    INTStatus_VTM,0
-      36C 0083                      C-  41        	   	movar  	   	STATUS
-      36D 15BA                      C-  42        	   	swapr  	   	INTW_VTM,1
-      36E 153A                      C-  43        	   	swapr 	   	INTW_VTM,0
-                                    C-0044      endif 
-      36F 0011                      C-  45     		retie								;// Return from interrupt and enable interrupt globally
-                                    C-0046      
-                                    C-0047      
-                                    C-0048      endif __INTERRUPT
+      36A 0A25                      C-  38     		btrss		_flag_FB_RUN
+      36B 3B71                      C-  39     		lgoto		INTERRUPT_END
+      36C 05BB                      C-  40     		incr		V_time0,1
+      36D 0D03                      C-  41     		btrsc		zf 
+      36E 05BC                      C-  42     		incr		V_time1,1
+      36F 0D03                      C-  43     		btrsc		zf 
+      370 05BD                      C-  44     		incr		V_time2,1
+                371                 C-  45      INTERRUPT_END:
+      371 028F                      C-  46     		clrr   	   	INTF
+      372 1539                      C-  47        	   	swapr 	    INTStatus_VTM,0
+      373 0083                      C-  48        	   	movar  	   	STATUS
+      374 15BA                      C-  49        	   	swapr  	   	INTW_VTM,1
+      375 153A                      C-  50        	   	swapr 	   	INTW_VTM,0
+                                    C-0051      endif 
+      376 0011                      C-  52     		retie								;// Return from interrupt and enable interrupt globally
+                                    C-0053      
+                                    C-0054      
+                                    C-0055      endif __INTERRUPT
                                     0-0162      endif
                                     0-0163      
                                     0-0164      end											;//End of Code
 
-NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/21 14:23:05
+NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/21 17:59:55
 
 SYMBOL TABLE            TYPE     VALUE
 
 __8A053D                Constant 00000001
-__CHECKSUM_ADDR__       Label    00000370
+__CHECKSUM_ADDR__       Label    00000377
 __F_DELAY               Define   
 __INITIAL_REG           Define   
 __INTERRUPT             Define   
@@ -2268,6 +2296,8 @@ _FLAG_BUILDLED          Define   V_WORKFLAG,1
 _FLAG_CARRIER           Define   V_WORKFLAG,4
 _FLAG_FB                Define   V_WORKFLAG1,0
 _FLAG_FB_BRAKE          Define   V_WORKFLAG1,2
+_FLAG_FB_RUN            Define   V_WORKFLAG1,4
+_FLAG_FB_SLOW           Define   V_WORKFLAG1,5
 _FLAG_FB_STOP           Define   V_WORKFLAG1,1
 _FLAG_LOSTCODE          Define   V_WORKFLAG,7
 _FLAG_LRTURNTRIG        Define   V_WORKFLAG1,3
@@ -2350,6 +2380,7 @@ C_LRFB                  Define   0X63
 C_LVR_EN                Constant 00000008
 C_M_MAX                 Define   16
 C_M_MIN                 Define   9
+C_M_SLOWMIN             Define   2
 C_MODE                  Constant 0000000C
 C_MODE_RX_EN            Define   1
 C_NORMAL_MODE           Constant 00000000
@@ -2477,6 +2508,7 @@ C_SFR_BANK2             Constant 00000080
 C_SFR_BANK3             Constant 000000C0
 C_SFR_RAM_ADDR          Constant 0000003F
 C_SHORTPAIR             Define   2
+C_SLOW_TIME             Define   22
 C_SPEED                 Define   0
 C_STANDBY_MODE          Constant 00000008
 C_STATUS_C              Constant 00000001
@@ -2550,7 +2582,7 @@ INT_MFB_STOP            Label    00000365
 INT_PWM_COUNT           Label    00000367
 INTE                    Constant 0000000E
 INTERRUPT               Label    00000359
-INTERRUPT_END           Label    0000036A
+INTERRUPT_END           Label    00000371
 INTF                    Constant 0000000F
 INTSTATUS_VTM           Constant 00000039
 INTW_VTM                Constant 0000003A
@@ -2585,6 +2617,8 @@ MOTOR_FB_BRAKE_ING      Label    000001D1
 MOTOR_FB_END            Label    000001E1
 MOTOR_FB_ING            Label    000001B7
 MOTOR_FB_ING1           Label    000001C3
+MOTOR_FB_OUT_NOR        Label    000001B9
+MOTOR_FB_OUT_NOR1       Label    000001BD
 MOTOR_FB_STOP           Label    000001D5
 MOTOR_FB_STOP_ING       Label    000001DA
 MOTOR_FB_STOP_ING1      Label    000001DE
@@ -2826,6 +2860,9 @@ V_RXROLL3               Constant 00000023
 V_SYSTEM0T              Constant 00000030
 V_SYSTEM1T              Constant 0000002F
 V_SYSTEMT               Constant 0000002E
+V_TIME0                 Constant 0000003B
+V_TIME1                 Constant 0000003C
+V_TIME2                 Constant 0000003D
 V_WORKFLAG              Constant 00000024
 V_WORKFLAG1             Constant 00000025
 V_WORKST                Constant 00000033
@@ -2837,19 +2874,19 @@ ZF                      Define   STATUS,2
 
 
 SOURCE FILE TABLE
-000 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm
-001 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\NY8A053D.H
-002 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\USER_SET.asm
-003 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\RAM_MAP.asm
-004 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\IO_DEFINE_SET.asm
-005 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\main.asm
-006 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\SLEEP_MODE.asm
-007 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\MOTOR.asm
-008 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\Lamp_Control.asm
-009 E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\RF_config.asm
-00a E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\F_DELAY.asm
-00b E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\INITIAL_REG.asm
-00c E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\INTERRUPT.asm
+000 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm
+001 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\NY8A053D.H
+002 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\USER_SET.asm
+003 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\RAM_MAP.asm
+004 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\IO_DEFINE_SET.asm
+005 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\main.asm
+006 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\SLEEP_MODE.asm
+007 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\MOTOR.asm
+008 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\Lamp_Control.asm
+009 E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\RF_config.asm
+00a E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\F_DELAY.asm
+00b E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\INITIAL_REG.asm
+00c E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\INTERRUPT.asm
 
 PROCESSOR    = NY8A053D (8 bits) 
 PROGRAM ROM  = 0x00000000 - 0x000003FF

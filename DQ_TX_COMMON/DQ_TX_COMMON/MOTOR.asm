@@ -29,6 +29,11 @@ default
 #define 	C_M_MIN		9	;//->DK068
 break;
 endsw
+
+#define     C_M_SLOWMIN     2   ;//12.5%
+
+
+#define     C_SLOW_Time     22  ;//25min?
 ;//********************************************************
 MOTOR_CONTROL:
     btrsc       _flag_FB_Brake
@@ -61,13 +66,59 @@ MOTOR_B_ING:
     movar       TempData_VTM
     bsr         _flag_FB 
 MOTOR_FB_ING:
+if C_DK071==0
+    btrss       _flag_FB_SLOW    
+    bsr         _flag_FB_RUN
+    btrsc       _flag_FB_SLOW 
+    bcr         _flag_FB_RUN
+    movia       C_SLOW_Time  ;//
+    subar       V_time2,0 
+    btrsc       cf 
+    bsr         _flag_FB_SLOW
+endif
+
     clrr        V_FBTime
     bsr         _flag_FB_Stop
+if C_DK071==0    
+    btrss       _flag_FB_SLOW
+    lgoto       MOTOR_FB_OUT_NOR
+    movr        V_FBStartRun,0
+    xoria       0xff 
+    btrss       zf 
+    incr        V_FBStartRun,1    
+
+    movia       8
+    subar       V_FBStartRun,0
+    btrss       cf 
+    lgoto       MOTOR_FB_ING1  
+    movia       16
+    subar       V_FBStartRun,0
+    btrss       cf 
+    lgoto       MOTOR_FB_OUT_NOR1 
+    swapr       V_FBStartRun,0
+    andia       0x0f 
+    subar       TempData_VTM,0
+    btrss       cf 
+    lgoto       MOTOR_FB_OUT_SLOW_MIN
+    movar       TempData_VTM
+    movia       C_M_SLOWMIN
+    subar       TempData_VTM,0
+    btrss       cf 
+    lgoto       MOTOR_FB_OUT_SLOW_MIN
+    movr        TempData_VTM,0
+    movar       V_MotorFB
+    lgoto       MOTOR_FB_END
+MOTOR_FB_OUT_SLOW_MIN:   
+    movia       C_M_SLOWMIN
+    movar       V_MotorFB
+    lgoto       MOTOR_FB_END
+endif
+MOTOR_FB_OUT_NOR:
     incr        V_FBStartRun,1
     btrss       V_FBStartRun,3
     lgoto       MOTOR_FB_ING1       
     clrr        V_FBStartRun
-    
+MOTOR_FB_OUT_NOR1:    
     movr		TempData_VTM,0
     subar		V_MotorFB,0
     movr		TempData_VTM,0
@@ -97,6 +148,11 @@ MOTOR_FB_BRAKE_ING:
     lgoto       MOTOR_FB_END
     lgoto       MOTOR_FB_STOP_ING
 MOTOR_FB_STOP:
+if C_DK071==0
+    bcr         _flag_FB_RUN
+    btrsc       _flag_FB_SLOW
+    clrr        V_FBStartRun
+endif
     incr        V_FBTime,1
     movia       80
     subar       V_FBTime,0

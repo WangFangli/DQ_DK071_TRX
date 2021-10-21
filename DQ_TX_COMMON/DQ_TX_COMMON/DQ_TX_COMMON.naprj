@@ -64,10 +64,10 @@
   <Properties>
     <Array name="ActionFiles" />
     <Array name="bookmarks">
-      <Element value="Breakpoint|E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\main.asm|457|1|True|Break||||||||" />
-      <Element value="Breakpoint|E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\main.asm|501|1|True|Break||||||||" />
-      <Element value="Breakpoint|E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\SLEEP_MODE.asm|16|4|True|Break||||||||" />
-      <Element value="Breakpoint|E:\MyProject\2021project\DQ\DQ发射共用(兼容以前版本)2401\DQ_TX_COMMON\DQ_TX_COMMON\main.asm|88|1|True|Break||||||||" />
+      <Element value="" />
+      <Element value="" />
+      <Element value="" />
+      <Element value="" />
     </Array>
     <Array name="DisassemblyPadColumnWidthInfo">
       <Element value="AddrWidth|60" />

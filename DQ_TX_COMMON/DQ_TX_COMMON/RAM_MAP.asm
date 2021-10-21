@@ -65,7 +65,11 @@ V_lostT
 V_lost1T
 V_PairTimeCT
 INTStatus_VTM
-INTW_VTM    ;//->15?
+INTW_VTM    ;//->11?
+
+V_time0
+V_time1
+V_time2
 endc
 
 else
@@ -105,3 +109,7 @@ endif
 #define _flag_FB_Stop 	V_Workflag1,1
 #define _flag_FB_Brake 	V_Workflag1,2
 #define _flag_LRturnTrig	V_Workflag1,3
+if C_MODE_RX_En
+#define  _flag_FB_RUN       V_Workflag1,4   
+#define _flag_FB_SLOW       V_Workflag1,5   ;//FB over time slow speed     
+endif
