@@ -33,7 +33,7 @@ endsw
 #define     C_M_SLOWMIN     2   ;//12.5%
 
 
-#define     C_SLOW_Time     22  ;//25min?
+#define     C_SLOW_Time     89  ;//25min?
 ;//********************************************************
 MOTOR_CONTROL:
     btrsc       _flag_FB_Brake
