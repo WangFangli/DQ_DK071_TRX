@@ -13,7 +13,7 @@
 
 ;//#define     C_DK068     1
 #define     C_MODE_RX_En    1   ;//TX 0/ RX 1
-#define     C_DK071         0   ;//MODE in TX  DK071TX = 1 DK068TX = 0
+#define     C_DK071         1   ;//MODE in TX  DK071TX = 1 DK068TX = 0
 #define     C_TestMode_En   1   ;//enable test mode
 ;#define 	C_RX_En			0
 

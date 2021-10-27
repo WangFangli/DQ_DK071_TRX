@@ -1,7 +1,7 @@
 
                     Nyquest Technology Co., Ltd.
 
-NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/25 10:54:22
+NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/27 18:24:08
 
     ADDR  OPCODE/VALUE              LINE   TAG  SOURCE                   STATEMENT    
 
@@ -589,7 +589,7 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     2-0013      
                                     2-0014      ;//#define     C_DK068     1
                                     2-0015      #define     C_MODE_RX_En    1   ;//TX 0/ RX 1
-                                    2-0016      #define     C_DK071         0   ;//MODE in TX  DK071TX = 1 DK068TX = 0
+                                    2-0016      #define     C_DK071         1   ;//MODE in TX  DK071TX = 1 DK068TX = 0
                                     2-0017      #define     C_TestMode_En   1   ;//enable test mode
                                     2-0018      ;#define 	C_RX_En			0
                                     2-0019      
@@ -1479,20 +1479,19 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     7-0010      ;// Version:    	V1.0.0   
                                     7-0011      ;// Date:         2021/7/17
                                     7-0012      ;// ========================================================================= 
-                  0                 7-  13      if C_DK071
-                                    7-0015      else
-                                    7-0016      #define 	C_speed		2	;//->DK068
+                  1                 7-  13      if C_DK071
+                                    7-0014      #define 	C_speed		0	;//DK071:V0-6; V1-5; DK068:V2-8?
                                     7-0017      endif
                                     7-0018      
                                     7-0019      #define 	C_M_MAX		16
                                     7-0020      
-                  2                 7-  21      switch C_speed
-                                    7-0028      default
-                                    7-0029      #define 	C_M_MIN		9	;//->DK068
-                  1                 7-  30      break;
+                  0                 7-  21      switch C_speed
+                                    7-0022      case 0
+                                    7-0023      #define 	C_M_MIN		9	;//6 5 4	
+                  1                 7-  24      break
                                     7-0031      endsw
                                     7-0032      
-                                    7-0033      #define     C_M_SLOWMIN     2   ;//12.5%
+                                    7-0033      #define     C_M_SLOWMIN     4   ;//12.5%
                                     7-0034      
                                     7-0035      
                                     7-0036      #define     C_SLOW_Time     89  ;//25min?
@@ -1528,7 +1527,7 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
       1B5 00A6                      7-  66         movar       TempData_VTM
       1B6 1825                      7-  67         bsr         _flag_FB 
                 1B7                 7-  68      MOTOR_FB_ING:
-                  1                 7-  69      if C_DK071==0
+                  1                 7-  69      if C_DK071==1
       1B7 0AA5                      7-  70         btrss       _flag_FB_SLOW    
       1B8 1A25                      7-  71         bsr         _flag_FB_RUN
       1B9 0EA5                      7-  72         btrsc       _flag_FB_SLOW 
@@ -1541,7 +1540,7 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     7-0079      
       1BF 02B4                      7-  80         clrr        V_FBTime
       1C0 18A5                      7-  81         bsr         _flag_FB_Stop
-                  1                 7-  82      if C_DK071==0    
+                  1                 7-  82      if C_DK071==1    
       1C1 0AA5                      7-  83         btrss       _flag_FB_SLOW
       1C2 39DF                      7-  84         lgoto       MOTOR_FB_OUT_NOR
       1C3 0135                      7-  85         movr        V_FBStartRun,0
@@ -1563,7 +1562,7 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
       1D2 0803                      7- 101         btrss       cf 
       1D3 39DC                      7- 102         lgoto       MOTOR_FB_OUT_SLOW_MIN
       1D4 00A6                      7- 103         movar       TempData_VTM
-      1D5 2102                      7- 104         movia       C_M_SLOWMIN
+      1D5 2104                      7- 104         movia       C_M_SLOWMIN
       1D6 0426                      7- 105         subar       TempData_VTM,0
       1D7 0803                      7- 106         btrss       cf 
       1D8 39DC                      7- 107         lgoto       MOTOR_FB_OUT_SLOW_MIN
@@ -1571,7 +1570,7 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
       1DA 00B2                      7- 109         movar       V_MotorFB
       1DB 3A0A                      7- 110         lgoto       MOTOR_FB_END
                 1DC                 7- 111      MOTOR_FB_OUT_SLOW_MIN:   
-      1DC 2102                      7- 112         movia       C_M_SLOWMIN
+      1DC 2104                      7- 112         movia       C_M_SLOWMIN
       1DD 00B2                      7- 113         movar       V_MotorFB
       1DE 3A0A                      7- 114         lgoto       MOTOR_FB_END
                                     7-0115      endif
@@ -1610,7 +1609,7 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
       1F9 3A0A                      7- 148         lgoto       MOTOR_FB_END
       1FA 3A03                      7- 149         lgoto       MOTOR_FB_STOP_ING
                 1FB                 7- 150      MOTOR_FB_STOP:
-                  1                 7- 151      if C_DK071==0
+                  1                 7- 151      if C_DK071==1
       1FB 1E25                      7- 152         bcr         _flag_FB_RUN
       1FC 0EA5                      7- 153         btrsc       _flag_FB_SLOW
       1FD 02B5                      7- 154         clrr        V_FBStartRun
@@ -2318,7 +2317,7 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     0-0163      
                                     0-0164      end											;//End of Code
 
-NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/25 10:54:22
+NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/27 18:24:08
 
 SYMBOL TABLE            TYPE     VALUE
 
@@ -2391,7 +2390,7 @@ C_BZ1_TMR1B5            Constant 0000000D
 C_BZ1_TMR1B6            Constant 0000000E
 C_BZ1_TMR1B7            Constant 0000000F
 C_CRC_ADR               Define   0X60
-C_DK071                 Define   0
+C_DK071                 Define   1
 C_ELXT_BACKUP           Constant 00000040
 C_EXINT_EDGE            Constant 00000040
 C_EXTINT_EN             Constant 00000040
@@ -2424,7 +2423,7 @@ C_LRFB                  Define   0X63
 C_LVR_EN                Constant 00000008
 C_M_MAX                 Define   16
 C_M_MIN                 Define   9
-C_M_SLOWMIN             Define   2
+C_M_SLOWMIN             Define   4
 C_MODE                  Constant 0000000C
 C_MODE_RX_EN            Define   1
 C_NORMAL_MODE           Constant 00000000
@@ -2553,7 +2552,7 @@ C_SFR_BANK3             Constant 000000C0
 C_SFR_RAM_ADDR          Constant 0000003F
 C_SHORTPAIR             Define   2
 C_SLOW_TIME             Define   89
-C_SPEED                 Define   2
+C_SPEED                 Define   0
 C_STANDBY_MODE          Constant 00000008
 C_STATUS_C              Constant 00000001
 C_STATUS_C_BIT          Constant 00000000

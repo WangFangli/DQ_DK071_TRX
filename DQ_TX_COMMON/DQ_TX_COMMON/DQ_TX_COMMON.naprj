@@ -78,8 +78,8 @@
       <Element value="Lamp_Control.asm|False" />
       <Element value="ScanButton.asm|False" />
       <Element value="RF_config.asm|False" />
-      <Element value="USER_SET.asm|True" />
-      <Element value="MOTOR.asm|False" />
+      <Element value="USER_SET.asm|False" />
+      <Element value="MOTOR.asm|True" />
       <Element value="IO_define_set.asm|False" />
       <Element value="SLEEP_MODE.asm|False" />
       <Element value="TEST_MODE_ENTER.asm|False" />

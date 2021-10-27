@@ -30,7 +30,7 @@ default
 break;
 endsw
 
-#define     C_M_SLOWMIN     2   ;//12.5%
+#define     C_M_SLOWMIN     4   ;//12.5%
 
 
 #define     C_SLOW_Time     89  ;//25min?
@@ -66,7 +66,7 @@ MOTOR_B_ING:
     movar       TempData_VTM
     bsr         _flag_FB 
 MOTOR_FB_ING:
-if C_DK071==0
+if C_DK071==1
     btrss       _flag_FB_SLOW    
     bsr         _flag_FB_RUN
     btrsc       _flag_FB_SLOW 
@@ -79,7 +79,7 @@ endif
 
     clrr        V_FBTime
     bsr         _flag_FB_Stop
-if C_DK071==0    
+if C_DK071==1    
     btrss       _flag_FB_SLOW
     lgoto       MOTOR_FB_OUT_NOR
     movr        V_FBStartRun,0
@@ -148,7 +148,7 @@ MOTOR_FB_BRAKE_ING:
     lgoto       MOTOR_FB_END
     lgoto       MOTOR_FB_STOP_ING
 MOTOR_FB_STOP:
-if C_DK071==0
+if C_DK071==1
     bcr         _flag_FB_RUN
     btrsc       _flag_FB_SLOW
     clrr        V_FBStartRun
