@@ -30,10 +30,11 @@ default
 break;
 endsw
 
-#define     C_M_SLOWMIN     4   ;//12.5%
+#define     C_M_SLOWMIN     5   ;//12.5%
 
 
 #define     C_SLOW_Time     89  ;//25min?
+#define  	C_SLOW_STOP_Time	179	;50min?
 ;//********************************************************
 MOTOR_CONTROL:
     btrsc       _flag_FB_Brake
@@ -66,22 +67,40 @@ MOTOR_B_ING:
     movar       TempData_VTM
     bsr         _flag_FB 
 MOTOR_FB_ING:
+	clrr		V_slow_v
 if C_DK071==1
     btrss       _flag_FB_SLOW    
-    bsr         _flag_FB_RUN
+    bsr         _flag_FB_RUN	;int count
     btrsc       _flag_FB_SLOW 
     bcr         _flag_FB_RUN
-    movia       C_SLOW_Time  ;//
+    movia       C_SLOW_STOP_Time	;C_SLOW_Time  ;//
     subar       V_time2,0 
     btrsc       cf 
-    bsr         _flag_FB_SLOW
+    bsr         _flag_FB_SLOW	;180?
+    
+    movia		C_SLOW_Time
+    subar		V_time2,0
+    btrss		cf
+    lgoto		MOTOR_SLOW_NEXT
+    movar		ReadData_VTM	
+    clrwdt
+MOMTOR_SLOW_LOOP:    
+    incr		V_slow_v,1
+    movia		8
+    subar		ReadData_VTM,1
+    btrsc		cf
+    lgoto		MOMTOR_SLOW_LOOP
+MOTOR_SLOW_NEXT:
 endif
 
     clrr        V_FBTime
     bsr         _flag_FB_Stop
 if C_DK071==1    
-    btrss       _flag_FB_SLOW
-    lgoto       MOTOR_FB_OUT_NOR
+;    btrss       _flag_FB_SLOW
+;    lgoto       MOTOR_FB_OUT_NOR
+	movr		V_slow_v,0
+	btrsc		zf
+	lgoto		MOTOR_FB_OUT_NOR
     movr        V_FBStartRun,0
     xoria       0xff 
     btrss       zf 
@@ -91,20 +110,32 @@ if C_DK071==1
     subar       V_FBStartRun,0
     btrss       cf 
     lgoto       MOTOR_FB_ING1  
-    movia       16
+    movia       20
     subar       V_FBStartRun,0
     btrss       cf 
     lgoto       MOTOR_FB_OUT_NOR1 
-    swapr       V_FBStartRun,0
-    andia       0x0f 
-    subar       TempData_VTM,0
-    btrss       cf 
-    lgoto       MOTOR_FB_OUT_SLOW_MIN
-    movar       TempData_VTM
-    movia       C_M_SLOWMIN
-    subar       TempData_VTM,0
-    btrss       cf 
-    lgoto       MOTOR_FB_OUT_SLOW_MIN
+    
+    movr		V_slow_v,0
+    subar		TempData_VTM,0
+    btrss		cf 
+    lgoto		MOTOR_FB_OUT_SLOW_MIN
+    movar		TempData_VTM
+    movia		C_M_SLOWMIN
+    subar		TempData_VTM,0
+    btrss		cf 
+    lgoto		MOTOR_FB_OUT_SLOW_MIN
+    
+;    swapr       V_FBStartRun,0
+;    andia       0x0f 
+;    subar       TempData_VTM,0
+;    btrss       cf 
+;    lgoto       MOTOR_FB_OUT_SLOW_MIN
+;    movar       TempData_VTM
+    
+;    movia       C_M_SLOWMIN
+;    subar       TempData_VTM,0
+;    btrss       cf 
+;    lgoto       MOTOR_FB_OUT_SLOW_MIN
     movr        TempData_VTM,0
     movar       V_MotorFB
     lgoto       MOTOR_FB_END

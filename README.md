@@ -1,3 +1,9 @@
+2021/10/28:
+  25min start slow 
+  25s slow->1% speed
+  min slow speed is 5/16?
+
+
 2021/10/21:
   new add function
 

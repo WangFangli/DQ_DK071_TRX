@@ -85,6 +85,7 @@
       <Element value="TEST_MODE_ENTER.asm|False" />
       <Element value="F_DELAY.asm|False" />
       <Element value="INITIAL_REG.asm|False" />
+      <Element value="RAM_MAP.asm|False" />
     </Array>
     <Array name="InstrumentFiles" />
     <Array name="MelodyDatabaseFiles" />

@@ -69,7 +69,8 @@ INTW_VTM    ;//->11?
 
 V_time0
 V_time1
-V_time2
+V_time2	;//32+11+3 = 45
+V_slow_v
 endc
 
 else
