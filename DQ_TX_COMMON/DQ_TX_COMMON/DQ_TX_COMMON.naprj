@@ -2,11 +2,11 @@
 <Project>
   <PropertyGroup Condition="">
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Checksum</AssemblyName>
+    <AssemblyName>DQ_TX_COMMON</AssemblyName>
     <Bank0Only>False</Bank0Only>
     <BuildNYASMVersion>NYASM 2.30 [Build: 210514.00]</BuildNYASMVersion>
-    <BuildNYIDEVersion>NYIDE 4.40 [Build: 210930.00]</BuildNYIDEVersion>
-    <ChipId>NY8A053D</ChipId>
+    <BuildNYIDEVersion>NYIDE 4.61 [Build: 220304.00]</BuildNYIDEVersion>
+    <ChipId>NY8A053E</ChipId>
     <ClientName>DQ</ClientName>
     <Configuration>Debug</Configuration>
     <GenAsmListFile>True</GenAsmListFile>
@@ -14,8 +14,8 @@
     <GenMapFile>True</GenMapFile>
     <InitializeBss>False</InitializeBss>
     <IsBankselOpt>True</IsBankselOpt>
-    <NYASMInstallDir>E:\TOOL\NY九齐\IDE\NYASM\</NYASMInstallDir>
-    <NYIDEInstallDir>E:\TOOL\NY九齐\IDE\NYIDE\</NYIDEInstallDir>
+    <NYASMInstallDir>E:\TOOL\NY\IDE\NYASM\</NYASMInstallDir>
+    <NYIDEInstallDir>E:\TOOL\NY\IDE\NYIDE\</NYIDEInstallDir>
     <OutputType>bin</OutputType>
     <Platform>AsmNy8</Platform>
     <ProgramChecksum>On</ProgramChecksum>
@@ -59,7 +59,7 @@
   <ItemGroup>
     <Reference Include="Client: DQ" EntryPoint="false" MetaData="" />
     <Reference Include="Config Block: DQ_TX_COMMON.cb" EntryPoint="false" MetaData="" />
-    <Reference Include="IC Body: NY8A053D" EntryPoint="false" MetaData="" />
+    <Reference Include="IC Body: NY8A053E" EntryPoint="false" MetaData="" />
   </ItemGroup>
   <Properties>
     <Array name="ActionFiles" />
@@ -78,11 +78,10 @@
       <Element value="Lamp_Control.asm|False" />
       <Element value="ScanButton.asm|False" />
       <Element value="RF_config.asm|False" />
-      <Element value="USER_SET.asm|False" />
-      <Element value="MOTOR.asm|True" />
+      <Element value="USER_SET.asm|True" />
+      <Element value="MOTOR.asm|False" />
       <Element value="IO_define_set.asm|False" />
       <Element value="SLEEP_MODE.asm|False" />
-      <Element value="TEST_MODE_ENTER.asm|False" />
       <Element value="F_DELAY.asm|False" />
       <Element value="INITIAL_REG.asm|False" />
       <Element value="RAM_MAP.asm|False" />

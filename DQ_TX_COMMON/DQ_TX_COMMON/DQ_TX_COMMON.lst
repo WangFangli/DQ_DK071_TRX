@@ -1,7 +1,7 @@
 
                     Nyquest Technology Co., Ltd.
 
-NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/28 18:18:34
+NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2022/5/13 10:36:29
 
     ADDR  OPCODE/VALUE              LINE   TAG  SOURCE                   STATEMENT    
 
@@ -593,59 +593,60 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     2-0017      #define     C_TestMode_En   1   ;//enable test mode
                                     2-0018      ;#define 	C_RX_En			0
                                     2-0019      
-                                    2-0020      ;//****************************************
-                                    2-0021      ;//RF define
-                                    2-0022      #define     FIFO_EN_CTM     0x64
-                                    2-0023      #define     RFStatus_CTM    0x61
-                                    2-0024      #define     C_CRC_adr       0x60
-                                    2-0025      
-                                    2-0026      #define TXData_Length_CTM   7
-                                    2-0027      #define RXData_Length_CTM   11
-                                    2-0028      #define C_ACK_Length    10
-                                    2-0029      
-                                    2-0030      #define	PRCH0_CTM		12	;//2414
-                                    2-0031      #define	PRCH1_CTM		38	;//2440	
-                                    2-0032      #define	PRCH2_CTM		69	;//2471
-                                    2-0033      
-                                    2-0034      #define	TESTCH0_CTM		8	;//2410
-                                    2-0035      #define	TESTCH1_CTM		41	;//2443	
-                                    2-0036      #define	TESTCH2_CTM		73	;//2475
-                                    2-0037      
-                                    2-0038      #define Scramble_CTM    0x1a
-                                    2-0039      #define ScrambleP_CTM   0x25
-                                    2-0040      
+                                    2-0020      #define 	DE_SPEED		1
+                                    2-0021      ;//****************************************
+                                    2-0022      ;//RF define
+                                    2-0023      #define     FIFO_EN_CTM     0x64
+                                    2-0024      #define     RFStatus_CTM    0x61
+                                    2-0025      #define     C_CRC_adr       0x60
+                                    2-0026      
+                                    2-0027      #define TXData_Length_CTM   7
+                                    2-0028      #define RXData_Length_CTM   11
+                                    2-0029      #define C_ACK_Length    10
+                                    2-0030      
+                                    2-0031      #define	PRCH0_CTM		12	;//2414
+                                    2-0032      #define	PRCH1_CTM		38	;//2440	
+                                    2-0033      #define	PRCH2_CTM		69	;//2471
+                                    2-0034      
+                                    2-0035      #define	TESTCH0_CTM		8	;//2410
+                                    2-0036      #define	TESTCH1_CTM		41	;//2443	
+                                    2-0037      #define	TESTCH2_CTM		73	;//2475
+                                    2-0038      
+                                    2-0039      #define Scramble_CTM    0x1a
+                                    2-0040      #define ScrambleP_CTM   0x25
                                     2-0041      
-                                    2-0042      #define     C_longPair      17
-                                    2-0043      #define     C_shortPair     2
-                                    2-0044      #define     C_5min          167
-                                    2-0045      #define 	C_5min_RX		112
-                                    2-0046      #define     C_2s            1
-                                    2-0047      ;//****************************************
-                                    2-0048      #define    PIN_CLK     porta,1
-                                    2-0049      #define    PIN_MOSI    porta,2
-                                    2-0050      #define    PIN_CSN     portb,7
-                                    2-0051      #define    PIN_CE      porta,0
-                                    2-0052      
-                  1                 2-  53      if C_MODE_RX_En
-                                    2-0054      #define PIN_MF      Portb,5
-                                    2-0055      #define PIN_MB      Portb,6
-                                    2-0056      #define PIN_ML      Portb,4
-                                    2-0057      #define PIN_MR      Portb,1
-                                    2-0058      #define PIN_LAMP    Portb,2
-                                    2-0068      endif 
-                                    2-0069      
-                  6                 2-  70      _L 	   	   	equ   	6
-                  5                 2-  71      _R 	   	   	equ   	5
-                  1                 2-  72      _F 	   	   	equ   	1
-                  0                 2-  73      _B 	   	   	equ   	0
-                  2                 2-  74      _T          equ     2
-                                    2-0075      
-                                    2-0076      #define     C_LRFB      0x63
-                                    2-0077      #define     C_LF        0x42
-                                    2-0078      #define     C_LB        0x41
-                                    2-0079      #define     C_FB        0x03
-                                    2-0080      #define     C_R         0x20
-                                    2-0081      ;/*********************************************************
+                                    2-0042      
+                                    2-0043      #define     C_longPair      17
+                                    2-0044      #define     C_shortPair     2
+                                    2-0045      #define     C_5min          167
+                                    2-0046      #define 	C_5min_RX		112
+                                    2-0047      #define     C_2s            1
+                                    2-0048      ;//****************************************
+                                    2-0049      #define    PIN_CLK     porta,1
+                                    2-0050      #define    PIN_MOSI    porta,2
+                                    2-0051      #define    PIN_CSN     portb,7
+                                    2-0052      #define    PIN_CE      porta,0
+                                    2-0053      
+                  1                 2-  54      if C_MODE_RX_En
+                                    2-0055      #define PIN_MF      Portb,5
+                                    2-0056      #define PIN_MB      Portb,6
+                                    2-0057      #define PIN_ML      Portb,4
+                                    2-0058      #define PIN_MR      Portb,1
+                                    2-0059      #define PIN_LAMP    Portb,2
+                                    2-0069      endif 
+                                    2-0070      
+                  6                 2-  71      _L 	   	   	equ   	6
+                  5                 2-  72      _R 	   	   	equ   	5
+                  1                 2-  73      _F 	   	   	equ   	1
+                  0                 2-  74      _B 	   	   	equ   	0
+                  2                 2-  75      _T          equ     2
+                                    2-0076      
+                                    2-0077      #define     C_LRFB      0x63
+                                    2-0078      #define     C_LF        0x42
+                                    2-0079      #define     C_LB        0x41
+                                    2-0080      #define     C_FB        0x03
+                                    2-0081      #define     C_R         0x20
+                                    2-0082      ;/*********************************************************
                                     0-0014      #include   		RAM_MAP.asm
                                     3-0001      ;//*******************************
                                     3-0002      ;//RAM map set
@@ -883,7 +884,7 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
         6 2000                      0-  36        		retia		0
                                     0-0037      
                   8                 0-  38         		ORG     	0x008
-        8 3B8E                      0-  39        		lgoto   	INTERRUPT
+        8 3B91                      0-  39        		lgoto   	INTERRUPT
                                     0-0040      ;/**********************************************************
                                     0-0041      ;Table
                                     0-0042      ;**********************************************************/
@@ -997,14 +998,14 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     5-0012               
                  44                 5-  13      MAIN:
                                     5-0014      ;//Power ON initial - User program area
-       44 2B71                      5-  15        	lcall    	INITIAL_ROUTINE
-       45 2B58                      5-  16        	lcall    	DELAY_45ms 
-       46 2B71                      5-  17        	lcall    	INITIAL_ROUTINE
-       47 2B67                      5-  18        	lcall    	CLEAR_SRAM
-       48 2952                      5-  19     	lcall		UPDATA_TXCH
-       49 2964                      5-  20     	lcall		UPDATA_RXCH
+       44 2B75                      5-  15        	lcall    	INITIAL_ROUTINE
+       45 2B5C                      5-  16        	lcall    	DELAY_45ms 
+       46 2B75                      5-  17        	lcall    	INITIAL_ROUTINE
+       47 2B6B                      5-  18        	lcall    	CLEAR_SRAM
+       48 2956                      5-  19     	lcall		UPDATA_TXCH
+       49 2968                      5-  20     	lcall		UPDATA_RXCH
                                     5-0021      	
-       4A 2A40                      5-  22        	lcall		INITIAL_RF
+       4A 2A44                      5-  22        	lcall		INITIAL_RF
        4B 1D24                      5-  23        	bcr			_flag_RF_Reset
                   1                 5-  24      if C_MODE_RX_En
        4C 180E                      5-  25     	bsr 		INTE,0
@@ -1033,26 +1034,26 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
        54 0803                      5-  75     	btrss		cf
        55 385B                      5-  76     	lgoto		MAIN_LOOP_STEP0_START
        56 02B0                      5-  77     	clrr		V_system0T
-       57 299E                      5-  78     	lcall		MOTOR_CONTROL	;//7ms?
+       57 29A2                      5-  78     	lcall		MOTOR_CONTROL	;//7ms?
                                     5-0079      endif
        58 05AE                      5-  80     	incr		V_systemT,1	;//7ms? * 256 => 1024
        59 0D03                      5-  81     	btrsc		zf
        5A 05AF                      5-  82     	incr		V_system1T,1
                   1                 5-  83      if C_MODE_RX_En
                  5B                 5-  84      MAIN_LOOP_STEP0_START:
-       5B 2B5C                      5-  85     	lcall		DELAY_1ms 
-       5C 2976                      5-  86     	lcall		SCAN_MODE
+       5B 2B60                      5-  85     	lcall		DELAY_1ms 
+       5C 297A                      5-  86     	lcall		SCAN_MODE
        5D 2170                      5-  87     	movia		C_5min_RX
        5E 042F                      5-  88     	subar		V_system1T,0
        5F 0C03                      5-  89     	btrsc		cf
        60 1AA4                      5-  90     	bsr			_flag_sleep
                                     5-0140      endif
-       61 298C                      5- 141     	lcall		SCAN_SLEEP
+       61 2990                      5- 141     	lcall		SCAN_SLEEP
                  62                 5- 142      MAIN_LOOP_STEP5:
                   0                 5- 143      if C_MODE_RX_En == 0 
                                     5-0145      endif
-       62 2A30                      5- 146     	lcall		LAMP_CONTROL
-       63 2A40                      5- 147     	lcall		INITIAL_RF
+       62 2A34                      5- 146     	lcall		LAMP_CONTROL
+       63 2A44                      5- 147     	lcall		INITIAL_RF
                                     5-0148      
                   1                 5- 149      if C_MODE_RX_En
        64 388D                      5- 150     	lgoto		MAIN_RX
@@ -1060,77 +1061,77 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                  65                 5- 152      MAIN_TX_MODE:
                   1                 5- 153      if C_TestMode_En
        65 0E24                      5- 154     	btrsc		_flag_Carrier
-       66 3944                      5- 155     	lgoto		TX_WAIT_DELAY
+       66 3948                      5- 155     	lgoto		TX_WAIT_DELAY
        67 09A4                      5- 156     	btrss		_flag_test
        68 386F                      5- 157     	lgoto		MAIN_TX_NOR
        69 05AD                      5- 158     	incr		Test_VTM,1
        6A 2103                      5- 159     	movia		3
        6B 042D                      5- 160     	subar		Test_VTM,0
        6C 0803                      5- 161     	btrss		cf
-       6D 3944                      5- 162     	lgoto		TX_WAIT_DELAY
+       6D 3948                      5- 162     	lgoto		TX_WAIT_DELAY
        6E 02AD                      5- 163     	clrr		Test_VTM
                                     5-0164      endif 
                  6F                 5- 165      MAIN_TX_NOR:
                                     5-0166      ;//	btrsc		_flag_Build
                                     5-0167      ;//	lgoto		MAIN_TX_NOR_SEND
                                     5-0168      ;//MAIN_TX_NOR_SEND:
-       6F 2B2E                      5- 169     	lcall		RF_CHANNEL_CHOICE
+       6F 2B32                      5- 169     	lcall		RF_CHANNEL_CHOICE
                   0                 5- 170      if C_MODE_RX_En == 0
                                     5-0222      endif
                  70                 5- 223      MAIN_TX_NOR_SEND:
-       70 2A80                      5- 224     	lcall		RF_IDLE_MODE
-       71 2A68                      5- 225     	lcall		CLR_W_FIFO
+       70 2A84                      5- 224     	lcall		RF_IDLE_MODE
+       71 2A6C                      5- 225     	lcall		CLR_W_FIFO
                                     5-0226      
        72 2164                      5- 227     	movia		FIFO_EN_CTM
-       73 2A8C                      5- 228     	lcall		SPI_RW
+       73 2A90                      5- 228     	lcall		SPI_RW
                   1                 5- 229      if C_MODE_RX_En
        74 210A                      5- 230     	movia    	C_ACK_Length
                                     5-0237      endif
        75 00AA                      5- 238     	movar		ReadData_VTM
        76 00A8                      5- 239     	movar		Delay_VTM 
-       77 2A8D                      5- 240     	lcall		SPI_W_DATA
+       77 2A91                      5- 240     	lcall		SPI_W_DATA
        78 06A8                      5- 241     	decr		Delay_VTM,1
        79 2110                      5- 242     	movia		HeadRAM_ADR
        7A 0084                      5- 243     	movar 		FSR 
                  7B                 5- 244      TX_SEND_LOOP:
        7B 0100                      5- 245     	movr 		INDF,0
        7C 03AA                      5- 246     	addar 		ReadData_VTM,1
-       7D 2A8D                      5- 247     	lcall		SPI_W_DATA
+       7D 2A91                      5- 247     	lcall		SPI_W_DATA
        7E 0584                      5- 248     	incr		FSR,1
        7F 17A8                      5- 249     	decrsz		Delay_VTM,1 
        80 387B                      5- 250     	lgoto		TX_SEND_LOOP
        81 012A                      5- 251     	movr 		ReadData_VTM,0
-       82 2A8D                      5- 252     	lcall		SPI_W_DATA		
+       82 2A91                      5- 252     	lcall		SPI_W_DATA		
        83 1B86                      5- 253     	bsr			PIN_CSN
-       84 2A78                      5- 254     	lcall		RF_TX_MODE
-       85 2B5C                      5- 255     	lcall		DELAY_1ms 
+       84 2A7C                      5- 254     	lcall		RF_TX_MODE
+       85 2B60                      5- 255     	lcall		DELAY_1ms 
                                     5-0256      
-       86 2947                      5- 257     	lcall		SCAN_PEAK
+       86 294B                      5- 257     	lcall		SCAN_PEAK
        87 0D03                      5- 258     	btrsc		zf 
        88 388B                      5- 259     	lgoto		MAIN_TX_NOR_SEND_OK
        89 1D24                      5- 260     	bcr 		_flag_RF_Reset
        8A 3850                      5- 261     	lgoto		MAIN_LOOP
                  8B                 5- 262      MAIN_TX_NOR_SEND_OK:
                   1                 5- 263      if C_MODE_RX_En
-       8B 2A61                      5- 264     	lcall		EN_RX_MODE
+       8B 2A65                      5- 264     	lcall		EN_RX_MODE
        8C 3850                      5- 265     	lgoto		MAIN_LOOP
                                     5-0275      endif
                                     5-0276      
                                     5-0277      ;//------- RX Mode ------------------------------------------
                  8D                 5- 278      MAIN_RX:
-       8D 2947                      5- 279        	lcall   	SCAN_PEAK
+       8D 294B                      5- 279        	lcall   	SCAN_PEAK
        8E 0903                      5- 280        	btrss  	   	zf
        8F 3850                      5- 281        	lgoto   	MAIN_LOOP
                  90                 5- 282      RX_WAIT_OK:
        90 2160                      5- 283        	movia  	   	C_CRC_adr 
-       91 2A8B                      5- 284        	lcall   	SPI_R
-       92 2AA1                      5- 285        	lcall   	SPI_R_DATA
+       91 2A8F                      5- 284        	lcall   	SPI_R
+       92 2AA5                      5- 285        	lcall   	SPI_R_DATA
        93 1B86                      5- 286        	bsr   	   	PIN_CSN
        94 0FA6                      5- 287        	btrsc  	   	TempData_VTM,7
-       95 3942                      5- 288     	lgoto		RX_WAIT_NEXT
+       95 3946                      5- 288     	lgoto		RX_WAIT_NEXT
        96 2164                      5- 289     	movia		FIFO_EN_CTM
-       97 2A8B                      5- 290     	lcall		SPI_R 
-       98 2AA1                      5- 291     	lcall		SPI_R_DATA 
+       97 2A8F                      5- 290     	lcall		SPI_R 
+       98 2AA5                      5- 291     	lcall		SPI_R_DATA 
        99 00A9                      5- 292     	movar		WriteData_VTM
        9A 00AA                      5- 293     	movar		ReadData_VTM
        9B 00A8                      5- 294     	movar 		Delay_VTM
@@ -1141,27 +1142,27 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
        9F 012A                      5- 299     	movr		ReadData_VTM,0
        A0 240B                      5- 300     	xoria		RXData_Length_CTM
        A1 0903                      5- 301     	btrss		zf
-       A2 3942                      5- 302     	lgoto		RX_WAIT_NEXT
+       A2 3946                      5- 302     	lgoto		RX_WAIT_NEXT
                                     5-0307      endif
                  A3                 5- 308      RX_DATA_DECODE:
        A3 2110                      5- 309     	movia		DataRAM_ADR
        A4 0084                      5- 310     	movar		FSR 
        A5 06A8                      5- 311     	decr 		Delay_VTM,1
                  A6                 5- 312      RX_DATA_LOOP:
-       A6 2AA1                      5- 313     	lcall		SPI_R_DATA
+       A6 2AA5                      5- 313     	lcall		SPI_R_DATA
        A7 0080                      5- 314     	movar		INDF 
        A8 03AA                      5- 315     	addar		ReadData_VTM,1
        A9 0584                      5- 316     	incr		FSR,1 
        AA 17A8                      5- 317     	decrsz		Delay_VTM,1
        AB 38A6                      5- 318     	lgoto		RX_DATA_LOOP
-       AC 2AA1                      5- 319     	lcall		SPI_R_DATA
+       AC 2AA5                      5- 319     	lcall		SPI_R_DATA
        AD 1B86                      5- 320     	bsr			PIN_CSN
        AE 122A                      5- 321     	xorar 		ReadData_VTM,0
        AF 0903                      5- 322     	btrss		zf 
-       B0 3342                      5- 323     	goto		RX_WAIT_NEXT
+       B0 3346                      5- 323     	goto		RX_WAIT_NEXT
                   1                 5- 324      if C_MODE_RX_En
        B1 0824                      5- 325     	btrss		_flag_Build
-       B2 390F                      5- 326     	lgoto		RX_TXDATA_CK
+       B2 3913                      5- 326     	lgoto		RX_TXDATA_CK
        B3 2188                      5- 327     	movia		0x88
        B4 1211                      5- 328     	xorar 		sendData1_VTM,0
        B5 0D03                      5- 329     	btrsc		zf
@@ -1169,28 +1170,28 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
        B7 213C                      5- 331     	movia		0x3c
        B8 1211                      5- 332     	xorar		sendData1_VTM,0
        B9 0903                      5- 333     	btrss		zf
-       BA 3942                      5- 334     	lgoto		RX_WAIT_NEXT
+       BA 3946                      5- 334     	lgoto		RX_WAIT_NEXT
        BB 210B                      5- 335     	movia		RXData_Length_CTM
        BC 1229                      5- 336     	xorar		WriteData_VTM,0
        BD 0903                      5- 337     	btrss		zf
-       BE 390F                      5- 338     	lgoto		RX_TXDATA_CK	
+       BE 3913                      5- 338     	lgoto		RX_TXDATA_CK	
                                     5-0339      
        BF 2803                      5- 340     	lcall		ROLL0
        C0 1216                      5- 341     	xorar		sendData6_VTM,0
        C1 0903                      5- 342     	btrss		zf
-       C2 3942                      5- 343     	lgoto		RX_WAIT_NEXT
+       C2 3946                      5- 343     	lgoto		RX_WAIT_NEXT
        C3 2804                      5- 344     	lcall		ROLL1
        C4 1217                      5- 345     	xorar		sendData7_VTM,0
        C5 0903                      5- 346     	btrss		zf
-       C6 3942                      5- 347     	lgoto		RX_WAIT_NEXT
+       C6 3946                      5- 347     	lgoto		RX_WAIT_NEXT
        C7 2805                      5- 348     	lcall		ROLL2
        C8 1218                      5- 349     	xorar		sendData8_VTM,0
        C9 0903                      5- 350     	btrss		zf
-       CA 3942                      5- 351     	lgoto		RX_WAIT_NEXT
+       CA 3946                      5- 351     	lgoto		RX_WAIT_NEXT
        CB 2806                      5- 352     	lcall		ROLL3
        CC 1219                      5- 353     	xorar		sendData9_VTM,0
        CD 0903                      5- 354     	btrss		zf
-       CE 3942                      5- 355     	lgoto		RX_WAIT_NEXT
+       CE 3946                      5- 355     	lgoto		RX_WAIT_NEXT
                                     5-0356      
                                     5-0357      ;//	bcr			_flag_Build
                                     5-0358      ;//	bcr			_flag_RF_Reset
@@ -1202,8 +1203,8 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
        D4 00A2                      5- 364     	movar		V_RXROLL2
        D5 0115                      5- 365     	movr 		sendData5_VTM,0
        D6 00A3                      5- 366     	movar		V_RXROLL3
-       D7 2964                      5- 367     	lcall		UPDATA_RXCH
-       D8 3921                      5- 368     	lgoto		RX_PAIR_FIRST_JUAGE
+       D7 2968                      5- 367     	lcall		UPDATA_RXCH
+       D8 3925                      5- 368     	lgoto		RX_PAIR_FIRST_JUAGE
                                     5-0369      ;	bcr			_flag_Build
                                     5-0370      ;	bcr			_flag_RF_Reset
                                     5-0371      ;	bsr			_flag_LRturnTrig
@@ -1235,193 +1236,197 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
        EE 00A2                      5- 397     	movar		V_RXROLL2
        EF 0115                      5- 398     	movr 		sendData5_VTM,0
        F0 00A3                      5- 399     	movar		V_RXROLL3
-       F1 2964                      5- 400     	lcall		UPDATA_RXCH
+       F1 2968                      5- 400     	lcall		UPDATA_RXCH	;//re TX ROLL-> CH
                                     5-0401      ;//ACK roll signal
                                     5-0402      ;//
        F2 05B8                      5- 403     	incr		V_PairTimeCT,1
        F3 2108                      5- 404     	movia		8
        F4 0438                      5- 405     	subar		V_PairTimeCT,0
        F5 0803                      5- 406     	btrss		cf
-       F6 38FC                      5- 407     	lgoto		RX_PAIR_TXROLL_NEXT1
+       F6 3900                      5- 407     	lgoto		RX_PAIR_TXROLL_NEXT1
                  F7                 5- 408      RX_PAIR_FIRST:	
        F7 02B8                      5- 409     	clrr		V_PairTimeCT
-       F8 1C24                      5- 410     	bcr			_flag_Build
-       F9 1D24                      5- 411     	bcr			_flag_RF_Reset
-       FA 19A5                      5- 412     	bsr			_flag_LRturnTrig
-       FB 02AD                      5- 413     	clrr		Test_VTM
-                                    5-0414      ;//	lgoto		RX_WAIT_NEXT
-                 FC                 5- 415      RX_PAIR_TXROLL_NEXT1:	
-       FC 2179                      5- 416     	movia		0x79
-       FD 0090                      5- 417     	movar		sendData0_VTM
-       FE 0120                      5- 418     	movr 		V_RXROLL0,0
-       FF 0091                      5- 419     	movar		sendData1_VTM
-      100 0121                      5- 420     	movr		V_RXROLL1,0
-      101 0092                      5- 421     	movar		sendData2_VTM
-      102 0122                      5- 422     	movr		V_RXROLL2,0
-      103 0093                      5- 423     	movar		sendData3_VTM
-      104 0123                      5- 424     	movr		V_RXROLL3,0
-      105 0094                      5- 425     	movar		sendData4_VTM
-      106 2803                      5- 426     	lcall		ROLL0
-      107 0095                      5- 427     	movar		sendData5_VTM
-      108 2804                      5- 428     	lcall		ROLL1
-      109 0096                      5- 429     	movar		sendData6_VTM
-      10A 2805                      5- 430     	lcall		ROLL2
-      10B 0097                      5- 431     	movar		sendData7_VTM
-      10C 2806                      5- 432     	lcall		ROLL3
-      10D 0098                      5- 433     	movar		sendData8_VTM
-      10E 3870                      5- 434     	lgoto		MAIN_TX_NOR_SEND
-                10F                 5- 435      RX_TXDATA_CK:
-      10F 0120                      5- 436     	movr 		V_RXROLL0,0
-      110 1212                      5- 437     	xorar		sendData2_VTM,0
-      111 0903                      5- 438     	btrss		zf
-      112 3942                      5- 439     	lgoto		RX_WAIT_NEXT
-      113 0121                      5- 440     	movr 		V_RXROLL1,0
-      114 1213                      5- 441     	xorar		sendData3_VTM,0
+       F8 1C24                      5- 410     	bcr			_flag_Build	;//-> normal mode
+       F9 1F24                      5- 411     	bcr			_flag_ScanMode		
+       FA 02B6                      5- 412     	clrr		V_lostT
+       FB 02B7                      5- 413     	clrr		V_lost1T
+       FC 1BA4                      5- 414     	bsr			_flag_lostcode
+       FD 1D24                      5- 415     	bcr			_flag_RF_Reset
+       FE 19A5                      5- 416     	bsr			_flag_LRturnTrig
+       FF 02AD                      5- 417     	clrr		Test_VTM
+                                    5-0418      ;//	lgoto		RX_WAIT_NEXT
+                100                 5- 419      RX_PAIR_TXROLL_NEXT1:	
+      100 2179                      5- 420     	movia		0x79
+      101 0090                      5- 421     	movar		sendData0_VTM
+      102 0120                      5- 422     	movr 		V_RXROLL0,0
+      103 0091                      5- 423     	movar		sendData1_VTM
+      104 0121                      5- 424     	movr		V_RXROLL1,0
+      105 0092                      5- 425     	movar		sendData2_VTM
+      106 0122                      5- 426     	movr		V_RXROLL2,0
+      107 0093                      5- 427     	movar		sendData3_VTM
+      108 0123                      5- 428     	movr		V_RXROLL3,0
+      109 0094                      5- 429     	movar		sendData4_VTM
+      10A 2803                      5- 430     	lcall		ROLL0
+      10B 0095                      5- 431     	movar		sendData5_VTM
+      10C 2804                      5- 432     	lcall		ROLL1
+      10D 0096                      5- 433     	movar		sendData6_VTM
+      10E 2805                      5- 434     	lcall		ROLL2
+      10F 0097                      5- 435     	movar		sendData7_VTM
+      110 2806                      5- 436     	lcall		ROLL3
+      111 0098                      5- 437     	movar		sendData8_VTM
+      112 3870                      5- 438     	lgoto		MAIN_TX_NOR_SEND
+                113                 5- 439      RX_TXDATA_CK:
+      113 0120                      5- 440     	movr 		V_RXROLL0,0
+      114 1212                      5- 441     	xorar		sendData2_VTM,0
       115 0903                      5- 442     	btrss		zf
-      116 3942                      5- 443     	lgoto		RX_WAIT_NEXT
-      117 0122                      5- 444     	movr 		V_RXROLL2,0
-      118 1214                      5- 445     	xorar		sendData4_VTM,0
+      116 3946                      5- 443     	lgoto		RX_WAIT_NEXT
+      117 0121                      5- 444     	movr 		V_RXROLL1,0
+      118 1213                      5- 445     	xorar		sendData3_VTM,0
       119 0903                      5- 446     	btrss		zf
-      11A 3942                      5- 447     	lgoto		RX_WAIT_NEXT
-      11B 0123                      5- 448     	movr 		V_RXROLL3,0
-      11C 1215                      5- 449     	xorar		sendData5_VTM,0
+      11A 3946                      5- 447     	lgoto		RX_WAIT_NEXT
+      11B 0122                      5- 448     	movr 		V_RXROLL2,0
+      11C 1214                      5- 449     	xorar		sendData4_VTM,0
       11D 0903                      5- 450     	btrss		zf
-      11E 3942                      5- 451     	lgoto		RX_WAIT_NEXT
-      11F 0824                      5- 452     	btrss		_flag_Build
-      120 3927                      5- 453     	lgoto		RX_TXDATA_CK_DECODE
-                121                 5- 454      RX_PAIR_FIRST_JUAGE:
-      121 0138                      5- 455     	movr		V_PairTimeCT,0
-      122 0903                      5- 456     	btrss		zf
-      123 38F7                      5- 457     	lgoto		RX_PAIR_FIRST
-      124 1C24                      5- 458     	bcr			_flag_Build
-      125 1D24                      5- 459     	bcr			_flag_RF_Reset
-      126 3942                      5- 460     	lgoto		RX_WAIT_NEXT
-                127                 5- 461      RX_TXDATA_CK_DECODE:
-      127 0111                      5- 462     	movr 		sendData1_VTM,0
-      128 243C                      5- 463     	xoria		0x3c
-      129 0903                      5- 464     	btrss		zf
-      12A 3942                      5- 465     	lgoto		RX_WAIT_NEXT
-      12B 02B6                      5- 466     	clrr		V_lostT
-      12C 02B7                      5- 467     	clrr		V_lost1T
-      12D 1BA4                      5- 468     	bsr			_flag_lostcode
-      12E 1F24                      5- 469     	bcr			_flag_ScanMode
-      12F 0110                      5- 470     	movr 		sendData0_VTM,0
-      130 1233                      5- 471     	xorar		V_WorkST,0
-      131 0D03                      5- 472     	btrsc		zf
-      132 3942                      5- 473     	lgoto		RX_WAIT_NEXT
-      133 0110                      5- 474     	movr		sendData0_VTM,0
-      134 00B3                      5- 475     	movar		V_WorkST	
-      135 02AF                      5- 476     	clrr		V_system1T
-      136 3942                      5- 477     	lgoto		RX_WAIT_NEXT
-                                    5-0500      endif
-                137                 5- 501      RX_PAIR_ROLL:
-      137 1C24                      5- 502     	bcr 		_flag_Build 
-      138 1D24                      5- 503     	bcr			_flag_RF_Reset
-                139                 5- 504      RX_PAIR_ROLL_NEXT:	
-      139 0115                      5- 505     	movr 		sendData5_VTM,0
-      13A 00A0                      5- 506     	movar		V_RXROLL0
-      13B 0116                      5- 507     	movr 		sendData6_VTM,0
-      13C 00A1                      5- 508     	movar		V_RXROLL1
-      13D 0117                      5- 509     	movr 		sendData7_VTM,0
-      13E 00A2                      5- 510     	movar		V_RXROLL2
-      13F 0118                      5- 511     	movr 		sendData8_VTM,0
-      140 00A3                      5- 512     	movar		V_RXROLL3
-      141 2964                      5- 513     	lcall		UPDATA_RXCH
-                142                 5- 514      RX_WAIT_NEXT:
-                  1                 5- 515      if C_MODE_RX_En
-      142 2A61                      5- 516     	lcall		EN_RX_MODE
-                                    5-0521      endif
-      143 3850                      5- 522     	lgoto		MAIN_LOOP
-                                    5-0523      
-                144                 5- 524      TX_WAIT_DELAY:
-      144 2B5A                      5- 525     	lcall		DELAY_4ms 
-      145 2B5E                      5- 526     	lcall		DELAY_500us
-      146 3850                      5- 527     	lgoto		MAIN_LOOP
-                                    5-0528      ;//********************************************
-                                    5-0529      ;//scan peak
-                                    5-0530      ;//*********************************************
-                147                 5- 531      SCAN_PEAK:
-      147 2161                      5- 532     	movia		RFStatus_CTM
-      148 2A8B                      5- 533     	lcall		SPI_R
-      149 2AA1                      5- 534     	lcall		SPI_R_DATA
-      14A 1B86                      5- 535     	bsr			PIN_CSN 
-      14B 215E                      5- 536     	movia		0x5e
-      14C 10A6                      5- 537     	andar		TempData_VTM,1
-      14D 142B                      5- 538     	rlr 		RFValue_VTM,0
-      14E 221E                      5- 539     	andia		0x1e
-      14F 2340                      5- 540     	ioria 		0x40
-      150 1226                      5- 541     	xorar 		TempData_VTM,0
-      151 0010                      5- 542     	ret		
-                                    5-0543      
-                                    5-0544      ;//*******************************************
-                                    5-0545      ;//ROLL 0-3 -> TXCH
-                152                 5- 546      UPDATA_TXCH:
-      152 2803                      5- 547     	lcall		ROLL0 
-      153 0090                      5- 548     	movar		sendData0_VTM
-      154 2804                      5- 549     	lcall		ROLL1 
-      155 0091                      5- 550     	movar		sendData1_VTM
-      156 2805                      5- 551     	lcall		ROLL2 
-      157 0092                      5- 552     	movar		sendData2_VTM
-      158 2806                      5- 553     	lcall		ROLL3 
-      159 0093                      5- 554     	movar		sendData3_VTM
-      15A 211A                      5- 555     	movia 		Addr_TXCH
-      15B 0096                      5- 556     	movar 		sendData6_VTM
-      15C 2AA4                      5- 557        	lcall		ROLL_CHANNEL
-      15D 0117                      5- 558     	movr 		sendData7_VTM,0
-      15E 009A                      5- 559     	movar		TXCH0_VTM
-      15F 0118                      5- 560     	movr 		sendData8_VTM,0
-      160 009B                      5- 561     	movar		TXCH1_VTM
-      161 0119                      5- 562     	movr 		sendData9_VTM,0
-      162 009C                      5- 563     	movar		TXCH2_VTM
-      163 0010                      5- 564     	ret
-                                    5-0565      ;//******************************************
-                                    5-0566      ;//ROLL 0-3 -> RXCH
-                164                 5- 567      UPDATA_RXCH:
-      164 0120                      5- 568     	movr 		V_RXROLL0,0
-      165 0090                      5- 569     	movar		sendData0_VTM
-      166 0121                      5- 570     	movr 		V_RXROLL1,0
-      167 0091                      5- 571     	movar		sendData1_VTM
-      168 0122                      5- 572     	movr		V_RXROLL2,0
-      169 0092                      5- 573     	movar		sendData2_VTM
-      16A 0123                      5- 574     	movr		V_RXROLL3,0
-      16B 0093                      5- 575     	movar		sendData3_VTM
-      16C 211D                      5- 576     	movia 		Addr_RXCH
-      16D 0096                      5- 577     	movar 		sendData6_VTM
-      16E 2AA4                      5- 578        	lcall		ROLL_CHANNEL
-      16F 0117                      5- 579     	movr 		sendData7_VTM,0
-      170 009D                      5- 580     	movar		RXCH0_VTM
-      171 0118                      5- 581     	movr 		sendData8_VTM,0
-      172 009E                      5- 582     	movar		RXCH1_VTM
-      173 0119                      5- 583     	movr 		sendData9_VTM,0
-      174 009F                      5- 584     	movar		RXCH2_VTM
-      175 0010                      5- 585     	ret
-                  1                 5- 586      if C_MODE_RX_En
-                176                 5- 587      SCAN_MODE:
-      176 05B6                      5- 588     	incr 		V_lostT,1
-      177 0136                      5- 589     	movr		V_lostT,0
-      178 2764                      5- 590     	subia		100	;//100ms
-      179 0C03                      5- 591     	btrsc		cf
-      17A 398B                      5- 592     	lgoto		SCAN_MODE_END
-      17B 02B6                      5- 593     	clrr		V_lostT
-      17C 0FA4                      5- 594     	btrsc		_flag_lostcode
-      17D 3980                      5- 595     	lgoto		SCAN_MODE_NEXT
-      17E 2140                      5- 596     	movia		0x40	;// _flag_ScanMode
-      17F 12A4                      5- 597     	xorar		V_Workflag,1
-                180                 5- 598      SCAN_MODE_NEXT:
-      180 2B2E                      5- 599     	lcall		RF_CHANNEL_CHOICE
-      181 2A80                      5- 600     	lcall		RF_IDLE_MODE
-      182 2A74                      5- 601     	lcall		RF_SCR_REG
-      183 2A61                      5- 602     	lcall		EN_RX_MODE
-      184 05B7                      5- 603     	incr		V_lost1T,1
-      185 09B7                      5- 604     	btrss		V_lost1T,3
-      186 398B                      5- 605     	lgoto		SCAN_MODE_END
-      187 02B7                      5- 606     	clrr		V_lost1T
-      188 02B3                      5- 607     	clrr		V_WorkST
-      189 1FA4                      5- 608     	bcr			_flag_lostcode
-      18A 1D24                      5- 609     	bcr			_flag_RF_Reset
-                18B                 5- 610      SCAN_MODE_END:
-      18B 0010                      5- 611     	ret
-                                    5-0612      endif
+      11E 3946                      5- 451     	lgoto		RX_WAIT_NEXT
+      11F 0123                      5- 452     	movr 		V_RXROLL3,0
+      120 1215                      5- 453     	xorar		sendData5_VTM,0
+      121 0903                      5- 454     	btrss		zf
+      122 3946                      5- 455     	lgoto		RX_WAIT_NEXT
+      123 0824                      5- 456     	btrss		_flag_Build
+      124 392B                      5- 457     	lgoto		RX_TXDATA_CK_DECODE
+                125                 5- 458      RX_PAIR_FIRST_JUAGE:
+      125 0138                      5- 459     	movr		V_PairTimeCT,0
+      126 0903                      5- 460     	btrss		zf
+      127 38F7                      5- 461     	lgoto		RX_PAIR_FIRST
+      128 1C24                      5- 462     	bcr			_flag_Build
+      129 1D24                      5- 463     	bcr			_flag_RF_Reset
+      12A 3946                      5- 464     	lgoto		RX_WAIT_NEXT
+                12B                 5- 465      RX_TXDATA_CK_DECODE:
+      12B 0111                      5- 466     	movr 		sendData1_VTM,0
+      12C 243C                      5- 467     	xoria		0x3c
+      12D 0903                      5- 468     	btrss		zf
+      12E 3946                      5- 469     	lgoto		RX_WAIT_NEXT
+      12F 02B6                      5- 470     	clrr		V_lostT
+      130 02B7                      5- 471     	clrr		V_lost1T
+      131 1BA4                      5- 472     	bsr			_flag_lostcode
+      132 1F24                      5- 473     	bcr			_flag_ScanMode
+      133 0110                      5- 474     	movr 		sendData0_VTM,0
+      134 1233                      5- 475     	xorar		V_WorkST,0
+      135 0D03                      5- 476     	btrsc		zf
+      136 3946                      5- 477     	lgoto		RX_WAIT_NEXT
+      137 0110                      5- 478     	movr		sendData0_VTM,0
+      138 00B3                      5- 479     	movar		V_WorkST	
+      139 02AF                      5- 480     	clrr		V_system1T
+      13A 3946                      5- 481     	lgoto		RX_WAIT_NEXT
+                                    5-0504      endif
+                13B                 5- 505      RX_PAIR_ROLL:
+      13B 1C24                      5- 506     	bcr 		_flag_Build 
+      13C 1D24                      5- 507     	bcr			_flag_RF_Reset
+                13D                 5- 508      RX_PAIR_ROLL_NEXT:	
+      13D 0115                      5- 509     	movr 		sendData5_VTM,0
+      13E 00A0                      5- 510     	movar		V_RXROLL0
+      13F 0116                      5- 511     	movr 		sendData6_VTM,0
+      140 00A1                      5- 512     	movar		V_RXROLL1
+      141 0117                      5- 513     	movr 		sendData7_VTM,0
+      142 00A2                      5- 514     	movar		V_RXROLL2
+      143 0118                      5- 515     	movr 		sendData8_VTM,0
+      144 00A3                      5- 516     	movar		V_RXROLL3
+      145 2968                      5- 517     	lcall		UPDATA_RXCH	;//-> RX ROLL->CH
+                146                 5- 518      RX_WAIT_NEXT:
+                  1                 5- 519      if C_MODE_RX_En
+      146 2A65                      5- 520     	lcall		EN_RX_MODE
+                                    5-0525      endif
+      147 3850                      5- 526     	lgoto		MAIN_LOOP
+                                    5-0527      
+                148                 5- 528      TX_WAIT_DELAY:
+      148 2B5E                      5- 529     	lcall		DELAY_4ms 
+      149 2B62                      5- 530     	lcall		DELAY_500us
+      14A 3850                      5- 531     	lgoto		MAIN_LOOP
+                                    5-0532      ;//********************************************
+                                    5-0533      ;//scan peak
+                                    5-0534      ;//*********************************************
+                14B                 5- 535      SCAN_PEAK:
+      14B 2161                      5- 536     	movia		RFStatus_CTM
+      14C 2A8F                      5- 537     	lcall		SPI_R
+      14D 2AA5                      5- 538     	lcall		SPI_R_DATA
+      14E 1B86                      5- 539     	bsr			PIN_CSN 
+      14F 215E                      5- 540     	movia		0x5e
+      150 10A6                      5- 541     	andar		TempData_VTM,1
+      151 142B                      5- 542     	rlr 		RFValue_VTM,0
+      152 221E                      5- 543     	andia		0x1e
+      153 2340                      5- 544     	ioria 		0x40
+      154 1226                      5- 545     	xorar 		TempData_VTM,0
+      155 0010                      5- 546     	ret		
+                                    5-0547      
+                                    5-0548      ;//*******************************************
+                                    5-0549      ;//ROLL 0-3 -> TXCH
+                156                 5- 550      UPDATA_TXCH:
+      156 2803                      5- 551     	lcall		ROLL0 
+      157 0090                      5- 552     	movar		sendData0_VTM
+      158 2804                      5- 553     	lcall		ROLL1 
+      159 0091                      5- 554     	movar		sendData1_VTM
+      15A 2805                      5- 555     	lcall		ROLL2 
+      15B 0092                      5- 556     	movar		sendData2_VTM
+      15C 2806                      5- 557     	lcall		ROLL3 
+      15D 0093                      5- 558     	movar		sendData3_VTM
+      15E 211A                      5- 559     	movia 		Addr_TXCH
+      15F 0096                      5- 560     	movar 		sendData6_VTM
+      160 2AA8                      5- 561        	lcall		ROLL_CHANNEL
+      161 0117                      5- 562     	movr 		sendData7_VTM,0
+      162 009A                      5- 563     	movar		TXCH0_VTM
+      163 0118                      5- 564     	movr 		sendData8_VTM,0
+      164 009B                      5- 565     	movar		TXCH1_VTM
+      165 0119                      5- 566     	movr 		sendData9_VTM,0
+      166 009C                      5- 567     	movar		TXCH2_VTM
+      167 0010                      5- 568     	ret
+                                    5-0569      ;//******************************************
+                                    5-0570      ;//ROLL 0-3 -> RXCH
+                168                 5- 571      UPDATA_RXCH:
+      168 0120                      5- 572     	movr 		V_RXROLL0,0
+      169 0090                      5- 573     	movar		sendData0_VTM
+      16A 0121                      5- 574     	movr 		V_RXROLL1,0
+      16B 0091                      5- 575     	movar		sendData1_VTM
+      16C 0122                      5- 576     	movr		V_RXROLL2,0
+      16D 0092                      5- 577     	movar		sendData2_VTM
+      16E 0123                      5- 578     	movr		V_RXROLL3,0
+      16F 0093                      5- 579     	movar		sendData3_VTM
+      170 211D                      5- 580     	movia 		Addr_RXCH
+      171 0096                      5- 581     	movar 		sendData6_VTM
+      172 2AA8                      5- 582        	lcall		ROLL_CHANNEL
+      173 0117                      5- 583     	movr 		sendData7_VTM,0
+      174 009D                      5- 584     	movar		RXCH0_VTM
+      175 0118                      5- 585     	movr 		sendData8_VTM,0
+      176 009E                      5- 586     	movar		RXCH1_VTM
+      177 0119                      5- 587     	movr 		sendData9_VTM,0
+      178 009F                      5- 588     	movar		RXCH2_VTM
+      179 0010                      5- 589     	ret
+                  1                 5- 590      if C_MODE_RX_En
+                17A                 5- 591      SCAN_MODE:
+      17A 05B6                      5- 592     	incr 		V_lostT,1
+      17B 0136                      5- 593     	movr		V_lostT,0
+      17C 2764                      5- 594     	subia		100	;//100ms
+      17D 0C03                      5- 595     	btrsc		cf
+      17E 398F                      5- 596     	lgoto		SCAN_MODE_END
+      17F 02B6                      5- 597     	clrr		V_lostT
+      180 0FA4                      5- 598     	btrsc		_flag_lostcode
+      181 3984                      5- 599     	lgoto		SCAN_MODE_NEXT
+      182 2140                      5- 600     	movia		0x40	;// _flag_ScanMode
+      183 12A4                      5- 601     	xorar		V_Workflag,1
+                184                 5- 602      SCAN_MODE_NEXT:
+      184 2B32                      5- 603     	lcall		RF_CHANNEL_CHOICE
+      185 2A84                      5- 604     	lcall		RF_IDLE_MODE
+      186 2A78                      5- 605     	lcall		RF_SCR_REG
+      187 2A65                      5- 606     	lcall		EN_RX_MODE
+      188 05B7                      5- 607     	incr		V_lost1T,1
+      189 09B7                      5- 608     	btrss		V_lost1T,3
+      18A 398F                      5- 609     	lgoto		SCAN_MODE_END
+      18B 02B7                      5- 610     	clrr		V_lost1T
+      18C 02B3                      5- 611     	clrr		V_WorkST
+      18D 1FA4                      5- 612     	bcr			_flag_lostcode
+      18E 1D24                      5- 613     	bcr			_flag_RF_Reset
+                18F                 5- 614      SCAN_MODE_END:
+      18F 0010                      5- 615     	ret
+                                    5-0616      endif
                                     0-0143      #include		SLEEP_MODE.asm
                                     6-0001      ifndef __SLEEP_MODE
                                     6-0002      #define __SLEEP_MODE
@@ -1435,36 +1440,36 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     6-0010      ;// Date:           2021/7/19
                                     6-0011      ;// ========================================================================= 
                                     6-0012      
-                18C                 6-  13      SCAN_SLEEP:
-      18C 0AA4                      6-  14         btrss       _flag_sleep
-      18D 399D                      6-  15         lgoto       SCAN_SLEEP_END
+                190                 6-  13      SCAN_SLEEP:
+      190 0AA4                      6-  14         btrss       _flag_sleep
+      191 39A1                      6-  15         lgoto       SCAN_SLEEP_END
                   1                 6-  16      if C_MODE_RX_En
-      18E 1D06                      6-  17         bcr         PIN_LAMP
-      18F 02B2                      6-  18         clrr        V_MotorFB
-      190 1E86                      6-  19         bcr         PIN_MF
-      191 1F06                      6-  20         bcr         PIN_MB
-      192 1E06                      6-  21         bcr         PIN_ML
-      193 1C86                      6-  22         bcr         PIN_MR
-      194 2A80                      6-  23         lcall       RF_IDLE_MODE
-      195 2A70                      6-  24         lcall       RF_MIS_REG
-      196 0002                      6-  25         clrwdt
-      197 1F88                      6-  26         bcr         PCON,7
+      192 1D06                      6-  17         bcr         PIN_LAMP
+      193 02B2                      6-  18         clrr        V_MotorFB
+      194 1E86                      6-  19         bcr         PIN_MF
+      195 1F06                      6-  20         bcr         PIN_MB
+      196 1E06                      6-  21         bcr         PIN_ML
+      197 1C86                      6-  22         bcr         PIN_MR
+      198 2A84                      6-  23         lcall       RF_IDLE_MODE
+      199 2A74                      6-  24         lcall       RF_MIS_REG
+      19A 0002                      6-  25         clrwdt
+      19B 1F88                      6-  26         bcr         PCON,7
                                     6-0027      ;//SLEEPING_RE:
                                     6-0028      ;//    movr        V_Key,0
                                     6-0029      ;//    movar       sendData9_VTM
                                     6-0030      
                                     6-0042      endif
-                198                 6-  43      SLEEPING:
-      198 2100                      6-  44         movia       0
-      199 008F                      6-  45         movar       INTF 
-      19A 0001                      6-  46         sleep
-      19B 0000                      6-  47         nop
-                19C                 6-  48      WAKE_CHECK:
+                19C                 6-  43      SLEEPING:
+      19C 2100                      6-  44         movia       0
+      19D 008F                      6-  45         movar       INTF 
+      19E 0001                      6-  46         sleep
+      19F 0000                      6-  47         nop
+                1A0                 6-  48      WAKE_CHECK:
                   1                 6-  49      if C_MODE_RX_En
-      19C 3998                      6-  50         lgoto       SLEEPING
+      1A0 399C                      6-  50         lgoto       SLEEPING
                                     6-0083      endif
-                19D                 6-  84      SCAN_SLEEP_END:
-      19D 0010                      6-  85         ret
+                1A1                 6-  84      SCAN_SLEEP_END:
+      1A1 0010                      6-  85         ret
                                     6-0086      
                                     6-0087      endif __SLEEP_MODE
                                     0-0144      #include		MOTOR.asm
@@ -1492,100 +1497,100 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                   1                 7-  24      break
                                     7-0031      endsw
                                     7-0032      
-                                    7-0033      #define     C_M_SLOWMIN     5   ;//12.5%
+                                    7-0033      #define     C_M_SLOWMIN     9   ;//12.5%
                                     7-0034      
                                     7-0035      
                                     7-0036      #define     C_SLOW_Time     89  ;//25min?
-                                    7-0037      #define  	C_SLOW_STOP_Time	179	;50min?
+                                    7-0037      #define  	C_SLOW_STOP_Time	229	;179	;50min?
                                     7-0038      ;//********************************************************
-                19E                 7-  39      MOTOR_CONTROL:
-      19E 0D25                      7-  40         btrsc       _flag_FB_Brake
-      19F 3A03                      7-  41         lgoto       MOTOR_FB_BRAKE_ING
-      1A0 0133                      7-  42         movr        V_WorkST,0
-      1A1 2203                      7-  43         andia       C_FB
-      1A2 0D03                      7-  44         btrsc       zf
-      1A3 3A07                      7-  45         lgoto       MOTOR_FB_STOP      
-      1A4 0C33                      7-  46         btrsc       V_WorkST,_B 
-      1A5 39B0                      7-  47         lgoto       MOTOR_B        
-                1A6                 7-  48      MOTOR_F:
-      1A6 08A5                      7-  49         btrss       _flag_FB_Stop
-      1A7 39AA                      7-  50         lgoto       MOTOR_F_ING
-      1A8 0C25                      7-  51         btrsc       _flag_FB 
-      1A9 39FC                      7-  52         lgoto       MOTOR_FB_BRAKE
-                1AA                 7-  53      MOTOR_F_ING:   
-      1AA 2110                      7-  54         movia       C_M_MAX	;//15
-      1AB 0933                      7-  55         btrss       V_WorkST,_T 
-      1AC 2109                      7-  56         movia       C_M_MIN		;//9
-      1AD 00A6                      7-  57         movar       TempData_VTM
-      1AE 1C25                      7-  58         bcr         _flag_FB 
-      1AF 39B7                      7-  59         lgoto       MOTOR_FB_ING
-                1B0                 7-  60      MOTOR_B:
-      1B0 08A5                      7-  61         btrss       _flag_FB_Stop
-      1B1 39B4                      7-  62         lgoto       MOTOR_B_ING
-      1B2 0825                      7-  63         btrss       _flag_FB 
-      1B3 39FC                      7-  64         lgoto       MOTOR_FB_BRAKE
-                1B4                 7-  65      MOTOR_B_ING: 
-      1B4 2109                      7-  66         movia       C_M_MIN	;//C_M_MAX	;//15
-      1B5 00A6                      7-  67         movar       TempData_VTM
-      1B6 1825                      7-  68         bsr         _flag_FB 
-                1B7                 7-  69      MOTOR_FB_ING:
-      1B7 02BE                      7-  70     	clrr		V_slow_v
+                1A2                 7-  39      MOTOR_CONTROL:
+      1A2 0D25                      7-  40         btrsc       _flag_FB_Brake
+      1A3 3A07                      7-  41         lgoto       MOTOR_FB_BRAKE_ING
+      1A4 0133                      7-  42         movr        V_WorkST,0
+      1A5 2203                      7-  43         andia       C_FB
+      1A6 0D03                      7-  44         btrsc       zf
+      1A7 3A0B                      7-  45         lgoto       MOTOR_FB_STOP      
+      1A8 0C33                      7-  46         btrsc       V_WorkST,_B 
+      1A9 39B4                      7-  47         lgoto       MOTOR_B        
+                1AA                 7-  48      MOTOR_F:
+      1AA 08A5                      7-  49         btrss       _flag_FB_Stop
+      1AB 39AE                      7-  50         lgoto       MOTOR_F_ING
+      1AC 0C25                      7-  51         btrsc       _flag_FB 
+      1AD 3A00                      7-  52         lgoto       MOTOR_FB_BRAKE
+                1AE                 7-  53      MOTOR_F_ING:   
+      1AE 2110                      7-  54         movia       C_M_MAX	;//15
+      1AF 0933                      7-  55         btrss       V_WorkST,_T 
+      1B0 2109                      7-  56         movia       C_M_MIN		;//9
+      1B1 00A6                      7-  57         movar       TempData_VTM
+      1B2 1C25                      7-  58         bcr         _flag_FB 
+      1B3 39BB                      7-  59         lgoto       MOTOR_FB_ING
+                1B4                 7-  60      MOTOR_B:
+      1B4 08A5                      7-  61         btrss       _flag_FB_Stop
+      1B5 39B8                      7-  62         lgoto       MOTOR_B_ING
+      1B6 0825                      7-  63         btrss       _flag_FB 
+      1B7 3A00                      7-  64         lgoto       MOTOR_FB_BRAKE
+                1B8                 7-  65      MOTOR_B_ING: 
+      1B8 2109                      7-  66         movia       C_M_MIN	;//C_M_MAX	;//15
+      1B9 00A6                      7-  67         movar       TempData_VTM
+      1BA 1825                      7-  68         bsr         _flag_FB 
+                1BB                 7-  69      MOTOR_FB_ING:
+      1BB 02BE                      7-  70     	clrr		V_slow_v
                   1                 7-  71      if C_DK071==1
-      1B8 0AA5                      7-  72         btrss       _flag_FB_SLOW    
-      1B9 1A25                      7-  73         bsr         _flag_FB_RUN	;int count
-      1BA 0EA5                      7-  74         btrsc       _flag_FB_SLOW 
-      1BB 1E25                      7-  75         bcr         _flag_FB_RUN
-      1BC 21B3                      7-  76         movia       C_SLOW_STOP_Time	;C_SLOW_Time  ;//
-      1BD 043D                      7-  77         subar       V_time2,0 
-      1BE 0C03                      7-  78         btrsc       cf 
-      1BF 1AA5                      7-  79         bsr         _flag_FB_SLOW	;180?
+      1BC 0AA5                      7-  72         btrss       _flag_FB_SLOW    
+      1BD 1A25                      7-  73         bsr         _flag_FB_RUN	;int count
+      1BE 0EA5                      7-  74         btrsc       _flag_FB_SLOW 
+      1BF 1E25                      7-  75         bcr         _flag_FB_RUN
+      1C0 21E5                      7-  76         movia       C_SLOW_STOP_Time	;C_SLOW_Time  ;//
+      1C1 043D                      7-  77         subar       V_time2,0 
+      1C2 0C03                      7-  78         btrsc       cf 
+      1C3 1AA5                      7-  79         bsr         _flag_FB_SLOW	;180?
                                     7-0080          
-      1C0 2159                      7-  81         movia		C_SLOW_Time
-      1C1 043D                      7-  82         subar		V_time2,0
-      1C2 0803                      7-  83         btrss		cf
-      1C3 39CB                      7-  84         lgoto		MOTOR_SLOW_NEXT
-      1C4 00AA                      7-  85         movar		ReadData_VTM	
-      1C5 0002                      7-  86         clrwdt
-                1C6                 7-  87      MOMTOR_SLOW_LOOP:    
-      1C6 05BE                      7-  88         incr		V_slow_v,1
-      1C7 2108                      7-  89         movia		8
-      1C8 04AA                      7-  90         subar		ReadData_VTM,1
-      1C9 0C03                      7-  91         btrsc		cf
-      1CA 39C6                      7-  92         lgoto		MOMTOR_SLOW_LOOP
-                1CB                 7-  93      MOTOR_SLOW_NEXT:
+      1C4 2159                      7-  81         movia		C_SLOW_Time
+      1C5 043D                      7-  82         subar		V_time2,0
+      1C6 0803                      7-  83         btrss		cf
+      1C7 39CF                      7-  84         lgoto		MOTOR_SLOW_NEXT
+      1C8 00AA                      7-  85         movar		ReadData_VTM	
+      1C9 0002                      7-  86         clrwdt
+                1CA                 7-  87      MOMTOR_SLOW_LOOP:    
+      1CA 05BE                      7-  88         incr		V_slow_v,1
+      1CB 2108                      7-  89         movia		8
+      1CC 04AA                      7-  90         subar		ReadData_VTM,1
+      1CD 0C03                      7-  91         btrsc		cf
+      1CE 39CA                      7-  92         lgoto		MOMTOR_SLOW_LOOP
+                1CF                 7-  93      MOTOR_SLOW_NEXT:
                                     7-0094      endif
                                     7-0095      
-      1CB 02B4                      7-  96         clrr        V_FBTime
-      1CC 18A5                      7-  97         bsr         _flag_FB_Stop
+      1CF 02B4                      7-  96         clrr        V_FBTime
+      1D0 18A5                      7-  97         bsr         _flag_FB_Stop
                   1                 7-  98      if C_DK071==1    
                                     7-0099      ;    btrss       _flag_FB_SLOW
                                     7-0100      ;    lgoto       MOTOR_FB_OUT_NOR
-      1CD 013E                      7- 101     	movr		V_slow_v,0
-      1CE 0D03                      7- 102     	btrsc		zf
-      1CF 39EB                      7- 103     	lgoto		MOTOR_FB_OUT_NOR
-      1D0 0135                      7- 104         movr        V_FBStartRun,0
-      1D1 24FF                      7- 105         xoria       0xff 
-      1D2 0903                      7- 106         btrss       zf 
-      1D3 05B5                      7- 107         incr        V_FBStartRun,1    
+      1D1 013E                      7- 101     	movr		V_slow_v,0
+      1D2 0D03                      7- 102     	btrsc		zf
+      1D3 39EF                      7- 103     	lgoto		MOTOR_FB_OUT_NOR
+      1D4 0135                      7- 104         movr        V_FBStartRun,0
+      1D5 24FF                      7- 105         xoria       0xff 
+      1D6 0903                      7- 106         btrss       zf 
+      1D7 05B5                      7- 107         incr        V_FBStartRun,1    
                                     7-0108      
-      1D4 2108                      7- 109         movia       8
-      1D5 0435                      7- 110         subar       V_FBStartRun,0
-      1D6 0803                      7- 111         btrss       cf 
-      1D7 39F5                      7- 112         lgoto       MOTOR_FB_ING1  
-      1D8 2114                      7- 113         movia       20
-      1D9 0435                      7- 114         subar       V_FBStartRun,0
-      1DA 0803                      7- 115         btrss       cf 
-      1DB 39EF                      7- 116         lgoto       MOTOR_FB_OUT_NOR1 
+      1D8 2108                      7- 109         movia       8
+      1D9 0435                      7- 110         subar       V_FBStartRun,0
+      1DA 0803                      7- 111         btrss       cf 
+      1DB 39F9                      7- 112         lgoto       MOTOR_FB_ING1  
+      1DC 2114                      7- 113         movia       20
+      1DD 0435                      7- 114         subar       V_FBStartRun,0
+      1DE 0803                      7- 115         btrss       cf 
+      1DF 39F3                      7- 116         lgoto       MOTOR_FB_OUT_NOR1 
                                     7-0117          
-      1DC 013E                      7- 118         movr		V_slow_v,0
-      1DD 0426                      7- 119         subar		TempData_VTM,0
-      1DE 0803                      7- 120         btrss		cf 
-      1DF 39E8                      7- 121         lgoto		MOTOR_FB_OUT_SLOW_MIN
-      1E0 00A6                      7- 122         movar		TempData_VTM
-      1E1 2105                      7- 123         movia		C_M_SLOWMIN
-      1E2 0426                      7- 124         subar		TempData_VTM,0
-      1E3 0803                      7- 125         btrss		cf 
-      1E4 39E8                      7- 126         lgoto		MOTOR_FB_OUT_SLOW_MIN
+      1E0 013E                      7- 118         movr		V_slow_v,0
+      1E1 0426                      7- 119         subar		TempData_VTM,0
+      1E2 0803                      7- 120         btrss		cf 
+      1E3 39EC                      7- 121         lgoto		MOTOR_FB_OUT_SLOW_MIN
+      1E4 00A6                      7- 122         movar		TempData_VTM
+      1E5 2109                      7- 123         movia		C_M_SLOWMIN
+      1E6 0426                      7- 124         subar		TempData_VTM,0
+      1E7 0803                      7- 125         btrss		cf 
+      1E8 39EC                      7- 126         lgoto		MOTOR_FB_OUT_SLOW_MIN
                                     7-0127          
                                     7-0128      ;    swapr       V_FBStartRun,0
                                     7-0129      ;    andia       0x0f 
@@ -1598,101 +1603,101 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     7-0136      ;    subar       TempData_VTM,0
                                     7-0137      ;    btrss       cf 
                                     7-0138      ;    lgoto       MOTOR_FB_OUT_SLOW_MIN
-      1E5 0126                      7- 139         movr        TempData_VTM,0
-      1E6 00B2                      7- 140         movar       V_MotorFB
-      1E7 3A16                      7- 141         lgoto       MOTOR_FB_END
-                1E8                 7- 142      MOTOR_FB_OUT_SLOW_MIN:   
-      1E8 2105                      7- 143         movia       C_M_SLOWMIN
-      1E9 00B2                      7- 144         movar       V_MotorFB
-      1EA 3A16                      7- 145         lgoto       MOTOR_FB_END
+      1E9 0126                      7- 139         movr        TempData_VTM,0
+      1EA 00B2                      7- 140         movar       V_MotorFB
+      1EB 3A1A                      7- 141         lgoto       MOTOR_FB_END
+                1EC                 7- 142      MOTOR_FB_OUT_SLOW_MIN:   
+      1EC 2109                      7- 143         movia       C_M_SLOWMIN
+      1ED 00B2                      7- 144         movar       V_MotorFB
+      1EE 3A1A                      7- 145         lgoto       MOTOR_FB_END
                                     7-0146      endif
-                1EB                 7- 147      MOTOR_FB_OUT_NOR:
-      1EB 05B5                      7- 148         incr        V_FBStartRun,1
-      1EC 09B5                      7- 149         btrss       V_FBStartRun,3
-      1ED 39F5                      7- 150         lgoto       MOTOR_FB_ING1       
-      1EE 02B5                      7- 151         clrr        V_FBStartRun
-                1EF                 7- 152      MOTOR_FB_OUT_NOR1:    
-      1EF 0126                      7- 153         movr		TempData_VTM,0
-      1F0 0432                      7- 154         subar		V_MotorFB,0
-      1F1 0126                      7- 155         movr		TempData_VTM,0
-      1F2 0803                      7- 156         btrss       cf    
-      1F3 0532                      7- 157         incr        V_MotorFB,0
-      1F4 00B2                      7- 158         movar		V_MotorFB	
+                1EF                 7- 147      MOTOR_FB_OUT_NOR:
+      1EF 05B5                      7- 148         incr        V_FBStartRun,1
+      1F0 09B5                      7- 149         btrss       V_FBStartRun,3
+      1F1 39F9                      7- 150         lgoto       MOTOR_FB_ING1       
+      1F2 02B5                      7- 151         clrr        V_FBStartRun
+                1F3                 7- 152      MOTOR_FB_OUT_NOR1:    
+      1F3 0126                      7- 153         movr		TempData_VTM,0
+      1F4 0432                      7- 154         subar		V_MotorFB,0
+      1F5 0126                      7- 155         movr		TempData_VTM,0
+      1F6 0803                      7- 156         btrss       cf    
+      1F7 0532                      7- 157         incr        V_MotorFB,0
+      1F8 00B2                      7- 158         movar		V_MotorFB	
                                     7-0159          
-                1F5                 7- 160      MOTOR_FB_ING1:    
-      1F5 0132                      7- 161         movr        V_MotorFB,0
-      1F6 2709                      7- 162         subia       C_M_MIN
-      1F7 0803                      7- 163         btrss       cf
-      1F8 3A16                      7- 164         lgoto       MOTOR_FB_END
-      1F9 2109                      7- 165         movia       C_M_MIN
-      1FA 00B2                      7- 166         movar       V_MotorFB
-      1FB 3A16                      7- 167         lgoto       MOTOR_FB_END
-                1FC                 7- 168      MOTOR_FB_BRAKE:
-      1FC 2110                      7- 169         movia       C_M_MAX	;//10
-      1FD 00B2                      7- 170         movar       V_MotorFB
-      1FE 02B4                      7- 171         clrr        V_FBTime
-      1FF 1925                      7- 172         bsr         _flag_FB_Brake
-      200 1A86                      7- 173         bsr         PIN_MF
-      201 1B06                      7- 174         bsr         PIN_MB 
-      202 3A16                      7- 175         lgoto       MOTOR_FB_END
-                203                 7- 176      MOTOR_FB_BRAKE_ING:
-      203 05B4                      7- 177         incr        V_FBTime,1
-      204 0A34                      7- 178         btrss       V_FBTime,4
-      205 3A16                      7- 179         lgoto       MOTOR_FB_END
-      206 3A0F                      7- 180         lgoto       MOTOR_FB_STOP_ING
-                207                 7- 181      MOTOR_FB_STOP:
+                1F9                 7- 160      MOTOR_FB_ING1:    
+      1F9 0132                      7- 161         movr        V_MotorFB,0
+      1FA 2709                      7- 162         subia       C_M_MIN
+      1FB 0803                      7- 163         btrss       cf
+      1FC 3A1A                      7- 164         lgoto       MOTOR_FB_END
+      1FD 2109                      7- 165         movia       C_M_MIN
+      1FE 00B2                      7- 166         movar       V_MotorFB
+      1FF 3A1A                      7- 167         lgoto       MOTOR_FB_END
+                200                 7- 168      MOTOR_FB_BRAKE:
+      200 2110                      7- 169         movia       C_M_MAX	;//10
+      201 00B2                      7- 170         movar       V_MotorFB
+      202 02B4                      7- 171         clrr        V_FBTime
+      203 1925                      7- 172         bsr         _flag_FB_Brake
+      204 1A86                      7- 173         bsr         PIN_MF
+      205 1B06                      7- 174         bsr         PIN_MB 
+      206 3A1A                      7- 175         lgoto       MOTOR_FB_END
+                207                 7- 176      MOTOR_FB_BRAKE_ING:
+      207 05B4                      7- 177         incr        V_FBTime,1
+      208 0A34                      7- 178         btrss       V_FBTime,4
+      209 3A1A                      7- 179         lgoto       MOTOR_FB_END
+      20A 3A13                      7- 180         lgoto       MOTOR_FB_STOP_ING
+                20B                 7- 181      MOTOR_FB_STOP:
                   1                 7- 182      if C_DK071==1
-      207 1E25                      7- 183         bcr         _flag_FB_RUN
-      208 0EA5                      7- 184         btrsc       _flag_FB_SLOW
-      209 02B5                      7- 185         clrr        V_FBStartRun
+      20B 1E25                      7- 183         bcr         _flag_FB_RUN
+      20C 0EA5                      7- 184         btrsc       _flag_FB_SLOW
+      20D 02B5                      7- 185         clrr        V_FBStartRun
                                     7-0186      endif
-      20A 05B4                      7- 187         incr        V_FBTime,1
-      20B 2150                      7- 188         movia       80
-      20C 0434                      7- 189         subar       V_FBTime,0
-      20D 0803                      7- 190         btrss       cf
-      20E 3A13                      7- 191         lgoto       MOTOR_FB_STOP_ING1
-                20F                 7- 192      MOTOR_FB_STOP_ING:
-      20F 02B5                      7- 193         clrr        V_FBStartRun
-      210 1D25                      7- 194         bcr         _flag_FB_Brake
-      211 1CA5                      7- 195         bcr         _flag_FB_Stop
-      212 02B4                      7- 196         clrr        V_FBTime
-                213                 7- 197      MOTOR_FB_STOP_ING1:    
-      213 02B2                      7- 198         clrr        V_MotorFB
-      214 1E86                      7- 199         bcr         PIN_MF
-      215 1F06                      7- 200         bcr         PIN_MB 
+      20E 05B4                      7- 187         incr        V_FBTime,1
+      20F 2150                      7- 188         movia       80
+      210 0434                      7- 189         subar       V_FBTime,0
+      211 0803                      7- 190         btrss       cf
+      212 3A17                      7- 191         lgoto       MOTOR_FB_STOP_ING1
+                213                 7- 192      MOTOR_FB_STOP_ING:
+      213 02B5                      7- 193         clrr        V_FBStartRun
+      214 1D25                      7- 194         bcr         _flag_FB_Brake
+      215 1CA5                      7- 195         bcr         _flag_FB_Stop
+      216 02B4                      7- 196         clrr        V_FBTime
+                217                 7- 197      MOTOR_FB_STOP_ING1:    
+      217 02B2                      7- 198         clrr        V_MotorFB
+      218 1E86                      7- 199         bcr         PIN_MF
+      219 1F06                      7- 200         bcr         PIN_MB 
                                     7-0201          
-                216                 7- 202      MOTOR_FB_END:
-                216                 7- 203      MOTOR_LR:
-      216 09A5                      7- 204     	btrss		_flag_LRturnTrig
-      217 3A23                      7- 205     	lgoto		MOTOR_LR_NOR
-      218 05AD                      7- 206     	incr		Test_VTM,1	;//->7ms?
-      219 213C                      7- 207     	movia		60
-      21A 042D                      7- 208     	subar		Test_VTM,0
-      21B 0803                      7- 209     	btrss		cf
-      21C 3A2A                      7- 210     	lgoto		MOTOR_L
-      21D 2178                      7- 211     	movia		120
-      21E 042D                      7- 212     	subar		Test_VTM,0
-      21F 0803                      7- 213     	btrss		cf
-      220 3A2D                      7- 214     	lgoto		MOTOR_R
-      221 02AD                      7- 215     	clrr		Test_VTM
-      222 1DA5                      7- 216     	bcr			_flag_LRturnTrig
-                223                 7- 217      MOTOR_LR_NOR:	
-      223 0F33                      7- 218         btrsc       V_WorkST,_L 
-      224 3A2A                      7- 219         lgoto       MOTOR_L
-      225 0EB3                      7- 220         btrsc       V_WorkST,_R 
-      226 3A2D                      7- 221         lgoto       MOTOR_R 
-                227                 7- 222      MOTOR_LR_STOP:
-      227 1E06                      7- 223         bcr         PIN_ML 
-      228 1C86                      7- 224         bcr         PIN_MR 
-      229 0010                      7- 225         ret
-                22A                 7- 226      MOTOR_L:
-      22A 1C86                      7- 227         bcr         PIN_MR 
-      22B 1A06                      7- 228         bsr         PIN_ML 
-      22C 0010                      7- 229         ret
-                22D                 7- 230      MOTOR_R:
-      22D 1E06                      7- 231         bcr         PIN_ML 
-      22E 1886                      7- 232         bsr         PIN_MR 
-      22F 0010                      7- 233         ret
+                21A                 7- 202      MOTOR_FB_END:
+                21A                 7- 203      MOTOR_LR:
+      21A 09A5                      7- 204     	btrss		_flag_LRturnTrig
+      21B 3A27                      7- 205     	lgoto		MOTOR_LR_NOR
+      21C 05AD                      7- 206     	incr		Test_VTM,1	;//->7ms?
+      21D 213C                      7- 207     	movia		60
+      21E 042D                      7- 208     	subar		Test_VTM,0
+      21F 0803                      7- 209     	btrss		cf
+      220 3A2E                      7- 210     	lgoto		MOTOR_L
+      221 2178                      7- 211     	movia		120
+      222 042D                      7- 212     	subar		Test_VTM,0
+      223 0803                      7- 213     	btrss		cf
+      224 3A31                      7- 214     	lgoto		MOTOR_R
+      225 02AD                      7- 215     	clrr		Test_VTM
+      226 1DA5                      7- 216     	bcr			_flag_LRturnTrig
+                227                 7- 217      MOTOR_LR_NOR:	
+      227 0F33                      7- 218         btrsc       V_WorkST,_L 
+      228 3A2E                      7- 219         lgoto       MOTOR_L
+      229 0EB3                      7- 220         btrsc       V_WorkST,_R 
+      22A 3A31                      7- 221         lgoto       MOTOR_R 
+                22B                 7- 222      MOTOR_LR_STOP:
+      22B 1E06                      7- 223         bcr         PIN_ML 
+      22C 1C86                      7- 224         bcr         PIN_MR 
+      22D 0010                      7- 225         ret
+                22E                 7- 226      MOTOR_L:
+      22E 1C86                      7- 227         bcr         PIN_MR 
+      22F 1A06                      7- 228         bsr         PIN_ML 
+      230 0010                      7- 229         ret
+                231                 7- 230      MOTOR_R:
+      231 1E06                      7- 231         bcr         PIN_ML 
+      232 1886                      7- 232         bsr         PIN_MR 
+      233 0010                      7- 233         ret
                                     7-0234      endif __MOTOR
                                     0-0145      #include 		Lamp_Control.asm
                                     8-0001      ifndef __LAMP_CONTROL
@@ -1709,30 +1714,30 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     8-0012      ;// Date:         2021/7/17
                                     8-0013      ;// ========================================================================= 
                                     8-0014      
-                230                 8-  15      LAMP_CONTROL:
+                234                 8-  15      LAMP_CONTROL:
                   1                 8-  16      if C_MODE_RX_En
-      230 0C24                      8-  17     	btrsc		_flag_Build
-      231 3A3E                      8-  18     	lgoto		LAMP_CONTROL_OFF	;LAMP_CONTROL_BUILD_BLINK
-      232 0BA4                      8-  19         btrss       _flag_lostcode 
-      233 3A3E                      8-  20         lgoto       LAMP_CONTROL_OFF	;LAMP_CONTROL_LOST_BLINK
-      234 08B3                      8-  21         btrss       V_WorkST,_F
-      235 3A3E                      8-  22         lgoto       LAMP_CONTROL_OFF
-      236 3A3A                      8-  23         lgoto		LAMP_CONTROL_ON
-                237                 8-  24      LAMP_CONTROL_LOST_BLINK:
-      237 0F2E                      8-  25     	btrsc       V_systemT,6
-      238 3A3A                      8-  26         lgoto       LAMP_CONTROL_ON
-      239 3A3E                      8-  27         lgoto		LAMP_CONTROL_OFF
+      234 0C24                      8-  17     	btrsc		_flag_Build
+      235 3A42                      8-  18     	lgoto		LAMP_CONTROL_OFF	;LAMP_CONTROL_BUILD_BLINK
+      236 0BA4                      8-  19         btrss       _flag_lostcode 
+      237 3A42                      8-  20         lgoto       LAMP_CONTROL_OFF	;LAMP_CONTROL_LOST_BLINK
+      238 08B3                      8-  21         btrss       V_WorkST,_F
+      239 3A42                      8-  22         lgoto       LAMP_CONTROL_OFF
+      23A 3A3E                      8-  23         lgoto		LAMP_CONTROL_ON
+                23B                 8-  24      LAMP_CONTROL_LOST_BLINK:
+      23B 0F2E                      8-  25     	btrsc       V_systemT,6
+      23C 3A3E                      8-  26         lgoto       LAMP_CONTROL_ON
+      23D 3A42                      8-  27         lgoto		LAMP_CONTROL_OFF
                                     8-0068      endif
-                23A                 8-  69      LAMP_CONTROL_ON:
-      23A 1906                      8-  70         bsr         PIN_Lamp
-      23B 3A3F                      8-  71         lgoto       LAMP_CONTROL_END
-                23C                 8-  72      LAMP_CONTROL_BUILD_BLINK:
-      23C 0EAE                      8-  73         btrsc       V_systemT,5	;//7*32 = 220ms?
-      23D 3A3A                      8-  74         lgoto       LAMP_CONTROL_ON
-                23E                 8-  75      LAMP_CONTROL_OFF:
-      23E 1D06                      8-  76         bcr         PIN_Lamp
-                23F                 8-  77      LAMP_CONTROL_END:
-      23F 0010                      8-  78         ret
+                23E                 8-  69      LAMP_CONTROL_ON:
+      23E 1906                      8-  70         bsr         PIN_Lamp
+      23F 3A43                      8-  71         lgoto       LAMP_CONTROL_END
+                240                 8-  72      LAMP_CONTROL_BUILD_BLINK:
+      240 0EAE                      8-  73         btrsc       V_systemT,5	;//7*32 = 220ms?
+      241 3A3E                      8-  74         lgoto       LAMP_CONTROL_ON
+                242                 8-  75      LAMP_CONTROL_OFF:
+      242 1D06                      8-  76         bcr         PIN_Lamp
+                243                 8-  77      LAMP_CONTROL_END:
+      243 0010                      8-  78         ret
                                     8-0079      
                                     8-0080      
                                     8-0081      
@@ -1756,115 +1761,115 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     9-0015      ;// ========================================================================= 
                                     9-0016      
                                     9-0017      ;//0->70inst+25 +147 = 242 inst
-                240                 9-  18      INITIAL_RF:
-      240 0D24                      9-  19         btrsc   _flag_RF_Reset
-      241 0010                      9-  20         ret
-      242 2B5C                      9-  21         lcall	DELAY_1ms
-      243 1C05                      9-  22         bcr     PIN_CE
-      244 2B56                      9-  23         lcall   DELAY_30ms
-      245 1805                      9-  24         bsr     PIN_CE
-      246 2B58                      9-  25         lcall   DELAY_45ms
-                247                 9-  26      INITIAL_RF_DEF_REG:
-      247 02A9                      9-  27         clrr   	WriteData_VTM
-                248                 9-  28      INITIAL_RF_DEF_REG_LOOP:
-      248 2809                      9-  29         lcall   TABLE_RF_REG
-      249 05A9                      9-  30         incr    WriteData_VTM,1
-      24A 24FF                      9-  31         xoria   0xff
-      24B 0D03                      9-  32         btrsc   zf
-      24C 3A54                      9-  33         lgoto   INITIAL_RF_DEF_REG_END
-      24D 24FF                      9-  34         xoria   0xff
-      24E 2A8C                      9-  35         lcall   SPI_RW
-      24F 2809                      9-  36         lcall   TABLE_RF_REG
-      250 05A9                      9-  37         incr    WriteData_VTM,1
-      251 2A8D                      9-  38         lcall   SPI_W_DATA
-      252 1B86                      9-  39         bsr     PIN_CSN
-      253 3A48                      9-  40         lgoto   INITIAL_RF_DEF_REG_LOOP
-                254                 9-  41      INITIAL_RF_DEF_REG_END:
-      254 2B2E                      9-  42         lcall	RF_CHANNEL_CHOICE
-      255 2A80                      9-  43         lcall   RF_IDLE_MODE
-      256 2A68                      9-  44         lcall   CLR_W_FIFO
-      257 2A6A                      9-  45         lcall   CLR_R_FIFO
+                244                 9-  18      INITIAL_RF:
+      244 0D24                      9-  19         btrsc   _flag_RF_Reset
+      245 0010                      9-  20         ret
+      246 2B60                      9-  21         lcall	DELAY_1ms
+      247 1C05                      9-  22         bcr     PIN_CE
+      248 2B5A                      9-  23         lcall   DELAY_30ms
+      249 1805                      9-  24         bsr     PIN_CE
+      24A 2B5C                      9-  25         lcall   DELAY_45ms
+                24B                 9-  26      INITIAL_RF_DEF_REG:
+      24B 02A9                      9-  27         clrr   	WriteData_VTM
+                24C                 9-  28      INITIAL_RF_DEF_REG_LOOP:
+      24C 2809                      9-  29         lcall   TABLE_RF_REG
+      24D 05A9                      9-  30         incr    WriteData_VTM,1
+      24E 24FF                      9-  31         xoria   0xff
+      24F 0D03                      9-  32         btrsc   zf
+      250 3A58                      9-  33         lgoto   INITIAL_RF_DEF_REG_END
+      251 24FF                      9-  34         xoria   0xff
+      252 2A90                      9-  35         lcall   SPI_RW
+      253 2809                      9-  36         lcall   TABLE_RF_REG
+      254 05A9                      9-  37         incr    WriteData_VTM,1
+      255 2A91                      9-  38         lcall   SPI_W_DATA
+      256 1B86                      9-  39         bsr     PIN_CSN
+      257 3A4C                      9-  40         lgoto   INITIAL_RF_DEF_REG_LOOP
+                258                 9-  41      INITIAL_RF_DEF_REG_END:
+      258 2B32                      9-  42         lcall	RF_CHANNEL_CHOICE
+      259 2A84                      9-  43         lcall   RF_IDLE_MODE
+      25A 2A6C                      9-  44         lcall   CLR_W_FIFO
+      25B 2A6E                      9-  45         lcall   CLR_R_FIFO
                                     9-0046      ;//    lcall   CHECK_2G4_REG
-      258 1924                      9-  47         bsr     _flag_RF_Reset
-                259                 9-  48      INITIAL_TEST_MODE:
-      259 0E24                      9-  49         btrsc   _flag_Carrier
-      25A 3A5D                      9-  50         lgoto   INITIAL_RF_CARRIER
+      25C 1924                      9-  47         bsr     _flag_RF_Reset
+                25D                 9-  48      INITIAL_TEST_MODE:
+      25D 0E24                      9-  49         btrsc   _flag_Carrier
+      25E 3A61                      9-  50         lgoto   INITIAL_RF_CARRIER
                   1                 9-  51      if C_MODE_RX_En
-      25B 3A61                      9-  52         lgoto   EN_RX_MODE
+      25F 3A65                      9-  52         lgoto   EN_RX_MODE
                                     9-0053      endif
-      25C 0010                      9-  54         ret
-                25D                 9-  55      INITIAL_RF_CARRIER:    
-      25D 214B                      9-  56         movia   0x4b
-      25E 2A7D                      9-  57         lcall   RF_RX_MODE1
-      25F 2113                      9-  58         movia   18 | 0x01
-      260 3A79                      9-  59         lgoto   RF_TX_MODE1
+      260 0010                      9-  54         ret
+                261                 9-  55      INITIAL_RF_CARRIER:    
+      261 214B                      9-  56         movia   0x4b
+      262 2A81                      9-  57         lcall   RF_RX_MODE1
+      263 2113                      9-  58         movia   18 | 0x01
+      264 3A7D                      9-  59         lgoto   RF_TX_MODE1
                                     9-0060      ;//**************************************************
-                261                 9-  61      EN_RX_MODE:
-      261 1B86                      9-  62         bsr     PIN_CSN
-      262 2A80                      9-  63         lcall   RF_IDLE_MODE
-      263 2A68                      9-  64         lcall   CLR_W_FIFO
-      264 2A6A                      9-  65         lcall   CLR_R_FIFO
-      265 2A7B                      9-  66         lcall   RF_RX_MODE
-      266 2B5E                      9-  67         lcall	DELAY_500us
-      267 0010                      9-  68         ret     
+                265                 9-  61      EN_RX_MODE:
+      265 1B86                      9-  62         bsr     PIN_CSN
+      266 2A84                      9-  63         lcall   RF_IDLE_MODE
+      267 2A6C                      9-  64         lcall   CLR_W_FIFO
+      268 2A6E                      9-  65         lcall   CLR_R_FIFO
+      269 2A7F                      9-  66         lcall   RF_RX_MODE
+      26A 2B62                      9-  67         lcall	DELAY_500us
+      26B 0010                      9-  68         ret     
                                     9-0069      ;//**************************************************
-                268                 9-  70      CLR_W_FIFO:
-      268 2168                      9-  71         movia   0x68
-      269 3A6B                      9-  72         lgoto   CLR_REG
-                26A                 9-  73      CLR_R_FIFO:
-      26A 2169                      9-  74         movia   0x69
-                26B                 9-  75      CLR_REG:
-      26B 2A8C                      9-  76         lcall   SPI_RW
-      26C 2180                      9-  77         movia   0x80
-      26D 2A8D                      9-  78         lcall   SPI_W_DATA
-      26E 1B86                      9-  79         bsr     PIN_CSN
-      26F 0010                      9-  80         ret
+                26C                 9-  70      CLR_W_FIFO:
+      26C 2168                      9-  71         movia   0x68
+      26D 3A6F                      9-  72         lgoto   CLR_REG
+                26E                 9-  73      CLR_R_FIFO:
+      26E 2169                      9-  74         movia   0x69
+                26F                 9-  75      CLR_REG:
+      26F 2A90                      9-  76         lcall   SPI_RW
+      270 2180                      9-  77         movia   0x80
+      271 2A91                      9-  78         lcall   SPI_W_DATA
+      272 1B86                      9-  79         bsr     PIN_CSN
+      273 0010                      9-  80         ret
                                     9-0081      ;//**************************************************
                                     9-0082      ;// sleep? LNA off Mode 3 - 0:Auto ACK
-                270                 9-  83      RF_MIS_REG:
-      270 2143                      9-  84        movia    0x43
-      271 00A9                      9-  85        movar    WriteData_VTM
-      272 2146                      9-  86        movia    0x46
-      273 3A86                      9-  87        lgoto    SPI_SOLO_REG
+                274                 9-  83      RF_MIS_REG:
+      274 2143                      9-  84        movia    0x43
+      275 00A9                      9-  85        movar    WriteData_VTM
+      276 2146                      9-  86        movia    0x46
+      277 3A8A                      9-  87        lgoto    SPI_SOLO_REG
                                     9-0088      
-                274                 9-  89      RF_SCR_REG:
-      274 2841                      9-  90        lcall    RF_SCR    
-      275 00A9                      9-  91        movar    WriteData_VTM
-      276 2147                      9-  92        movia    71
-      277 3A86                      9-  93        lgoto    SPI_SOLO_REG
+                278                 9-  89      RF_SCR_REG:
+      278 2841                      9-  90        lcall    RF_SCR    
+      279 00A9                      9-  91        movar    WriteData_VTM
+      27A 2147                      9-  92        movia    71
+      27B 3A8A                      9-  93        lgoto    SPI_SOLO_REG
                                     9-0094      ;//**************************************************
                                     9-0095      ;//**************************************************
-                278                 9-  96      RF_TX_MODE:
-      278 2101                      9-  97         movia   0x01
-                279                 9-  98      RF_TX_MODE1:
-      279 00A9                      9-  99         movar   WriteData_VTM
-      27A 3A85                      9- 100         lgoto   RF_WORK_MODE1
+                27C                 9-  96      RF_TX_MODE:
+      27C 2101                      9-  97         movia   0x01
+                27D                 9-  98      RF_TX_MODE1:
+      27D 00A9                      9-  99         movar   WriteData_VTM
+      27E 3A89                      9- 100         lgoto   RF_WORK_MODE1
                                     9-0101      ;//**************************************************
-                27B                 9- 102      RF_RX_MODE:
-      27B 012B                      9- 103         movr    RFValue_VTM,0
-      27C 2380                      9- 104         ioria   0x80
-                27D                 9- 105      RF_RX_MODE1:
-      27D 00A9                      9- 106         movar   WriteData_VTM
-      27E 210F                      9- 107         movia   0x0f
-      27F 3A86                      9- 108         lgoto   SPI_SOLO_REG
+                27F                 9- 102      RF_RX_MODE:
+      27F 012B                      9- 103         movr    RFValue_VTM,0
+      280 2380                      9- 104         ioria   0x80
+                281                 9- 105      RF_RX_MODE1:
+      281 00A9                      9- 106         movar   WriteData_VTM
+      282 210F                      9- 107         movia   0x0f
+      283 3A8A                      9- 108         lgoto   SPI_SOLO_REG
                                     9-0109      ;//**************************************************
-                280                 9- 110      RF_IDLE_MODE:
-      280 012B                      9- 111         movr    RFValue_VTM,0
+                284                 9- 110      RF_IDLE_MODE:
+      284 012B                      9- 111         movr    RFValue_VTM,0
                                     9-0112      ;//**************************************************
-                281                 9- 113      RF_WORK_MODE:
-      281 00A9                      9- 114         movar   WriteData_VTM
-      282 210F                      9- 115         movia   0x0f
-      283 2A86                      9- 116         lcall   SPI_SOLO_REG
-      284 02A9                      9- 117         clrr    WriteData_VTM
-                285                 9- 118      RF_WORK_MODE1:
-      285 210E                      9- 119         movia   0x0e
-                286                 9- 120      SPI_SOLO_REG:
-      286 2A8C                      9- 121         lcall   SPI_RW
-      287 0129                      9- 122         movr    WriteData_VTM,0
-                288                 9- 123      SPI_SOLO_REG1:
-      288 2A8D                      9- 124         lcall   SPI_W_DATA
-      289 1B86                      9- 125         bsr     PIN_CSN
-      28A 0010                      9- 126         ret
+                285                 9- 113      RF_WORK_MODE:
+      285 00A9                      9- 114         movar   WriteData_VTM
+      286 210F                      9- 115         movia   0x0f
+      287 2A8A                      9- 116         lcall   SPI_SOLO_REG
+      288 02A9                      9- 117         clrr    WriteData_VTM
+                289                 9- 118      RF_WORK_MODE1:
+      289 210E                      9- 119         movia   0x0e
+                28A                 9- 120      SPI_SOLO_REG:
+      28A 2A90                      9- 121         lcall   SPI_RW
+      28B 0129                      9- 122         movr    WriteData_VTM,0
+                28C                 9- 123      SPI_SOLO_REG1:
+      28C 2A91                      9- 124         lcall   SPI_W_DATA
+      28D 1B86                      9- 125         bsr     PIN_CSN
+      28E 0010                      9- 126         ret
                                     9-0127      ;//**************************************************
                                     9-0128      ;//CHECK_2G4_REG:
                                     9-0129      ;//    movia   71
@@ -1898,37 +1903,37 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     9-0157      ;//SPI cycle > 83ns
                                     9-0158      ;//->25inst
                                     9-0159      ;//**************************************************
-                28B                 9- 160      SPI_R:
-      28B 2380                      9- 161         ioria   0x80
-                28C                 9- 162      SPI_RW:
-      28C 1F86                      9- 163         bcr     PIN_CSN
-                28D                 9- 164      SPI_W_DATA:
-      28D 00A6                      9- 165         movar   TempData_VTM
-      28E 0015                      9- 166         iostr   porta
-      28F 22FB                      9- 167         andia   0xfb
-                290                 9- 168      SPI_RW_READY:    
-      290 0005                      9- 169         iost    porta
-      291 2108                      9- 170         movia   8
-      292 00A7                      9- 171         movar   Temp_VTM
-                293                 9- 172      SPI_RW_LOOP:
-      293 1C03                      9- 173         bcr     cf
-      294 14A6                      9- 174         rlr     TempData_VTM,1
-      295 0803                      9- 175         btrss   cf
-      296 1D05                      9- 176         bcr     PIN_MOSI
-      297 0C03                      9- 177         btrsc   cf
-      298 1905                      9- 178         bsr     PIN_MOSI    
-      299 1885                      9- 179         bsr     PIN_CLK
-      29A 0D05                      9- 180         btrsc   PIN_MOSI
-      29B 1826                      9- 181         bsr     TempData_VTM,0
-      29C 1C85                      9- 182         bcr     PIN_CLK
-      29D 17A7                      9- 183         decrsz  Temp_VTM,1
-      29E 3A93                      9- 184         lgoto   SPI_RW_LOOP
-      29F 0126                      9- 185         movr    TempData_VTM,0
-      2A0 0010                      9- 186         ret
-                2A1                 9- 187      SPI_R_DATA:
-      2A1 0015                      9- 188         iostr   porta
-      2A2 2304                      9- 189         ioria   0x04
-      2A3 3A90                      9- 190         lgoto   SPI_RW_READY
+                28F                 9- 160      SPI_R:
+      28F 2380                      9- 161         ioria   0x80
+                290                 9- 162      SPI_RW:
+      290 1F86                      9- 163         bcr     PIN_CSN
+                291                 9- 164      SPI_W_DATA:
+      291 00A6                      9- 165         movar   TempData_VTM
+      292 0015                      9- 166         iostr   porta
+      293 22FB                      9- 167         andia   0xfb
+                294                 9- 168      SPI_RW_READY:    
+      294 0005                      9- 169         iost    porta
+      295 2108                      9- 170         movia   8
+      296 00A7                      9- 171         movar   Temp_VTM
+                297                 9- 172      SPI_RW_LOOP:
+      297 1C03                      9- 173         bcr     cf
+      298 14A6                      9- 174         rlr     TempData_VTM,1
+      299 0803                      9- 175         btrss   cf
+      29A 1D05                      9- 176         bcr     PIN_MOSI
+      29B 0C03                      9- 177         btrsc   cf
+      29C 1905                      9- 178         bsr     PIN_MOSI    
+      29D 1885                      9- 179         bsr     PIN_CLK
+      29E 0D05                      9- 180         btrsc   PIN_MOSI
+      29F 1826                      9- 181         bsr     TempData_VTM,0
+      2A0 1C85                      9- 182         bcr     PIN_CLK
+      2A1 17A7                      9- 183         decrsz  Temp_VTM,1
+      2A2 3A97                      9- 184         lgoto   SPI_RW_LOOP
+      2A3 0126                      9- 185         movr    TempData_VTM,0
+      2A4 0010                      9- 186         ret
+                2A5                 9- 187      SPI_R_DATA:
+      2A5 0015                      9- 188         iostr   porta
+      2A6 2304                      9- 189         ioria   0x04
+      2A7 3A94                      9- 190         lgoto   SPI_RW_READY
                                     9-0191      ;//**********************************************************
                                     9-0192      ;//ROLL Code -> Channel?
                                     9-0193      ;//147 inst?
@@ -1944,241 +1949,241 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     9-0203      #define		StartLCH_CTM		10	;//基本通道
                                     9-0204      #define		LengthCH_CTM		75	;//通道范围  
                                     9-0205      
-                2A4                 9- 206      ROLL_CHANNEL:
-      2A4 215D                      9- 207         movia   0x5d 
-      2A5 1210                      9- 208         xorar   sendData0_VTM,0
-      2A6 0311                      9- 209         addar   sendData1_VTM,0
-      2A7 24D2                      9- 210         xoria   0xd2 
-      2A8 0312                      9- 211         addar   sendData2_VTM,0
-      2A9 0413                      9- 212         subar   sendData3_VTM,0
-      2AA 00A6                      9- 213         movar   TempData_VTM
-      2AB 2B04                      9- 214         lcall   ROLL_STEP_0_78 ;//10 - 85
+                2A8                 9- 206      ROLL_CHANNEL:
+      2A8 215D                      9- 207         movia   0x5d 
+      2A9 1210                      9- 208         xorar   sendData0_VTM,0
+      2AA 0311                      9- 209         addar   sendData1_VTM,0
+      2AB 24D2                      9- 210         xoria   0xd2 
+      2AC 0312                      9- 211         addar   sendData2_VTM,0
+      2AD 0413                      9- 212         subar   sendData3_VTM,0
+      2AE 00A6                      9- 213         movar   TempData_VTM
+      2AF 2B08                      9- 214         lcall   ROLL_STEP_0_78 ;//10 - 85
                                     9-0215      
-                2AC                 9- 216      ROLL_STEP0:
-      2AC 0126                      9- 217     	movr	TempData_VTM,0
-      2AD 0097                      9- 218     	movar	sendData7_VTM		;//first channel
-                2AE                 9- 219      ROLL_CHANNEL1:
-      2AE 2133                      9- 220         movia   0x33 
-      2AF 1211                      9- 221         xorar   sendData1_VTM,0
-      2B0 0312                      9- 222         addar   sendData2_VTM,0
-      2B1 2449                      9- 223         xoria   0x49 
-      2B2 0313                      9- 224         addar   sendData3_VTM,0
-      2B3 00A6                      9- 225         movar   TempData_VTM
-                2B4                 9- 226      ROLL_STEP1:
-      2B4 0117                      9- 227         movr    sendData7_VTM,0
-      2B5 03A6                      9- 228         addar   TempData_VTM,1
-      2B6 2B04                      9- 229         lcall   ROLL_STEP_0_78  ;//10 - 85
-      2B7 0126                      9- 230         movr    TempData_VTM,0
-      2B8 0417                      9- 231         subar   sendData7_VTM,0
-      2B9 0803                      9- 232         btrss   cf
-      2BA 24FF                      9- 233         xoria   0xff
-      2BB 2706                      9- 234         subia   6
-      2BC 0803                      9- 235         btrss   cf
-      2BD 3AC1                      9- 236         lgoto   ROLL_STEP11
-      2BE 210C                      9- 237         movia   12
-      2BF 0326                      9- 238         addar   TempData_VTM,0
-      2C0 2B04                      9- 239         lcall   ROLL_STEP_0_78
-                2C1                 9- 240      ROLL_STEP11:
-      2C1 0126                      9- 241         movr    TempData_VTM,0
-      2C2 0098                      9- 242         movar   sendData8_VTM
-                2C3                 9- 243      ROLL_CHANNEL2:	;//在 差距大的一段中截取一个数据
-      2C3 0118                      9- 244     	movr	sendData8_VTM,0
-      2C4 0417                      9- 245     	subar	sendData7_VTM,0
-      2C5 0803                      9- 246     	btrss	cf
-      2C6 24FF                      9- 247     	xoria	0xff
-      2C7 00A6                      9- 248     	movar	TempData_VTM
-      2C8 2720                      9- 249     	subia	(LengthCH_CTM-StartLCH_CTM)>>1 ;//0x20
-      2C9 0803                      9- 250     	btrss	cf
-      2CA 3ADB                      9- 251     	lgoto	ROLL_CHANNEL21
-                2CB                 9- 252      ROLL_CHANNEL22: ;//0-0x20
-      2CB 0126                      9- 253     	movr	TempData_VTM,0
-      2CC 2741                      9- 254     	subia	LengthCH_CTM-StartLCH_CTM ;//65 - (0-0x20)
-      2CD 00A6                      9- 255     	movar	TempData_VTM    ;//65 - 33?
-      2CE 2B0F                      9- 256     	lcall	ROLL_CHANNEL2_  ;//53 - 21
-      2CF 0117                      9- 257         movr    sendData7_VTM,0
-      2D0 0418                      9- 258         subar   sendData8_VTM,0
-      2D1 0117                      9- 259         movr    sendData7_VTM,0
-      2D2 0C03                      9- 260         btrsc   cf
-      2D3 0118                      9- 261         movr    sendData8_VTM,0
-      2D4 2506                      9- 262         addia   6
-      2D5 0329                      9- 263         addar   WriteData_VTM,0
-      2D6 00A6                      9- 264         movar   TempData_VTM
-      2D7 2B04                      9- 265         lcall   ROLL_STEP_0_78
-      2D8 0126                      9- 266         movr    TempData_VTM,0
-      2D9 0099                      9- 267         movar   sendData9_VTM
-      2DA 3AE4                      9- 268         lgoto   ROLL_CHANNEL_LIMITED  
+                2B0                 9- 216      ROLL_STEP0:
+      2B0 0126                      9- 217     	movr	TempData_VTM,0
+      2B1 0097                      9- 218     	movar	sendData7_VTM		;//first channel
+                2B2                 9- 219      ROLL_CHANNEL1:
+      2B2 2133                      9- 220         movia   0x33 
+      2B3 1211                      9- 221         xorar   sendData1_VTM,0
+      2B4 0312                      9- 222         addar   sendData2_VTM,0
+      2B5 2449                      9- 223         xoria   0x49 
+      2B6 0313                      9- 224         addar   sendData3_VTM,0
+      2B7 00A6                      9- 225         movar   TempData_VTM
+                2B8                 9- 226      ROLL_STEP1:
+      2B8 0117                      9- 227         movr    sendData7_VTM,0
+      2B9 03A6                      9- 228         addar   TempData_VTM,1
+      2BA 2B08                      9- 229         lcall   ROLL_STEP_0_78  ;//10 - 85
+      2BB 0126                      9- 230         movr    TempData_VTM,0
+      2BC 0417                      9- 231         subar   sendData7_VTM,0
+      2BD 0803                      9- 232         btrss   cf
+      2BE 24FF                      9- 233         xoria   0xff
+      2BF 2706                      9- 234         subia   6
+      2C0 0803                      9- 235         btrss   cf
+      2C1 3AC5                      9- 236         lgoto   ROLL_STEP11
+      2C2 210C                      9- 237         movia   12
+      2C3 0326                      9- 238         addar   TempData_VTM,0
+      2C4 2B08                      9- 239         lcall   ROLL_STEP_0_78
+                2C5                 9- 240      ROLL_STEP11:
+      2C5 0126                      9- 241         movr    TempData_VTM,0
+      2C6 0098                      9- 242         movar   sendData8_VTM
+                2C7                 9- 243      ROLL_CHANNEL2:	;//在 差距大的一段中截取一个数据
+      2C7 0118                      9- 244     	movr	sendData8_VTM,0
+      2C8 0417                      9- 245     	subar	sendData7_VTM,0
+      2C9 0803                      9- 246     	btrss	cf
+      2CA 24FF                      9- 247     	xoria	0xff
+      2CB 00A6                      9- 248     	movar	TempData_VTM
+      2CC 2720                      9- 249     	subia	(LengthCH_CTM-StartLCH_CTM)>>1 ;//0x20
+      2CD 0803                      9- 250     	btrss	cf
+      2CE 3ADF                      9- 251     	lgoto	ROLL_CHANNEL21
+                2CF                 9- 252      ROLL_CHANNEL22: ;//0-0x20
+      2CF 0126                      9- 253     	movr	TempData_VTM,0
+      2D0 2741                      9- 254     	subia	LengthCH_CTM-StartLCH_CTM ;//65 - (0-0x20)
+      2D1 00A6                      9- 255     	movar	TempData_VTM    ;//65 - 33?
+      2D2 2B13                      9- 256     	lcall	ROLL_CHANNEL2_  ;//53 - 21
+      2D3 0117                      9- 257         movr    sendData7_VTM,0
+      2D4 0418                      9- 258         subar   sendData8_VTM,0
+      2D5 0117                      9- 259         movr    sendData7_VTM,0
+      2D6 0C03                      9- 260         btrsc   cf
+      2D7 0118                      9- 261         movr    sendData8_VTM,0
+      2D8 2506                      9- 262         addia   6
+      2D9 0329                      9- 263         addar   WriteData_VTM,0
+      2DA 00A6                      9- 264         movar   TempData_VTM
+      2DB 2B08                      9- 265         lcall   ROLL_STEP_0_78
+      2DC 0126                      9- 266         movr    TempData_VTM,0
+      2DD 0099                      9- 267         movar   sendData9_VTM
+      2DE 3AE8                      9- 268         lgoto   ROLL_CHANNEL_LIMITED  
                                     9-0269      
-                2DB                 9- 270      ROLL_CHANNEL21:
-      2DB 2B0F                      9- 271     	lcall	ROLL_CHANNEL2_  ;//53 - 21
+                2DF                 9- 270      ROLL_CHANNEL21:
+      2DF 2B13                      9- 271     	lcall	ROLL_CHANNEL2_  ;//53 - 21
                                     9-0272      
-      2DC 0117                      9- 273     	movr	sendData7_VTM,0
-      2DD 0418                      9- 274     	subar	sendData8_VTM,0
-      2DE 0117                      9- 275     	movr	sendData7_VTM,0
-      2DF 0803                      9- 276     	btrss	cf
-      2E0 0118                      9- 277     	movr	sendData8_VTM,0
-      2E1 2506                      9- 278     	addia	6
-      2E2 0329                      9- 279     	addar	WriteData_VTM,0
-      2E3 0099                      9- 280     	movar	sendData9_VTM
+      2E0 0117                      9- 273     	movr	sendData7_VTM,0
+      2E1 0418                      9- 274     	subar	sendData8_VTM,0
+      2E2 0117                      9- 275     	movr	sendData7_VTM,0
+      2E3 0803                      9- 276     	btrss	cf
+      2E4 0118                      9- 277     	movr	sendData8_VTM,0
+      2E5 2506                      9- 278     	addia	6
+      2E6 0329                      9- 279     	addar	WriteData_VTM,0
+      2E7 0099                      9- 280     	movar	sendData9_VTM
                                     9-0281         
-                2E4                 9- 282      ROLL_CHANNEL_LIMITED:
-      2E4 0116                      9- 283         movr    sendData6_VTM,0
-      2E5 0084                      9- 284         movar   FSR 
-      2E6 2B1F                      9- 285         lcall   CH_LIMITED 
-      2E7 0584                      9- 286         incr    FSR,1
-      2E8 2B1F                      9- 287         lcall   CH_LIMITED 
-      2E9 0584                      9- 288         incr    FSR,1
-      2EA 2B1F                      9- 289         lcall   CH_LIMITED 
+                2E8                 9- 282      ROLL_CHANNEL_LIMITED:
+      2E8 0116                      9- 283         movr    sendData6_VTM,0
+      2E9 0084                      9- 284         movar   FSR 
+      2EA 2B23                      9- 285         lcall   CH_LIMITED 
+      2EB 0584                      9- 286         incr    FSR,1
+      2EC 2B23                      9- 287         lcall   CH_LIMITED 
+      2ED 0584                      9- 288         incr    FSR,1
+      2EE 2B23                      9- 289         lcall   CH_LIMITED 
                                     9-0290      
-      2EB 0116                      9- 291         movr    sendData6_VTM,0
-      2EC 0084                      9- 292         movar   FSR     ;//->TXCH0_VTM
-      2ED 0118                      9- 293         movr    sendData8_VTM,0
-      2EE 2B24                      9- 294         lcall   ROLL_CH_EQUAL
+      2EF 0116                      9- 291         movr    sendData6_VTM,0
+      2F0 0084                      9- 292         movar   FSR     ;//->TXCH0_VTM
+      2F1 0118                      9- 293         movr    sendData8_VTM,0
+      2F2 2B28                      9- 294         lcall   ROLL_CH_EQUAL
                                     9-0295      
-      2EF 0584                      9- 296         incr    FSR,1
-      2F0 0584                      9- 297         incr    FSR,1   ;//->TXCH2_VTM
-      2F1 0117                      9- 298         movr    sendData7_VTM,0
-      2F2 2B24                      9- 299         lcall   ROLL_CH_EQUAL
+      2F3 0584                      9- 296         incr    FSR,1
+      2F4 0584                      9- 297         incr    FSR,1   ;//->TXCH2_VTM
+      2F5 0117                      9- 298         movr    sendData7_VTM,0
+      2F6 2B28                      9- 299         lcall   ROLL_CH_EQUAL
                                     9-0300      
-      2F3 0118                      9- 301         movr    sendData8_VTM,0
-      2F4 2B24                      9- 302         lcall   ROLL_CH_EQUAL   
+      2F7 0118                      9- 301         movr    sendData8_VTM,0
+      2F8 2B28                      9- 302         lcall   ROLL_CH_EQUAL   
                                     9-0303      
-                2F5                 9- 304      ROLL_CHANNEL_END:
-      2F5 0010                      9- 305     	ret
+                2F9                 9- 304      ROLL_CHANNEL_END:
+      2F9 0010                      9- 305     	ret
                                     9-0306      ;//87
                                     9-0307      ;//*********************************************************
-                2F6                 9- 308      ROLL_STEP_0_75:
-      2F6 0126                      9- 309     	movr    TempData_VTM,0
-      2F7 2749                      9- 310     	subia	73
-      2F8 0C03                      9- 311     	btrsc	cf
-      2F9 3AFD                      9- 312     	lgoto	ROLL_STEP_0_75_END
-      2FA 2149                      9- 313     	movia	73
-      2FB 04A6                      9- 314     	subar	TempData_VTM,1
-      2FC 3AF6                      9- 315     	lgoto	ROLL_STEP_0_75
-                2FD                 9- 316      ROLL_STEP_0_75_END:
-      2FD 0126                      9- 317     	movr	TempData_VTM,0
-      2FE 270A                      9- 318         subia	10
-      2FF 0803                      9- 319         btrss	cf
-      300 3B03                      9- 320         lgoto	ROLL_10_75_STEP_END
-      301 210A                      9- 321     	movia	StartLCH_CTM		;//3	;基本通道
-      302 03A6                      9- 322     	addar	TempData_VTM,1
-                303                 9- 323      ROLL_10_75_STEP_END:
-      303 0010                      9- 324     	ret
+                2FA                 9- 308      ROLL_STEP_0_75:
+      2FA 0126                      9- 309     	movr    TempData_VTM,0
+      2FB 2749                      9- 310     	subia	73
+      2FC 0C03                      9- 311     	btrsc	cf
+      2FD 3B01                      9- 312     	lgoto	ROLL_STEP_0_75_END
+      2FE 2149                      9- 313     	movia	73
+      2FF 04A6                      9- 314     	subar	TempData_VTM,1
+      300 3AFA                      9- 315     	lgoto	ROLL_STEP_0_75
+                301                 9- 316      ROLL_STEP_0_75_END:
+      301 0126                      9- 317     	movr	TempData_VTM,0
+      302 270A                      9- 318         subia	10
+      303 0803                      9- 319         btrss	cf
+      304 3B07                      9- 320         lgoto	ROLL_10_75_STEP_END
+      305 210A                      9- 321     	movia	StartLCH_CTM		;//3	;基本通道
+      306 03A6                      9- 322     	addar	TempData_VTM,1
+                307                 9- 323      ROLL_10_75_STEP_END:
+      307 0010                      9- 324     	ret
                                     9-0325      ;//*********************************************************
-                304                 9- 326      ROLL_STEP_0_78:
-      304 0002                      9- 327     	clrwdt
-      305 0126                      9- 328     	movr	TempData_VTM,0
-      306 274B                      9- 329     	subia	LengthCH_CTM
-      307 0C03                      9- 330     	btrsc	cf
-      308 3B0C                      9- 331     	lgoto	ROLL_STEP_0_78_END
-      309 214B                      9- 332     	movia	LengthCH_CTM
-      30A 04A6                      9- 333     	subar	TempData_VTM,1
-      30B 3B04                      9- 334     	lgoto	ROLL_STEP_0_78
-                30C                 9- 335      ROLL_STEP_0_78_END:
-      30C 210A                      9- 336     	movia	StartLCH_CTM		;//3	;基本通道
-      30D 03A6                      9- 337     	addar	TempData_VTM,1  ;//10-85
-      30E 0010                      9- 338     	ret	
+                308                 9- 326      ROLL_STEP_0_78:
+      308 0002                      9- 327     	clrwdt
+      309 0126                      9- 328     	movr	TempData_VTM,0
+      30A 274B                      9- 329     	subia	LengthCH_CTM
+      30B 0C03                      9- 330     	btrsc	cf
+      30C 3B10                      9- 331     	lgoto	ROLL_STEP_0_78_END
+      30D 214B                      9- 332     	movia	LengthCH_CTM
+      30E 04A6                      9- 333     	subar	TempData_VTM,1
+      30F 3B08                      9- 334     	lgoto	ROLL_STEP_0_78
+                310                 9- 335      ROLL_STEP_0_78_END:
+      310 210A                      9- 336     	movia	StartLCH_CTM		;//3	;基本通道
+      311 03A6                      9- 337     	addar	TempData_VTM,1  ;//10-85
+      312 0010                      9- 338     	ret	
                                     9-0339      ;//*********************************************************
-                30F                 9- 340      ROLL_CHANNEL2_:
-      30F 210C                      9- 341         movia   12
-      310 0426                      9- 342         subar   TempData_VTM,0
-      311 21AE                      9- 343         movia   0xae 
-      312 1212                      9- 344         xorar   sendData2_VTM,0
-      313 0313                      9- 345         addar   sendData3_VTM,0
-      314 2463                      9- 346         xoria   0x63
-      315 0310                      9- 347         addar   sendData0_VTM,0
-      316 00A9                      9- 348         movar   WriteData_VTM
-                317                 9- 349      ROLL_CHANNEL2_LOOP:
-      317 0002                      9- 350     	clrwdt
-      318 0126                      9- 351     	movr	TempData_VTM,0
-      319 0429                      9- 352     	subar	WriteData_VTM,0 ;//->53 - 21 
-      31A 0803                      9- 353     	btrss	cf
-      31B 3B1E                      9- 354     	lgoto	ROLL_CHANNEL2_END
-      31C 00A9                      9- 355     	movar	WriteData_VTM
-      31D 3B17                      9- 356     	lgoto	ROLL_CHANNEL2_LOOP
-                31E                 9- 357      ROLL_CHANNEL2_END:
-      31E 0010                      9- 358     	ret		
+                313                 9- 340      ROLL_CHANNEL2_:
+      313 210C                      9- 341         movia   12
+      314 0426                      9- 342         subar   TempData_VTM,0
+      315 21AE                      9- 343         movia   0xae 
+      316 1212                      9- 344         xorar   sendData2_VTM,0
+      317 0313                      9- 345         addar   sendData3_VTM,0
+      318 2463                      9- 346         xoria   0x63
+      319 0310                      9- 347         addar   sendData0_VTM,0
+      31A 00A9                      9- 348         movar   WriteData_VTM
+                31B                 9- 349      ROLL_CHANNEL2_LOOP:
+      31B 0002                      9- 350     	clrwdt
+      31C 0126                      9- 351     	movr	TempData_VTM,0
+      31D 0429                      9- 352     	subar	WriteData_VTM,0 ;//->53 - 21 
+      31E 0803                      9- 353     	btrss	cf
+      31F 3B22                      9- 354     	lgoto	ROLL_CHANNEL2_END
+      320 00A9                      9- 355     	movar	WriteData_VTM
+      321 3B1B                      9- 356     	lgoto	ROLL_CHANNEL2_LOOP
+                322                 9- 357      ROLL_CHANNEL2_END:
+      322 0010                      9- 358     	ret		
                                     9-0359      ;//******************************************
-                31F                 9- 360      CH_LIMITED:
-      31F 2149                      9- 361         movia   73
-      320 0400                      9- 362         subar   INDF,0
-      321 0C03                      9- 363         btrsc   cf 
-      322 0080                      9- 364         movar   INDF
-      323 0010                      9- 365         ret
+                323                 9- 360      CH_LIMITED:
+      323 2149                      9- 361         movia   73
+      324 0400                      9- 362         subar   INDF,0
+      325 0C03                      9- 363         btrsc   cf 
+      326 0080                      9- 364         movar   INDF
+      327 0010                      9- 365         ret
                                     9-0366      ;//******************************************
-                324                 9- 367      ROLL_CH_EQUAL:
-      324 1200                      9- 368         xorar   INDF,0
-      325 0903                      9- 369         btrss   zf 
-      326 0010                      9- 370         ret
-      327 210C                      9- 371         movia   0x0c
-      328 0300                      9- 372         addar   INDF,0
-      329 00A6                      9- 373         movar   TempData_VTM
-      32A 2AF6                      9- 374         lcall   ROLL_STEP_0_75
-      32B 0126                      9- 375         movr    TempData_VTM,0
-      32C 0080                      9- 376         movar   INDF 
-      32D 0010                      9- 377         ret
+                328                 9- 367      ROLL_CH_EQUAL:
+      328 1200                      9- 368         xorar   INDF,0
+      329 0903                      9- 369         btrss   zf 
+      32A 0010                      9- 370         ret
+      32B 210C                      9- 371         movia   0x0c
+      32C 0300                      9- 372         addar   INDF,0
+      32D 00A6                      9- 373         movar   TempData_VTM
+      32E 2AFA                      9- 374         lcall   ROLL_STEP_0_75
+      32F 0126                      9- 375         movr    TempData_VTM,0
+      330 0080                      9- 376         movar   INDF 
+      331 0010                      9- 377         ret
                                     9-0378      ;/**********************************************************
                                     9-0379      ;RF_CHANNEL_CHOICE
                                     9-0380      ;正常通道要避开对码通道，通道算法要尽量差异大，通道间的间隔
                                     9-0381      ;最好保持6个通道或者以.
                                     9-0382      ;**********************************************************/	
-                32E                 9- 383      RF_CHANNEL_CHOICE:
-      32E 09A4                      9- 384     	btrss	_flag_test
-                32F                 9- 385      RF_CHANNEL_CHOICE0:
-      32F 05AC                      9- 386     	incr	ChannelCount_VTM,1	
-      330 08AC                      9- 387     	btrss	ChannelCount_VTM,1
-      331 3B35                      9- 388     	lgoto	RF_CHANNEL_CHOICE01
-      332 082C                      9- 389     	btrss	ChannelCount_VTM,0
-      333 3B45                      9- 390     	lgoto	RF_CHANNEL_CHOICE2
-      334 3B3D                      9- 391     	lgoto	RF_CHANNEL_CHOICE3
-                335                 9- 392      RF_CHANNEL_CHOICE01:
-      335 0C2C                      9- 393     	btrsc	ChannelCount_VTM,0
-      336 3B4D                      9- 394     	lgoto	RF_CHANNEL_CHOICE1
-                337                 9- 395      RF_CHANNEL_CHOICE4:
-      337 09A4                      9- 396     	btrss	_flag_test
-      338 3B2F                      9- 397     	lgoto	RF_CHANNEL_CHOICE0
-      339 1DA4                      9- 398     	bcr		_flag_test
-      33A 1D24                      9- 399     	bcr		_flag_RF_reset
-      33B 1E24                      9- 400     	bcr		_flag_Carrier
-      33C 3B55                      9- 401     	lgoto	RF_CHANNEL_CHOICE_END
-                33D                 9- 402      RF_CHANNEL_CHOICE3:
-      33D 011C                      9- 403         movr    TXCH2_VTM,0
-      33E 0D2C                      9- 404         btrsc   ChannelCount_VTM,2
-      33F 011F                      9- 405         movr    RXCH2_VTM,0
+                332                 9- 383      RF_CHANNEL_CHOICE:
+      332 09A4                      9- 384     	btrss	_flag_test
+                333                 9- 385      RF_CHANNEL_CHOICE0:
+      333 05AC                      9- 386     	incr	ChannelCount_VTM,1	
+      334 08AC                      9- 387     	btrss	ChannelCount_VTM,1
+      335 3B39                      9- 388     	lgoto	RF_CHANNEL_CHOICE01
+      336 082C                      9- 389     	btrss	ChannelCount_VTM,0
+      337 3B49                      9- 390     	lgoto	RF_CHANNEL_CHOICE2
+      338 3B41                      9- 391     	lgoto	RF_CHANNEL_CHOICE3
+                339                 9- 392      RF_CHANNEL_CHOICE01:
+      339 0C2C                      9- 393     	btrsc	ChannelCount_VTM,0
+      33A 3B51                      9- 394     	lgoto	RF_CHANNEL_CHOICE1
+                33B                 9- 395      RF_CHANNEL_CHOICE4:
+      33B 09A4                      9- 396     	btrss	_flag_test
+      33C 3B33                      9- 397     	lgoto	RF_CHANNEL_CHOICE0
+      33D 1DA4                      9- 398     	bcr		_flag_test
+      33E 1D24                      9- 399     	bcr		_flag_RF_reset
+      33F 1E24                      9- 400     	bcr		_flag_Carrier
+      340 3B59                      9- 401     	lgoto	RF_CHANNEL_CHOICE_END
+                341                 9- 402      RF_CHANNEL_CHOICE3:
+      341 011C                      9- 403         movr    TXCH2_VTM,0
+      342 0D2C                      9- 404         btrsc   ChannelCount_VTM,2
+      343 011F                      9- 405         movr    RXCH2_VTM,0
                   1                 9- 406      if C_MODE_RX_En
-      340 0F24                      9- 407         btrsc   _flag_ScanMode
+      344 0F24                      9- 407         btrsc   _flag_ScanMode
                                     9-0410      endif
-      341 2145                      9- 411         movia   PRCH2_CTM
+      345 2145                      9- 411         movia   PRCH2_CTM
                                     9-0412      
-      342 0DA4                      9- 413     	btrsc	_flag_test
-      343 2149                      9- 414     	movia	TESTCH2_CTM
-      344 3B54                      9- 415     	lgoto	RF_CHANNEL_CHOICE_OUT
-                345                 9- 416      RF_CHANNEL_CHOICE2:
-      345 011B                      9- 417     	movr    TXCH1_VTM,0
-      346 0D2C                      9- 418         btrsc   ChannelCount_VTM,2
-      347 011E                      9- 419         movr    RXCH1_VTM,0
+      346 0DA4                      9- 413     	btrsc	_flag_test
+      347 2149                      9- 414     	movia	TESTCH2_CTM
+      348 3B58                      9- 415     	lgoto	RF_CHANNEL_CHOICE_OUT
+                349                 9- 416      RF_CHANNEL_CHOICE2:
+      349 011B                      9- 417     	movr    TXCH1_VTM,0
+      34A 0D2C                      9- 418         btrsc   ChannelCount_VTM,2
+      34B 011E                      9- 419         movr    RXCH1_VTM,0
                   1                 9- 420      if C_MODE_RX_En
-      348 0F24                      9- 421         btrsc   _flag_ScanMode
+      34C 0F24                      9- 421         btrsc   _flag_ScanMode
                                     9-0424      endif
-      349 2126                      9- 425         movia   PRCH1_CTM
+      34D 2126                      9- 425         movia   PRCH1_CTM
                                     9-0426      
-      34A 0DA4                      9- 427     	btrsc	_flag_test
-      34B 2129                      9- 428     	movia	TESTCH1_CTM
-      34C 3B54                      9- 429     	lgoto	RF_CHANNEL_CHOICE_OUT
-                34D                 9- 430      RF_CHANNEL_CHOICE1:
-      34D 011A                      9- 431     	movr    TXCH0_VTM,0
-      34E 0D2C                      9- 432         btrsc   ChannelCount_VTM,2
-      34F 011D                      9- 433         movr    RXCH0_VTM,0
+      34E 0DA4                      9- 427     	btrsc	_flag_test
+      34F 2129                      9- 428     	movia	TESTCH1_CTM
+      350 3B58                      9- 429     	lgoto	RF_CHANNEL_CHOICE_OUT
+                351                 9- 430      RF_CHANNEL_CHOICE1:
+      351 011A                      9- 431     	movr    TXCH0_VTM,0
+      352 0D2C                      9- 432         btrsc   ChannelCount_VTM,2
+      353 011D                      9- 433         movr    RXCH0_VTM,0
                   1                 9- 434      if C_MODE_RX_En
-      350 0F24                      9- 435         btrsc   _flag_ScanMode
+      354 0F24                      9- 435         btrsc   _flag_ScanMode
                                     9-0438      endif
-      351 210C                      9- 439         movia   PRCH0_CTM
+      355 210C                      9- 439         movia   PRCH0_CTM
                                     9-0440      
-      352 0DA4                      9- 441     	btrsc	_flag_test
-      353 2108                      9- 442     	movia	TESTCH0_CTM
-                354                 9- 443      RF_CHANNEL_CHOICE_OUT:
-      354 00AB                      9- 444     	movar	RFValue_VTM	
-                355                 9- 445      RF_CHANNEL_CHOICE_END:
-      355 0010                      9- 446     	ret
+      356 0DA4                      9- 441     	btrsc	_flag_test
+      357 2108                      9- 442     	movia	TESTCH0_CTM
+                358                 9- 443      RF_CHANNEL_CHOICE_OUT:
+      358 00AB                      9- 444     	movar	RFValue_VTM	
+                359                 9- 445      RF_CHANNEL_CHOICE_END:
+      359 0010                      9- 446     	ret
                                     9-0447      endif  
                                     0-0147      #include        F_DELAY.asm
                                     A-0001      ifndef __F_DELAY
@@ -2194,30 +2199,30 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     A-0011      ;// Version:    	V1.0.0   
                                     A-0012      ;// Date:         2021/7/17
                                     A-0013      ;// ========================================================================= 
-                356                 A-  14      DELAY_30ms:
-      356 213C                      A-  15         movia       60
-      357 3B5F                      A-  16         lgoto       DELAY_MS
-                358                 A-  17      DELAY_45ms:
-      358 215A                      A-  18         movia       90
-      359 3B5F                      A-  19         lgoto       DELAY_MS
-                35A                 A-  20      DELAY_4ms:
-      35A 2108                      A-  21         movia       8
-      35B 3B5F                      A-  22         lgoto       DELAY_MS
-                35C                 A-  23      DELAY_1ms:
-      35C 2102                      A-  24         movia       2
-      35D 3B5F                      A-  25         lgoto       DELAY_MS
-                35E                 A-  26      DELAY_500us:
-      35E 2101                      A-  27         movia       1
-                35F                 A-  28      DELAY_MS:
-      35F 00AA                      A-  29         movar       ReadData_VTM
-      360 02A9                      A-  30         clrr        WriteData_VTM
-                361                 A-  31      DELAY_LOOP:
-      361 0002                      A-  32         clrwdt
-      362 17A9                      A-  33         decrsz      WriteData_VTM,1
-      363 3B61                      A-  34         lgoto       DELAY_LOOP
-      364 17AA                      A-  35         decrsz      ReadData_VTM,1
-      365 3B61                      A-  36         lgoto       DELAY_LOOP
-      366 0010                      A-  37         ret 
+                35A                 A-  14      DELAY_30ms:
+      35A 213C                      A-  15         movia       60
+      35B 3B63                      A-  16         lgoto       DELAY_MS
+                35C                 A-  17      DELAY_45ms:
+      35C 215A                      A-  18         movia       90
+      35D 3B63                      A-  19         lgoto       DELAY_MS
+                35E                 A-  20      DELAY_4ms:
+      35E 2108                      A-  21         movia       8
+      35F 3B63                      A-  22         lgoto       DELAY_MS
+                360                 A-  23      DELAY_1ms:
+      360 2102                      A-  24         movia       2
+      361 3B63                      A-  25         lgoto       DELAY_MS
+                362                 A-  26      DELAY_500us:
+      362 2101                      A-  27         movia       1
+                363                 A-  28      DELAY_MS:
+      363 00AA                      A-  29         movar       ReadData_VTM
+      364 02A9                      A-  30         clrr        WriteData_VTM
+                365                 A-  31      DELAY_LOOP:
+      365 0002                      A-  32         clrwdt
+      366 17A9                      A-  33         decrsz      WriteData_VTM,1
+      367 3B65                      A-  34         lgoto       DELAY_LOOP
+      368 17AA                      A-  35         decrsz      ReadData_VTM,1
+      369 3B65                      A-  36         lgoto       DELAY_LOOP
+      36A 0010                      A-  37         ret 
                                     A-0038      
                                     A-0039      endif __F_DELAY
                                     0-0148      #include        INITIAL_REG.asm
@@ -2237,56 +2242,55 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     B-0014      ;//**********************************************************
                                     B-0015      ;// clear SRAM
                                     B-0016      ;//**********************************************************
-                367                 B-  17      CLEAR_SRAM:
-      367 2110                      B-  18        movia    HeadRAM_ADR
-      368 0084                      B-  19        movar    FSR 
-      369 0280                      B-  20        clrr     INDF
-      36A 0104                      B-  21        movr     FSR,0
-      36B 273F                      B-  22        subia    EndRAM_ADR 
-      36C 0D03                      B-  23        btrsc    zf 
-      36D 3B70                      B-  24        lgoto	$+3 
-      36E 0584                      B-  25        incr     FSR,1 
-      36F 3B69                      B-  26        lgoto    $-6 
-      370 0010                      B-  27        ret
+                36B                 B-  17      CLEAR_SRAM:
+      36B 2110                      B-  18        movia    HeadRAM_ADR
+      36C 0084                      B-  19        movar    FSR 
+      36D 0280                      B-  20        clrr     INDF
+      36E 0104                      B-  21        movr     FSR,0
+      36F 273F                      B-  22        subia    EndRAM_ADR 
+      370 0D03                      B-  23        btrsc    zf 
+      371 3B74                      B-  24        lgoto	$+3 
+      372 0584                      B-  25        incr     FSR,1 
+      373 3B6D                      B-  26        lgoto    $-6 
+      374 0010                      B-  27        ret
                                     B-0028      
                                     B-0029      ;//**********************************************************
                                     B-0030      ;// IC initial
                                     B-0031      ;//usb 12bit sample -> 8bit data ->output 8bit PWM
                                     B-0032      ;//**********************************************************
-                371                 B-  33      INITIAL_ROUTINE:
-      371 0013                      B-  34        disi                            ;// Disable all interrupt
-      372 2101                      B-  35        movia	   0x01
-      373 002F                      B-  36        sfun	   osccr
-      374 0000                      B-  36     NOP ;after sfun 0xF force NOP
-      375 2100                      B-  37        movia    0x00    	;//TMR2 INT enable 
-      376 008E                      B-  38        movar    INTE                 ;//TMR0 INT all off
-      377 2100                      B-  39        movia    0x00                 ;//10/256=39,062,5HZ = 25.6us 
-      378 0003                      B-  40        T0MD 
-      379 2100                      B-  41        movia	   0x00
-      37A 0081                      B-  42        movar	   TMR0
-      37B 2100                      B-  43        movia    0  
-      37C 008F                      B-  44        movar    INTF			;//interrupt flag 
-      37D 2101                      B-  45        movia	   0x01
-      37E 000F                      B-  46        iost	   PCON1
+                375                 B-  33      INITIAL_ROUTINE:
+      375 0013                      B-  34        disi                            ;// Disable all interrupt
+      376 2101                      B-  35        movia	   0x01
+      377 004F                      B-  36        sfun	   osccr
+      378 2100                      B-  37        movia    0x00    	;//TMR2 INT enable 
+      379 008E                      B-  38        movar    INTE                 ;//TMR0 INT all off
+      37A 2100                      B-  39        movia    0x00                 ;//10/256=39,062,5HZ = 25.6us 
+      37B 0003                      B-  40        T0MD 
+      37C 2100                      B-  41        movia	   0x00
+      37D 0081                      B-  42        movar	   TMR0
+      37E 2100                      B-  43        movia    0  
+      37F 008F                      B-  44        movar    INTF			;//interrupt flag 
+      380 2101                      B-  45        movia	   0x01
+      381 000F                      B-  46        iost	   PCON1
                                     B-0047      
                                     B-0048      ;//IO set ****************************************
-      37F 2100                      B-  49        movia    PADR_SET
-      380 0085                      B-  50        movar    Porta
-      381 2180                      B-  51        movia    PBDR_SET
-      382 0086                      B-  52        movar    Portb
-      383 2100                      B-  53        movia    PAIO_SET
-      384 0005                      B-  54        iost     Porta               ;//pa4,pa3,pa0 output
-      385 2100                      B-  55        movia    PBIO_SET
-      386 0006                      B-  56        iost     Portb
+      382 2100                      B-  49        movia    PADR_SET
+      383 0085                      B-  50        movar    Porta
+      384 2180                      B-  51        movia    PBDR_SET
+      385 0086                      B-  52        movar    Portb
+      386 2100                      B-  53        movia    PAIO_SET
+      387 0005                      B-  54        iost     Porta               ;//pa4,pa3,pa0 output
+      388 2100                      B-  55        movia    PBIO_SET
+      389 0006                      B-  56        iost     Portb
                                     B-0057      
-      387 21F6                      B-  58        movia    PBPU_SET
-      388 008C                      B-  59        movar    BPHCON
-      389 2188                      B-  60        movia    PCON_SET
-      38A 0088                      B-  61        movar    PCON
+      38A 21F6                      B-  58        movia    PBPU_SET
+      38B 008C                      B-  59        movar    BPHCON
+      38C 2188                      B-  60        movia    PCON_SET
+      38D 0088                      B-  61        movar    PCON
                                     B-0062      
-      38B 2100                      B-  63        movia    PBWU_SET
-      38C 0089                      B-  64        movar	   BWUCON
-      38D 0010                      B-  65        ret 
+      38E 2100                      B-  63        movia    PBWU_SET
+      38F 0089                      B-  64        movar	   BWUCON
+      390 0010                      B-  65        ret 
                                     B-0066      
                                     B-0067      endif ;//__INITIAL_REG
                                     0-0149      #include        INTERRUPT.asm
@@ -2305,63 +2309,65 @@ NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_T
                                     C-0013      
                                     C-0014      ;//--------------- Interrupt Service Routine --------------------------------
                                     C-0015      ;//--------------------------------------------------------------------------
-                38E                 C-  16      INTERRUPT:
+                391                 C-  16      INTERRUPT:
                   1                 C-  17      if C_MODE_RX_En
-      38E 00BA                      C-  18     		movar  	   	INTW_VTM
-      38F 1503                      C-  19        	   	swapr 	   	STATUS,0
-      390 00B9                      C-  20        	   	movar  	   	INTStatus_VTM
+      391 00BA                      C-  18     		movar  	   	INTW_VTM
+      392 1503                      C-  19        	   	swapr 	   	STATUS,0
+      393 00B9                      C-  20        	   	movar  	   	INTStatus_VTM
                                     C-0021      
-      391 0132                      C-  22     		movr 		V_MotorFB,0
-      392 0431                      C-  23     		subar		V_CountPWM,0
-      393 0C03                      C-  24     		btrsc		cf
-      394 3B9A                      C-  25     		lgoto		INT_MFB_STOP
-      395 0C25                      C-  26     		btrsc		_flag_FB
-      396 1B06                      C-  27     		bsr			PIN_MB 
-      397 0825                      C-  28     		btrss		_flag_FB 
-      398 1A86                      C-  29     		bsr			PIN_MF
-      399 3B9C                      C-  30     		lgoto		INT_PWM_COUNT
-                39A                 C-  31      INT_MFB_STOP:
-      39A 1E86                      C-  32     		bcr			PIN_MF
-      39B 1F06                      C-  33     		bcr			PIN_MB
-                39C                 C-  34      INT_PWM_COUNT:
-      39C 05B1                      C-  35     		incr		V_CountPWM,1
-      39D 210F                      C-  36     		movia		0x0f
-      39E 10B1                      C-  37     		andar		V_CountPWM,1
-      39F 0A25                      C-  38     		btrss		_flag_FB_RUN
-      3A0 3BA6                      C-  39     		lgoto		INTERRUPT_END
-      3A1 05BB                      C-  40     		incr		V_time0,1
-      3A2 0D03                      C-  41     		btrsc		zf 
-      3A3 05BC                      C-  42     		incr		V_time1,1
-      3A4 0D03                      C-  43     		btrsc		zf 
-      3A5 05BD                      C-  44     		incr		V_time2,1
-                3A6                 C-  45      INTERRUPT_END:
-      3A6 028F                      C-  46     		clrr   	   	INTF
-      3A7 1539                      C-  47        	   	swapr 	    INTStatus_VTM,0
-      3A8 0083                      C-  48        	   	movar  	   	STATUS
-      3A9 15BA                      C-  49        	   	swapr  	   	INTW_VTM,1
-      3AA 153A                      C-  50        	   	swapr 	   	INTW_VTM,0
-                                    C-0051      endif 
-      3AB 0011                      C-  52     		retie								;// Return from interrupt and enable interrupt globally
-                                    C-0053      
-                                    C-0054      
-                                    C-0055      endif __INTERRUPT
+      394 0132                      C-  22     		movr 		V_MotorFB,0
+      395 0431                      C-  23     		subar		V_CountPWM,0
+      396 0C03                      C-  24     		btrsc		cf
+      397 3B9D                      C-  25     		lgoto		INT_MFB_STOP
+      398 0C25                      C-  26     		btrsc		_flag_FB
+      399 1B06                      C-  27     		bsr			PIN_MB 
+      39A 0825                      C-  28     		btrss		_flag_FB 
+      39B 1A86                      C-  29     		bsr			PIN_MF
+      39C 3B9F                      C-  30     		lgoto		INT_PWM_COUNT
+                39D                 C-  31      INT_MFB_STOP:
+      39D 1E86                      C-  32     		bcr			PIN_MF
+      39E 1F06                      C-  33     		bcr			PIN_MB
+                39F                 C-  34      INT_PWM_COUNT:
+      39F 05B1                      C-  35     		incr		V_CountPWM,1
+      3A0 210F                      C-  36     		movia		0x0f
+      3A1 10B1                      C-  37     		andar		V_CountPWM,1
+                  1                 C-  38      if DE_SPEED==1
+      3A2 0A25                      C-  39     		btrss		_flag_FB_RUN
+      3A3 3BA9                      C-  40     		lgoto		INTERRUPT_END
+      3A4 05BB                      C-  41     		incr		V_time0,1
+      3A5 0D03                      C-  42     		btrsc		zf 
+      3A6 05BC                      C-  43     		incr		V_time1,1
+      3A7 0D03                      C-  44     		btrsc		zf 
+      3A8 05BD                      C-  45     		incr		V_time2,1
+                                    C-0046      endif
+                3A9                 C-  47      INTERRUPT_END:
+      3A9 028F                      C-  48     		clrr   	   	INTF
+      3AA 1539                      C-  49        	   	swapr 	    INTStatus_VTM,0
+      3AB 0083                      C-  50        	   	movar  	   	STATUS
+      3AC 15BA                      C-  51        	   	swapr  	   	INTW_VTM,1
+      3AD 153A                      C-  52        	   	swapr 	   	INTW_VTM,0
+                                    C-0053      endif 
+      3AE 0011                      C-  54     		retie								;// Return from interrupt and enable interrupt globally
+                                    C-0055      
+                                    C-0056      
+                                    C-0057      endif __INTERRUPT
                                     0-0162      endif
                                     0-0163      
                                     0-0164      end											;//End of Code
 
-NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2021/10/28 18:18:34
+NYASM 2.30 [Build 210514.00]  File=E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\StartRun.asm Date=2022/5/13 10:36:29
 
 SYMBOL TABLE            TYPE     VALUE
 
-__8A053D                Constant 00000001
-__CHECKSUM_ADDR__       Label    000003AC
+__8A053E                Constant 00000001
+__CHECKSUM_ADDR__       Label    000003AF
 __F_DELAY               Define   
 __INITIAL_REG           Define   
 __INTERRUPT             Define   
 __LAMP_CONTROL          Define   
 __MOTOR                 Define   
 __PIN_COUNT__           Constant 0000000C
-__PROCESSOR__           Constant 00800533
+__PROCESSOR__           Constant 00800534
 __RF_CONFIG             Define   
 __SLEEP_MODE            Define   
 _B                      Constant 00000000
@@ -2455,7 +2461,7 @@ C_LRFB                  Define   0X63
 C_LVR_EN                Constant 00000008
 C_M_MAX                 Define   16
 C_M_MIN                 Define   9
-C_M_SLOWMIN             Define   5
+C_M_SLOWMIN             Define   9
 C_MODE                  Constant 0000000C
 C_MODE_RX_EN            Define   1
 C_NORMAL_MODE           Constant 00000000
@@ -2583,7 +2589,7 @@ C_SFR_BANK2             Constant 00000080
 C_SFR_BANK3             Constant 000000C0
 C_SFR_RAM_ADDR          Constant 0000003F
 C_SHORTPAIR             Define   2
-C_SLOW_STOP_TIME        Define   179
+C_SLOW_STOP_TIME        Define   229
 C_SLOW_TIME             Define   89
 C_SPEED                 Define   0
 C_STANDBY_MODE          Constant 00000008
@@ -2622,24 +2628,25 @@ CARRIER_1               Label    00000038
 CARRIER_2               Label    0000003B
 CARRIER_3               Label    0000003E
 CF                      Define   STATUS,0
-CH_LIMITED              Label    0000031F
+CH_LIMITED              Label    00000323
 CHANNELCOUNT_VTM        Constant 0000002C
-CLEAR_SRAM              Label    00000367
-CLR_R_FIFO              Label    0000026A
-CLR_REG                 Label    0000026B
-CLR_W_FIFO              Label    00000268
+CLEAR_SRAM              Label    0000036B
+CLR_R_FIFO              Label    0000026E
+CLR_REG                 Label    0000026F
+CLR_W_FIFO              Label    0000026C
 DATARAM_ADR             Define   0X10
-DELAY_1MS               Label    0000035C
-DELAY_30MS              Label    00000356
-DELAY_45MS              Label    00000358
-DELAY_4MS               Label    0000035A
-DELAY_500US             Label    0000035E
-DELAY_LOOP              Label    00000361
-DELAY_MS                Label    0000035F
+DE_SPEED                Define   1
+DELAY_1MS               Label    00000360
+DELAY_30MS              Label    0000035A
+DELAY_45MS              Label    0000035C
+DELAY_4MS               Label    0000035E
+DELAY_500US             Label    00000362
+DELAY_LOOP              Label    00000365
+DELAY_MS                Label    00000363
 DELAY_VTM               Constant 00000028
 DIS                     Constant 00000001
 EN                      Constant 00000000
-EN_RX_MODE              Label    00000261
+EN_RX_MODE              Label    00000265
 ENDRAM_ADR              Define   0X3F
 FIFO_EN_CTM             Define   0X64
 FSR                     Constant 00000004
@@ -2647,18 +2654,18 @@ H                       Constant 00000001
 HEADRAM_ADR             Define   0X10
 I                       Constant 00000001
 INDF                    Constant 00000000
-INITIAL_RF              Label    00000240
-INITIAL_RF_CARRIER      Label    0000025D
-INITIAL_RF_DEF_REG      Label    00000247
-INITIAL_RF_DEF_REG_END  Label    00000254
-INITIAL_RF_DEF_REG_LOOP Label    00000248
-INITIAL_ROUTINE         Label    00000371
-INITIAL_TEST_MODE       Label    00000259
-INT_MFB_STOP            Label    0000039A
-INT_PWM_COUNT           Label    0000039C
+INITIAL_RF              Label    00000244
+INITIAL_RF_CARRIER      Label    00000261
+INITIAL_RF_DEF_REG      Label    0000024B
+INITIAL_RF_DEF_REG_END  Label    00000258
+INITIAL_RF_DEF_REG_LOOP Label    0000024C
+INITIAL_ROUTINE         Label    00000375
+INITIAL_TEST_MODE       Label    0000025D
+INT_MFB_STOP            Label    0000039D
+INT_PWM_COUNT           Label    0000039F
 INTE                    Constant 0000000E
-INTERRUPT               Label    0000038E
-INTERRUPT_END           Label    000003A6
+INTERRUPT               Label    00000391
+INTERRUPT_END           Label    000003A9
 INTF                    Constant 0000000F
 INTSTATUS_VTM           Constant 00000039
 INTW_VTM                Constant 0000003A
@@ -2666,12 +2673,12 @@ IOSTA                   Constant 00000005
 IOSTB                   Constant 00000006
 IRCR                    Constant 00000006
 L                       Constant 00000000
-LAMP_CONTROL            Label    00000230
-LAMP_CONTROL_BUILD_BLINK Label    0000023C
-LAMP_CONTROL_END        Label    0000023F
-LAMP_CONTROL_LOST_BLINK Label    00000237
-LAMP_CONTROL_OFF        Label    0000023E
-LAMP_CONTROL_ON         Label    0000023A
+LAMP_CONTROL            Label    00000234
+LAMP_CONTROL_BUILD_BLINK Label    00000240
+LAMP_CONTROL_END        Label    00000243
+LAMP_CONTROL_LOST_BLINK Label    0000023B
+LAMP_CONTROL_OFF        Label    00000242
+LAMP_CONTROL_ON         Label    0000023E
 LENGTHCH_CTM            Define   75
 MAIN                    Label    00000044
 MAIN_LOOP               Label    00000050
@@ -2683,29 +2690,29 @@ MAIN_TX_MODE            Label    00000065
 MAIN_TX_NOR             Label    0000006F
 MAIN_TX_NOR_SEND        Label    00000070
 MAIN_TX_NOR_SEND_OK     Label    0000008B
-MOMTOR_SLOW_LOOP        Label    000001C6
-MOTOR_B                 Label    000001B0
-MOTOR_B_ING             Label    000001B4
-MOTOR_CONTROL           Label    0000019E
-MOTOR_F                 Label    000001A6
-MOTOR_F_ING             Label    000001AA
-MOTOR_FB_BRAKE          Label    000001FC
-MOTOR_FB_BRAKE_ING      Label    00000203
-MOTOR_FB_END            Label    00000216
-MOTOR_FB_ING            Label    000001B7
-MOTOR_FB_ING1           Label    000001F5
-MOTOR_FB_OUT_NOR        Label    000001EB
-MOTOR_FB_OUT_NOR1       Label    000001EF
-MOTOR_FB_OUT_SLOW_MIN   Label    000001E8
-MOTOR_FB_STOP           Label    00000207
-MOTOR_FB_STOP_ING       Label    0000020F
-MOTOR_FB_STOP_ING1      Label    00000213
-MOTOR_L                 Label    0000022A
-MOTOR_LR                Label    00000216
-MOTOR_LR_NOR            Label    00000223
-MOTOR_LR_STOP           Label    00000227
-MOTOR_R                 Label    0000022D
-MOTOR_SLOW_NEXT         Label    000001CB
+MOMTOR_SLOW_LOOP        Label    000001CA
+MOTOR_B                 Label    000001B4
+MOTOR_B_ING             Label    000001B8
+MOTOR_CONTROL           Label    000001A2
+MOTOR_F                 Label    000001AA
+MOTOR_F_ING             Label    000001AE
+MOTOR_FB_BRAKE          Label    00000200
+MOTOR_FB_BRAKE_ING      Label    00000207
+MOTOR_FB_END            Label    0000021A
+MOTOR_FB_ING            Label    000001BB
+MOTOR_FB_ING1           Label    000001F9
+MOTOR_FB_OUT_NOR        Label    000001EF
+MOTOR_FB_OUT_NOR1       Label    000001F3
+MOTOR_FB_OUT_SLOW_MIN   Label    000001EC
+MOTOR_FB_STOP           Label    0000020B
+MOTOR_FB_STOP_ING       Label    00000213
+MOTOR_FB_STOP_ING1      Label    00000217
+MOTOR_L                 Label    0000022E
+MOTOR_LR                Label    0000021A
+MOTOR_LR_NOR            Label    00000227
+MOTOR_LR_STOP           Label    0000022B
+MOTOR_R                 Label    00000231
+MOTOR_SLOW_NEXT         Label    000001CF
 O                       Constant 00000000
 OSCCR                   Constant 0000000F
 P10DR_PB1               Constant 00000000
@@ -2807,51 +2814,51 @@ PS0CV                   Constant 0000000A
 PS1CV                   Constant 00000004
 PWM1DUTY                Constant 00000003
 READDATA_VTM            Constant 0000002A
-RF_CHANNEL_CHOICE       Label    0000032E
-RF_CHANNEL_CHOICE_END   Label    00000355
-RF_CHANNEL_CHOICE_OUT   Label    00000354
-RF_CHANNEL_CHOICE0      Label    0000032F
-RF_CHANNEL_CHOICE01     Label    00000335
-RF_CHANNEL_CHOICE1      Label    0000034D
-RF_CHANNEL_CHOICE2      Label    00000345
-RF_CHANNEL_CHOICE3      Label    0000033D
-RF_CHANNEL_CHOICE4      Label    00000337
-RF_IDLE_MODE            Label    00000280
-RF_MIS_REG              Label    00000270
+RF_CHANNEL_CHOICE       Label    00000332
+RF_CHANNEL_CHOICE_END   Label    00000359
+RF_CHANNEL_CHOICE_OUT   Label    00000358
+RF_CHANNEL_CHOICE0      Label    00000333
+RF_CHANNEL_CHOICE01     Label    00000339
+RF_CHANNEL_CHOICE1      Label    00000351
+RF_CHANNEL_CHOICE2      Label    00000349
+RF_CHANNEL_CHOICE3      Label    00000341
+RF_CHANNEL_CHOICE4      Label    0000033B
+RF_IDLE_MODE            Label    00000284
+RF_MIS_REG              Label    00000274
 RF_POWR                 Label    00000032
-RF_RX_MODE              Label    0000027B
-RF_RX_MODE1             Label    0000027D
+RF_RX_MODE              Label    0000027F
+RF_RX_MODE1             Label    00000281
 RF_SCR                  Label    00000041
-RF_SCR_REG              Label    00000274
-RF_TX_MODE              Label    00000278
-RF_TX_MODE1             Label    00000279
-RF_WORK_MODE            Label    00000281
-RF_WORK_MODE1           Label    00000285
+RF_SCR_REG              Label    00000278
+RF_TX_MODE              Label    0000027C
+RF_TX_MODE1             Label    0000027D
+RF_WORK_MODE            Label    00000285
+RF_WORK_MODE1           Label    00000289
 RFCSNDR_PB7             Constant 00000001
 RFCSNIO_PB7             Constant 00000000
 RFCSNPU_PB7             Constant 00000001
 RFCSNWU_PB7             Constant 00000000
 RFSTATUS_CTM            Define   0X61
 RFVALUE_VTM             Constant 0000002B
-ROLL_10_75_STEP_END     Label    00000303
-ROLL_CH_EQUAL           Label    00000324
-ROLL_CHANNEL            Label    000002A4
-ROLL_CHANNEL_END        Label    000002F5
-ROLL_CHANNEL_LIMITED    Label    000002E4
-ROLL_CHANNEL1           Label    000002AE
-ROLL_CHANNEL2           Label    000002C3
-ROLL_CHANNEL2_          Label    0000030F
-ROLL_CHANNEL2_END       Label    0000031E
-ROLL_CHANNEL2_LOOP      Label    00000317
-ROLL_CHANNEL21          Label    000002DB
-ROLL_CHANNEL22          Label    000002CB
-ROLL_STEP_0_75          Label    000002F6
-ROLL_STEP_0_75_END      Label    000002FD
-ROLL_STEP_0_78          Label    00000304
-ROLL_STEP_0_78_END      Label    0000030C
-ROLL_STEP0              Label    000002AC
-ROLL_STEP1              Label    000002B4
-ROLL_STEP11             Label    000002C1
+ROLL_10_75_STEP_END     Label    00000307
+ROLL_CH_EQUAL           Label    00000328
+ROLL_CHANNEL            Label    000002A8
+ROLL_CHANNEL_END        Label    000002F9
+ROLL_CHANNEL_LIMITED    Label    000002E8
+ROLL_CHANNEL1           Label    000002B2
+ROLL_CHANNEL2           Label    000002C7
+ROLL_CHANNEL2_          Label    00000313
+ROLL_CHANNEL2_END       Label    00000322
+ROLL_CHANNEL2_LOOP      Label    0000031B
+ROLL_CHANNEL21          Label    000002DF
+ROLL_CHANNEL22          Label    000002CF
+ROLL_STEP_0_75          Label    000002FA
+ROLL_STEP_0_75_END      Label    00000301
+ROLL_STEP_0_78          Label    00000308
+ROLL_STEP_0_78_END      Label    00000310
+ROLL_STEP0              Label    000002B0
+ROLL_STEP1              Label    000002B8
+ROLL_STEP11             Label    000002C5
 ROLL0                   Label    00000003
 ROLL1                   Label    00000004
 ROLL2                   Label    00000005
@@ -2860,26 +2867,26 @@ RX_ADDR                 Define   HEADRAM_ADR+32
 RX_DATA_DECODE          Label    000000A3
 RX_DATA_LOOP            Label    000000A6
 RX_PAIR_FIRST           Label    000000F7
-RX_PAIR_FIRST_JUAGE     Label    00000121
+RX_PAIR_FIRST_JUAGE     Label    00000125
 RX_PAIR_FIRST_UPROLL    Label    000000E9
-RX_PAIR_ROLL            Label    00000137
-RX_PAIR_ROLL_NEXT       Label    00000139
+RX_PAIR_ROLL            Label    0000013B
+RX_PAIR_ROLL_NEXT       Label    0000013D
 RX_PAIR_TXROLL_NEXT     Label    000000D9
-RX_PAIR_TXROLL_NEXT1    Label    000000FC
-RX_TXDATA_CK            Label    0000010F
-RX_TXDATA_CK_DECODE     Label    00000127
-RX_WAIT_NEXT            Label    00000142
+RX_PAIR_TXROLL_NEXT1    Label    00000100
+RX_TXDATA_CK            Label    00000113
+RX_TXDATA_CK_DECODE     Label    0000012B
+RX_WAIT_NEXT            Label    00000146
 RX_WAIT_OK              Label    00000090
 RXCH0_VTM               Constant 0000001D
 RXCH1_VTM               Constant 0000001E
 RXCH2_VTM               Constant 0000001F
 RXDATA_LENGTH_CTM       Define   11
-SCAN_MODE               Label    00000176
-SCAN_MODE_END           Label    0000018B
-SCAN_MODE_NEXT          Label    00000180
-SCAN_PEAK               Label    00000147
-SCAN_SLEEP              Label    0000018C
-SCAN_SLEEP_END          Label    0000019D
+SCAN_MODE               Label    0000017A
+SCAN_MODE_END           Label    0000018F
+SCAN_MODE_NEXT          Label    00000184
+SCAN_PEAK               Label    0000014B
+SCAN_SLEEP              Label    00000190
+SCAN_SLEEP_END          Label    000001A1
 SCRAMBLE_CTM            Define   0X1A
 SCRAMBLEP_CTM           Define   0X25
 SENDDATA0_VTM           Constant 00000010
@@ -2892,15 +2899,15 @@ SENDDATA6_VTM           Constant 00000016
 SENDDATA7_VTM           Constant 00000017
 SENDDATA8_VTM           Constant 00000018
 SENDDATA9_VTM           Constant 00000019
-SLEEPING                Label    00000198
-SPI_R                   Label    0000028B
-SPI_R_DATA              Label    000002A1
-SPI_RW                  Label    0000028C
-SPI_RW_LOOP             Label    00000293
-SPI_RW_READY            Label    00000290
-SPI_SOLO_REG            Label    00000286
-SPI_SOLO_REG1           Label    00000288
-SPI_W_DATA              Label    0000028D
+SLEEPING                Label    0000019C
+SPI_R                   Label    0000028F
+SPI_R_DATA              Label    000002A5
+SPI_RW                  Label    00000290
+SPI_RW_LOOP             Label    00000297
+SPI_RW_READY            Label    00000294
+SPI_SOLO_REG            Label    0000028A
+SPI_SOLO_REG1           Label    0000028C
+SPI_W_DATA              Label    00000291
 STARTLCH_CTM            Define   10
 STATUS                  Constant 00000003
 T1CR1                   Constant 00000001
@@ -2918,13 +2925,13 @@ TMR0                    Constant 00000001
 TMR1                    Constant 00000000
 TX_ADDR                 Define   HEADRAM_ADR+32
 TX_SEND_LOOP            Label    0000007B
-TX_WAIT_DELAY           Label    00000144
+TX_WAIT_DELAY           Label    00000148
 TXCH0_VTM               Constant 0000001A
 TXCH1_VTM               Constant 0000001B
 TXCH2_VTM               Constant 0000001C
 TXDATA_LENGTH_CTM       Define   7
-UPDATA_RXCH             Label    00000164
-UPDATA_TXCH             Label    00000152
+UPDATA_RXCH             Label    00000168
+UPDATA_TXCH             Label    00000156
 V_COUNTPWM              Constant 00000031
 V_FBSTARTRUN            Constant 00000035
 V_FBTIME                Constant 00000034
@@ -2946,7 +2953,7 @@ V_TIME2                 Constant 0000003D
 V_WORKFLAG              Constant 00000024
 V_WORKFLAG1             Constant 00000025
 V_WORKST                Constant 00000033
-WAKE_CHECK              Label    0000019C
+WAKE_CHECK              Label    000001A0
 WDIS                    Constant 00000000
 WEN                     Constant 00000001
 WRITEDATA_VTM           Constant 00000029
@@ -2968,7 +2975,7 @@ SOURCE FILE TABLE
 00b E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\INITIAL_REG.asm
 00c E:\MyProject\2021project\DQ\DQ_COMMON_RC\DQ_TX_COMMON\DQ_TX_COMMON\INTERRUPT.asm
 
-PROCESSOR    = NY8A053D (8 bits) 
+PROCESSOR    = NY8A053E (8 bits) 
 PROGRAM ROM  = 0x00000000 - 0x000003FF
 DATA ROM     = 0x00000000 - 0x000003FF
 SRAM / SFR   = 0x00000000 - 0x00000000

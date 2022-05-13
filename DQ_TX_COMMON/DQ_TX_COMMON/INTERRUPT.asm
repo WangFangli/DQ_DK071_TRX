@@ -35,6 +35,7 @@ INT_PWM_COUNT:
 		incr		V_CountPWM,1
 		movia		0x0f
 		andar		V_CountPWM,1
+if DE_SPEED==1
 		btrss		_flag_FB_RUN
 		lgoto		INTERRUPT_END
 		incr		V_time0,1
@@ -42,6 +43,7 @@ INT_PWM_COUNT:
 		incr		V_time1,1
 		btrsc		zf 
 		incr		V_time2,1
+endif
 INTERRUPT_END:
 		clrr   	   	INTF
    	   	swapr 	    INTStatus_VTM,0

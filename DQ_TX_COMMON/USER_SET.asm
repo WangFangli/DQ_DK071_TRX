@@ -17,7 +17,6 @@
 #define     C_TestMode_En   1   ;//enable test mode
 ;#define 	C_RX_En			0
 
-#define 	DE_SPEED		1
 ;//****************************************
 ;//RF define
 #define     FIFO_EN_CTM     0x64

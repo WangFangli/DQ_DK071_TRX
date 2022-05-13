@@ -30,11 +30,11 @@ default
 break;
 endsw
 
-#define     C_M_SLOWMIN     5   ;//12.5%
+#define     C_M_SLOWMIN     9   ;//12.5%
 
 
 #define     C_SLOW_Time     89  ;//25min?
-#define  	C_SLOW_STOP_Time	179	;50min?
+#define  	C_SLOW_STOP_Time	229	;179	;50min?
 ;//********************************************************
 MOTOR_CONTROL:
     btrsc       _flag_FB_Brake

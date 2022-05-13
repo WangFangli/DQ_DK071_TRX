@@ -197,9 +197,9 @@ MAIN_TX_NOR_NEXT0:
 MAIN_TX_NOR_NEXT01:		
 	clrr		Test_VTM	
 MAIN_TX_NOR_NEXT02:
-	movia		0x3c
+	movia		0x3c	;// normal mode
 	btrsc		_flag_Build
-	movia		0x88
+	movia		0x88	;//pair mode
 	movar		sendData1_VTM
 	
 	lcall		ROLL0
@@ -303,7 +303,7 @@ if C_MODE_RX_En
 else
 	xoria 		C_ACK_Length
 	btrss 		zf 
-	goto		RX_WAIT_NEXT
+	lgoto		RX_WAIT_NEXT
 endif
 RX_DATA_DECODE:
 	movia		DataRAM_ADR
@@ -397,7 +397,7 @@ RX_PAIR_FIRST_UPROLL:
 	movar		V_RXROLL2
 	movr 		sendData5_VTM,0
 	movar		V_RXROLL3
-	lcall		UPDATA_RXCH
+	lcall		UPDATA_RXCH	;//re TX ROLL-> CH
 ;//ACK roll signal
 ;//
 	incr		V_PairTimeCT,1
@@ -407,7 +407,11 @@ RX_PAIR_FIRST_UPROLL:
 	lgoto		RX_PAIR_TXROLL_NEXT1
 RX_PAIR_FIRST:	
 	clrr		V_PairTimeCT
-	bcr			_flag_Build
+	bcr			_flag_Build	;//-> normal mode
+	bcr			_flag_ScanMode		
+	clrr		V_lostT
+	clrr		V_lost1T
+	bsr			_flag_lostcode
 	bcr			_flag_RF_Reset
 	bsr			_flag_LRturnTrig
 	clrr		Test_VTM
@@ -510,7 +514,7 @@ RX_PAIR_ROLL_NEXT:
 	movar		V_RXROLL2
 	movr 		sendData8_VTM,0
 	movar		V_RXROLL3
-	lcall		UPDATA_RXCH
+	lcall		UPDATA_RXCH	;//-> RX ROLL->CH
 RX_WAIT_NEXT:
 if C_MODE_RX_En
 	lcall		EN_RX_MODE
